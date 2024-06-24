@@ -39,7 +39,7 @@ format:
     code-link: true
     mainfont: Noto Sans
     monofont: Source Code Pro
-    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
+    author-meta: "Yanina Bellini Saibene y Paola Corrales"
   pdf:
     documentclass: scrreprt
 
