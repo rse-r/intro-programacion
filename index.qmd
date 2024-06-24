@@ -1,0 +1,31 @@
+# Preface {.unnumbered}
+
+::: enconstruccion
+
+Estos materiales están en desarrollo. 
+
+:::
+
+
+
+Ejemplos de cajitas
+
+::: ejercicio
+
+Este es un ejercicio
+:::
+
+::: ejemplo
+
+Este es un ejemplo
+:::
+
+::: importante
+
+A tener en cuenta!
+:::
+
+::: tip
+
+Este es un consejo
+:::
