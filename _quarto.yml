@@ -35,7 +35,7 @@ bibliography: references.bib
 format:
   html:
     theme:
-      light: [cosmo, scss/style.scss]
+      light: [cosmo, style.scss]
     code-link: true
     mainfont: Noto Sans
     monofont: Source Code Pro
