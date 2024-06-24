@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introducción a la Programación II",
+    "section": "",
+    "text": "Preface\n\nEstos materiales están en desarrollo.\n\nEjemplos de cajitas\n\nEste es un ejercicio\n\n\nEste es un ejemplo\n\n\nA tener en cuenta!\n\n\nEste es un consejo",
+    "crumbs": [
+      "Preface"
+    ]
+  },
+  {
+    "objectID": "00_intro.html",
+    "href": "00_intro.html",
+    "title": "\n1  Presentación\n",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Presentación</span>"
+    ]
+  },
+  {
+    "objectID": "01_proyectos.html",
+    "href": "01_proyectos.html",
+    "title": "\n2  Entorno de trabajo\n",
+    "section": "",
+    "text": "2.1 Creating an organised project\nWhat counts as “organised” is highly personal, but the main… Folder structure and file names should be:",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "01_proyectos.html#creating-an-organised-project",
+    "href": "01_proyectos.html#creating-an-organised-project",
+    "title": "\n2  Entorno de trabajo\n",
+    "section": "",
+    "text": "self-documenting\neasy to code with.\nall necessary files are inside the root folder\n\n\n2.1.1 Files that document themselves\nTake advantage of folders to self-document the various parts of your analysis.\nPut your data in data, pre-processing scripts in scripts, and your analysis in analysis. Also use sub-folders, such as data/raw for raw data from the source and data/derived for pre-processed, cleaned-up data.\nName your files so that you can know what they are even if you came home at 3am after drinking a few beers.\nUse slugs (short descriptions of what’s inside).\n\nDescribe what do you think are the contents of these files:\n\ndata/raw/madrid_minimum-temperature.csv\nscripts/02_compute_mean-temperature.R\nanalysis/01_madrid_minimum-temperature_descriptive-statistics.Rmd\n\n\n\nCome up with good file names and folders for:\n\na dataset of cats with columns for weight, length, tail length, fur colour(s), fur type and name.\na script that downloads data from Spotify.\na scripts that cleans up data.\na scripts that fits a linear discriminant model and saves it to a file.\nthe .Rds file in which that model is stored.\n\n\n\nUse a familiar folder structure\nThere is no single one objectively best folder structure. When in doubt, try to follow the conventions of your research community. This will minimise any friction between you and your potential audience.\n\n\n2.1.2 Files you can code with\nAlways remember that machines are quite dumb, so be gentle and use file names machines can easily understand.\nIn some cases, file names with spaces confuse machines, so in general is much easier to code if file names use underscores and hyphens to split words. Similarly, some machines can’t handle “special characters” such as “ñ” or tildes. Some symbols (“.”, “*”, an others) are also best avoided because they have special meaning in regular expressions.\nSome file systems are case insensitive, so Madrid-Temperature.csv and madrid-temperature.csv might be the same file!\nTo avoid any headaches, it is best to be conservative and just use lower-case latin characters, numbers and hyphens (“_” and “-”).\nUse hyphens as separators. You can use “-” to separate words that are part of the same concept and “_” to separate concepts. For instance buenos-aires_minimum-temperature.csv. We recommend this convention and not the other way around, because it’s compatible with the ISO date format (“YYYY-MM-DD”).\n\nBy using separators consistently and smartly you can parse file names programmatically very easily. For example, if you have\n\nfiles\n\n[1] \"madrid_minimum-temperature\"       \"buenos-aires_minimum-temperature\"\n[3] \"madrid_maximum-temperature\"       \"buenos-aires_maximum-temperature\"\n\n\nYou could extract cities and variable names by just\n\nstrsplit(files, \"_\")\n\n[[1]]\n[1] \"madrid\"              \"minimum-temperature\"\n\n[[2]]\n[1] \"buenos-aires\"        \"minimum-temperature\"\n\n[[3]]\n[1] \"madrid\"              \"maximum-temperature\"\n\n[[4]]\n[1] \"buenos-aires\"        \"maximum-temperature\"\n\n\n\nFinally, try to make your files easily sortable. Put numbers with enough zero-padding and, if relevant, use dates in YYYY-MM-DD format at the beginning of the file name so that sorting by name coincide with sorting by date.\n\n2.1.3 Making it portable\nAn important aspect of thinking about your project is that all scripts, data, figures, and whatever else is needed to (re)create the analysis is inside the same root folder. That way you can ensure that the only thing you need to give to someone else to successfully run your code is that single folder. It also makes your life easier if you work on the same project in different computers, as it enables you to sync a single folder.\nOne extra step to consider is that you cannot make your work portable if your code is not portable too. Perhaps the main culprit of non-portable code is using absolute paths to manipulate files in your code.\nThink about this piece of code:\n\nread.csv(\"/home/dorothy/Documents/research/black-hole/data/data.csv\")\n\nEven if you correctly downloaded the myresearch folder, this code wouldn’t run because it is unlikely that you saved that folder inside Documents/research and that your username is “dorothy”.\nInstead, you can use a relative path such as\n\nread.csv(\"data/data.csv\")\n\nAnd this will run no matter where the root folder is located. The only catch is that you need to make sure that the working directory is set to the root of the project. This is easier said than done, especially due to (and assuming you use) knitr’s default behaviour of setting the location of the R Markdown file as the working directory. We will see that a simple solution is to use the here package.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "01_proyectos.html#rstudio-projects",
+    "href": "01_proyectos.html#rstudio-projects",
+    "title": "\n2  Entorno de trabajo\n",
+    "section": "\n2.2 RStudio Projects",
+    "text": "2.2 RStudio Projects\nRStudio provides a neat, structured way of separating your projects into different contexts. They don’t strictly help with reproducibility of the final product, but they will help you streamline your workflow by encapsulating things like the list of open files, R command history and RStudio settings for each project.\nOpening an RStudio Project also ensures that you start a new R session every time and sets your working directory to the project root directory.\n\nCreate a new RStudio Project\n\nClick on “File” and then in “New Project…”.\nClick on “New directory”.\nYou’ll see a list of various templates. Select “New Project”.\nType the name of the root folder in which your project will live and the directory where you want this folder to be created in by clicking “Browse..”\nClick on “Create Project”.\n\n\nWhat is the absolute path to your project directory?\nIf you close RStudio, how can you ensure your working directory is your project directory when you next open the application?\n\n\nIf everything went well, you should have a new folder with your desired name. This is a normal garden-variety folder; what singles it out as an RStudio Project is the .Rproj file that holds project-specific RStudio options and the hidden folder .Rproj.user where project-specific temporary files are located.\nEach RStudio Project has its own set of options that you can change without altering global options or other project’s options.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "01_proyectos.html#opening-a-project",
+    "href": "01_proyectos.html#opening-a-project",
+    "title": "\n2  Entorno de trabajo\n",
+    "section": "\n2.3 Opening a project",
+    "text": "2.3 Opening a project\nThe simplest way to open a project is to open the folder that contains it and double-click on the .Rproj file. You can also quickly open a recently-used project by clicking on the project icon on the right-hand side of the RStudio toolbar.\nThis will open a new RStudio window with its own clean R process with the project folder as the working directory. By default, it will also open any previously-opened files. It will even preserve changes not saved. This helps keep your work tidy and makes it easy to pick up or share what you’ve done later.\nRStudio allows you to have multiple projects open, and this is possible because each project has its own folder. You can work with multiple projects in parallel without code or results of one analysis interfering with the other’s.\n\nOpen your project\n\nOn your new project, create a new file (any file) and write some code on it (e.g. print(\"Hello world\")).\nClose the RStudio window.\nNow open a new RStudio window and open the RStudio Project you just closed (depending on your global options, it might open by default).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "01_proyectos.html#a-clean-slate-every-day",
+    "href": "01_proyectos.html#a-clean-slate-every-day",
+    "title": "\n2  Entorno de trabajo\n",
+    "section": "\n2.4 A clean slate… every day",
+    "text": "2.4 A clean slate… every day\nHow do we ensure that the analysis is truly reproducible? This is quite a broad question and there are many tools to solve this problem. For now we are going to concentrate on at least on your computer being able to repeat the calculations or analysis from scratch. And besides organising projects and not modifying the original data, how can you make sure that you saved all the code you were writing and used? The most direct way is to restart the R session and run the code again, if it gives an error or doesn’t return what you expected it means you missed a step.\n\nYou can restart the R session with the shortcut Ctrl+Shif+F10.\n\nThis can happen if for example you read data into memory by running a command in the console. While we are working, R will have that data in memory and you will be able to make calculations and graphs, but your code will not be reproducible because it’s missing the important step of reading the data.\nThe best way of ensuring this doesn’t happen is to re-run your code on a fresh R session early and often so you can be sure that your code is reproducible at every step of the analysis. However, be default RStudio will save the environment in a hidden file called .RData and restore it on startup, so that data will still be in memory. And while this comes in handy so that you can boot up your work exactly where you left it each time you open your project, it might lead to a situation in which you never realise that you missed saving a key line of code in your analysis.\n\nConfigure your project\n\nGo to “Tools” -&gt; “Project options…”\n\nIn the “General” tab\n\n“Restore .RData into workspace at startup”: Select “No” from the dropdown menu.\n“Save workspace to .RData on exit”: Select “No” from the dropdown menu\n\n\n\n\n\nYou can change these preferences at the global level with “Tools” -&gt; “Global options” in the “General” subheading\n\n\n2.4.1 Resources\nProject structure - Slides by Danielle Navarro/\nPackaging data analytical work reproducibly using R (and friends)\nHow (and why) to make a research compendium",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "06_funciones.html",
+    "href": "06_funciones.html",
+    "title": "\n7  Funciones\n",
+    "section": "",
+    "text": "7.1 Trabajando con funciones y otro código\nHasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Además vimos en detalle como utilizar archivos .Rmd o .qmd autocontenidos, que incluyan el código y texto necesario para generar un análisis. Pero es posible que nuestro trabajo necesite funciones que generamos para hacer nuestro trabajo más simple. Si incluimos el código que define estas funciones en nuestro .Rmd, puede complejizar nuestro código y que sea más dificil de interpretar. Aquí podemos comenzar a incluir archivos secundarios que contengan estas funciones.\nEn las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd. En estos casos podemos volver a los tradicionales scripts.\nSi hipotéticamente quisieramos definir una función que convierte la temperatura en kelvin (algo muy común entre meteorólogos) a la temperatura en grados centígrados tendriamos el siguiente código:\nkelvin_a_centigrados &lt;- function(temperatura) {\n  \n  return(temperatura - 273.15)\n  \n}\nque podríamos guardar en un script de R que se llame funciones_secundarias.R que por supuesto guardaremos en la carpeta “scripts”. Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:\nAhora el desafío es lograr usar esa función que está en un archivo .R en el reporte .Rmd. Necesitamos cargar el script al comienzo de nuestro archivo para que la función quede disponible para ser utilizada más adelante.\nEl mejor lugar para hacer esto es, en el caso de R Markdown, el bloque de código setup donde además cargamos las librerías que usaremos. Por ejemplo:",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Funciones</span>"
+    ]
+  },
+  {
+    "objectID": "06_funciones.html#trabajando-con-funciones-y-otro-código",
+    "href": "06_funciones.html#trabajando-con-funciones-y-otro-código",
+    "title": "\n7  Funciones\n",
+    "section": "",
+    "text": "Qué hace o cual es su propósito.\nQué argumentos requiere y de que tipo de datos son.\nQué genera cómo resultado.\n\n\nCrea una función\n\nCreá un archivo .R con alguna función. Puede ser la que vimos como ejemplo o alguna otra que prefieras.\nGuardá el archivo en la carpeta scripts\n\n\n\n\nlibrary(ggplo2)\nlibrary(data.table)\nsource(here::here(\"scripts/funciones_secundarias.R\"))\n\nCarga la función\n\nAgrega source(here::here(\"scripts/funciones_secundarias.R\")) al comienzo del archivo .Rmd\nUsa la función en algún bloque de código\nKnitea el archivo para ver el resultado final",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Funciones</span>"
+    ]
+  },
+  {
+    "objectID": "06_funciones.html#trabajando-con-datos",
+    "href": "06_funciones.html#trabajando-con-datos",
+    "title": "\n7  Funciones\n",
+    "section": "\n7.2 Trabajando con datos",
+    "text": "7.2 Trabajando con datos\nMuchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.\nEl código que genera la descarga de datos podría estar incluido en el archivo .Rmd si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.\nVeamos un ejemplo de descarga de datos desde Zenodo.\nSi revisamos la base de datos https://sandbox.zenodo.org/record/1029654 veremos que incluye un solo archivo en formato .csv.\n\n\n\n\n\n\n\n\nVemos también el botón “Download” para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.\nPero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos. Podríamos crear una función descarga_pinguinos():\ndescarga_pinguinos &lt;- function() {\n  file &lt;- here::here(\"datos/datos_crudos/penguins.csv\")\n  url &lt;- \"https://sandbox.zenodo.org/record/1029654/files/penguins.csv?download=1\"\n  download.file(url, file)\n}\nPara obtener la dirección url del archivo, hay que hacer click derecho sobre el botón Download y copiar el link.\nAhora si deseas descargar los datos solo hay que llamar a la función descarga_pinguinos() y los datos se guardaran en la carpeta correcta.\nPodríamos mejorar esto generando una función que solo descargue los datos en caso de que no estén presentes en el proyecto. Esta función podría escribirse de esta manera:\ndatos_pinguinos &lt;- function() {\n  file &lt;- here::here(\"datos/datos_crudos/penguins.csv\")\n  if (!file.exists(file)) {\n    descarga_pinguinos()\n  } \n  return(read.csv(file))\n}\nCon esta última función en nuestro archivo .Rmd nos podemos olvidar de la descarga de datos, que se hará automáticamente.\npenguins &lt;- datos_pinguinos()\n\nDescarga de datos programática\n\nSiguiendo los pasos anteriores, general las funciones necesarias para descargar los datos prográtiacamente en la carpeta correcta.\nLas funciones pueden estar al comienzo del archivo o puedes guardarlas en el script funciones_secundarias.R (o un nuevo script) y cargarlas al comienzo.\nPara revisar que todo funciona, knitea el archivo y chequea que los datos estén en la carpeta correcta.",
+    "crumbs": [
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Funciones</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  }
+]
