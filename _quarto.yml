@@ -1,0 +1,46 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "Introducción a la Programación II"
+  author: "Yanina Bellini Saibene y Paola Corrales"
+  doi: TBD
+  language: "ES"
+  repo-url: "https://github.com/rse-r/intro-programacion"
+  chapters:
+    - index.qmd
+    - 00_intro.qmd
+    - 01_proyectos.qmd
+    - 02_lectura.qmd
+    - 03_manipulacion-1.qmd
+    - 04_git-1.qmd
+    - 05_manipulacion-2.qmd
+    - 06_funciones.qmd
+    - 07_git-2.qmd
+    - 08_paquetes-1.qmd
+    - 09_errores.qmd
+    - 10_paquetes-2.qmd
+    - 11_documentacion.qmd
+    - 12_publicacion.qmd
+    - 13_reproducibilidad.qmd
+    - references.qmd
+  sidebar:
+    background: "#916699"
+    search: true
+    
+bibliography: references.bib
+
+format:
+  html:
+    theme:
+      light: [cosmo, scss/style.scss]
+    code-link: true
+    mainfont: Noto Sans
+    monofont: Source Code Pro
+    author-meta: "Mine Çetinkaya-Rundel and Johanna Hardin"
+  pdf:
+    documentclass: scrreprt
+
+
+
