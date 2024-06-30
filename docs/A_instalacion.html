@@ -271,14 +271,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ubuntu-o-derivados" id="toc-ubuntu-o-derivados" class="nav-link" data-scroll-target="#ubuntu-o-derivados">Ubuntu o derivados</a></li>
   <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac">Mac</a></li>
   <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
-  <li><a href="#instalando-rtools" id="toc-instalando-rtools" class="nav-link" data-scroll-target="#instalando-rtools"><span class="header-section-number">A.0.1</span> Instalando RTools</a></li>
   </ul></li>
+  <li><a href="#instalando-rtools" id="toc-instalando-rtools" class="nav-link" data-scroll-target="#instalando-rtools">Instalando RTools</a></li>
   <li><a href="#instalando-rstudio" id="toc-instalando-rstudio" class="nav-link" data-scroll-target="#instalando-rstudio">Instalando RStudio</a>
   <ul class="collapse">
   <li><a href="#ubuntu-o-derivados-1" id="toc-ubuntu-o-derivados-1" class="nav-link" data-scroll-target="#ubuntu-o-derivados-1">Ubuntu o derivados</a></li>
   <li><a href="#windows-1" id="toc-windows-1" class="nav-link" data-scroll-target="#windows-1">Windows</a></li>
-  <li><a href="#instalando-git" id="toc-instalando-git" class="nav-link" data-scroll-target="#instalando-git"><span class="header-section-number">A.0.2</span> Instalando Git</a></li>
-  <li><a href="#crear-una-cuenta-en-github." id="toc-crear-una-cuenta-en-github." class="nav-link" data-scroll-target="#crear-una-cuenta-en-github."><span class="header-section-number">A.0.3</span> Crear una cuenta en GitHub.</a></li>
+  </ul></li>
+  <li><a href="#instalando-git" id="toc-instalando-git" class="nav-link" data-scroll-target="#instalando-git">Instalando Git</a></li>
+  <li><a href="#crear-cuentas" id="toc-crear-cuentas" class="nav-link" data-scroll-target="#crear-cuentas">Crear cuentas</a>
+  <ul class="collapse">
+  <li><a href="#crear-una-cuenta-en-github" id="toc-crear-una-cuenta-en-github" class="nav-link" data-scroll-target="#crear-una-cuenta-en-github">Crear una cuenta en GitHub</a></li>
+  <li><a href="#crear-una-cuenta-en-posit-cloud" id="toc-crear-una-cuenta-en-posit-cloud" class="nav-link" data-scroll-target="#crear-una-cuenta-en-posit-cloud">Crear una cuenta en Posit Cloud</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -308,8 +312,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Este anexo detalla los pasos a seguir para instalar todo el software que vamos a necesitar para las clases:</p>
 <ul>
 <li>R</li>
+<li>RTools (solo para Windows)</li>
 <li>RStudio</li>
-<li>RTools</li>
 <li>Git</li>
 </ul>
 <div class="importante">
@@ -357,8 +361,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/r-en-windows.png" class="img-fluid"></p>
 <p>Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! <strong>Todavía falta unos pasos</strong> para poder sacarle todo el jugo: necesitamos instalar <strong>RTools</strong>.</p>
 </section>
-<section id="instalando-rtools" class="level3" data-number="A.0.1">
-<h3 data-number="A.0.1" class="anchored" data-anchor-id="instalando-rtools"><span class="header-section-number">A.0.1</span> Instalando RTools</h3>
+</section>
+<section id="instalando-rtools" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instalando-rtools">Instalando RTools</h2>
 <p>Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools.</p>
 <ol type="1">
 <li><p>Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools43 installer</a>.</p></li>
@@ -369,12 +374,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Debería salir algo como esto:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">make =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">rtools40</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin</span><span class="sc">\\</span><span class="st">make.exe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-</section>
 <section id="instalando-rstudio" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="instalando-rstudio">Instalando RStudio</h2>
-<ul>
-<li>Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/</li>
-</ul>
+<p>Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/</p>
 <section id="ubuntu-o-derivados-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ubuntu-o-derivados-1">Ubuntu o derivados</h3>
 <p>Si tenés instalada una interfaz gráfica para instalar archivos .deb, ejecutando el archivo que descargaste ya vas a poder instalar RStudio. Si no, abrí una terminal en el directorio donde bajaste el archivo y ejecutá</p>
@@ -391,24 +393,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="unnumbered anchored" data-anchor-id="windows-1">Windows</h3>
 <p>Como siempre, doble click en el archivo y seguir los pasos de instalación.</p>
 </section>
-<section id="instalando-git" class="level3" data-number="A.0.2">
-<h3 data-number="A.0.2" class="anchored" data-anchor-id="instalando-git"><span class="header-section-number">A.0.2</span> Instalando Git</h3>
 </section>
-<section id="crear-una-cuenta-en-github." class="level3" data-number="A.0.3">
-<h3 data-number="A.0.3" class="anchored"><span class="header-section-number">A.0.3</span> Crear una cuenta en GitHub.</h3>
+<section id="instalando-git" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instalando-git">Instalando Git</h2>
+<p>Git es una herramienta para control de versiones, vamos a utilizarla para trabajar colaborativamente.</p>
+<p>En la pagina de <a href="https://git-scm.com/">Git</a> podemos descargar el instalador para nuestro sistema operativo.</p>
+<p>En esa misma pagina <a href="https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git">hay una guia de instalacion para cada sistema operativo en castellano</a>. Sigue las instrucciones detallas en la misma.</p>
+</section>
+<section id="crear-cuentas" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="crear-cuentas">Crear cuentas</h2>
+<section id="crear-una-cuenta-en-github" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="crear-una-cuenta-en-github">Crear una cuenta en GitHub</h3>
+<p>GitHub es una de las interfaces y repositorios mundiales mas conocidos y utilizados por quienes desarrollan software. Vamos a utilizarlo para compartir el codigo que vamos a escribir en la materia.</p>
 <ul>
-<li><p>Ir a https://github.com/.</p></li>
+<li><p>Ir a <a href="https://github.com/" class="uri">https://github.com/</a>.</p></li>
 <li><p>Hacer clik en Registrarse or Sign up.</p></li>
 <li><p>Seguir las indicaciones para crear la cuenta personal.</p></li>
 <li><p>Uno de los pasos implica chequear que son una persona y luego validar la direccion de email que usaste para crear la cuenta.</p></li>
 </ul>
-<blockquote class="blockquote">
-<h2 id="primer-ejercicio" data-number="A.1" class="anchored" data-anchor-id="crear-una-cuenta-en-github."><span class="header-section-number">A.1</span> Primer ejercicio</h2>
-<p>Crear el perfil en github:</p>
-<p>1 - crear un repo con el mismo nombre que tu usuario de github.</p>
-<p>2 - Agregarle un archivo README.md</p>
-<p>3 - Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. Tenerlo listo para la proxima clase.</p>
-</blockquote>
+</section>
+<section id="crear-una-cuenta-en-posit-cloud" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="crear-una-cuenta-en-posit-cloud">Crear una cuenta en Posit Cloud</h3>
+<ul>
+<li><p>Ir a <a href="https://posit.cloud/plans/free" class="uri">https://posit.cloud/plans/free</a>.</p></li>
+<li><p>Hacer clik en “Sign Up” y seguir las indicaciones para crear la cuenta personal.</p></li>
+</ul>
 
 
 </section>

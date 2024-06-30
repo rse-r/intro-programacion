@@ -68,7 +68,7 @@ Download R for macOS
 
 Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! **Todavía falta unos pasos** para poder sacarle todo el jugo: necesitamos instalar **RTools**.
 
-### Instalando RTools
+## Instalando RTools {-}
 
 Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools. 
 
@@ -89,7 +89,7 @@ c(make = "C:\\rtools40\\usr\\bin\\make.exe")
 
 ## Instalando RStudio {-}
 
-- Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/
+Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/
 
 
 ### Ubuntu o derivados {-}
@@ -123,7 +123,6 @@ La primera vez que abrimos RStudio nos ofrece instalar las herramientas de XCode
 
 Como siempre, doble click en el archivo y seguir los pasos de instalación.
 
-
 ## Instalando Git {-}
 
 Git es una herramienta para control de versiones, vamos a utilizarla para trabajar colaborativamente.  
@@ -134,11 +133,11 @@ En esa misma pagina [hay una guia de instalacion para cada sistema operativo en 
 
 ## Crear cuentas {-}
 
-### Crear una cuenta en GitHub. {-}
+### Crear una cuenta en GitHub {-}
 
 GitHub es una de las interfaces y repositorios mundiales mas conocidos y utilizados por quienes desarrollan software.  Vamos a utilizarlo para compartir el codigo que vamos a escribir en la materia.
 
-- Ir a https://github.com/.
+- Ir a <https://github.com/>.
 
 - Hacer clik en Registrarse or Sign up.
 
@@ -146,4 +145,8 @@ GitHub es una de las interfaces y repositorios mundiales mas conocidos y utiliza
 
 - Uno de los pasos implica chequear que son una persona y luego validar la direccion de email que usaste para crear la cuenta. 
 
-### Crear una cuenta en Posit Cloud
+### Crear una cuenta en Posit Cloud {-}
+
+- Ir a <https://posit.cloud/plans/free>.
+
+- Hacer clik en "Sign Up" y seguir las indicaciones para crear la cuenta personal. 
