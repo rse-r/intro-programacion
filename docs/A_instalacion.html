@@ -266,10 +266,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#instalando-r" id="toc-instalando-r" class="nav-link active" data-scroll-target="#instalando-r"><span class="header-section-number">A.0.1</span> Instalando R</a></li>
-  <li><a href="#instalando-rtools" id="toc-instalando-rtools" class="nav-link" data-scroll-target="#instalando-rtools"><span class="header-section-number">A.0.2</span> Instalando RTools</a></li>
-  <li><a href="#instalando-rstudio" id="toc-instalando-rstudio" class="nav-link" data-scroll-target="#instalando-rstudio"><span class="header-section-number">A.0.3</span> Instalando RStudio</a></li>
-  <li><a href="#crear-una-cuenta-en-github." id="toc-crear-una-cuenta-en-github." class="nav-link" data-scroll-target="#crear-una-cuenta-en-github."><span class="header-section-number">A.0.4</span> Crear una cuenta en GitHub.</a></li>
+  <li><a href="#instalando-r" id="toc-instalando-r" class="nav-link active" data-scroll-target="#instalando-r">Instalando R</a>
+  <ul class="collapse">
+  <li><a href="#ubuntu-o-derivados" id="toc-ubuntu-o-derivados" class="nav-link" data-scroll-target="#ubuntu-o-derivados">Ubuntu o derivados</a></li>
+  <li><a href="#mac" id="toc-mac" class="nav-link" data-scroll-target="#mac">Mac</a></li>
+  <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
+  <li><a href="#instalando-rtools" id="toc-instalando-rtools" class="nav-link" data-scroll-target="#instalando-rtools"><span class="header-section-number">A.0.1</span> Instalando RTools</a></li>
+  </ul></li>
+  <li><a href="#instalando-rstudio" id="toc-instalando-rstudio" class="nav-link" data-scroll-target="#instalando-rstudio">Instalando RStudio</a>
+  <ul class="collapse">
+  <li><a href="#ubuntu-o-derivados-1" id="toc-ubuntu-o-derivados-1" class="nav-link" data-scroll-target="#ubuntu-o-derivados-1">Ubuntu o derivados</a></li>
+  <li><a href="#windows-1" id="toc-windows-1" class="nav-link" data-scroll-target="#windows-1">Windows</a></li>
+  <li><a href="#instalando-git" id="toc-instalando-git" class="nav-link" data-scroll-target="#instalando-git"><span class="header-section-number">A.0.2</span> Instalando Git</a></li>
+  <li><a href="#crear-una-cuenta-en-github." id="toc-crear-una-cuenta-en-github." class="nav-link" data-scroll-target="#crear-una-cuenta-en-github."><span class="header-section-number">A.0.3</span> Crear una cuenta en GitHub.</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -295,42 +305,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Empezamos instalando el software que necesitamos:</p>
-<section id="instalando-r" class="level3" data-number="A.0.1">
-<h3 data-number="A.0.1" class="anchored" data-anchor-id="instalando-r"><span class="header-section-number">A.0.1</span> Instalando R</h3>
-<p>Estos pasos corresponden a <strong>Windows</strong></p>
+<p>Este anexo detalla los pasos a seguir para instalar todo el software que vamos a necesitar para las clases:</p>
+<ul>
+<li>R</li>
+<li>RStudio</li>
+<li>RTools</li>
+<li>Git</li>
+</ul>
+<div class="importante">
+<p>Si ya tenes instaldo este software te vamos a pedir que lo actualices a la ultima version que es la que usaremos durante las clases.</p>
+</div>
+<p>Tambien vamos a ver como crear cuentas en las plataformas en la nube que vamos a utilizar:</p>
+<ul>
+<li>GitHub</li>
+<li>Posit Cloud</li>
+</ul>
+<div class="importante">
+<p>Si ya tenes cuenta en alguna de las plataformas, no hace falta que crees una nueva, pero por favor chequea que podes ingresar antes de la clase asi nos seguramos que puedas usarla.</p>
+</div>
+<section id="instalando-r" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instalando-r">Instalando R</h2>
+<section id="ubuntu-o-derivados" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ubuntu-o-derivados">Ubuntu o derivados</h3>
+<p>Para tener la última versión, tenés que agregar los repositorios de CRAN. Para hacerlo, vas a tener que tener permisos de administrador. Los detalles están en <a href="https://cran.r-project.org/bin/linux/ubuntu/">esta</a> página, pero el resumen es:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt update <span class="at">-qq</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt install <span class="at">--no-install-recommends</span> software-properties-common dirmngr</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-key adv <span class="at">--keyserver</span> keyserver.ubuntu.com <span class="at">--recv-keys</span> E298A3A825C0D65DFD57CBB651716619E084DAB9</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> add-apt-repository <span class="st">"deb https://cloud.r-project.org/bin/linux/ubuntu </span><span class="va">$(</span><span class="ex">lsb_release</span> <span class="at">-cs</span><span class="va">)</span><span class="st">-cran40/"</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sudo apt install r-base r-base-dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Si todo salió bien, tenés que tener instalado R en tu máquina y podés ejecutarlo con el comando <code>R</code> en la consola.</p>
+<p><img src="images/r-terminal.png" class="img-fluid"></p>
+</section>
+<section id="mac" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="mac">Mac</h3>
+<ol type="1">
+<li><p>Ir a CRAN: https://cran.r-project.org</p></li>
+<li><p>Hacer click en el link <em>“Download R for (Mac) OS X”.</em></p></li>
+<li><p>Descarga el paquete correspondiente a tu sistema operativo.</p></li>
+<li><p>Ejecuta el paquete.</p></li>
+</ol>
+<p>Download R for Linux (Debian, Fedora/Redhat, Ubuntu) Download R for macOS</p>
+</section>
+<section id="windows" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="windows">Windows</h3>
 <ul>
 <li><p>Entrá a <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a> y bajate el instalador haciendo click en el link grandote que dice <em>“Download R x.x.x for Windows”</em>.</p></li>
 <li><p>Una vez que se bajó, hacé doble click en el archivo y seguí las instrucciones del instalador.</p></li>
 <li><p>Una vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: {{&lt; figure src="r-logo.jpeg" height="20px" &gt;}}</p></li>
 <li><p>Al ejecutarlo, les tiene que aparecer algo como esto:</p></li>
 </ul>
-<p><img src="r-en-windows.png" class="img-fluid"></p>
+<p><img src="images/r-en-windows.png" class="img-fluid"></p>
 <p>Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! <strong>Todavía falta unos pasos</strong> para poder sacarle todo el jugo: necesitamos instalar <strong>RTools</strong>.</p>
 </section>
-<section id="instalando-rtools" class="level3" data-number="A.0.2">
-<h3 data-number="A.0.2" class="anchored" data-anchor-id="instalando-rtools"><span class="header-section-number">A.0.2</span> Instalando RTools</h3>
+<section id="instalando-rtools" class="level3" data-number="A.0.1">
+<h3 data-number="A.0.1" class="anchored" data-anchor-id="instalando-rtools"><span class="header-section-number">A.0.1</span> Instalando RTools</h3>
 <p>Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools.</p>
 <ol type="1">
 <li><p>Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools43 installer</a>.</p></li>
 <li><p>Ejecuta el instalador y segui las instrucciones.</p></li>
 <li><p>Abrí la consola de R, escribí esto en la consola y apretá enter:</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"make"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"make"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Debería salir algo como esto:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">make =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">rtools40</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin</span><span class="sc">\\</span><span class="st">make.exe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">make =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">rtools40</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin</span><span class="sc">\\</span><span class="st">make.exe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="instalando-rstudio" class="level3" data-number="A.0.3">
-<h3 data-number="A.0.3" class="anchored" data-anchor-id="instalando-rstudio"><span class="header-section-number">A.0.3</span> Instalando RStudio</h3>
+</section>
+<section id="instalando-rstudio" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="instalando-rstudio">Instalando RStudio</h2>
 <ul>
-<li><p>Ingresa en el sitio web de Posit y descarga RStudio para desktop: https://download1.rstudio.org/electron/macos/RStudio-2023.12.1-402.dmg.</p></li>
-<li><p>Una vez descargado, como siempre, doble click en el archivo y seguir los pasos de instalación.</p></li>
-<li><p>Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:</p></li>
+<li>Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/</li>
 </ul>
-<p><img src="rstudio-principal.png" class="img-fluid"></p>
+<section id="ubuntu-o-derivados-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ubuntu-o-derivados-1">Ubuntu o derivados</h3>
+<p>Si tenés instalada una interfaz gráfica para instalar archivos .deb, ejecutando el archivo que descargaste ya vas a poder instalar RStudio. Si no, abrí una terminal en el directorio donde bajaste el archivo y ejecutá</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> ARCHIVO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Reemplazando ARCHIVO por el nombre del archivo instalador.</p>
+<p>Es posible que salte algún error por falta de alguna dependencia, en ese caso usá</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-f</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Y debería estar arreglado.</p>
+<p>Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:</p>
+<p><img src="images/rstudio-principal.png" class="img-fluid"> ### Mac {-}</p>
+<p>La primera vez que abrimos RStudio nos ofrece instalar las herramientas de XCode para línea de comandos. Aceptamos haciendo clic en instalar.</p>
 </section>
-<section id="crear-una-cuenta-en-github." class="level3" data-number="A.0.4">
-<h3 data-number="A.0.4" class="anchored"><span class="header-section-number">A.0.4</span> Crear una cuenta en GitHub.</h3>
+<section id="windows-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="windows-1">Windows</h3>
+<p>Como siempre, doble click en el archivo y seguir los pasos de instalación.</p>
+</section>
+<section id="instalando-git" class="level3" data-number="A.0.2">
+<h3 data-number="A.0.2" class="anchored" data-anchor-id="instalando-git"><span class="header-section-number">A.0.2</span> Instalando Git</h3>
+</section>
+<section id="crear-una-cuenta-en-github." class="level3" data-number="A.0.3">
+<h3 data-number="A.0.3" class="anchored"><span class="header-section-number">A.0.3</span> Crear una cuenta en GitHub.</h3>
 <ul>
 <li><p>Ir a https://github.com/.</p></li>
 <li><p>Hacer clik en Registrarse or Sign up.</p></li>
@@ -346,6 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </blockquote>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
