@@ -8,7 +8,7 @@
 
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
 
-<title>Introducción a la Programación II - References</title>
+<title>Introducción a la Programación II - Appendix A — Preparando el entorno de trabajo</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,26 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -50,8 +65,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./A_instalacion.html" rel="next">
-<link href="./13_reproducibilidad.html" rel="prev">
+<link href="./references.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -101,7 +115,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">References</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A_instalacion.html">Appendices</a></li><li class="breadcrumb-item"><a href="./A_instalacion.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -221,7 +235,7 @@ div.csl-indent {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
@@ -236,7 +250,7 @@ div.csl-indent {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
+  <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
   </div>
 </li>
@@ -248,14 +262,23 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#instalando-r" id="toc-instalando-r" class="nav-link active" data-scroll-target="#instalando-r"><span class="header-section-number">A.0.1</span> Instalando R</a></li>
+  <li><a href="#instalando-rtools" id="toc-instalando-rtools" class="nav-link" data-scroll-target="#instalando-rtools"><span class="header-section-number">A.0.2</span> Instalando RTools</a></li>
+  <li><a href="#instalando-rstudio" id="toc-instalando-rstudio" class="nav-link" data-scroll-target="#instalando-rstudio"><span class="header-section-number">A.0.3</span> Instalando RStudio</a></li>
+  <li><a href="#crear-una-cuenta-en-github." id="toc-crear-una-cuenta-en-github." class="nav-link" data-scroll-target="#crear-una-cuenta-en-github."><span class="header-section-number">A.0.4</span> Crear una cuenta en GitHub.</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A_instalacion.html">Appendices</a></li><li class="breadcrumb-item"><a href="./A_instalacion.html"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">References</h1>
+<h1 class="title">Appendix A — Preparando el entorno de trabajo</h1>
 </div>
 
 
@@ -272,14 +295,58 @@ div.csl-indent {
 </header>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput.
-J.</em> 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
-</div>
-</div>
+<p>Empezamos instalando el software que necesitamos:</p>
+<section id="instalando-r" class="level3" data-number="A.0.1">
+<h3 data-number="A.0.1" class="anchored" data-anchor-id="instalando-r"><span class="header-section-number">A.0.1</span> Instalando R</h3>
+<p>Estos pasos corresponden a <strong>Windows</strong></p>
+<ul>
+<li><p>Entrá a <a href="https://cran.r-project.org/bin/windows/base/" class="uri">https://cran.r-project.org/bin/windows/base/</a> y bajate el instalador haciendo click en el link grandote que dice <em>“Download R x.x.x for Windows”</em>.</p></li>
+<li><p>Una vez que se bajó, hacé doble click en el archivo y seguí las instrucciones del instalador.</p></li>
+<li><p>Una vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: {{&lt; figure src="r-logo.jpeg" height="20px" &gt;}}</p></li>
+<li><p>Al ejecutarlo, les tiene que aparecer algo como esto:</p></li>
+</ul>
+<p><img src="r-en-windows.png" class="img-fluid"></p>
+<p>Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! <strong>Todavía falta unos pasos</strong> para poder sacarle todo el jugo: necesitamos instalar <strong>RTools</strong>.</p>
+</section>
+<section id="instalando-rtools" class="level3" data-number="A.0.2">
+<h3 data-number="A.0.2" class="anchored" data-anchor-id="instalando-rtools"><span class="header-section-number">A.0.2</span> Instalando RTools</h3>
+<p>Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools.</p>
+<ol type="1">
+<li><p>Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools43 installer</a>.</p></li>
+<li><p>Ejecuta el instalador y segui las instrucciones.</p></li>
+<li><p>Abrí la consola de R, escribí esto en la consola y apretá enter:</p></li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"make"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Debería salir algo como esto:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">make =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">rtools40</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin</span><span class="sc">\\</span><span class="st">make.exe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="instalando-rstudio" class="level3" data-number="A.0.3">
+<h3 data-number="A.0.3" class="anchored" data-anchor-id="instalando-rstudio"><span class="header-section-number">A.0.3</span> Instalando RStudio</h3>
+<ul>
+<li><p>Ingresa en el sitio web de Posit y descarga RStudio para desktop: https://download1.rstudio.org/electron/macos/RStudio-2023.12.1-402.dmg.</p></li>
+<li><p>Una vez descargado, como siempre, doble click en el archivo y seguir los pasos de instalación.</p></li>
+<li><p>Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:</p></li>
+</ul>
+<p><img src="rstudio-principal.png" class="img-fluid"></p>
+</section>
+<section id="crear-una-cuenta-en-github." class="level3" data-number="A.0.4">
+<h3 data-number="A.0.4" class="anchored"><span class="header-section-number">A.0.4</span> Crear una cuenta en GitHub.</h3>
+<ul>
+<li><p>Ir a https://github.com/.</p></li>
+<li><p>Hacer clik en Registrarse or Sign up.</p></li>
+<li><p>Seguir las indicaciones para crear la cuenta personal.</p></li>
+<li><p>Uno de los pasos implica chequear que son una persona y luego validar la direccion de email que usaste para crear la cuenta.</p></li>
+</ul>
+<blockquote class="blockquote">
+<h2 id="primer-ejercicio" data-number="A.1" class="anchored" data-anchor-id="crear-una-cuenta-en-github."><span class="header-section-number">A.1</span> Primer ejercicio</h2>
+<p>Crear el perfil en github:</p>
+<p>1 - crear un repo con el mismo nombre que tu usuario de github.</p>
+<p>2 - Agregarle un archivo README.md</p>
+<p>3 - Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. Tenerlo listo para la proxima clase.</p>
+</blockquote>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -666,14 +733,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./13_reproducibilidad.html" class="pagination-link  aria-label=" &lt;span="" de="" datos="" y="" reproducibilidad&lt;="" span&gt;"="">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span>
+      <a href="./references.html" class="pagination-link  aria-label=" references"="">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">References</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./A_instalacion.html" class="pagination-link" aria-label="<span class='chapter-number'>A</span>&nbsp; <span class='chapter-title'>Preparando el entorno de trabajo</span>">
-        <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

@@ -108,5 +108,16 @@
     "crumbs": [
       "References"
     ]
+  },
+  {
+    "objectID": "A_instalacion.html",
+    "href": "A_instalacion.html",
+    "title": "Appendix A — Preparando el entorno de trabajo",
+    "section": "",
+    "text": "Empezamos instalando el software que necesitamos:\n\nA.0.1 Instalando R\nEstos pasos corresponden a Windows\n\nEntrá a https://cran.r-project.org/bin/windows/base/ y bajate el instalador haciendo click en el link grandote que dice “Download R x.x.x for Windows”.\nUna vez que se bajó, hacé doble click en el archivo y seguí las instrucciones del instalador.\nUna vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: {{&lt; figure src=\"r-logo.jpeg\" height=\"20px\" &gt;}}\nAl ejecutarlo, les tiene que aparecer algo como esto:\n\n\nSi ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! Todavía falta unos pasos para poder sacarle todo el jugo: necesitamos instalar RTools.\n\n\nA.0.2 Instalando RTools\nPara instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools.\n\nEntrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en Rtools43 installer.\nEjecuta el instalador y segui las instrucciones.\nAbrí la consola de R, escribí esto en la consola y apretá enter:\n\nSys.which(\"make\")\nDebería salir algo como esto:\nc(make = \"C:\\\\rtools40\\\\usr\\\\bin\\\\make.exe\")\n\n\nA.0.3 Instalando RStudio\n\nIngresa en el sitio web de Posit y descarga RStudio para desktop: https://download1.rstudio.org/electron/macos/RStudio-2023.12.1-402.dmg.\nUna vez descargado, como siempre, doble click en el archivo y seguir los pasos de instalación.\nTerminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:\n\n\n\n\nA.0.4 Crear una cuenta en GitHub.\n\nIr a https://github.com/.\nHacer clik en Registrarse or Sign up.\nSeguir las indicaciones para crear la cuenta personal.\nUno de los pasos implica chequear que son una persona y luego validar la direccion de email que usaste para crear la cuenta.\n\n\nA.1 Primer ejercicio\nCrear el perfil en github:\n1 - crear un repo con el mismo nombre que tu usuario de github.\n2 - Agregarle un archivo README.md\n3 - Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. Tenerlo listo para la proxima clase.",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>A</span>  <span class='chapter-title'>Preparando el entorno de trabajo</span>"
+    ]
   }
 ]
