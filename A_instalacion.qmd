@@ -1,0 +1,152 @@
+## Preparando el entorno de trabajo {.appendix}
+
+Este anexo detalla los pasos a seguir para instalar todo el software que vamos a necesitar para las clases:
+
+- R
+- RTools (solo para Windows)
+- RStudio
+- Git
+
+::: importante
+Si ya tenes instaldo este software te vamos a pedir que lo actualices a la ultima version que es la que usaremos durante las clases.
+:::
+
+
+Tambien vamos a ver como crear cuentas en las plataformas en la nube que vamos a utilizar:
+
+- GitHub
+- Posit Cloud
+
+::: importante
+Si ya tenes cuenta en alguna de las plataformas, no hace falta que crees una nueva, pero por favor chequea que podes ingresar antes de la clase asi nos seguramos que puedas usarla. 
+:::
+
+## Instalando R {-}
+
+### Ubuntu o derivados {-}
+
+Para tener la última versión, tenés que agregar los repositorios de CRAN. Para hacerlo, vas a tener que tener permisos de administrador. 
+Los detalles están en [esta](https://cran.r-project.org/bin/linux/ubuntu/) página, pero el resumen es:
+
+```bash
+sudo apt update -qq
+sudo apt install --no-install-recommends software-properties-common dirmngr
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
+sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
+sudo sudo apt install r-base r-base-dev
+```
+
+Si todo salió bien, tenés que tener instalado R en tu máquina y podés ejecutarlo con el comando `R` en la consola.
+
+![](images/r-terminal.png) 
+
+### Mac {-}
+
+1. Ir a CRAN: https://cran.r-project.org
+
+2. Hacer click en el link _“Download R for (Mac) OS X”._
+
+3. Descarga el paquete correspondiente a tu sistema operativo.
+
+4. Ejecuta el paquete.
+
+
+Download R for Linux (Debian, Fedora/Redhat, Ubuntu)
+Download R for macOS
+
+### Windows {-}
+
+-   Entrá a <https://cran.r-project.org/bin/windows/base/> y bajate el instalador haciendo click en el link grandote que dice *"Download R x.x.x for Windows"*.
+
+-   Una vez que se bajó, hacé doble click en el archivo y seguí las instrucciones del instalador.
+
+-   Una vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: {{< figure src="r-logo.jpeg" height="20px" >}}
+
+-   Al ejecutarlo, les tiene que aparecer algo como esto:
+
+![](images/r-en-windows.png) 
+
+Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! **Todavía falta unos pasos** para poder sacarle todo el jugo: necesitamos instalar **RTools**.
+
+## Instalando RTools {-}
+
+Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools. 
+
+1. Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en [Rtools43 installer](https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html).  
+
+2. Ejecuta el instalador y segui las instrucciones.
+
+3. Abrí la consola de R, escribí esto en la consola y apretá enter:
+
+``` r
+Sys.which("make")
+```
+
+Debería salir algo como esto:
+``` r
+c(make = "C:\\rtools40\\usr\\bin\\make.exe")
+```
+
+## Instalando RStudio {-}
+
+Ingresa en el sitio web de Posit y descarga RStudio para desktop para tu sistema operativo: https://posit.co/download/rstudio-desktop/
+
+
+### Ubuntu o derivados {-}
+
+Si tenés instalada una interfaz gráfica para instalar archivos .deb, ejecutando el archivo que descargaste ya vas a poder instalar RStudio. 
+Si no, abrí una terminal en el directorio donde bajaste el archivo y ejecutá
+
+```bash
+sudo dpkg -i ARCHIVO
+```
+
+Reemplazando ARCHIVO por el nombre del archivo instalador.
+
+Es posible que salte algún error por falta de alguna dependencia, en ese caso usá
+
+```bash
+sudo apt-get -f install
+```
+
+Y debería estar arreglado.
+
+Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:
+
+
+![](images/rstudio-principal.png) 
+### Mac {-}
+
+La primera vez que abrimos RStudio nos ofrece instalar las herramientas de XCode para línea de comandos. Aceptamos haciendo clic en instalar.
+
+### Windows {-}
+
+Como siempre, doble click en el archivo y seguir los pasos de instalación.
+
+## Instalando Git {-}
+
+Git es una herramienta para control de versiones, vamos a utilizarla para trabajar colaborativamente.  
+
+En la pagina de [Git](https://git-scm.com/) podemos descargar el instalador para nuestro sistema operativo.
+
+En esa misma pagina [hay una guia de instalacion para cada sistema operativo en castellano](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git).  Sigue las instrucciones detallas en la misma.  
+
+## Crear cuentas {-}
+
+### Crear una cuenta en GitHub {-}
+
+GitHub es una de las interfaces y repositorios mundiales mas conocidos y utilizados por quienes desarrollan software.  Vamos a utilizarlo para compartir el codigo que vamos a escribir en la materia.
+
+- Ir a <https://github.com/>.
+
+- Hacer clik en Registrarse or Sign up.
+
+- Seguir las indicaciones para crear la cuenta personal.
+
+- Uno de los pasos implica chequear que son una persona y luego validar la direccion de email que usaste para crear la cuenta. 
+
+### Crear una cuenta en Posit Cloud {-}
+
+- Ir a <https://posit.cloud/plans/free>.
+
+- Hacer clik en "Sign Up" y seguir las indicaciones para crear la cuenta personal. 

@@ -26,6 +26,8 @@ book:
     - 12_publicacion.qmd
     - 13_reproducibilidad.qmd
     - references.qmd
+  appendices:
+    - A_instalacion.qmd
   sidebar:
     background: "#916699"
     search: true
