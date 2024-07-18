@@ -1,4 +1,9 @@
-# Presentación
+---
+title: Presentación
+knitr:
+  opts_chunk:
+    out.width: "100%"
+---
 
 
 **Para agregar intro https://github.com/merely-useful/r-rse/blob/main/chapters/01-preface.Rmd**

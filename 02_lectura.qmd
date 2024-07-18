@@ -1,5 +1,8 @@
 ---
 title: "Lectura de datos ordenados"
+knitr:
+  opts_chunk:
+    out.width: "100%"
 ---
 
 ## Trabajando con datos
@@ -12,7 +15,9 @@ Veamos un ejemplo de descarga de datos desde Zenodo.
 
 Si revisamos la base de datos <https://zenodo.org/records/12772944> veremos que incluye un solo archivo en formato .csv.
 
-```{r file-list, echo=FALSE}
+```{r file-list}
+#| echo: false
+
 knitr::include_graphics("images/file_list.png")
 ```
 
@@ -38,7 +43,7 @@ Y también definimos la ruta donde descargar el archivo
 
 
 ```{r}
-pinguinos_archivo <- "datos/pinguinos.csv"
+pinguinos_archivo <- "datos/pinguinos.csv" # esta ubicación debe existir!
 ```
 
 Y finalmente usamos la función `download.file()` para descargar el archivo. 
@@ -59,7 +64,7 @@ Nos vamos a quedar con la opción que nos da `readr` que tiene algunas caracter�
 
 ```{r}
 library(readr)
-pinguinos <- read_csv("datos/piguinos.csv")
+pinguinos <- read_csv("datos/pinguinos.csv")
 ```
 
 ::: informacion
