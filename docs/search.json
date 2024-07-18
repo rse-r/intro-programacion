@@ -110,6 +110,36 @@
     ]
   },
   {
+    "objectID": "02_lectura.html",
+    "href": "02_lectura.html",
+    "title": "\n3  Lectura de datos ordenados\n",
+    "section": "",
+    "text": "3.1 Trabajando con datos\nMuchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.\nEl código que genera la descarga de datos podría estar incluido en el archivo de análisis de datos si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.\nVeamos un ejemplo de descarga de datos desde Zenodo.\nSi revisamos la base de datos https://zenodo.org/records/12772944 veremos que incluye un solo archivo en formato .csv.\nVemos también el botón “Download” para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.\nPero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos.\nPara eso, primero necesitás la dirección (URL) del set de datos. Eso se consigue yendo a la página del set de datos y en vez de hacer click en Download, haciendo\nLa URL de la esta serie es https://zenodo.org/records/12772944/files/pinguinos.csv?download=1. Guaramos eso en una variable en R\npinguinos_url &lt;- \"https://zenodo.org/records/12772944/files/pinguinos.csv?download=1\"\nY también definimos la ruta donde descargar el archivo\npinguinos_archivo &lt;- \"datos/pinguinos.csv\" # esta ubicación debe existir!\nY finalmente usamos la función download.file() para descargar el archivo.\ndownload.file(url = pinguinos_url, destfile = pinguinos_archivo)\nY esto va a descargar la última versión de los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Lectura de datos ordenados</span>"
+    ]
+  },
+  {
+    "objectID": "02_lectura.html#trabajando-con-datos",
+    "href": "02_lectura.html#trabajando-con-datos",
+    "title": "\n3  Lectura de datos ordenados\n",
+    "section": "",
+    "text": "Click derecho → Copiar dirección del enlace",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Lectura de datos ordenados</span>"
+    ]
+  },
+  {
+    "objectID": "02_lectura.html#leer-datos-csv",
+    "href": "02_lectura.html#leer-datos-csv",
+    "title": "\n3  Lectura de datos ordenados\n",
+    "section": "\n3.2 Leer datos csv",
+    "text": "3.2 Leer datos csv\nExisten muchas funciones distintas para leer datos dependiendo del formato en el que están guardados. Para datos tabulares, la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.\nEn R hay muchas maneras de hacer cada cosa, por ejemploe podríamos leer el archivo con la función read.csv(), con read_csv() del paquete readr o fread() del paquete data.table entre otras opciones. Nos vamos a quedar con la opción que nos da readr que tiene algunas características interesantes.\n\nlibrary(readr)\npinguinos &lt;- read_csv(\"datos/pinguinos.csv\")\n\nRows: 344 Columns: 8\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (3): especie, isla, sexo\ndbl (5): largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, anio\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n\nNotá que en este caso el código para leer los datos consta de dos líneas. La primera carga el paquete readr y el segundo usa la función read_csv() (del paquete readr) para leer el archivo .csv. No es necesario cargar el paquete cada vez que vas a leer un archivo, pero asegurate de incluir la carga de paquetes al comienzo de tu archivo.\n\nTodo ese texto naranja/rojo es intimidante pero no te preocupes, es sólo un mensaje que nos informa que los datos se leyeron y qué tipo de dato tiene cada columna. Podemos explorar la estructura de la variable pinguinos usando la función str() (de structure en inglés).\n\nstr(pinguinos)\n\nspc_tbl_ [344 × 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)\n $ especie        : chr [1:344] \"Adelia\" \"Adelia\" \"Adelia\" \"Adelia\" ...\n $ isla           : chr [1:344] \"Torgersen\" \"Torgersen\" \"Torgersen\" \"Torgersen\" ...\n $ largo_pico_mm  : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...\n $ alto_pico_mm   : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...\n $ largo_aleta_mm : num [1:344] 181 186 195 NA 193 190 181 195 193 190 ...\n $ masa_corporal_g: num [1:344] 3750 3800 3250 NA 3450 ...\n $ sexo           : chr [1:344] \"macho\" \"hembra\" \"hembra\" NA ...\n $ anio           : num [1:344] 2007 2007 2007 2007 2007 ...\n - attr(*, \"spec\")=\n  .. cols(\n  ..   especie = col_character(),\n  ..   isla = col_character(),\n  ..   largo_pico_mm = col_double(),\n  ..   alto_pico_mm = col_double(),\n  ..   largo_aleta_mm = col_double(),\n  ..   masa_corporal_g = col_double(),\n  ..   sexo = col_character(),\n  ..   anio = col_double()\n  .. )\n - attr(*, \"problems\")=&lt;externalptr&gt; \n\n\nEsto nos dice un montón. La primera línea dice que es una tibble, que es un caso especial de la estructura de datos tabular básica de R llamada data.frame. Tiene 344 filas (las observaciones) y 8 columnas (o variables que describen las observaciones). Las siguientes líneas nos dicen los nombres de las columnas (especie, isla, largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, sexo, y anio), su tipo de dato (chr o num), la longitud ([1:344]) y sus primeros elementos.\n\nSumar ejercicio de lectura de los datos con los que vamos a trabajar. Familiarzarse con los datos",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Lectura de datos ordenados</span>"
+    ]
+  },
+  {
     "objectID": "06_funciones.html",
     "href": "06_funciones.html",
     "title": "\n7  Funciones\n",
