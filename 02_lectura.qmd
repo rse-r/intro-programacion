@@ -1,4 +1,89 @@
 ---
-title: "Lectura de datos"
+title: "Lectura de datos ordenados"
 ---
 
+## Trabajando con datos
+
+Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.
+
+El código que genera la descarga de datos podría estar incluido en el archivo de análisis de datos si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.
+
+Veamos un ejemplo de descarga de datos desde Zenodo.
+
+Si revisamos la base de datos <https://zenodo.org/records/12772944> veremos que incluye un solo archivo en formato .csv.
+
+```{r file-list, echo=FALSE}
+knitr::include_graphics("images/file_list.png")
+```
+
+Vemos también el botón "Download" para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.
+
+Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos.
+
+Para eso, primero necesitás la dirección (URL) del set de datos.
+Eso se consigue yendo a [la página del set de datos](https://zenodo.org/records/12772944) y en vez de hacer click en Download, haciendo 
+
+::: tip
+Click derecho → Copiar dirección del enlace
+:::
+
+La URL de la esta serie es `https://zenodo.org/records/12772944/files/pinguinos.csv?download=1`. 
+Guaramos eso en una variable en R
+
+```{r}
+pinguinos_url <- "https://zenodo.org/records/12772944/files/pinguinos.csv?download=1"
+```
+
+Y también definimos la ruta donde descargar el archivo
+
+
+```{r}
+pinguinos_archivo <- "datos/pinguinos.csv"
+```
+
+Y finalmente usamos la función `download.file()` para descargar el archivo. 
+
+```{r, eval=FALSE}
+download.file(url = pinguinos_url, destfile = pinguinos_archivo)  
+```
+
+Y esto va a descargar la última versión de los datos. 
+
+## Leer datos csv
+
+Existen muchas funciones distintas para leer datos dependiendo del formato en el que están guardados.
+Para datos tabulares, la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.
+
+En R hay muchas maneras de hacer cada cosa, por ejemploe podríamos leer el archivo con la función `read.csv()`, con `read_csv()` del paquete `readr` o `fread()` del paquete `data.table` entre otras opciones. 
+Nos vamos a quedar con la opción que nos da `readr` que tiene algunas características interesantes.
+
+```{r}
+library(readr)
+pinguinos <- read_csv("datos/piguinos.csv")
+```
+
+::: informacion
+Notá que en este caso el código para leer los datos consta de dos líneas.
+La primera carga el paquete readr y el segundo usa la función `read_csv()` (del paquete readr) para leer el archivo .csv.
+No es necesario cargar el paquete cada vez que vas a leer un archivo, pero asegurate de incluir la carga de paquetes al comienzo de tu archivo.
+:::
+
+Todo ese texto naranja/rojo es intimidante pero no te preocupes, es sólo un mensaje que nos informa que los datos se leyeron y qué tipo de dato tiene cada columna.
+Podemos explorar la estructura de la variable `pinguinos` usando la función `str()` (de *structure* en inglés).
+
+```{r}
+str(pinguinos)
+```
+
+Esto nos dice un montón.
+La primera línea dice que es una `tibble`, que es un caso especial de la estructura de datos tabular básica de R llamada `data.frame`.
+Tiene `r nrow(pinguinos)` filas (las **observaciones**) y `r ncol(pinguinos)` columnas (o **variables** que describen las observaciones).
+Las siguientes líneas nos dicen los nombres de las columnas (`r knitr::combine_words(colnames(pinguinos), and = "y ")`), su tipo de dato (`chr` o `num`), la longitud (`r paste0("[1:", nrow(pinguinos), "]")`) y sus primeros elementos.
+
+
+::: enconstruccion
+
+Sumar ejercicio de lectura de los datos con los que vamos a trabajar.
+Familiarzarse con los datos 
+
+:::
