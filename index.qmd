@@ -7,6 +7,18 @@ Estos materiales están en desarrollo.
 :::
 
 
+## Reutilización y licencia {#sec-licensing}
+
+Todo el material puede reutilizarse libremente bajo los términos de la licencia
+[Creative Commons Reconocimiento 4.0 Internacional
+Licencia](https://creativecommons.org/licenses/by/4.0/), esto significa que el material
+puede utilizarse, reutilizarse y modificarse, siempre que se cite esta fuente.
+
+El código fuente del libro se encuentra en el repositorio de GitHub [intro-programacion](https://github.com/rse-r/intro-programacion). Cualquier corrección,
+o contribuciones son bienvenidas. Visitá nuestra página
+sobre como contribuir](https://github.com/merely-useful/r-rse/blob/main/.github/CONTRIBUTING.md)
+para conocer más.
+
 
 Ejemplos de cajitas
 

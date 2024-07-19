@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.553">
+<meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-<title>Introducción a la Programación II - 2&nbsp; Entorno de trabajo</title>
+<title>2&nbsp; Entorno de trabajo – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_proyectos.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Entorno de trabajo</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -151,7 +151,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_lectura.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos ordenados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -234,20 +234,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li>
-<a href="#creating-an-organised-project" id="toc-creating-an-organised-project" class="nav-link active" data-scroll-target="#creating-an-organised-project"><span class="header-section-number">2.1</span> Creating an organised project</a>
+<li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">2.1</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#el-problema" id="toc-el-problema" class="nav-link" data-scroll-target="#el-problema"><span class="header-section-number">2.2</span> El problema</a></li>
+  <li>
+<a href="#crear-un-proyecto-organizado" id="toc-crear-un-proyecto-organizado" class="nav-link" data-scroll-target="#crear-un-proyecto-organizado"><span class="header-section-number">2.3</span> Crear un proyecto organizado</a>
   <ul class="collapse">
-<li><a href="#files-that-document-themselves" id="toc-files-that-document-themselves" class="nav-link" data-scroll-target="#files-that-document-themselves"><span class="header-section-number">2.1.1</span> Files that document themselves</a></li>
-  <li><a href="#files-you-can-code-with" id="toc-files-you-can-code-with" class="nav-link" data-scroll-target="#files-you-can-code-with"><span class="header-section-number">2.1.2</span> Files you can code with</a></li>
-  <li><a href="#making-it-portable" id="toc-making-it-portable" class="nav-link" data-scroll-target="#making-it-portable"><span class="header-section-number">2.1.3</span> Making it portable</a></li>
+<li><a href="#archivos-que-se-autodocumentan" id="toc-archivos-que-se-autodocumentan" class="nav-link" data-scroll-target="#archivos-que-se-autodocumentan"><span class="header-section-number">2.3.1</span> Archivos que se autodocumentan</a></li>
+  <li><a href="#archivos-con-los-que-puedes-programar" id="toc-archivos-con-los-que-puedes-programar" class="nav-link" data-scroll-target="#archivos-con-los-que-puedes-programar"><span class="header-section-number">2.3.2</span> Archivos con los que puedes programar</a></li>
+  <li><a href="#que-tu-proyecto-sea-autocontenido" id="toc-que-tu-proyecto-sea-autocontenido" class="nav-link" data-scroll-target="#que-tu-proyecto-sea-autocontenido"><span class="header-section-number">2.3.3</span> Que tu proyecto sea autocontenido</a></li>
   </ul>
 </li>
-  <li><a href="#rstudio-projects" id="toc-rstudio-projects" class="nav-link" data-scroll-target="#rstudio-projects"><span class="header-section-number">2.2</span> RStudio Projects</a></li>
-  <li><a href="#opening-a-project" id="toc-opening-a-project" class="nav-link" data-scroll-target="#opening-a-project"><span class="header-section-number">2.3</span> Opening a project</a></li>
+  <li><a href="#proyectos-de-rstudio" id="toc-proyectos-de-rstudio" class="nav-link" data-scroll-target="#proyectos-de-rstudio"><span class="header-section-number">2.4</span> Proyectos de RStudio</a></li>
+  <li><a href="#abrir-un-proyecto" id="toc-abrir-un-proyecto" class="nav-link" data-scroll-target="#abrir-un-proyecto"><span class="header-section-number">2.5</span> Abrir un proyecto</a></li>
   <li>
-<a href="#a-clean-slate-every-day" id="toc-a-clean-slate-every-day" class="nav-link" data-scroll-target="#a-clean-slate-every-day"><span class="header-section-number">2.4</span> A clean slate… every day</a>
+<a href="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas" id="toc-borrón-y-cuenta-nueva-todos-los-días" class="nav-link" data-scroll-target="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas"><span class="header-section-number">2.6</span> Borrón y cuenta nueva… todos los días</a>
   <ul class="collapse">
-<li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">2.4.1</span> Resources</a></li>
+<li><a href="#recursos" id="toc-recursos" class="nav-link" data-scroll-target="#recursos"><span class="header-section-number">2.6.1</span> Recursos</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -270,171 +272,180 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Imagine that you read some interesting paper or analysis. To your delight, all the code and data is available in a public repository. You then are itching to sink your teeth on it; to see how they implemented the methods, or to run it with your own similar data.</p>
-<p>You download the all the files and you find something like this.</p>
-<pre><code>/home/dorothy/Documents/paper
-├── abstract.R
+</header><section id="objetivos-de-aprendizaje" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje">
+<span class="header-section-number">2.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>interactuar con la interfaz de RStudio para navegar archivos y directorios</li>
+<li>interpretar las rutas como ubicaciones dentro de las carpetas</li>
+<li>crear proyectos RStudio e identificar el directorio de trabajo</li>
+<li>reconocer los paneles de la interfaz de RStudio y sus ubicaciones por defecto</li>
+</ul></section><section id="el-problema" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="el-problema">
+<span class="header-section-number">2.2</span> El problema</h2>
+<p>Imagina que arrancas el cuatrimestre y tenes que continuar con un proyecto de análisis de datos. O mejor te tomaste unas largas vacaciones. Por supuesto, todo el código y los datos están en una única carpeta y además lo publicaste en un repositorio público. Es hora de volver a trabajar, pero ¿qué fue lo último que hiciste? ¿qué falta?.</p>
+<p>Empezas a revisar la carpeta del proyecto y encuentras algo así.</p>
+<pre><code>/home/dorothy/Documentos/proyecto
+├── resumen.R
 ├── correlation.png
-├── data.csv
-├── data2.csv
+├── datos.csv
+├── datos2.csv
 ├── fig1.png
-├── figure 2 (copy).png
-├── figure.png
-├── figure1.png
-├── figure10.png
-├── partial data.csv
+├── figura2(copy).png
+├── figura.png
+├── figura1.png
+├── figura10.png
+├── datos_crudos.csv
 ├── script.R
 └── script_final.R</code></pre>
-<p>And you have no idea what to do with it. There’s three <code>.R</code> files which could be the main script, several possible files containing some unspecified “data” and a bunch of image files with names that give little information on their contents. With no README file or any other documentation to help you sort out this mess, you might well decide that your time is better spent somewhere else.</p>
-<p>(Joke’s on you: you are the author and it was your past self that left this mess.)</p>
-<p>Reproducibility is as much as about the humans that interact with the code as the machines that need to run it. Remember that a big reason to make your code reproducible is to enable other people to check and expand your code. That anyone will want to do that is nothing short of a miracle, so you want to make their lives as easy as possible so they don’t desist.</p>
-<section id="creating-an-organised-project" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="creating-an-organised-project">
-<span class="header-section-number">2.1</span> Creating an organised project</h2>
-<p>What counts as “organised” is highly personal, but the main… Folder structure and file names should be:</p>
+<p>Y no tienes ni idea por donde arrancar. Hay tres <code>.R</code> archivos que podrían ser el script con el código que escribiste, varios posibles archivos que contienen algunos “datos” no especificados y un montón de archivos de imagenes con nombres que dan poca información sobre su contenido. Sin un archivo README (documento descriptivo) ni ninguna otra documentación que te ayude a resolver este lío, es muy posible que cueste mucho tiempo volver al punto en el que estabas y continuar con tu trabajo.</p>
+<p>Para evitar esta situación necesitamos tener en cuenta la reproducibilidad y el desarrollo de software desde el inicio. La reproducibilidad tiene que ver tanto con los humanos que interactúan con el código como con las máquinas que deben ejecutarlo. Hacer hacer que tu código y análisis sea reproducible es permitir que otras personas (y vos en el futuro) puedan revisar, usar y ampliar tu trabajo. Esto requerira aplicar distintos principios de programación y desarrollo de software que veremos a lo largo del curso. Empecemos organizando el trabajo.</p>
+</section><section id="crear-un-proyecto-organizado" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="crear-un-proyecto-organizado">
+<span class="header-section-number">2.3</span> Crear un proyecto organizado</h2>
+<p>Lo que cuenta como “organizado” es muy personal, pero lo principal es que la estructura de carpetas y los nombres de los archivos deben:</p>
 <ol type="1">
-<li>self-documenting</li>
-<li>easy to code with.</li>
-<li>all necessary files are inside the root folder</li>
+<li>ser autodocumentados</li>
+<li>ser útiles a la hora de escribir código</li>
+<li>estar en el mismo lugar, es decir, todos los archivos necesarios están dentro de la carpeta raíz</li>
 </ol>
-<section id="files-that-document-themselves" class="level3" data-number="2.1.1"><h3 data-number="2.1.1" class="anchored" data-anchor-id="files-that-document-themselves">
-<span class="header-section-number">2.1.1</span> Files that document themselves</h3>
-<p>Take advantage of folders to self-document the various parts of your analysis.</p>
-<p>Put your data in <code>data</code>, pre-processing scripts in <code>scripts</code>, and your analysis in <code>analysis</code>. Also use sub-folders, such as <code>data/raw</code> for raw data from the source and <code>data/derived</code> for pre-processed, cleaned-up data.</p>
-<p>Name your files so that you can know what they are even if you came home at 3am after drinking a few beers.</p>
-<p>Use slugs (short descriptions of what’s inside).</p>
+<section id="archivos-que-se-autodocumentan" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="archivos-que-se-autodocumentan">
+<span class="header-section-number">2.3.1</span> Archivos que se autodocumentan</h3>
+<p>Aprovechá carpetas con nombres informativos para autodocumentar las distintas partes de tu análisis.</p>
+<p>Coloca tus datos en <code>datos</code>, los scripts de preprocesamiento en <code>scripts</code> o <code>preprocesamiento</code> y tu análisis en <code>analisis</code>. Utiliza también subcarpetas, como <code>datos/crudos</code> para guardar los datos originales y <code>datos/derivados</code> para los datos preprocesados y depurados.</p>
+<p>Nombrá tus archivos de modo que puedas saber que incliyen aún si pasaron 10 años desde que los creaste.</p>
+<p>Utiliza nombres cortos, descripciones breves de lo que hay dentro.</p>
 <div class="ejercicio">
-<p>Describe what do you think are the contents of these files:</p>
+<p>Describi cuál crees que es el contenido de estos archivos:</p>
 <ul>
-<li><p><code>data/raw/madrid_minimum-temperature.csv</code></p></li>
-<li><p><code>scripts/02_compute_mean-temperature.R</code></p></li>
-<li><p><code>analysis/01_madrid_minimum-temperature_descriptive-statistics.Rmd</code></p></li>
+<li><p><code>datos/crudos/madrid_temperatura-minima.csv</code></p></li>
+<li><p><code>scripts/02_calcula_temperatura-media.R</code></p></li>
+<li><p><code>analysis/01_madrid_temperatura-minima_analisis-estadistico.Rmd</code></p></li>
 </ul>
 </div>
 <div class="ejercicio">
-<p>Come up with good file names and folders for:</p>
+<p>Pensá en buenos nombres de archivos y carpetas para:</p>
 <ul>
-<li><p>a dataset of cats with columns for weight, length, tail length, fur colour(s), fur type and name.</p></li>
-<li><p>a script that downloads data from Spotify.</p></li>
-<li><p>a scripts that cleans up data.</p></li>
-<li><p>a scripts that fits a linear discriminant model and saves it to a file.</p></li>
-<li><p>the .Rds file in which that model is stored.</p></li>
+<li><p>un conjunto de datos sobre gatos con columnas para el peso, la longitud, la longitud de la cola, el color o colores del pelaje, el tipo de pelaje y el nombre.</p></li>
+<li><p>un script que descarga datos de Spotify.</p></li>
+<li><p>un script que limpia los datos de Spotify.</p></li>
+<li><p>un script que ajusta un modelo lineal y lo guarda en un archivo.</p></li>
+<li><p>el archivo .Rds en el que se guarda ese modelo.</p></li>
 </ul>
 </div>
 <div class="tip">
-<p>Use a familiar folder structure</p>
-<p>There is no single one objectively best folder structure. When in doubt, try to follow the conventions of your research community. This will minimise any friction between you and your potential audience.</p>
+<p>Utiliza una estructura de carpetas conocida</p>
+<p>No existe una única estructura de carpetas objetivamente mejor. En caso de duda, intenta seguir las convenciones de tu comunidad de investigación. Esto minimizará cualquier fricción entre tú y tu público potencial.</p>
 </div>
-</section><section id="files-you-can-code-with" class="level3" data-number="2.1.2"><h3 data-number="2.1.2" class="anchored" data-anchor-id="files-you-can-code-with">
-<span class="header-section-number">2.1.2</span> Files you can code with</h3>
-<p>Always remember that machines are quite dumb, so be gentle and use file names machines can easily understand.</p>
-<p>In some cases, file names with spaces confuse machines, so in general is much easier to code if file names use underscores and hyphens to split words. Similarly, some machines can’t handle “special characters” such as “ñ” or tildes. Some symbols (“.”, “*”, an others) are also best avoided because they have special meaning in regular expressions.</p>
-<p>Some file systems are case insensitive, so <code>Madrid-Temperature.csv</code> and <code>madrid-temperature.csv</code> might be the same file!</p>
-<p>To avoid any headaches, it is best to be conservative and just use lower-case latin characters, numbers and hyphens (“_” and “-”).</p>
-<p>Use hyphens as separators. You can use “-” to separate words that are part of the same concept and “_” to separate concepts. For instance <code>buenos-aires_minimum-temperature.csv</code>. We recommend this convention and not the other way around, because it’s compatible with the ISO date format (“YYYY-MM-DD”).</p>
+</section><section id="archivos-con-los-que-puedes-programar" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="archivos-con-los-que-puedes-programar">
+<span class="header-section-number">2.3.2</span> Archivos con los que puedes programar</h3>
+<p>Recuerda siempre que las computadoras son bastante tontas, así que sé amable y utiliza nombres de archivo que puedan entender fácilmente.</p>
+<p>En algunos casos, los nombres de archivo con espacios confunden a las computadoras, por lo que en general es mucho más fácil trabajar si los nombres de archivo utilizan guiones bajos y guiones para dividir las palabras. Del mismo modo, algunas máquinas no pueden manejar “caracteres especiales” como la “ñ” o las tildes. También es mejor evitar algunos símbolos (“.”, “*”, y otros) porque tienen un significado especial en las expresiones regulares.</p>
+<p>Algunos sistemas de archivos no distinguen entre mayúsculas y minúsculas, por lo que <code>Temperatura-Madrid.csv</code> y <code>temperatura-madrid.csv</code> pueden ser el mismo archivo.</p>
+<p>Para evitar dolores de cabeza, es mejor y por el lado conservador y solo utilizar caracteres latinos en minúsculas, números y guiones (“_” y “-”).</p>
+<p>Utiliza guiones como separadores. Puedes utilizar “-” para separar palabras que formen parte del mismo concepto y “_” para separar conceptos. Por ejemplo <code>temperatura-minima_buenos-aires.csv</code>, en este caso <code>temperatura-minima</code> es un cocepto y <code>buenos-aires</code> otro. Recomendamos esta convención y no al revés, porque es compatible con el formato de fecha ISO (“AAAA-MM-DD”).</p>
 <div class="tip">
-<p>By using separators consistently and smartly you can parse file names programmatically very easily. For example, if you have</p>
+<p>Si utilizás los separadores de forma coherente e inteligente, podrás analizar los nombres de los archivos como parte de tu código. Por ejemplo, si tienes</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">files</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">archivos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "madrid_minimum-temperature"       "buenos-aires_minimum-temperature"
-[3] "madrid_maximum-temperature"       "buenos-aires_maximum-temperature"</code></pre>
+<pre><code>[1] "madrid_temperatura-minima"       "buenos-aires_temperatura-minima"
+[3] "madrid_temperatura-maxima"       "buenos-aires_temperatura-maxima"</code></pre>
 </div>
 </div>
-<p>You could extract cities and variable names by just</p>
+<p>También podrías extraer ciudades y nombres de variables desde los nombres de los archivos</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">files</span>, <span class="st">"_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">archivos</span>, <span class="st">"_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
-[1] "madrid"              "minimum-temperature"
+[1] "madrid"             "temperatura-minima"
 
 [[2]]
-[1] "buenos-aires"        "minimum-temperature"
+[1] "buenos-aires"       "temperatura-minima"
 
 [[3]]
-[1] "madrid"              "maximum-temperature"
+[1] "madrid"             "temperatura-maxima"
 
 [[4]]
-[1] "buenos-aires"        "maximum-temperature"</code></pre>
+[1] "buenos-aires"       "temperatura-maxima"</code></pre>
 </div>
 </div>
 </div>
-<p>Finally, try to make your files easily sortable. Put numbers with enough zero-padding and, if relevant, use dates in YYYY-MM-DD format at the beginning of the file name so that sorting by name coincide with sorting by date.</p>
-</section><section id="making-it-portable" class="level3" data-number="2.1.3"><h3 data-number="2.1.3" class="anchored" data-anchor-id="making-it-portable">
-<span class="header-section-number">2.1.3</span> Making it portable</h3>
-<p>An important aspect of thinking about your project is that all scripts, data, figures, and whatever else is needed to (re)create the analysis is inside the same root folder. That way you can ensure that the only thing you need to give to someone else to successfully run your code is that single folder. It also makes your life easier if you work on the same project in different computers, as it enables you to sync a single folder.</p>
-<p>One extra step to consider is that you cannot make your work portable if your code is not portable too. Perhaps the main culprit of non-portable code is using absolute paths to manipulate files in your code.</p>
-<p>Think about this piece of code:</p>
+<p>Por último, intentá que tus archivos sean fácilmente ordenables. Comezá el nombre del archivo con números (que incluya suficientes ceros a la izquierda) y, si aplicar, utilizá fechas en formato AAAA-MM-DD para que el orden de los archivos por nombre coincida con el orden por fecha.</p>
+</section><section id="que-tu-proyecto-sea-autocontenido" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="que-tu-proyecto-sea-autocontenido">
+<span class="header-section-number">2.3.3</span> Que tu proyecto sea autocontenido</h3>
+<p>Un aspecto importante a la hora de pensar en tu proyecto es que todos los scripts, datos, figuras y cualquier otra cosa que se necesite para (re)crear el análisis esté dentro de la misma carpeta raíz. De ese modo te aseguras de que lo único que tienes que dar a otra persona para que ejecute correctamente tu código es esa única carpeta. También te facilita la vida si trabajas en el mismo proyecto en distintas computadoras, ya que te permite sincronizar una única carpeta.</p>
+<div class="importante">
+<p>Más adelante veremos como <em>empaquetar</em> código para compartirlo con otras personas.</p>
+</div>
+<p>Un paso extra a tener en cuenta es que no puedes hacer que tu trabajo sea portable si tu código no lo es también. Quizás el principal culpable de que el código no sea portable sea utilizar rutas absolutas para manipular archivos en tu código.</p>
+<p>La siguiente línea de código lee el archivo <code>datos.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documents/research/black-hole/data/data.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documentos/proyectos/mitrabajo/datos/datos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Even if you correctly downloaded the <code>myresearch</code> folder, this code wouldn’t run because it is unlikely that you saved that folder inside <code>Documents/research</code> and that your username is “dorothy”.</p>
-<p>Instead, you can use a relative path such as</p>
+<p>Aunque hayas descargado correctamente la carpeta <code>mitrabajo</code> desde algún repositorio, este código va a dar error porque es poco probable que hayas guardado esa carpeta dentro de <code>Documentos/proyectos</code> y que tu nombre de usuario en la computadora sea “dorothy”.</p>
+<p>En cambio, podes utilizar una ruta relativa:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data/data.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"datos/datos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>And this will run no matter where the root folder is located. The only catch is that you need to make sure that the working directory is set to the root of the project. This is easier said than done, especially due to (and assuming you use) knitr’s default behaviour of setting the location of the R Markdown file as the working directory. We will see that a simple solution is to use the <a href=".\materials/day1/04-here/"><strong>here</strong> package</a>.</p>
-</section></section><section id="rstudio-projects" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="rstudio-projects">
-<span class="header-section-number">2.2</span> RStudio Projects</h2>
-<p>RStudio provides a neat, structured way of separating your projects into different contexts. They don’t strictly help with reproducibility of the final product, but they will help you streamline your workflow by encapsulating things like the list of open files, R command history and RStudio settings for each project.</p>
-<p>Opening an RStudio Project also ensures that you start a new R session every time and sets your working directory to the project root directory.</p>
+<p>Esto se ejecutará independientemente de dónde se encuentre la carpeta raíz de tu proyecto ya que hace referencia solo a lo que está adentro. Como veremos a continuación los proyectos de RStudio ayudan a definir cual es la carpeta raíz de manera automática.</p>
+</section></section><section id="proyectos-de-rstudio" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="proyectos-de-rstudio">
+<span class="header-section-number">2.4</span> Proyectos de RStudio</h2>
+<p>RStudio proporciona una forma ordenada y estructurada de separar tus proyectos en diferentes contextos. No ayudan estrictamente a la reproducibilidad del producto final, pero te ayudarán a agilizar tu flujo de trabajo encapsulando cosas como la lista de archivos abiertos, el historial de comandos de R y la configuración de RStudio para cada proyecto.</p>
+<p>Abrir un proyecto de RStudio también garantiza que inicies una nueva sesión de R cada vez y establece tu directorio de trabajo en la carpeta raíz del proyecto.</p>
 <div class="ejercicio">
-<p>Create a new RStudio Project</p>
+<p>Creá un nuevo proyecto de RStudio</p>
 <ol type="1">
-<li>Click on “File” and then in “New Project…”.</li>
-<li>Click on “New directory”.</li>
-<li>You’ll see a list of various templates. Select “New Project”.</li>
-<li>Type the name of the root folder in which your project will live and the directory where you want this folder to be created in by clicking “Browse..”</li>
-<li>Click on “Create Project”.</li>
+<li>Hace clic en “File” y luego en “New Project…”.</li>
+<li>Hace clic en “New directory”.</li>
+<li>Verás una lista de varias plantillas. Selecciona “New project”.</li>
+<li>Escribí el nombre de la carpeta raíz en la que vivirá tu proyecto y selecciona la ubicaciónn en la que quieres que se cree esta carpeta haciendo clic en “Browse”.</li>
+<li>Hace clic en “Create project”.</li>
 </ol>
 <ul>
-<li>What is the absolute path to your project directory?</li>
-<li>If you close RStudio, how can you ensure your working directory is your project directory when you next open the application?</li>
+<li>¿Cuál es la ruta absoluta a la carpeta de tu proyecto?</li>
+<li>Si cerrás RStudio, ¿cómo podés asegurarte de que tu carpeta de trabajo es la carpeta de tu proyecto la próxima vez que abras RStudio?</li>
 </ul>
 </div>
-<p>If everything went well, you should have a new folder with your desired name. This is a normal garden-variety folder; what singles it out as an RStudio Project is the .Rproj file that holds project-specific RStudio options and the hidden folder .Rproj.user where project-specific temporary files are located.</p>
-<p>Each RStudio Project has its own set of options that you can change without altering global options or other project’s options.</p>
-</section><section id="opening-a-project" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="opening-a-project">
-<span class="header-section-number">2.3</span> Opening a project</h2>
-<p>The simplest way to open a project is to open the folder that contains it and double-click on the .Rproj file. You can also quickly open a recently-used project by clicking on the project icon on the right-hand side of the RStudio toolbar.</p>
-<p>This will open a new RStudio window with its own clean R process with the project folder as the working directory. By default, it will also open any previously-opened files. It will even preserve changes not saved. This helps keep your work tidy and makes it easy to pick up or share what you’ve done later.</p>
-<p>RStudio allows you to have multiple projects open, and this is possible because each project has its own folder. You can work with multiple projects in parallel without code or results of one analysis interfering with the other’s.</p>
+<p>Si todo salió bien, deberías tener una nueva carpeta con el nombre que elejiste para tu proyecto. Es una carpeta común y corriente; lo que la distingue como proyecto de RStudio es el archivo .Rproj, que contiene las opciones de RStudio específicas del proyecto, y la carpeta oculta .Rproj.user, donde se encuentran los archivos temporales específicos del proyecto.</p>
+<p>Cada proyecto de RStudio tiene su propio conjunto de opciones que podés cambiar sin alterar las opciones globales ni las de otros proyectos.</p>
+</section><section id="abrir-un-proyecto" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="abrir-un-proyecto">
+<span class="header-section-number">2.5</span> Abrir un proyecto</h2>
+<p>La forma más sencilla de abrir un proyecto es abrir la carpeta que lo contiene y hacer doble clic en el archivo .Rproj. También puedes abrir rápidamente un proyecto utilizado recientemente haciendo clic en el icono de proyecto situado a la derecha de la barra de herramientas de RStudio.</p>
+<p>Esto abrirá una nueva ventana de RStudio con su propia sesión de R y la carpeta del proyecto será el directorio o carpeta raiz. Por defecto, también abrirá los archivos abiertos anteriormente. Incluso conservará los cambios no guardados. Esto ayuda a mantener tu trabajo ordenado y facilita retomar o compartir lo que has hecho más tarde.</p>
+<p>RStudio te permite tener abiertos varios proyectos, y esto es posible porque cada proyecto tiene su propia carpeta. Puedes trabajar con varios proyectos en paralelo sin que el código o los resultados de un análisis interfieran con los de otro.</p>
 <div class="ejercicio">
-<p>Open your project</p>
+<p>Abrí tu proyecto</p>
 <ol type="1">
-<li>On your new project, create a new file (any file) and write some code on it (e.g.&nbsp;<code>print("Hello world")</code>).</li>
-<li>Close the RStudio window.</li>
-<li>Now open a new RStudio window and open the RStudio Project you just closed (depending on your global options, it might open by default).</li>
+<li>En tu nuevo proyecto, crea un nuevo archivo .R y escribe algo de código (por ejemplo <code>print("Hola!")</code> o `x &lt;- 2 + 2), no te olvides de guardarlo.</li>
+<li>Cerrá la ventana de RStudio.</li>
+<li>Ahora abrí una nueva ventana de RStudio y el proyecto de RStudio que acabas de cerrar (dependiendo de tus opciones globales, puede que se abra por defecto).</li>
 </ol>
 </div>
-</section><section id="a-clean-slate-every-day" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="a-clean-slate-every-day">
-<span class="header-section-number">2.4</span> A clean slate… every day</h2>
-<p>How do we ensure that the analysis is truly reproducible? This is quite a broad question and there are many tools to solve this problem. For now we are going to concentrate on at least on your computer being able to repeat the calculations or analysis from scratch. And besides organising projects and not modifying the original data, how can you make sure that you saved all the code you were writing and used? The most direct way is to restart the R session and run the code again, if it gives an error or doesn’t return what you expected it means you missed a step.</p>
-<div class="importante">
-<p>You can restart the R session with the shortcut Ctrl+Shif+F10.</p>
+</section><section id="borrón-y-cuenta-nueva-todos-los-días" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="borrón-y-cuenta-nueva-todos-los-días">
+<span class="header-section-number">2.6</span> Borrón y cuenta nueva… todos los días</h2>
+<p>¿Cómo garantizamos que el análisis sea realmente reproducible? Es una pregunta bastante amplia y existen muchas herramientas para resolver este problema. Por ahora vamos a concentrarnos en que, al menos en tu computadora, puedas repetir los cálculos o el análisis desde cero. Y además de organizar los proyectos y no modificar los datos originales, ¿cómo podés asegurarte deguardar todo el código que estuviste usando y genera el análisis? La forma más directa es reiniciar la sesión de R y volver a ejecutar el código, si da un error o no devuelve lo que esperabas significa que te has saltado un paso.</p>
+<div class="tip">
+<p>Puedes reiniciar la sesión de R con el atajo de teclado Ctrl+Shif+F10.</p>
 </div>
-<p>This can happen if for example you read data into memory by running a command in the console. While we are working, R will have that data in memory and you will be able to make calculations and graphs, but your code will not be reproducible because it’s missing the important step of reading the data.</p>
-<p>The best way of ensuring this doesn’t happen is to re-run your code on a fresh R session early and often so you can be sure that your code is reproducible at every step of the analysis. However, be default RStudio will save the environment in a hidden file called .RData and restore it on startup, so that data will still be in memory. And while this comes in handy so that you can boot up your work exactly where you left it each time you open your project, it might lead to a situation in which you never realise that you missed saving a key line of code in your analysis.</p>
+<p>Esto puede ocurrir si, por ejemplo, lees datos en memoria ejecutando un comando en la consola. Mientras trabajamos, R tendrá esos datos en memoria y podrás hacer cálculos y gráficos, pero tu código no será reproducible porque le falta el paso importante de leer los datos.</p>
+<p>La mejor forma de asegurarte de que esto no ocurra es volver a ejecutar tu código en una sesión nueva de R a menudo, para asegurarte de que tu código es reproducible en cada paso del análisis. Sin embargo, por defecto RStudio guardará el entorno en un archivo oculto llamado .RData y lo restaurará al iniciarse, de modo que los datos seguirán estando en la memoria. Y aunque esto resulta útil para que puedas arrancar tu trabajo exactamente donde lo dejaste cada vez que abras tu proyecto, puede llevar a una situación en la que nunca te des cuenta de que se te pasó guardar una línea de código clave en tu análisis.</p>
 <div class="ejercicio">
-<p>Configure your project</p>
+<p>Configurá tu proyecto</p>
 <ol type="1">
-<li><p>Go to “Tools” -&gt; “Project options…”</p></li>
-<li>
-<p>In the “General” tab</p>
+<li><p>Ve a “Tools” -&gt; “Project options…”.</p></li>
+<li><p>En la pestaña “General”</p></li>
+</ol>
 <ul>
-<li><p>“Restore .RData into workspace at startup”: Select “No” from the dropdown menu.</p></li>
-<li><p>“Save workspace to .RData on exit”: Select “No” from the dropdown menu</p></li>
+<li><p>Destildar la opción “Restore .RData into the workspace at startup”</p></li>
+<li><p>“Save workspace to .RData on exit”: Selecciona “Never” en el menú desplegable</p></li>
 </ul>
-</li>
-</ol>
 </div>
 <div class="importante">
-<p>You can change these preferences at the global level with “Tools” -&gt; “Global options” in the “General” subheading</p>
+<p>Puedes cambiar estas preferencias a nivel global con “Tools” -&gt; “Global Options” en la sección “General”</p>
 </div>
-<section id="resources" class="level3" data-number="2.4.1"><h3 data-number="2.4.1" class="anchored" data-anchor-id="resources">
-<span class="header-section-number">2.4.1</span> Resources</h3>
-<p><a href="https://slides.djnavarro.net/project-structure/">Project structure - Slides by Danielle Navarro</a>/</p>
-<p><a href="https://peerj.com/preprints/3192v1">Packaging data analytical work reproducibly using R (and friends)</a></p>
-<p><a href="https://mbjoseph.github.io/intro-research-compendia/">How (and why) to make a research compendium</a></p>
+<section id="recursos" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="recursos">
+<span class="header-section-number">2.6.1</span> Recursos</h3>
+<p><a href="https://slides.djnavarro.net/project-structure/">Estructura del proyecto - Diapositivas de Danielle Navarro</a>/</p>
+<p><a href="https://peerj.com/preprints/3192v1">Empaquetar el trabajo analítico de datos de forma reproducible utilizando R (y amigos)</a></p>
+<p><a href="https://mbjoseph.github.io/intro-research-compendia/">Cómo (y por qué) hacer un compendio de investigación</a></p>
 
 
 </section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
@@ -472,18 +483,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -515,7 +515,29 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
     var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
     var mailtoRegex = new RegExp(/^mailto:/);
       var filterRegex = new RegExp('/' + window.location.host + '/');
@@ -523,7 +545,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
     }
     // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
     for (var i=0; i<links.length; i++) {
       const link = links[i];
       if (!isInternal(link.href)) {
@@ -851,8 +873,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02_lectura.html" class="pagination-link" aria-label="Lectura de datos">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02_lectura.html" class="pagination-link" aria-label="Lectura de datos ordenados">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos ordenados</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

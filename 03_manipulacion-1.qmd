@@ -1,4 +1,258 @@
 ---
-title: "Manipulación de datos I"
+title: "Manipulación de datos ordenados I"
 ---
 
+
+El paquete **dplyr** provee una enorme cantidad de funciones útiles para manipular y analizar datos de manera intuitiva y expresiva.
+
+El espíritu detrás de dplyr es que la enorme mayoría de los análisis, por más complicados que sean, involucran combinar y encadenar una serie relativamente acotada de acciones (o verbos).
+En este curso vamos a centrarnos las cinco más comunes:
+
+-   `select()`: selecciona columnas de una tabla.
+-   `filter()`: selecciona (o filtra) filas de una tabla a partir de una o más condiciones lógicas.
+-   `group_by()`: agrupa una tabla en base al valor de una o más columnas.
+-   `mutate()`: agrega nuevas columnas a una tabla.
+-   `summarise()`: calcula estadísticas para cada grupo de una tabla.
+
+
+::: {.alert .alert-info}
+**Primer desafío:**
+
+Te dieron una tabla con datos de pinguinos de 3 especies (Adelia, Barbijo y Papua).
+Las columnas son: `especie`, `largo_aleta`, `largo_pico`,  
+En base a esos datos, te piden que calcules la proporción promedio entre el largo de la aleta y el largo del pico para las especies Adelia y Barbijo.  
+
+¿En qué orden ejecutarías estos pasos para obtener el resultado deseado?
+
+-   usar `summarise()` para calcular la estadística `mean(proporcion_aleta_pico)` para cada `especie`
+-   usar `group_by()` para agrupar por la columna `especie`
+-   usar `mutate()` para agregar una columna llamada `proporcion_aleta_pico` calculada como  `largo_aleta/largo_pico`.
+-   usar `filter()` para seleccionar las filas donde la columna `especie` no es Papua. 
+:::
+
+Para usar dplyr primero hay que instalarlo (esto hay que hacerlo una sola vez por computadora) con el comando:
+
+```{r, eval = FALSE}
+install.packages("dplyr")
+```
+
+y luego cargarlo en memoria con
+
+```{r message=FALSE, warning=FALSE}
+library(dplyr)
+```
+
+Volvé a cargar los datos de turistas por edad (para un recordatorio, podés ir a [Lectura de datos ordenados](02_lectura.qmd)):
+
+```{r message=FALSE, warning=FALSE}
+library(readr)
+pinguinos <- read_csv("datos/pinguinos.csv")
+```
+
+## Seleccionando columnas con `select()`
+
+Para quedarse únicamente con las columnas de índice de tiempo y turistas, usá `select()`
+
+```{r}
+select(pinguinos, especie, largo_pico_mm)
+```
+
+¿Dónde quedó este resultado?
+Si te fijás en la tabla `pinguinos`, su formato no cambió, sigue teniendo todas las columnas originales a pesar de nuestro select:
+
+```{r}
+pinguinos
+```
+
+`select()` y el resto de las funciones de dplyr siempre generan una nueva tabla y nunca modifican la tabla original.
+Para guardar la tabla con las dos columnas `especie` e `largo_pico_mm` tenés que asignar el resultado a una nueva variable.
+
+```{r}
+pinguinos_isla <- select(pinguinos, especie, largo_pico_mm)
+pinguinos_isla
+```
+
+![Cómo funciona `select()`](images/dplyr-select.png)
+
+## Filtrando filas con `filter()`
+
+Ahora podés usar `filter()` para quedarte con sólo unas filas.
+Por ejemplo, para quedarse con los pingüinos de la especie Adelia:
+
+```{r}
+filter(pinguinos, especie == "Adelia")
+```
+
+La mayoría de los análisis consisten en varios pasos que van generando tablas intermedias (en el primer desafío usaste 4 pasos para calcular la proporción entre el largo de la aleta y del pico)
+La única tabla que te interesa es la última, por lo que ir asignando variables nuevas en cada paso intermedio es tedioso y poco práctico.
+Para eso se usa el operador 'pipe' (`|>`).
+
+El operador 'pipe' (`|>`) agarra el resultado de una función y se lo pasa a la siguiente.
+Esto permite escribir el código como una cadena de funciones que van operando sobre el resultado de la anterior.
+
+Las dos operaciones anteriores (seleccionar tres columnas y luego filtrar las filas correspondientes a Argentina) se pueden escribir uno después del otro y sin asignar los resultados intermedios a nuevas variables de esta forma:
+
+```{r}
+pinguinos |> 
+  filter(especie == "Adelia") |> 
+  select(especie, largo_pico_mm)
+```
+
+La forma de "leer" esto es "Tomá los datos en el data.frame `pinguinos`, **después** aplicale `filter()` tal que la especie sea Adelia, **después** aplicale `select()` para quedarte con la especie y el largo_pico_mm. 
+
+::: informacion
+
+Es posible que te encuentres o te hayas encontrado con esta otra versión del operador pipe `%>%`.
+Esta es la pipe del paquete `magritter`, que usamos durante muchísimo tiempo (y seguimos usando) hasta que la nueva pipe `|>` se sumo a R 4.0.0.
+:::
+
+Cómo vimos, el primer argumento de todas las funciones de dplyr es el data frame sobre el cual van a operar, pero notá que en las líneas con `select()` y `filter()` no escribís la tabla explícitamente.  
+Esto es porque la pipe implícitamente pasa el resultado de las líneas anteriores como el primer argumento de la función siguiente. 
+
+Toma el data frame `pinguinos` y se lo pasa al primer argumento de `filter()`.
+Luego el data frame resultante de esa operación pasa como el primer argumento de la función `select()` gracias al `|>`.
+
+
+::: tip
+
+En RStudio podés escribir `|>` usando el atajo de teclado Ctr + Shift + M.
+¡Probalo!
+:::
+
+::: ejercicio
+
+Completá esta cadena de código para producir una tabla que contenga los pingüinos con aletas mayores a 200 mm y la información de la especie y el largo de la aleta.
+
+```{r, eval = FALSE}
+pinguinos |> 
+  filter(largo_aleta_mm > ___) |> 
+  select(_____, ____)
+```
+:::
+
+Como seguramente notaste en el ejercicio cuando aplicamos filtros usamos operaciones lógicas que devuelven `TRUE` o `FALSE` según si cumplen o no con la condición. 
+Para esto usamos operadores lógicos como `==`, `>`, `<`, `>=`, `<=`, etc. 
+
+## Agrupando y reduciendo con `group_by() |> summarise()`
+
+Si quisieramos responder ¿cuál es el largo promedio de la aleta para cada especie de pingüino? tenemos que usar un combo de funciones: `group_by() |> summarise()`.
+Es decir, primero agrupamos las filas de nuestro data.frame según la columna `especie` (esto genera 3 grupos) y luego calculamos el promedio de `largo_aleta_mm` para cada grupo.
+
+Vamos paso a paso.
+
+```{r}
+pinguinos |> 
+  group_by(especie) 
+```
+
+A primera vista parecería que la función no hizo nada, pero fijate que el resultado ahora dice que tiene grupos ("Groups: "), y nos dice qué columna es la que agrupa los datos ("especie") y cuántos grupos hay ("3").
+Cualquier operación que hagamos a continuación del `group_by()` van a aplicarse *para cada grupo*.
+
+Para ver esto en acción, usá `summarise()` para computar el promedio de turistas 
+
+```{r}
+pinguinos |> 
+  group_by(especie) |>   
+  summarise(aleta_promedio = mean(largo_aleta_mm, na.rm = TRUE))
+```
+
+¡Tadá!
+`summarise()` devuelve una tabla con una columna para la especie y otra nueva, llamada "aleta_promedio" que contiene el promedio de del largo de la aleta para cada grupo.
+
+
+`group_by()` permite agrupar en base a múltiples columnas y `summarise()` permite generar múltiples columnas de resumen.
+El siguiente código calcula la cantidad de pingüinos por especie y por isla y el promedio de su masa corporal.
+
+```{r}
+pinguinos |> 
+  group_by(especie, isla) |> 
+  summarise(cantidad = n(),
+            promedio_masa_corporal = mean(masa_corporal_g, na.rm = TRUE))
+```
+
+::: tip
+
+La función `n()` cuenta la cantidad de elementos en cada grupo, en este caso la cantidad de pingüinos por especie e isla. 
+A diferencia de otras funciones que venimos usando no requiere de ningún argumento para funcionar en el contexto de `summarise()`
+:::
+
+El resultado va a siempre ser una tabla con la misma cantidad de filas que grupos y una cantidad de columnas igual a la cantidad de columnas usadas para agrupar y los estadísticos computados.
+
+::: ejercicio
+
+¿Cuál te imaginás que va a ser el resultado del siguiente código?
+¿Cuántas filas y columnas va a tener?
+(Tratá de pensarlo antes de correrlo.)
+
+```{r, eval = FALSE}
+pinguinos |> 
+   summarise(promedio_pico = mean(largo_pico_mm, na.rm = TRUE))
+```
+:::
+
+El combo `group_by() |> summarise()` se puede resumir en esta figura.
+Las filas de una tabla se dividen en grupos, y luego cada grupo se "resume" en una fila en función del estadístico usado.
+
+![](images/group_by-summarize.png)
+
+### `reframe()` entra a la cancha
+
+`summarise()` funciona re bien hasta que que nos encontramos con la necesidad de hacer cuentas más complejas. 
+Por ejemplo, supongamos que queremos calcular el cuantil 0.25 de la masa corporal porque decidimos que todos los pinguinos con un peso por debajo de ese valor son "pequeños".
+Con lo que vimos hasta ahora podemos calcularlo.
+
+```{r}
+pinguinos |> 
+  group_by(especie) |> 
+  summarise(cuantil_masa = quantile(masa_corporal_g, c(0.25), na.rm = TRUE))
+```
+
+Pero se vuelve tedioso si queremos otros cuantiles, por ejemplo el 0.75 (porque decidimos los pingüinos con masa mayor a ese valor sn "grandes"). 
+Si intentamos extender el código anterior además del resultado vamos a terminar con un warning enorme. 
+
+```{r}
+pinguinos |> 
+  group_by(especie) |> 
+  summarise(cuantil_masa = quantile(masa_corporal_g, c(0.25, 0.75), na.rm = TRUE))
+```
+
+El problema es que estamos opteniendo 2 valores para cada grupo, es decir el cuantil 0.25 y el 0.75 para cada especie. 
+En estos casos tenemos que usar `reframe()` que funciona de manera similar a `summarise()` pero está pensada para estos casos donde calculamos más de un valor por grupo.
+
+```{r}
+pinguinos |> 
+  group_by(especie) |> 
+  reframe(cuantil_masa = quantile(masa_corporal_g, c(0.25, 0.75), na.rm = TRUE))
+```
+
+## Creando nuevas columnas con `mutate()`
+
+Todo esto está bien para hacer cálculos con columnas previamente existentes, pero muchas veces tenés que crear nuevas columnas.
+
+Podríamos querer expresar la masa corporal de los pingüinos en kilos en vez de gramos.
+
+```{r}
+pinguinos |> 
+  mutate(masa_corporal_kg = masa_corporal_g/100)
+```
+
+
+Recordá que las funciones de dplyr nunca modifican la tabla original.
+`mutate()` devolvió una nueva tabla que es igual a la tabla `pinguinos` pero con la columna "masa_corporal_kg" agregada al final.
+Si no asignamos este resultado a una variable, no podremos usarlo luego.
+
+La función `mutate()` además de permitir crear nuevas columnas, también permite modificar o actualizar columnas existentes. 
+Para eso, solo es necesario asignarle el nombre de la columa que queremos modificar. 
+
+```{r}
+pinguinos |> 
+  mutate(especie = toupper(especie))
+```
+
+
+::: enconstruccion
+
+Sumar ejercicio de manipulacion de los datos con los que vamos a trabajar.
+La idea es que puedan responder preguntas 
+
+:::
