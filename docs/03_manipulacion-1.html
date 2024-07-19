@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.47">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-
-<title>4&nbsp; Manipulación de datos I – Introducción a la Programación II</title>
+<title>4&nbsp; Manipulación de datos ordenados I – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -41,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -69,33 +98,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_manipulacion-1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos I</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_manipulacion-1.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
@@ -110,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Preface</span></a>
@@ -137,7 +157,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_manipulacion-1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -207,19 +227,29 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#seleccionando-columnas-con-select" id="toc-seleccionando-columnas-con-select" class="nav-link active" data-scroll-target="#seleccionando-columnas-con-select"><span class="header-section-number">4.1</span> Seleccionando columnas con <code>select()</code></a></li>
+  <li><a href="#filtrando-filas-con-filter" id="toc-filtrando-filas-con-filter" class="nav-link" data-scroll-target="#filtrando-filas-con-filter"><span class="header-section-number">4.2</span> Filtrando filas con <code>filter()</code></a></li>
+  <li>
+<a href="#agrupando-y-reduciendo-con-group_by-summarise" id="toc-agrupando-y-reduciendo-con-group_by-summarise" class="nav-link" data-scroll-target="#agrupando-y-reduciendo-con-group_by-summarise"><span class="header-section-number">4.3</span> Agrupando y reduciendo con <code>group_by() |&gt; summarise()</code></a>
+  <ul class="collapse">
+<li><a href="#reframe-entra-a-la-cancha" id="toc-reframe-entra-a-la-cancha" class="nav-link" data-scroll-target="#reframe-entra-a-la-cancha"><span class="header-section-number">4.3.1</span> <code>reframe()</code> entra a la cancha</a></li>
+  </ul>
+</li>
+  <li><a href="#creando-nuevas-columnas-con-mutate" id="toc-creando-nuevas-columnas-con-mutate" class="nav-link" data-scroll-target="#creando-nuevas-columnas-con-mutate"><span class="header-section-number">4.4</span> Creando nuevas columnas con <code>mutate()</code></a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos I</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span>
+</h1>
 </div>
 
 
@@ -233,14 +263,378 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><p>El paquete <strong>dplyr</strong> provee una enorme cantidad de funciones útiles para manipular y analizar datos de manera intuitiva y expresiva.</p>
+<p>El espíritu detrás de dplyr es que la enorme mayoría de los análisis, por más complicados que sean, involucran combinar y encadenar una serie relativamente acotada de acciones (o verbos). En este curso vamos a centrarnos las cinco más comunes:</p>
+<ul>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>: selecciona columnas de una tabla.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>: selecciona (o filtra) filas de una tabla a partir de una o más condiciones lógicas.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>: agrupa una tabla en base al valor de una o más columnas.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>: agrega nuevas columnas a una tabla.</li>
+<li>
+<code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>: calcula estadísticas para cada grupo de una tabla.</li>
+</ul>
+<div class="alert alert-info">
+<p><strong>Primer desafío:</strong></p>
+<p>Te dieron una tabla con datos de pinguinos de 3 especies (Adelia, Barbijo y Papua). Las columnas son: <code>especie</code>, <code>largo_aleta</code>, <code>largo_pico</code>,<br>
+En base a esos datos, te piden que calcules la proporción promedio entre el largo de la aleta y el largo del pico para las especies Adelia y Barbijo.</p>
+<p>¿En qué orden ejecutarías estos pasos para obtener el resultado deseado?</p>
+<ul>
+<li>usar <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> para calcular la estadística <code>mean(proporcion_aleta_pico)</code> para cada <code>especie</code>
+</li>
+<li>usar <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> para agrupar por la columna <code>especie</code>
+</li>
+<li>usar <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> para agregar una columna llamada <code>proporcion_aleta_pico</code> calculada como <code>largo_aleta/largo_pico</code>.</li>
+<li>usar <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> para seleccionar las filas donde la columna <code>especie</code> no es Papua.</li>
+</ul>
+</div>
+<p>Para usar dplyr primero hay que instalarlo (esto hay que hacerlo una sola vez por computadora) con el comando:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>y luego cargarlo en memoria con</p>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Volvé a cargar los datos de turistas por edad (para un recordatorio, podés ir a <a href="./02_lectura.html">Lectura de datos ordenados</a>):</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
+<span><span class="va">pinguinos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"datos/pinguinos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="seleccionando-columnas-con-select" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="seleccionando-columnas-con-select">
+<span class="header-section-number">4.1</span> Seleccionando columnas con <code>select()</code>
+</h2>
+<p>Para quedarse únicamente con las columnas de índice de tiempo y turistas, usá <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">pinguinos</span>, <span class="va">especie</span>, <span class="va">largo_pico_mm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 2
+   especie largo_pico_mm
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 Adelia           39.1
+ 2 Adelia           39.5
+ 3 Adelia           40.3
+ 4 Adelia           NA  
+ 5 Adelia           36.7
+ 6 Adelia           39.3
+ 7 Adelia           38.9
+ 8 Adelia           39.2
+ 9 Adelia           34.1
+10 Adelia           42  
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+<p>¿Dónde quedó este resultado? Si te fijás en la tabla <code>pinguinos</code>, su formato no cambió, sigue teniendo todas las columnas originales a pesar de nuestro select:</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;
+ 1 Adelia  Torg…          39.1         18.7            181            3750 macho
+ 2 Adelia  Torg…          39.5         17.4            186            3800 hemb…
+ 3 Adelia  Torg…          40.3         18              195            3250 hemb…
+ 4 Adelia  Torg…          NA           NA               NA              NA &lt;NA&gt; 
+ 5 Adelia  Torg…          36.7         19.3            193            3450 hemb…
+ 6 Adelia  Torg…          39.3         20.6            190            3650 macho
+ 7 Adelia  Torg…          38.9         17.8            181            3625 hemb…
+ 8 Adelia  Torg…          39.2         19.6            195            4675 macho
+ 9 Adelia  Torg…          34.1         18.1            193            3475 &lt;NA&gt; 
+10 Adelia  Torg…          42           20.2            190            4250 &lt;NA&gt; 
+# ℹ 334 more rows
+# ℹ 1 more variable: anio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> y el resto de las funciones de dplyr siempre generan una nueva tabla y nunca modifican la tabla original. Para guardar la tabla con las dos columnas <code>especie</code> e <code>largo_pico_mm</code> tenés que asignar el resultado a una nueva variable.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos_isla</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">pinguinos</span>, <span class="va">especie</span>, <span class="va">largo_pico_mm</span><span class="op">)</span></span>
+<span><span class="va">pinguinos_isla</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 2
+   especie largo_pico_mm
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 Adelia           39.1
+ 2 Adelia           39.5
+ 3 Adelia           40.3
+ 4 Adelia           NA  
+ 5 Adelia           36.7
+ 6 Adelia           39.3
+ 7 Adelia           38.9
+ 8 Adelia           39.2
+ 9 Adelia           34.1
+10 Adelia           42  
+# ℹ 334 more rows</code></pre>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/dplyr-select.png" class="img-fluid figure-img"></p>
+<figcaption>Cómo funciona <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></figcaption></figure>
+</div>
+</section><section id="filtrando-filas-con-filter" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="filtrando-filas-con-filter">
+<span class="header-section-number">4.2</span> Filtrando filas con <code>filter()</code>
+</h2>
+<p>Ahora podés usar <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> para quedarte con sólo unas filas. Por ejemplo, para quedarse con los pingüinos de la especie Adelia:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">pinguinos</span>, <span class="va">especie</span> <span class="op">==</span> <span class="st">"Adelia"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 152 × 8
+   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;
+ 1 Adelia  Torg…          39.1         18.7            181            3750 macho
+ 2 Adelia  Torg…          39.5         17.4            186            3800 hemb…
+ 3 Adelia  Torg…          40.3         18              195            3250 hemb…
+ 4 Adelia  Torg…          NA           NA               NA              NA &lt;NA&gt; 
+ 5 Adelia  Torg…          36.7         19.3            193            3450 hemb…
+ 6 Adelia  Torg…          39.3         20.6            190            3650 macho
+ 7 Adelia  Torg…          38.9         17.8            181            3625 hemb…
+ 8 Adelia  Torg…          39.2         19.6            195            4675 macho
+ 9 Adelia  Torg…          34.1         18.1            193            3475 &lt;NA&gt; 
+10 Adelia  Torg…          42           20.2            190            4250 &lt;NA&gt; 
+# ℹ 142 more rows
+# ℹ 1 more variable: anio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>La mayoría de los análisis consisten en varios pasos que van generando tablas intermedias (en el primer desafío usaste 4 pasos para calcular la proporción entre el largo de la aleta y del pico) La única tabla que te interesa es la última, por lo que ir asignando variables nuevas en cada paso intermedio es tedioso y poco práctico. Para eso se usa el operador ‘pipe’ (<code>|&gt;</code>).</p>
+<p>El operador ‘pipe’ (<code>|&gt;</code>) agarra el resultado de una función y se lo pasa a la siguiente. Esto permite escribir el código como una cadena de funciones que van operando sobre el resultado de la anterior.</p>
+<p>Las dos operaciones anteriores (seleccionar tres columnas y luego filtrar las filas correspondientes a Argentina) se pueden escribir uno después del otro y sin asignar los resultados intermedios a nuevas variables de esta forma:</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">especie</span> <span class="op">==</span> <span class="st">"Adelia"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">especie</span>, <span class="va">largo_pico_mm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 152 × 2
+   especie largo_pico_mm
+   &lt;chr&gt;           &lt;dbl&gt;
+ 1 Adelia           39.1
+ 2 Adelia           39.5
+ 3 Adelia           40.3
+ 4 Adelia           NA  
+ 5 Adelia           36.7
+ 6 Adelia           39.3
+ 7 Adelia           38.9
+ 8 Adelia           39.2
+ 9 Adelia           34.1
+10 Adelia           42  
+# ℹ 142 more rows</code></pre>
+</div>
+</div>
+<p>La forma de “leer” esto es “Tomá los datos en el data.frame <code>pinguinos</code>, <strong>después</strong> aplicale <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> tal que la especie sea Adelia, <strong>después</strong> aplicale <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> para quedarte con la especie y el largo_pico_mm.</p>
+<div class="informacion">
+<p>Es posible que te encuentres o te hayas encontrado con esta otra versión del operador pipe <code>%&gt;%</code>. Esta es la pipe del paquete <code>magritter</code>, que usamos durante muchísimo tiempo (y seguimos usando) hasta que la nueva pipe <code>|&gt;</code> se sumo a R 4.0.0.</p>
+</div>
+<p>Cómo vimos, el primer argumento de todas las funciones de dplyr es el data frame sobre el cual van a operar, pero notá que en las líneas con <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> no escribís la tabla explícitamente.<br>
+Esto es porque la pipe implícitamente pasa el resultado de las líneas anteriores como el primer argumento de la función siguiente.</p>
+<p>Toma el data frame <code>pinguinos</code> y se lo pasa al primer argumento de <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>. Luego el data frame resultante de esa operación pasa como el primer argumento de la función <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> gracias al <code>|&gt;</code>.</p>
+<div class="tip">
+<p>En RStudio podés escribir <code>|&gt;</code> usando el atajo de teclado Ctr + Shift + M. ¡Probalo!</p>
+</div>
+<div class="ejercicio">
+<p>Completá esta cadena de código para producir una tabla que contenga los pingüinos con aletas mayores a 200 mm y la información de la especie y el largo de la aleta.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>pinguinos <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(largo_aleta_mm <span class="sc">&gt;</span> ___) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(_____, ____)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>Como seguramente notaste en el ejercicio cuando aplicamos filtros usamos operaciones lógicas que devuelven <code>TRUE</code> o <code>FALSE</code> según si cumplen o no con la condición. Para esto usamos operadores lógicos como <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code>, etc.</p>
+</section><section id="agrupando-y-reduciendo-con-group_by-summarise" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="agrupando-y-reduciendo-con-group_by-summarise">
+<span class="header-section-number">4.3</span> Agrupando y reduciendo con <code>group_by() |&gt; summarise()</code>
+</h2>
+<p>Si quisieramos responder ¿cuál es el largo promedio de la aleta para cada especie de pingüino? tenemos que usar un combo de funciones: <code>group_by() |&gt; summarise()</code>. Es decir, primero agrupamos las filas de nuestro data.frame según la columna <code>especie</code> (esto genera 3 grupos) y luego calculamos el promedio de <code>largo_aleta_mm</code> para cada grupo.</p>
+<p>Vamos paso a paso.</p>
+<div class="cell">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+# Groups:   especie [3]
+   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;
+ 1 Adelia  Torg…          39.1         18.7            181            3750 macho
+ 2 Adelia  Torg…          39.5         17.4            186            3800 hemb…
+ 3 Adelia  Torg…          40.3         18              195            3250 hemb…
+ 4 Adelia  Torg…          NA           NA               NA              NA &lt;NA&gt; 
+ 5 Adelia  Torg…          36.7         19.3            193            3450 hemb…
+ 6 Adelia  Torg…          39.3         20.6            190            3650 macho
+ 7 Adelia  Torg…          38.9         17.8            181            3625 hemb…
+ 8 Adelia  Torg…          39.2         19.6            195            4675 macho
+ 9 Adelia  Torg…          34.1         18.1            193            3475 &lt;NA&gt; 
+10 Adelia  Torg…          42           20.2            190            4250 &lt;NA&gt; 
+# ℹ 334 more rows
+# ℹ 1 more variable: anio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>A primera vista parecería que la función no hizo nada, pero fijate que el resultado ahora dice que tiene grupos (“Groups:”), y nos dice qué columna es la que agrupa los datos (“especie”) y cuántos grupos hay (“3”). Cualquier operación que hagamos a continuación del <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> van a aplicarse <em>para cada grupo</em>.</p>
+<p>Para ver esto en acción, usá <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> para computar el promedio de turistas</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op">|&gt;</span>   </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>aleta_promedio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">largo_aleta_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  especie aleta_promedio
+  &lt;chr&gt;            &lt;dbl&gt;
+1 Adelia            190.
+2 Barbijo           196.
+3 Papúa             217.</code></pre>
+</div>
+</div>
+<p>¡Tadá! <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> devuelve una tabla con una columna para la especie y otra nueva, llamada “aleta_promedio” que contiene el promedio de del largo de la aleta para cada grupo.</p>
+<p><code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> permite agrupar en base a múltiples columnas y <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> permite generar múltiples columnas de resumen. El siguiente código calcula la cantidad de pingüinos por especie y por isla y el promedio de su masa corporal.</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span>, <span class="va">isla</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>cantidad <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>            promedio_masa_corporal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">masa_corporal_g</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'especie'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 4
+# Groups:   especie [3]
+  especie isla      cantidad promedio_masa_corporal
+  &lt;chr&gt;   &lt;chr&gt;        &lt;int&gt;                  &lt;dbl&gt;
+1 Adelia  Biscoe          44                  3710.
+2 Adelia  Dream           56                  3688.
+3 Adelia  Torgersen       52                  3706.
+4 Barbijo Dream           68                  3733.
+5 Papúa   Biscoe         124                  5076.</code></pre>
+</div>
+</div>
+<div class="tip">
+<p>La función <code><a href="https://dplyr.tidyverse.org/reference/context.html">n()</a></code> cuenta la cantidad de elementos en cada grupo, en este caso la cantidad de pingüinos por especie e isla. A diferencia de otras funciones que venimos usando no requiere de ningún argumento para funcionar en el contexto de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code></p>
+</div>
+<p>El resultado va a siempre ser una tabla con la misma cantidad de filas que grupos y una cantidad de columnas igual a la cantidad de columnas usadas para agrupar y los estadísticos computados.</p>
+<div class="ejercicio">
+<p>¿Cuál te imaginás que va a ser el resultado del siguiente código? ¿Cuántas filas y columnas va a tener? (Tratá de pensarlo antes de correrlo.)</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>promedio_pico <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">largo_pico_mm</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p>El combo <code>group_by() |&gt; summarise()</code> se puede resumir en esta figura. Las filas de una tabla se dividen en grupos, y luego cada grupo se “resume” en una fila en función del estadístico usado.</p>
+<p><img src="images/group_by-summarize.png" class="img-fluid"></p>
+<section id="reframe-entra-a-la-cancha" class="level3" data-number="4.3.1"><h3 data-number="4.3.1" class="anchored" data-anchor-id="reframe-entra-a-la-cancha">
+<span class="header-section-number">4.3.1</span> <code>reframe()</code> entra a la cancha</h3>
+<p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> funciona re bien hasta que que nos encontramos con la necesidad de hacer cuentas más complejas. Por ejemplo, supongamos que queremos calcular el cuantil 0.25 de la masa corporal porque decidimos que todos los pinguinos con un peso por debajo de ese valor son “pequeños”. Con lo que vimos hasta ahora podemos calcularlo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>cuantil_masa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">masa_corporal_g</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 2
+  especie cuantil_masa
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Adelia         3350 
+2 Barbijo        3488.
+3 Papúa          4700 </code></pre>
+</div>
+</div>
+<p>Pero se vuelve tedioso si queremos otros cuantiles, por ejemplo el 0.75 (porque decidimos los pingüinos con masa mayor a ese valor sn “grandes”). Si intentamos extender el código anterior además del resultado vamos a terminar con un warning enorme.</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>cuantil_masa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">masa_corporal_g</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Returning more (or less) than 1 row per `summarise()` group was deprecated in
+dplyr 1.1.0.
+ℹ Please use `reframe()` instead.
+ℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`
+  always returns an ungrouped data frame and adjust accordingly.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'especie'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+# Groups:   especie [3]
+  especie cuantil_masa
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Adelia         3350 
+2 Adelia         4000 
+3 Barbijo        3488.
+4 Barbijo        3950 
+5 Papúa          4700 
+6 Papúa          5500 </code></pre>
+</div>
+</div>
+<p>El problema es que estamos opteniendo 2 valores para cada grupo, es decir el cuantil 0.25 y el 0.75 para cada especie. En estos casos tenemos que usar <code><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe()</a></code> que funciona de manera similar a <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> pero está pensada para estos casos donde calculamos más de un valor por grupo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reframe.html">reframe</a></span><span class="op">(</span>cuantil_masa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">masa_corporal_g</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0.25</span>, <span class="fl">0.75</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  especie cuantil_masa
+  &lt;chr&gt;          &lt;dbl&gt;
+1 Adelia         3350 
+2 Adelia         4000 
+3 Barbijo        3488.
+4 Barbijo        3950 
+5 Papúa          4700 
+6 Papúa          5500 </code></pre>
+</div>
+</div>
+</section></section><section id="creando-nuevas-columnas-con-mutate" class="level2" data-number="4.4"><h2 data-number="4.4" class="anchored" data-anchor-id="creando-nuevas-columnas-con-mutate">
+<span class="header-section-number">4.4</span> Creando nuevas columnas con <code>mutate()</code>
+</h2>
+<p>Todo esto está bien para hacer cálculos con columnas previamente existentes, pero muchas veces tenés que crear nuevas columnas.</p>
+<p>Podríamos querer expresar la masa corporal de los pingüinos en kilos en vez de gramos.</p>
+<div class="cell">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>masa_corporal_kg <span class="op">=</span> <span class="va">masa_corporal_g</span><span class="op">/</span><span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 9
+   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;
+ 1 Adelia  Torg…          39.1         18.7            181            3750 macho
+ 2 Adelia  Torg…          39.5         17.4            186            3800 hemb…
+ 3 Adelia  Torg…          40.3         18              195            3250 hemb…
+ 4 Adelia  Torg…          NA           NA               NA              NA &lt;NA&gt; 
+ 5 Adelia  Torg…          36.7         19.3            193            3450 hemb…
+ 6 Adelia  Torg…          39.3         20.6            190            3650 macho
+ 7 Adelia  Torg…          38.9         17.8            181            3625 hemb…
+ 8 Adelia  Torg…          39.2         19.6            195            4675 macho
+ 9 Adelia  Torg…          34.1         18.1            193            3475 &lt;NA&gt; 
+10 Adelia  Torg…          42           20.2            190            4250 &lt;NA&gt; 
+# ℹ 334 more rows
+# ℹ 2 more variables: anio &lt;dbl&gt;, masa_corporal_kg &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Recordá que las funciones de dplyr nunca modifican la tabla original. <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> devolvió una nueva tabla que es igual a la tabla <code>pinguinos</code> pero con la columna “masa_corporal_kg” agregada al final. Si no asignamos este resultado a una variable, no podremos usarlo luego.</p>
+<p>La función <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> además de permitir crear nuevas columnas, también permite modificar o actualizar columnas existentes. Para eso, solo es necesario asignarle el nombre de la columa que queremos modificar.</p>
+<div class="cell">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>especie <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/chartr.html">toupper</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   especie isla  largo_pico_mm alto_pico_mm largo_aleta_mm masa_corporal_g sexo 
+   &lt;chr&gt;   &lt;chr&gt;         &lt;dbl&gt;        &lt;dbl&gt;          &lt;dbl&gt;           &lt;dbl&gt; &lt;chr&gt;
+ 1 ADELIA  Torg…          39.1         18.7            181            3750 macho
+ 2 ADELIA  Torg…          39.5         17.4            186            3800 hemb…
+ 3 ADELIA  Torg…          40.3         18              195            3250 hemb…
+ 4 ADELIA  Torg…          NA           NA               NA              NA &lt;NA&gt; 
+ 5 ADELIA  Torg…          36.7         19.3            193            3450 hemb…
+ 6 ADELIA  Torg…          39.3         20.6            190            3650 macho
+ 7 ADELIA  Torg…          38.9         17.8            181            3625 hemb…
+ 8 ADELIA  Torg…          39.2         19.6            195            4675 macho
+ 9 ADELIA  Torg…          34.1         18.1            193            3475 &lt;NA&gt; 
+10 ADELIA  Torg…          42           20.2            190            4250 &lt;NA&gt; 
+# ℹ 334 more rows
+# ℹ 1 more variable: anio &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<div class="enconstruccion">
+<p>Sumar ejercicio de manipulacion de los datos con los que vamos a trabajar. La idea es que puedan responder preguntas</p>
+</div>
 
 
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -659,9 +1053,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./02_lectura.html" class="pagination-link" aria-label="Lectura de datos ordenados">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos ordenados</span></span>
       </a>          
@@ -673,7 +1065,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
