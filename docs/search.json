@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Introducción a la Programación II",
     "section": "",
-    "text": "Preface",
+    "text": "Prefacio\nLos conocimientos en programación son esenciales para la práctica de la ciencia de datos, que implica el manejo de grandes conjuntos de datos, junto con la creciente demanda de que los estudios sean reproducibles y abiertos. Con estas exigencias, quienes hacen ciencia de datos necesitan a menudo crear, utilizar y compartir software. Este software tiene características particulares, que están relacionadas en gran medida con la exploración de problemas y la respuesta a preguntas.\nLa materia cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si trabaja solo como si forma parte de un equipo.",
     "crumbs": [
       "Prefacio"
     ]
@@ -283,6 +283,16 @@
     "crumbs": [
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Preparando el entorno de trabajo</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#objetivos",
+    "href": "index.html#objetivos",
+    "title": "Introducción a la Programación II",
+    "section": "Objetivos",
+    "text": "Objetivos\n\nEscribir programas de R que resuelvan tareas de un proyecto de ciencia de datos.\nProgramar funciones en R.\nExplicar qué es un paquete R, cómo está estructurado y cómo crear uno.\nEnumerar y describir mejores prácticas en el desarrollo de paquetes y cómo implementarlas.\nExplicar qué es una guía de estilo de código, por qué es importante y cómo escribir código que se adhiera a la guía de estilo.\nDescribir por qué la documentación fácil de usar y bien escrita es crucial para construir un paquete utilizable y algunos pasos para lograr este tipo de documentación.\nAplicar técnicas de testeo de software a funciones y paquetes de R.\nDescribir diferentes posibilidades para publicar y compartir un paquete.\nUsar Git y GitHub para monitorear y compartir tu software.\nEncontrar y resolver errores en los programas de R desarrollados.\nEntender como funcionan, que rol y limitaciones tienen los asistentes de programación de IA.\nResolver casos reales de ciencia de datos aplicando las habilidades aprendidas durante la materia.\nOrganizar proyectos de ciencia de datos pequeños a medianos.\nIncorporar el valor del trabajo abierto y reproducible.",
+    "crumbs": [
+      "Prefacio"
     ]
   }
 ]

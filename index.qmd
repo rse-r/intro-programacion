@@ -1,4 +1,4 @@
-# Preface {.unnumbered}
+# Prefacio {.unnumbered}
 
 ::: enconstruccion
 Estos materiales están en desarrollo. 
@@ -7,6 +7,24 @@ Estos materiales están en desarrollo.
 Los conocimientos en programación son esenciales para la práctica de la ciencia de datos, que implica el manejo de grandes conjuntos de datos, junto con la creciente demanda de que los estudios sean reproducibles y abiertos. Con estas exigencias, quienes hacen ciencia de datos necesitan a menudo crear, utilizar y compartir software. Este software tiene características particulares, que están relacionadas en gran medida con la exploración de problemas y la respuesta a preguntas. 
 
 La materia cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si trabaja solo como si forma parte de un equipo.
+
+## Objetivos
+
+1. **Escribir** programas de R que resuelvan tareas de un proyecto de ciencia de datos. 
+2. **Programar** funciones en R. 
+3. **Explicar** qué es un paquete R, cómo está estructurado y cómo crear uno.
+4. **Enumerar y describir** mejores prácticas en el desarrollo de paquetes y cómo implementarlas.
+5. **Explicar** qué es una guía de estilo de código, por qué es importante y cómo escribir código que se adhiera a la guía de estilo.
+6. **Describir** por qué la documentación fácil de usar y bien escrita es crucial para construir un paquete utilizable y algunos pasos para lograr este tipo de documentación.
+7. **Aplicar** técnicas de testeo de software a funciones y paquetes de R.
+8. **Describir** diferentes posibilidades para publicar y compartir un paquete. 
+9. **Usar** Git y GitHub para monitorear y compartir tu software.
+10. **Encontrar y resolver** errores en los programas de R desarrollados.
+11. **Entender** como funcionan, que rol y limitaciones tienen los asistentes de programación de IA. 
+12. **Resolver** casos reales de ciencia de datos aplicando las habilidades aprendidas durante la materia.
+13. **Organizar** proyectos de ciencia de datos pequeños a medianos.
+14. **Incorporar** el valor del trabajo abierto y reproducible. 
+
 
 ## Reutilización y licencia {#sec-licensing}
 
