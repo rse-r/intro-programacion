@@ -5,9 +5,6 @@ knitr:
     out.width: "100%"
 ---
 
-
-**Para agregar intro https://github.com/merely-useful/r-rse/blob/main/chapters/01-preface.Rmd**
-
 No existe un acuerdo sobre una definición formal de ciencia de datos, pero la mayoría de estas definiciones concuerda en que tiene al menos tres pilares: el conocimiento estadístico, el conocimiento de ciencias de la computación y el conocimiento de área sobre el cual se va a aplicar.
 En este caso el turismo.
 

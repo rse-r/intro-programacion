@@ -6,9 +6,20 @@ Estos materiales están en desarrollo.
 
 Los conocimientos en programación son esenciales para la práctica de la ciencia de datos, que implica el manejo de grandes conjuntos de datos, junto con la creciente demanda de que los estudios sean reproducibles y abiertos. Con estas exigencias, quienes hacen ciencia de datos necesitan a menudo crear, utilizar y compartir software. Este software tiene características particulares, que están relacionadas en gran medida con la exploración de problemas y la respuesta a preguntas. 
 
-La materia cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si trabaja solo como si forma parte de un equipo.
+Este libro se desarrollo para la materia Introduccion a la Programacion II y cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si la persona trabaja sola como si forma parte de un equipo.
 
-## Objetivos
+## Introducción para estudiantes
+
+El objetivo principal de este libro es enseñarte las herramientas, habilidades y conocimientos necesarios para crear software de para ciencia de datos abierto, reproducible y sostenible. Esta pensado para personas que investigan o practican ciencias de datos y que ya saben escribir funciones y programas de unos cientos de líneas de codigo y que quieren ser más productivos, tener más confianza en sus resultados y trabajar de forma abierta y reproducible. 
+
+Este libro ofrece una introducción pragmática y basada en herramientas a la ingeniería de software de investigación. Para las personas cuyas tareas incluyen la creación de paquetes de software, este libro le ayudará a ser un ingeniero de software de investigacion. A diferencia de las personas que desarrollan software en la industria o los estudiantes de ciencias de la computacion, este libro utiliza el análisis de datos como ejemplo motivador y asume que el objetivo final de nuestros estudiantes es responder a preguntas y realizar analisis de datos.
+
+La ciencia de datos es un proceso que depende de resultados que sean exactos, precisos, replicables y reproducibles. El desarrollo de paquetes de software con fines de investigación nos ayuda a garantizar que los análisis que producen nuestros resultados sean exactamente eso: exactos, precisos, replicables y reproducibles.
+
+Teniendo esto en cuenta, el principal objetivo de aprendizaje de este libro es que
+aprendas a *gestionar proyectos de ciencia de datos* y a *desarrollar un paquete R*. Al final del libro tendras las habilidades y conocimientos necesarios para: trabajar en proyectos de ciencias de datos ordenados, desarrollar paquetes R bien construidos, bien documentados y reutilizables y trabajar eficazmente en equipo.
+
+Estos son los **objetivos de aprendizaje** específicos que dominarás con este libro:
 
 1. **Escribir** programas de R que resuelvan tareas de un proyecto de ciencia de datos. 
 2. **Programar** funciones en R. 
@@ -25,7 +36,6 @@ La materia cubre los fundamentos de la creación de software como parte desarrol
 13. **Organizar** proyectos de ciencia de datos pequeños a medianos.
 14. **Incorporar** el valor del trabajo abierto y reproducible. 
 
-
 ## Reutilización y licencia {#sec-licensing}
 
 Todo el material puede reutilizarse libremente bajo los términos de la licencia
@@ -35,28 +45,57 @@ puede utilizarse, reutilizarse y modificarse, siempre que se cite esta fuente.
 
 El código fuente del libro se encuentra en el repositorio de GitHub [intro-programacion](https://github.com/rse-r/intro-programacion). Cualquier corrección,
 o contribuciones son bienvenidas. Visitá nuestra página
-sobre como contribuir](https://github.com/merely-useful/r-rse/blob/main/.github/CONTRIBUTING.md)
-para conocer más.
+sobre como contribuir]() para conocer más.
 
+### Prerequisitos
 
-Ejemplos de cajitas
+Para seguir este libro, necesitarás tener instalado git, R y RStudio. Si no los tienes instalados, puedes seguir las instrucciones en la página de [instalación](A_instalacion.html).
+
+## Convenciones en el libro
+
+El libro esta ordenado en capitulos que abarcan un tema en particular. Dentro del capitulo podemos presentar ejercicios, ejemplos, consejos, advertencias, etc. Para diferenciar estos elementos utilizamos los siguientes bloques:
 
 ::: ejercicio
-
 Este es un ejercicio
 :::
 
 ::: ejemplo
-
 Este es un ejemplo
 :::
 
 ::: importante
-
 A tener en cuenta!
 :::
 
 ::: tip
-
 Este es un consejo
 :::
+
+
+## Bibliografia 
+
+### General Obligatoria
+
+* R Packages (2e) de Hadley Wickham y Jennifer Bryan. Disponible de manera gratuita: https://r-pkgs.org/ 
+
+* R for Data Science (2e) de Hadley Wickham, Mine Cetinkaya-Rundel y Garrett Grolemund. Disponible de manera gratuita: https://r4ds.hadley.nz/. Primera edición en español: https://es.r4ds.hadley.nz/ 
+
+### Complementaria
+
+* Advance R de Hadley Wickham. Disponible de manera gratuita: https://adv-r.hadley.nz/ 
+
+* Research Software Engineering with Python: Building software that makes research possible de Damien Irving, Kate Hertweck, Luke Johnston, Joel Ostblom, Charlotte Wickham, y Greg Wilson. Disponible de manera gratuita: https://third-bit.com/py-rse/ 
+
+
+## Fuentes
+
+Este libro utilizo como fuentes los siguientes materiales:
+
+* Research Software Engineering with Python: Building software that makes research possible de Damien Irving, Kate Hertweck, Luke Johnston, Joel Ostblom, Charlotte Wickham, y Greg Wilson. Disponible de manera gratuita: https://third-bit.com/py-rse/ 
+
+* Curso
+
+* Curso
+
+* Curso
+

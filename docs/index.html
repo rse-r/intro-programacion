@@ -234,8 +234,18 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#prefacio" id="toc-prefacio" class="nav-link active" data-scroll-target="#prefacio">Prefacio</a>
   <ul class="collapse">
-  <li><a href="#objetivos" id="toc-objetivos" class="nav-link" data-scroll-target="#objetivos">Objetivos</a></li>
-  <li><a href="#sec-licensing" id="toc-sec-licensing" class="nav-link" data-scroll-target="#sec-licensing">Reutilización y licencia</a></li>
+  <li><a href="#introducción-para-estudiantes" id="toc-introducción-para-estudiantes" class="nav-link" data-scroll-target="#introducción-para-estudiantes">Introducción para estudiantes</a></li>
+  <li><a href="#sec-licensing" id="toc-sec-licensing" class="nav-link" data-scroll-target="#sec-licensing">Reutilización y licencia</a>
+  <ul class="collapse">
+  <li><a href="#prerequisitos" id="toc-prerequisitos" class="nav-link" data-scroll-target="#prerequisitos">Prerequisitos</a></li>
+  </ul></li>
+  <li><a href="#convenciones-en-el-libro" id="toc-convenciones-en-el-libro" class="nav-link" data-scroll-target="#convenciones-en-el-libro">Convenciones en el libro</a></li>
+  <li><a href="#bibliografia" id="toc-bibliografia" class="nav-link" data-scroll-target="#bibliografia">Bibliografia</a>
+  <ul class="collapse">
+  <li><a href="#general-obligatoria" id="toc-general-obligatoria" class="nav-link" data-scroll-target="#general-obligatoria">General Obligatoria</a></li>
+  <li><a href="#complementaria" id="toc-complementaria" class="nav-link" data-scroll-target="#complementaria">Complementaria</a></li>
+  </ul></li>
+  <li><a href="#fuentes" id="toc-fuentes" class="nav-link" data-scroll-target="#fuentes">Fuentes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -282,9 +292,14 @@ ul.task-list li input[type="checkbox"] {
 <p>Estos materiales están en desarrollo.</p>
 </div>
 <p>Los conocimientos en programación son esenciales para la práctica de la ciencia de datos, que implica el manejo de grandes conjuntos de datos, junto con la creciente demanda de que los estudios sean reproducibles y abiertos. Con estas exigencias, quienes hacen ciencia de datos necesitan a menudo crear, utilizar y compartir software. Este software tiene características particulares, que están relacionadas en gran medida con la exploración de problemas y la respuesta a preguntas.</p>
-<p>La materia cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si trabaja solo como si forma parte de un equipo.</p>
-<section id="objetivos" class="level2">
-<h2 class="anchored" data-anchor-id="objetivos">Objetivos</h2>
+<p>Este libro se desarrollo para la materia Introduccion a la Programacion II y cubre los fundamentos de la creación de software como parte desarrollo y ejecución de proyectos de ciencia de datos abiertos y reproducibles, tanto si la persona trabaja sola como si forma parte de un equipo.</p>
+<section id="introducción-para-estudiantes" class="level2">
+<h2 class="anchored" data-anchor-id="introducción-para-estudiantes">Introducción para estudiantes</h2>
+<p>El objetivo principal de este libro es enseñarte las herramientas, habilidades y conocimientos necesarios para crear software de para ciencia de datos abierto, reproducible y sostenible. Esta pensado para personas que investigan o practican ciencias de datos y que ya saben escribir funciones y programas de unos cientos de líneas de codigo y que quieren ser más productivos, tener más confianza en sus resultados y trabajar de forma abierta y reproducible.</p>
+<p>Este libro ofrece una introducción pragmática y basada en herramientas a la ingeniería de software de investigación. Para las personas cuyas tareas incluyen la creación de paquetes de software, este libro le ayudará a ser un ingeniero de software de investigacion. A diferencia de las personas que desarrollan software en la industria o los estudiantes de ciencias de la computacion, este libro utiliza el análisis de datos como ejemplo motivador y asume que el objetivo final de nuestros estudiantes es responder a preguntas y realizar analisis de datos.</p>
+<p>La ciencia de datos es un proceso que depende de resultados que sean exactos, precisos, replicables y reproducibles. El desarrollo de paquetes de software con fines de investigación nos ayuda a garantizar que los análisis que producen nuestros resultados sean exactamente eso: exactos, precisos, replicables y reproducibles.</p>
+<p>Teniendo esto en cuenta, el principal objetivo de aprendizaje de este libro es que aprendas a <em>gestionar proyectos de ciencia de datos</em> y a <em>desarrollar un paquete R</em>. Al final del libro tendras las habilidades y conocimientos necesarios para: trabajar en proyectos de ciencias de datos ordenados, desarrollar paquetes R bien construidos, bien documentados y reutilizables y trabajar eficazmente en equipo.</p>
+<p>Estos son los <strong>objetivos de aprendizaje</strong> específicos que dominarás con este libro:</p>
 <ol type="1">
 <li><strong>Escribir</strong> programas de R que resuelvan tareas de un proyecto de ciencia de datos.</li>
 <li><strong>Programar</strong> funciones en R.</li>
@@ -305,8 +320,15 @@ ul.task-list li input[type="checkbox"] {
 <section id="sec-licensing" class="level2">
 <h2 class="anchored" data-anchor-id="sec-licensing">Reutilización y licencia</h2>
 <p>Todo el material puede reutilizarse libremente bajo los términos de la licencia <a href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Reconocimiento 4.0 Internacional Licencia</a>, esto significa que el material puede utilizarse, reutilizarse y modificarse, siempre que se cite esta fuente.</p>
-<p>El código fuente del libro se encuentra en el repositorio de GitHub <a href="https://github.com/rse-r/intro-programacion">intro-programacion</a>. Cualquier corrección, o contribuciones son bienvenidas. Visitá nuestra página sobre como contribuir](https://github.com/merely-useful/r-rse/blob/main/.github/CONTRIBUTING.md) para conocer más.</p>
-<p>Ejemplos de cajitas</p>
+<p>El código fuente del libro se encuentra en el repositorio de GitHub <a href="https://github.com/rse-r/intro-programacion">intro-programacion</a>. Cualquier corrección, o contribuciones son bienvenidas. Visitá nuestra página sobre como contribuir]() para conocer más.</p>
+<section id="prerequisitos" class="level3">
+<h3 class="anchored" data-anchor-id="prerequisitos">Prerequisitos</h3>
+<p>Para seguir este libro, necesitarás tener instalado git, R y RStudio. Si no los tienes instalados, puedes seguir las instrucciones en la página de <a href="A_instalacion.html">instalación</a>.</p>
+</section>
+</section>
+<section id="convenciones-en-el-libro" class="level2">
+<h2 class="anchored" data-anchor-id="convenciones-en-el-libro">Convenciones en el libro</h2>
+<p>El libro esta ordenado en capitulos que abarcan un tema en particular. Dentro del capitulo podemos presentar ejercicios, ejemplos, consejos, advertencias, etc. Para diferenciar estos elementos utilizamos los siguientes bloques:</p>
 <div class="ejercicio">
 <p>Este es un ejercicio</p>
 </div>
@@ -319,6 +341,33 @@ ul.task-list li input[type="checkbox"] {
 <div class="tip">
 <p>Este es un consejo</p>
 </div>
+</section>
+<section id="bibliografia" class="level2">
+<h2 class="anchored" data-anchor-id="bibliografia">Bibliografia</h2>
+<section id="general-obligatoria" class="level3">
+<h3 class="anchored" data-anchor-id="general-obligatoria">General Obligatoria</h3>
+<ul>
+<li><p>R Packages (2e) de Hadley Wickham y Jennifer Bryan. Disponible de manera gratuita: https://r-pkgs.org/</p></li>
+<li><p>R for Data Science (2e) de Hadley Wickham, Mine Cetinkaya-Rundel y Garrett Grolemund. Disponible de manera gratuita: https://r4ds.hadley.nz/. Primera edición en español: https://es.r4ds.hadley.nz/</p></li>
+</ul>
+</section>
+<section id="complementaria" class="level3">
+<h3 class="anchored" data-anchor-id="complementaria">Complementaria</h3>
+<ul>
+<li><p>Advance R de Hadley Wickham. Disponible de manera gratuita: https://adv-r.hadley.nz/</p></li>
+<li><p>Research Software Engineering with Python: Building software that makes research possible de Damien Irving, Kate Hertweck, Luke Johnston, Joel Ostblom, Charlotte Wickham, y Greg Wilson. Disponible de manera gratuita: https://third-bit.com/py-rse/</p></li>
+</ul>
+</section>
+</section>
+<section id="fuentes" class="level2">
+<h2 class="anchored" data-anchor-id="fuentes">Fuentes</h2>
+<p>Este libro utilizo como fuentes los siguientes materiales:</p>
+<ul>
+<li><p>Research Software Engineering with Python: Building software that makes research possible de Damien Irving, Kate Hertweck, Luke Johnston, Joel Ostblom, Charlotte Wickham, y Greg Wilson. Disponible de manera gratuita: https://third-bit.com/py-rse/</p></li>
+<li><p>Curso</p></li>
+<li><p>Curso</p></li>
+<li><p>Curso</p></li>
+</ul>
 
 
 </section>
