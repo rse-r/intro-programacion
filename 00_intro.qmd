@@ -6,11 +6,14 @@ knitr:
 ---
 
 No existe un acuerdo sobre una definición formal de ciencia de datos, pero la mayoría de estas definiciones concuerda en que tiene al menos tres pilares: el conocimiento estadístico, el conocimiento de ciencias de la computación y el conocimiento de área sobre el cual se va a aplicar.
-En este caso el turismo.
+
+::: ejemplo
+Yanina trabajo durante 24 años como investigadora del Instituto Nacional de Tecnologia Agropecuria, realizando diversos trabajos de ciencia de datos aplicadas al agro.  En ese caso, el conocimiento del área es la agricultura.
+:::
 
 El proceso de ciencia de datos en el cual nos vamos a basar se puede ver en el siguiente diagrama:
 
-![Mapa conceptual del proceso de ciencia de datos](img/ciencia-de-datos.png)
+![Mapa conceptual del proceso de ciencia de datos](images/ciencia-de-datos.png)
 
 Primero, debes **importar** tus datos hacia la herramienta donde vas a procesarlos.
 Típicamente, esto implica tomar datos que están guardados en un archivo o base de datos y cargarlos en tu software para poder trabajar con ellos.
