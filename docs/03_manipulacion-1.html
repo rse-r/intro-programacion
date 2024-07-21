@@ -649,6 +649,30 @@ dplyr 1.1.0.
 <div class="enconstruccion">
 <p>Sumar ejercicio de manipulacion de los datos con los que vamos a trabajar. La idea es que puedan responder preguntas</p>
 </div>
+<div class="ejercicio">
+<p>Como nuestro paquete va a trabajar con texto, el objetivo de este tutorial interactivo es introducir los conceptos básicos de la minería de texto con un enfoque tidy basado en el libro Tidy Text de Silge y Robinson.</p>
+<p>El tutorial se presenta como un paquete. Para instalarlo, primero necesitás instalar el paquete <code>learnr</code> con el siguiente comando:</p>
+<p><code>install.packages("learnr")</code></p>
+<p>y luego usá el siguiente código para instalar el tutorial:</p>
+<p><code>remotes::install_github("yabellini/TextMiningTutorial")</code></p>
+<p>Puede ser que si hay versiones más nuevas de los paquetes que necesitas en la consola te aparezca un mensaje similar a este:</p>
+<pre><code>These packages have more recent versions available.
+It is recommended to update all of them.
+Which would you like to update?
+
+ 1: All                                 
+ 2: CRAN packages only                  
+ 3: None                                
+ 4: colorspace (1.4-1  -&gt; 2.0-1 ) [CRAN]
+ 5: rlang      (0.4.2  -&gt; 0.4.11) [CRAN]
+ 6: glue       (1.4.0  -&gt; 1.4.2 ) [CRAN]
+ 
+ Enter one or more numbers, or an empty line to skip updates:
+</code></pre>
+<p>Ese mensaje nos indica que paquetes podríamos actualizar. Si no queremos actualizar podemos presionar Enter o bien seleccionar el número que dice None, en este caso el 3.</p>
+<p>y luego ejecutar de esta manera el Tutorial:</p>
+<p><code>learnr::run_tutorial("TextMining", package = "TextMiningTutorial")</code></p>
+</div>
 
 
 </section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
