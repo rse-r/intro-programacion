@@ -110,9 +110,9 @@ Utilizaremos los siguientes textos del Proyecto Gutenberg:
 * La isla del tesoro: <https://www.gutenberg.org/cache/epub/45438/pg45438.txt>
 * El caso extraño del Doctor Jekyll: <https://www.gutenberg.org/cache/epub/62627/pg62627.txt>
 
-1. Escribe el código necesario para descargar los textos en español en formato .txt y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en los dos listados anteriores. Piensa en nombres adecuados para tus archivos segun lo que vimos en el primer capitulo. 
+1. Escribe el código necesario para descargar los textos en español en formato .txt y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en los dos listados anteriores. Piensa en nombres adecuados para tus archivos segun lo que vimos en el segundo capitulo. 
 
-2. Lee los datos descargados, para eso revisa la ayuda de la funcion `read_lines()`. 
+2. Lee los datos descargados, para eso revisa la ayuda de la funcion `read_lines()` como vimos en el primer capitulo. 
 
 3. Explora su estructura con la función `str()`.
 
