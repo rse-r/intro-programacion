@@ -262,7 +262,7 @@ Puedes cambiar estas preferencias a nivel global con "Tools" -> "Global Options"
 
 ### Recursos
 
-[Estructura del proyecto - Diapositivas de Danielle Navarro](https://slides.djnavarro.net/project-structure/)/
+[Estructura del proyecto - Diapositivas de Danielle Navarro](https://slides.djnavarro.net/project-structure/)
 
 [Empaquetar el trabajo analítico de datos de forma reproducible utilizando R (y amigos)](https://peerj.com/preprints/3192v1)
 
