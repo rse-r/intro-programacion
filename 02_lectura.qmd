@@ -7,7 +7,7 @@ knitr:
 
 ## Trabajando con datos
 
-Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.
+Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs (Interfaz de programación de aplicaciones, *Application programming interface* en Ingles) para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como [Zenodo](https://zenodo.org) y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.
 
 El código que genera la descarga de datos podría estar incluido en el archivo de análisis de datos si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.
 
@@ -23,7 +23,7 @@ knitr::include_graphics("images/file_list.png")
 
 Vemos también el botón "Download" para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.
 
-Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos.
+Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos y actualizados.
 
 Para eso, primero necesitás la dirección (URL) del set de datos.
 Eso se consigue yendo a [la página del set de datos](https://zenodo.org/records/12772944) y en vez de hacer click en Download, haciendo 
@@ -32,8 +32,8 @@ Eso se consigue yendo a [la página del set de datos](https://zenodo.org/records
 Click derecho → Copiar dirección del enlace
 :::
 
-La URL de la esta serie es `https://zenodo.org/records/12772944/files/pinguinos.csv?download=1`. 
-Guaramos eso en una variable en R
+La URL de esta base de datos es `https://zenodo.org/records/12772944/files/pinguinos.csv?download=1`. 
+Guardamos eso en una variable en R
 
 ```{r}
 pinguinos_url <- "https://zenodo.org/records/12772944/files/pinguinos.csv?download=1"
@@ -43,7 +43,7 @@ Y también definimos la ruta donde descargar el archivo
 
 
 ```{r}
-pinguinos_archivo <- "datos/pinguinos.csv" # esta ubicación debe existir!
+pinguinos_archivo <- "datos/pinguinos.csv" # esta ubicación, o sea la carpeta datos debe existir!
 ```
 
 Y finalmente usamos la función `download.file()` para descargar el archivo. 
@@ -57,9 +57,9 @@ Y esto va a descargar la última versión de los datos.
 ## Leer datos csv
 
 Existen muchas funciones distintas para leer datos dependiendo del formato en el que están guardados.
-Para datos tabulares, la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.
+Para datos tabulares (filas y columnas), la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.
 
-En R hay muchas maneras de hacer cada cosa, por ejemploe podríamos leer el archivo con la función `read.csv()`, con `read_csv()` del paquete `readr` o `fread()` del paquete `data.table` entre otras opciones. 
+En R hay muchas maneras de hacer cada cosa, por ejemplo podríamos leer el archivo con la función `read.csv()`, con `read_csv()` del paquete `readr` o `fread()` del paquete `data.table` entre otras opciones. 
 Nos vamos a quedar con la opción que nos da `readr` que tiene algunas características interesantes.
 
 ```{r}
