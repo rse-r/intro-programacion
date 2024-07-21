@@ -366,13 +366,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="unnumbered anchored" data-anchor-id="instalando-rtools">Instalando RTools</h2>
 <p>Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools.</p>
 <ol type="1">
-<li><p>Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools43. Para eso hacer click en Rtools43 y en es nueva pagina hacer clik en <a href="https://cran.r-project.org/bin/windows/Rtools/rtools43/rtools.html">Rtools43 installer</a>.</p></li>
+<li><p>Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools44. Para eso hacer click en Rtools44 y en es nueva pagina hacer clik en <a href="https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html">Rtools44 installer</a>.</p></li>
 <li><p>Ejecuta el instalador y segui las instrucciones.</p></li>
-<li><p>Abrí la consola de R, escribí esto en la consola y apretá enter:</p></li>
 </ol>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.which</span>(<span class="st">"make"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Debería salir algo como esto:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">make =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">rtools40</span><span class="sc">\\</span><span class="st">usr</span><span class="sc">\\</span><span class="st">bin</span><span class="sc">\\</span><span class="st">make.exe"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="instalando-rstudio" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="instalando-rstudio">Instalando RStudio</h2>
@@ -380,10 +376,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ubuntu-o-derivados-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ubuntu-o-derivados-1">Ubuntu o derivados</h3>
 <p>Si tenés instalada una interfaz gráfica para instalar archivos .deb, ejecutando el archivo que descargaste ya vas a poder instalar RStudio. Si no, abrí una terminal en el directorio donde bajaste el archivo y ejecutá</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> ARCHIVO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> dpkg <span class="at">-i</span> ARCHIVO</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Reemplazando ARCHIVO por el nombre del archivo instalador.</p>
 <p>Es posible que salte algún error por falta de alguna dependencia, en ese caso usá</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-f</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get <span class="at">-f</span> install</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Y debería estar arreglado.</p>
 <p>Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana como esta:</p>
 <p><img src="images/rstudio-principal.png" class="img-fluid"> ### Mac {-}</p>
