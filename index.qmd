@@ -10,14 +10,14 @@ Este libro se desarrollo para la materia Introduccion a la Programacion II y cub
 
 ## Introducción para estudiantes
 
-El objetivo principal de este libro es enseñarte las herramientas, habilidades y conocimientos necesarios para crear software de para ciencia de datos abierto, reproducible y sostenible. Esta pensado para personas que investigan o practican ciencias de datos y que ya saben escribir funciones y programas de unos cientos de líneas de codigo y que quieren ser más productivos, tener más confianza en sus resultados y trabajar de forma abierta y reproducible. 
+El objetivo principal de este libro es enseñarte las herramientas, habilidades y conocimientos necesarios para crear software abierto para hacer ciencia de datos de una forma reproducible y sostenible. Esta pensado para personas que investigan o practican ciencias de datos y que ya saben escribir funciones y programas de unos cientos de líneas de codigo y que quieren ser más productivos, tener más confianza en sus resultados y trabajar de forma abierta y reproducible. 
 
 Este libro ofrece una introducción pragmática y basada en herramientas a la ingeniería de software de investigación. Para las personas cuyas tareas incluyen la creación de paquetes de software, este libro le ayudará a ser un ingeniero de software de investigacion. A diferencia de las personas que desarrollan software en la industria o los estudiantes de ciencias de la computacion, este libro utiliza el análisis de datos como ejemplo motivador y asume que el objetivo final de nuestros estudiantes es responder a preguntas y realizar analisis de datos.
 
 La ciencia de datos es un proceso que depende de resultados que sean exactos, precisos, replicables y reproducibles. El desarrollo de paquetes de software con fines de investigación nos ayuda a garantizar que los análisis que producen nuestros resultados sean exactamente eso: exactos, precisos, replicables y reproducibles.
 
 Teniendo esto en cuenta, el principal objetivo de aprendizaje de este libro es que
-aprendas a *gestionar proyectos de ciencia de datos* y a *desarrollar un paquete R*. Al final del libro tendras las habilidades y conocimientos necesarios para: trabajar en proyectos de ciencias de datos ordenados, desarrollar paquetes R bien construidos, bien documentados y reutilizables y trabajar eficazmente en equipo.
+aprendas a *gestionar proyectos de ciencia de datos* y a *desarrollar un paquete R*. Al final del libro tendras las habilidades y conocimientos necesarios para: trabajar en proyectos de ciencias de datos ordenados, desarrollar paquetes de R bien construidos, bien documentados y reutilizables y trabajar eficazmente en equipo.
 
 Estos son los **objetivos de aprendizaje** específicos que dominarás con este libro:
 
@@ -35,6 +35,14 @@ Estos son los **objetivos de aprendizaje** específicos que dominarás con este 
 12. **Resolver** casos reales de ciencia de datos aplicando las habilidades aprendidas durante la materia.
 13. **Organizar** proyectos de ciencia de datos pequeños a medianos.
 14. **Incorporar** el valor del trabajo abierto y reproducible. 
+
+## Visión general de los paquetes creados 
+
+A lo largo del libro, construirás un paquete de R que implementa la ley de Zipf.  
+
+La ley de Zipf es un resultado fascinante en el campo de la lingüística cuantitativa que afirma que la segunda palabra más común en un cuerpo de texto aparece la mitad de veces que la más común, la tercera más común aparece un y así sucesivamente. Para comprobar si la ley de Zipf se cumple en una colección de textos clásicos disponibles gratuitamente en el [Proyecto Gutenberg](https://www.gutenberg.org/), escribiremos un paquete de software que cuente y analice la distribución de frecuencias de palabras en cualquier cuerpo de texto arbitrario.
+
+Luego de presentar un tema vamos a realizar ejercicios que nos hagan avanzar en nuestro objetivo de desarrollar este paquete de R en particular. 
 
 ## Reutilización y licencia {#sec-licensing}
 

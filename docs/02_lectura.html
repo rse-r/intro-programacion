@@ -2,10 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.4.528">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-<title>3&nbsp; Lectura de datos ordenados – Introducción a la Programación II</title>
+<title>Introducción a la Programación II - 3&nbsp; Lectura de datos ordenados</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -103,13 +103,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_lectura.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos ordenados</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -133,7 +133,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Preface</span></a>
+ <span class="menu-text">Prefacio</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03_manipulacion-1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos I</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -226,6 +226,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">References</span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
     </ul>
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
@@ -258,7 +275,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header><section id="trabajando-con-datos" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="trabajando-con-datos">
 <span class="header-section-number">3.1</span> Trabajando con datos</h2>
-<p>Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.</p>
+<p>Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs (Interfaz de programación de aplicaciones, <em>Application programming interface</em> en Ingles) para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como <a href="https://zenodo.org">Zenodo</a> y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.</p>
 <p>El código que genera la descarga de datos podría estar incluido en el archivo de análisis de datos si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.</p>
 <p>Veamos un ejemplo de descarga de datos desde Zenodo.</p>
 <p>Si revisamos la base de datos <a href="https://zenodo.org/records/12772944" class="uri">https://zenodo.org/records/12772944</a> veremos que incluye un solo archivo en formato .csv.</p>
@@ -271,18 +288,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Vemos también el botón “Download” para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.</p>
-<p>Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos.</p>
+<p>Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos y actualizados.</p>
 <p>Para eso, primero necesitás la dirección (URL) del set de datos. Eso se consigue yendo a <a href="https://zenodo.org/records/12772944">la página del set de datos</a> y en vez de hacer click en Download, haciendo</p>
 <div class="tip">
 <p>Click derecho → Copiar dirección del enlace</p>
 </div>
-<p>La URL de la esta serie es <code>https://zenodo.org/records/12772944/files/pinguinos.csv?download=1</code>. Guaramos eso en una variable en R</p>
+<p>La URL de esta base de datos es <code>https://zenodo.org/records/12772944/files/pinguinos.csv?download=1</code>. Guardamos eso en una variable en R</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos_url</span> <span class="op">&lt;-</span> <span class="st">"https://zenodo.org/records/12772944/files/pinguinos.csv?download=1"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Y también definimos la ruta donde descargar el archivo</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos_archivo</span> <span class="op">&lt;-</span> <span class="st">"datos/pinguinos.csv"</span> <span class="co"># esta ubicación debe existir!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos_archivo</span> <span class="op">&lt;-</span> <span class="st">"datos/pinguinos.csv"</span> <span class="co"># esta ubicación, o sea la carpeta datos debe existir!</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Y finalmente usamos la función <code><a href="https://rdrr.io/r/utils/download.file.html">download.file()</a></code> para descargar el archivo.</p>
 <div class="cell">
@@ -291,8 +308,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Y esto va a descargar la última versión de los datos.</p>
 </section><section id="leer-datos-csv" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="leer-datos-csv">
 <span class="header-section-number">3.2</span> Leer datos csv</h2>
-<p>Existen muchas funciones distintas para leer datos dependiendo del formato en el que están guardados. Para datos tabulares, la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.</p>
-<p>En R hay muchas maneras de hacer cada cosa, por ejemploe podríamos leer el archivo con la función <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>, con <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> del paquete <code>readr</code> o <code>fread()</code> del paquete <code>data.table</code> entre otras opciones. Nos vamos a quedar con la opción que nos da <code>readr</code> que tiene algunas características interesantes.</p>
+<p>Existen muchas funciones distintas para leer datos dependiendo del formato en el que están guardados. Para datos tabulares (filas y columnas), la forma más útil es el formato csv, que es un archivo de texto plano con datos separados por coma.</p>
+<p>En R hay muchas maneras de hacer cada cosa, por ejemplo podríamos leer el archivo con la función <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>, con <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> del paquete <code>readr</code> o <code>fread()</code> del paquete <code>data.table</code> entre otras opciones. Nos vamos a quedar con la opción que nos da <code>readr</code> que tiene algunas características interesantes.</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">pinguinos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"datos/pinguinos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -308,7 +325,7 @@ dbl (5): largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, anio
 </div>
 </div>
 <div class="informacion">
-<p>Notá que en este caso el código para leer los datos consta de dos líneas. La primera carga el paquete readr y el segundo usa la función <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> (del paquete readr) para leer el archivo .csv. No es necesario cargar el paquete cada vez que vas a leer un archivo, pero asegurate de incluir la carga de paquetes al comienzo de tu archivo.</p>
+<p>Notá que en este caso el código para leer los datos consta de dos líneas. La primera carga el paquete readr y el segundo usa la función <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code> (del paquete readr) para leer el archivo .csv. No es necesario cargar el paquete cada vez que vas a leer un archivo, pero asegurate de incluir la carga de paquetes al comienzo de tu codigo.</p>
 </div>
 <p>Todo ese texto naranja/rojo es intimidante pero no te preocupes, es sólo un mensaje que nos informa que los datos se leyeron y qué tipo de dato tiene cada columna. Podemos explorar la estructura de la variable <code>pinguinos</code> usando la función <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> (de <em>structure</em> en inglés).</p>
 <div class="cell">
@@ -340,6 +357,35 @@ dbl (5): largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, anio
 <p>Esto nos dice un montón. La primera línea dice que es una <code>tibble</code>, que es un caso especial de la estructura de datos tabular básica de R llamada <code>data.frame</code>. Tiene 344 filas (las <strong>observaciones</strong>) y 8 columnas (o <strong>variables</strong> que describen las observaciones). Las siguientes líneas nos dicen los nombres de las columnas (especie, isla, largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, sexo, y anio), su tipo de dato (<code>chr</code> o <code>num</code>), la longitud ([1:344]) y sus primeros elementos.</p>
 <div class="enconstruccion">
 <p>Sumar ejercicio de lectura de los datos con los que vamos a trabajar. Familiarzarse con los datos</p>
+</div>
+<div class="ejercicio">
+<p>Para poder construir y probar nuestro paquete, necesitamos tener los datos con los que vamos a trabajar.</p>
+<p>Utilizaremos los siguientes textos del Proyecto Gutenberg:</p>
+<section id="originales-en-catellano" class="level3" data-number="3.2.1"><h3 data-number="3.2.1" class="anchored" data-anchor-id="originales-en-catellano">
+<span class="header-section-number">3.2.1</span> Originales en catellano:</h3>
+<ul>
+<li>Platero y yo: <a href="https://www.gutenberg.org/cache/epub/9980/pg9980.txt" class="uri">https://www.gutenberg.org/cache/epub/9980/pg9980.txt</a>
+</li>
+<li>Don Quijote: <a href="https://www.gutenberg.org/cache/epub/2000/pg2000.txt" class="uri">https://www.gutenberg.org/cache/epub/2000/pg2000.txt</a>
+</li>
+<li>Fuente Ovejuna: <a href="https://www.gutenberg.org/cache/epub/60198/pg60198.txt" class="uri">https://www.gutenberg.org/cache/epub/60198/pg60198.txt</a>
+</li>
+<li>Cuentos de amor de locura y de muerte: <a href="https://www.gutenberg.org/cache/epub/13507/pg13507.txt" class="uri">https://www.gutenberg.org/cache/epub/13507/pg13507.txt</a>
+</li>
+</ul></section><section id="traducciones" class="level3" data-number="3.2.2"><h3 data-number="3.2.2" class="anchored" data-anchor-id="traducciones">
+<span class="header-section-number">3.2.2</span> Traducciones:</h3>
+<ul>
+<li>La isla del tesoro: <a href="https://www.gutenberg.org/cache/epub/45438/pg45438.txt" class="uri">https://www.gutenberg.org/cache/epub/45438/pg45438.txt</a>
+</li>
+<li>El caso extraño del Doctor Jekyll: <a href="https://www.gutenberg.org/cache/epub/62627/pg62627.txt" class="uri">https://www.gutenberg.org/cache/epub/62627/pg62627.txt</a>
+</li>
+</ul>
+<ol type="1">
+<li><p>Escribe el código necesario para descargar los textos en español en formato .txt y guardalos en la carpeta <code>datos</code> de tu proyecto. Utiliza las url provistas en los dos listados anteriores. Piensa en nombres adecuados para tus archivos segun lo que vimos en el primer capitulo.</p></li>
+<li><p>Lee los datos descargados, para eso revisa la ayuda de la funcion <code><a href="https://readr.tidyverse.org/reference/read_lines.html">read_lines()</a></code>.</p></li>
+<li><p>Explora su estructura con la función <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>.</p></li>
+<li><p>Explora su estructura especificando el numero de elemento a mostrar. Por ejemplo, si la variable que usaste para leer el texto se llama libro, usa <code>libro[8:14]</code>. Que informacion nos devuelve ese codigo?</p></li>
+</ol></section>
 </div>
 
 
@@ -378,7 +424,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -410,47 +467,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -485,11 +502,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -537,12 +550,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -763,13 +771,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./01_proyectos.html" class="pagination-link" aria-label="Entorno de trabajo">
+      <a href="./01_proyectos.html" class="pagination-link  aria-label=" de="" trabajo="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Entorno de trabajo</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_manipulacion-1.html" class="pagination-link" aria-label="Manipulación de datos I">
-        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos I</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./03_manipulacion-1.html" class="pagination-link" aria-label="<span class='chapter-number'>4</span>&nbsp; <span class='chapter-title'>Manipulación de datos ordenados I</span>">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
