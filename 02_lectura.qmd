@@ -86,37 +86,28 @@ Tiene `r nrow(pinguinos)` filas (las **observaciones**) y `r ncol(pinguinos)` co
 Las siguientes líneas nos dicen los nombres de las columnas (`r knitr::combine_words(colnames(pinguinos), and = "y ")`), su tipo de dato (`chr` o `num`), la longitud (`r paste0("[1:", nrow(pinguinos), "]")`) y sus primeros elementos.
 
 
-::: enconstruccion
-Sumar ejercicio de lectura de los datos con los que vamos a trabajar.
-Familiarzarse con los datos 
-:::
-
 
 ::: ejercicio
 
-Para poder construir y probar nuestro paquete, necesitamos tener los datos con los que vamos a trabajar.
+A lo largo del curso vamos a construir y probar paquete de R que nos permita trabajar y analizar datos de estaciones meteorológicas. El objetivo de este ejercicio es que comiences a familiarizarte con estos datos.
 
-Utilizaremos los siguientes textos del Proyecto Gutenberg:
+Utilizaremos datos que diponibiliza el Institulo Nacional de Tecnología Agropecuaria [INTA](https://www.argentina.gob.ar/inta) a traves del Sistema de Información y Gestión Agropecuaria [SIGA](https://siga.inta.gob.ar/#/). Por ahora y para practicar lo que vimos en esta sección, usaremos una parte de esos datos que guardamos en un repositorio.
 
-**Originales en catellano:**
+* Metadatos: 
+* Estación NH0472: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0472.csv
+* Estación NH0910: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0910.csv
+* Estación NH0046: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0046.csv
+* Estación NH0098: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0098.csv
+* Estación NH0437: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0437.csv
 
-* Platero y yo: <https://www.gutenberg.org/cache/epub/9980/pg9980.txt>
-* Don Quijote: <https://www.gutenberg.org/cache/epub/2000/pg2000.txt>
-* Fuente Ovejuna: <https://www.gutenberg.org/cache/epub/60198/pg60198.txt>
-* Cuentos de amor de locura y de muerte: <https://www.gutenberg.org/cache/epub/13507/pg13507.txt>
+1. Escribe el código necesario para descargar losr archivos y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en el listado. Piensa en nombres adecuados para tus archivos segun lo que vimos en el segundo capitulo. 
 
-**Traducciones:**
+2. Lee los datos descargados, para eso revisa la ayuda de la funcion `read_csv`()`. 
 
-* La isla del tesoro: <https://www.gutenberg.org/cache/epub/45438/pg45438.txt>
-* El caso extraño del Doctor Jekyll: <https://www.gutenberg.org/cache/epub/62627/pg62627.txt>
-
-1. Escribe el código necesario para descargar los textos en español en formato .txt y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en los dos listados anteriores. Piensa en nombres adecuados para tus archivos segun lo que vimos en el segundo capitulo. 
-
-2. Lee los datos descargados, para eso revisa la ayuda de la funcion `read_lines()` como vimos en el primer capitulo. 
-
-3. Explora su estructura con la función `str()`.
-
-4. Explora su estructura especificando el numero de elemento a mostrar.  Por ejemplo, si la variable que usaste para leer el texto se llama libro, usa `libro[8:14]`. Que informacion nos devuelve ese codigo?
+3. Explora la estructura de los data.frames con la función `str()`. También podés usar `glimpse()` del paquete `dplyr`
+* ¿Cuántas columnas tiene cada tabla? ¿son todas iguales?
+* ¿Qué tipo de dato hay en cada columna? ¿el tipo de dato es correcto según el contenido que vez? 
+* ¿Cuántos registros hay que cada data frame?
 
 :::
 
