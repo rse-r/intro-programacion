@@ -334,5 +334,105 @@
       "Appendices",
       "<span class='chapter-number'>A</span>  <span class='chapter-title'>Preparando el entorno de trabajo</span>"
     ]
+  },
+  {
+    "objectID": "04_git-1.html",
+    "href": "04_git-1.html",
+    "title": "5  git para trabajar individualmente",
+    "section": "",
+    "text": "5.1 Objetivos de aprendizaje",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#objetivos-de-aprendizaje",
+    "href": "04_git-1.html#objetivos-de-aprendizaje",
+    "title": "5  git para trabajar individualmente",
+    "section": "",
+    "text": "Identificar por qué el control de versiones, específicamente Git, es importante para el desarrollo de software y análisis de datos.\nDiferenciar métodos para trabajar con Git y R: integración con RStudio\nAplicar el proceso de modificación-add-commit como el flujo de trabajo de Git para el seguimiento de los cambios y ver el historial de commits de un repositorio.\nPublicar repositorios en GitHub y coordinar versiones remotas y locales",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#por-qué-git",
+    "href": "04_git-1.html#por-qué-git",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.2 ¿Por qué git?",
+    "text": "5.2 ¿Por qué git?\n¿Tenés algo así en tu computadora?\n/home/pao/Documents/Clases/progrmacion\n├── script.R\n├── tp.Rmd\n├── tp_corregido.Rmd\n├── tp_corregido2.Rmd\n├── tp_final.Rmd\n├── tp_finalfinal.Rmd\n├── este_es_el_final.Rmd\n├── juro_que_esta_es_la_ultima_version_del_tp.Rmd\n└── FINAL.Rmd\nProbablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos repositorio. Si alguna vez has mirado el historial de un archivo de Google Docs, es así pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.\nSi trabajas de manera individual, git es estupendo para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También puedes utilizar repositorio remoto (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.\nSi trabajas en equipo, podés aprovechar todo lo anterior y utilizar también el control de versiones como herramienta para colaborar y organizar las distintas versiones de un mismo archivo presentes en las múltiples computadoras que vos y las otras personas usen.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#pero-qué-entendemos-por-control-de-versiones",
+    "href": "04_git-1.html#pero-qué-entendemos-por-control-de-versiones",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.3 Pero, ¿qué entendemos por control de versiones?",
+    "text": "5.3 Pero, ¿qué entendemos por control de versiones?\nImaginemos que tenemos un repositorio funcionando (más adelante veremos cómo crear uno). Cuando creas un nuevo archivo como parte del repositorio (o repo), ese archivo no es trackeado o no está versionado. Esto significa que git ignorará el archivo y cualquier cambio que hayas hecho hasta que lo agregues al repositorio (add en inglés) y empieces a registrar sus cambios. En ese momento el archivo está en el area staging (en el escenario de git) y está listo para entrar en el repositorio. Para eso hay que confirmar (commit en inglés) esa versión del archivo en el repositorio. Este flujo de trabajo modify --&gt; add --&gt; commit se repetirá cada vez que quieras guardar una versión del archivo. No recomendamos hacer un commit cada vez que guardes el archivo o cambies una coma, y tampoco es buena idea hacer un commit con mil millones de cambios. Con la práctica y dependiendo de cómo trabajes, encontrarás un punto medio cómodo.\n\n\n\nLa figura muestra el ciclo de cambios en un archivo: versionado o sin versional. Cuando es versionado y forma parte del repositorio, las acciones son add, commit, y modificar. Con la acción add, el archivo se “prepara”; con la acción de commit, el archivo se “guarda” en el repositorio. Este ciclo se repite cada vez que se modifica el archivo.\n\n\nEstas acciones son add y commit son comandos de git. Si tenes experiencia trabajando con la terminal podés utilizar git desde ahí, pero los mismos comandos pueden ejecutarse desde una GUI como GitHub Desktop o GitKraken. Durante este curso utilizaremos RStudio.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#ya-mencionamos-repositorio-remoto",
+    "href": "04_git-1.html#ya-mencionamos-repositorio-remoto",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.4 ¿Ya mencionamos “repositorio remoto”?",
+    "text": "5.4 ¿Ya mencionamos “repositorio remoto”?\nAntes revisamos el flujo de trabajo local. El repositorio (una carpeta oculta llamada .git) vive en tu computadora y con eso ya estas usando control de versiones. Pero, también podrías conectar el repositorio local con un repositorio remoto. En este curso vamos a utilizar GitHub para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como GitLab.\nImaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego commits para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello empujamos (push en inglés) los commits al repositorio remoto y entonces, los dos repositorios están “actualizados”, tienen la misma versión de los archivos.\nLuego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está “desactualizado” y necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer pull.\n\n\n\nModelo conceptual de un flujo de trabajo utilizando proyectos RStudio y git. Los archivos se añaden al área de preparación y luego se envían al repositorio local. Puedes enviar commits al repositorio remoto y bajar nuevos commits a tu computadora.\n\n\nHerramientas como GitHub también incluyen funciones que te ayudan a colaborar y gestionar repositorios. Por ejemplo, puedes modificar archivos y hacer commits con esos cambios utilizando la interfaz web.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#preséntate-con-git",
+    "href": "04_git-1.html#preséntate-con-git",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.5 Preséntate con Git",
+    "text": "5.5 Preséntate con Git\nAntes de crear tu primer repositorio tenes que asegurarte de que git y RStudio entienden y de que git te conoce. Si seguiste las instrucciones instrucciones previas al curso seguro que RStudio, git y GitHub se hablan entre sí.\n\nPodés comprobar que RStudio “sabe” donde está git yendo a Tools --&gt; Global Options --&gt; Git/SVN. Allí deberías encontrar la ruta en tu computadora a la instalación de git.\n\nPara presentarte con git, es decir, para que reconozca tu nombre y correo electrónico, puedes utilizar el comando usethis paquete.\nlibrary(usethis) \nuse_git_config(user.name = \"Juan Perez\",\n               user.email = \"juan@ejemplo.org\")\nSustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de GitHub.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#creando-un-nuevo-repositorio",
+    "href": "04_git-1.html#creando-un-nuevo-repositorio",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.6 Creando un nuevo repositorio",
+    "text": "5.6 Creando un nuevo repositorio\nHay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la Termianl, desde GitHub (o sus amigos) ¡o desde RStudio! Aca te mostraremos cómo crear un repositorio desde GitHub, asociarlo a un proyecto de RStudio y trabajar con él. Pero tené en cuenta que hay muchas otras formas de trabajar con git.\n\n1. Creá un repositorio online.\n\nEntrá en github.com e inicia sesión.\nEn la esquina superior derecha, hacé click en el botón “+” y luego en “New repository”.\n\nA continuación completá la información del repositorio:\n\nRepository template: No template.\nRepository name: como quieras llamar a tu nuevo proyecto.\nDescription: Una descripción breve del proyecto. Escribila para los humanos.\nVisibilidad: Public.\nInitialize this repository with: nada (podemos configurarlo todo desde R).\n\nAntes de volver a RStudio, copia la url del repositorio. Por ejemplo https://github.com/paocorrales/myrepo.git\n\n\n2. En RStudio, inicia un nuevo Proyecto:\n\nFile &gt; New Project &gt; Version Control &gt; Git. En la “URL del repositorio” pegá la URL de tu nuevo repositorio de GitHub, tiene que tener esta pinta: https://github.com/paocorrales/myrepo.git.\nElejí la carpeta donde querés crear el proyecto.\nElejí “Open in new sesion”.\nY haz clic en “Create project”.\n\n\nLa nueva carpeta en tu computadora será un repositorio git, vinculado a un repositorio remoto de GitHub y un proyecto de RStudio al mismo tiempo. Este flujo de trabajo también se asegura de que toda la configuración entre los repositorios local y remoto se realice correctamente.\nTambién agrema un archivo llamado .gitignore que incluye una lista de archivos que no queremos sumar al repositorio (por ejemplo .Rhistory).",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#cambios-locales",
+    "href": "04_git-1.html#cambios-locales",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.7 Cambios locales",
+    "text": "5.7 Cambios locales\nEs hora de poner en práctica algunas de las cosas de las que hemos estado hablando.\n\nAdd, commit\n\nCreá un nuevo archivo RMarkdown y guardalo.\nAgregalo al área de preparación con add y luego hace un commit. ¡Vas a tener que pensar un mensaje descriptivo!\nHace un cambio en el archivo, puede ser cualquier cosa. Guardalo.\nRepetí el paso 2.\n\n\n\n\nPanel Git con 3 archivos sin seguimiento.\n\n\n\n\n\nPanel Git con 3 archivos con seguimiento añadidos al área de preparación.\n\n\n\n\n\nInterfaz RStudio para ver las diferencias entre archivos, escribir el mensaje para el commit y enviarlo al repositorio remoto.\n\n\n\nSi todo salió bien, empezaste a rastrear archivos, hiciste cambios y commits para guardar esa versión en el repositorio local. Puede que veas un mensaje en la pestaña de git diciendo que el repositorio local “is ahead of ’origin/master` by 2 commits”. No verás ningún cambio en GitHub hasta que hagas push y envíes esos commits al repositorio remoto. Podés hacer esto al final del día si preferis, pero si trabajas con otras personas puede ser una buena idea hacer push luego de cada commit.\n\n¡Push!\n\nAhora, hacé push para enviar los commits al repositorio remoto utilizando el botón con la flecha verde apuntando hacia arriba.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#cambios-remotos",
+    "href": "04_git-1.html#cambios-remotos",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.8 Cambios remotos",
+    "text": "5.8 Cambios remotos\nVolvamos a GitHub. Si actualizas la página, ahora verás los archivos que acabas sumar al repositorio o modificar. Hagamos click en “Commits” para ver la historia del repositorio. Desde esta página, podés explorar el repositorio en el “estado” en el que estaba con cada commit y ver las diferencias entre las distintas versiones.\nAhora, podemos intentar hacer cambios aquí.\n\nCrear un README\n\nEn la página principal, hacé click en el botón verde que dice “Add a README”.\nAgregá algo en archivo. Los README suelen estar escritos en Markdown y contienen información sobre el repositorio.\nAl final de la página añadí un mensaje hacé click en “Confirm changes…”.\nVolvé a la página principal para ver el README.\n\n\nEl nuevo archivo y los cambios que hagas en GitHub sólo estarán en el repositorio remoto hasta que hagas un pull en el repositorio local. Si realizas cambios en el repositorio local mientras no está actualizado, podés encontrarte con conflictos cuando intentes unir las 2 versiones, lo que suele generar dolores de cabeza. Esto ocurre cuando la versión de un archivo en el repositorio local no es compatible con su versión en el repositorio remoto. En esos casos, git no puede decidir qué versión es la correcta y tenés que hacerlo vos.\nPara evitar este problema (lo más posible), tenes que hacer un pull antes de empezar a hacer cualquier otra cosa. La mayoría de las veces RStudio mostrará el mensaje “Already up to date”, pero es bueno hacerlo un hábito.\n\nPull desde GitHub\n\nVolvé a RStudio.\nRevisá panel de Git.\nHacé click en la flecha azul que dice “Pull”.\nRevisá el archivo README en la pestaña Archivos.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
+  },
+  {
+    "objectID": "04_git-1.html#anatomía-de-un-repositorio-de-github",
+    "href": "04_git-1.html#anatomía-de-un-repositorio-de-github",
+    "title": "5  git para trabajar individualmente",
+    "section": "5.9 Anatomía de un repositorio de GitHub",
+    "text": "5.9 Anatomía de un repositorio de GitHub\n\nArchivos README. Utilizá un README.md para explicar de que se trata es tu proyecto y cómo utilizarlo. README.md es el archivo que se muestra automáticamente cuando abrís un repositorio de GitHub.\nLicencia. La licencia le indica a las personas cómo puede utilizar el contenido de tu repositorio. Generalmente, utilizamos licencias permisivas para que las personas pueda utilizar los materiales de cualquier manera. Algunos ejemplos son la Licencia MIT o Apache. Podés revisar algunos recursos extra:\n\nElejí una licencia para proyectos de código.\nLicencias de software en lenguaje sencillo: explica la jerga legal de las licencias en términos sencillos\n\nGuía para colaborar. Un archivo llamado CONTRIBUTING.md que incluye las instrucciones que personas que quieren conlaborar en tu proyecto sepan lo que deben hacer si quieren ayudarte.\nCódigo de conducta. Los buenos proyectos tienen códigos de conducta para garantizar un ambiente amigable donde las personas puede colaborar. Github tiene atajos para agregar Código de Conducta facilmente.\nIssues. Te permiten gestionar el proyecto, discutir problemas y mejoras con otras personas.\n\n\nAgregar insturcciones para github classroom y para tareas ahi",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>git para trabajar individualmente</span>"
+    ]
   }
 ]
