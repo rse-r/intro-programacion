@@ -250,44 +250,41 @@ pinguinos |>
 ```
 
 
-::: enconstruccion
-Sumar ejercicio de manipulacion de los datos con los que vamos a trabajar.
-La idea es que puedan responder preguntas 
-:::
-
 ::: ejercicio
-Como nuestro paquete va a trabajar con texto, el objetivo de este tutorial interactivo es introducir los conceptos básicos de la minería de texto con un enfoque tidy basado en el libro Tidy Text de Silge y Robinson.
 
-El tutorial se presenta como un paquete. Para instalarlo, primero necesitás instalar el paquete `learnr` con el siguiente comando:
+Ahora que ya tenés las herramientas para manipular y transformar datos ordenados, es hora de familiarizarte más con los datos de las estaciones meteorológicas. 
 
-`install.packages("learnr")`
+Te proponemos responder a las siguientes preguntas manipulando los datos con los verbos de dplyr que vimos hasta ahora. 
+Pero seguramente necesites nuevas funciones, te iremos dando pistas en el camino.
 
-y luego usá el siguiente código para instalar el tutorial:
+Pero antes de eso, sería útil tener todos los datos de las estaciones en un solo data.frame. 
+Seguramente los leiste por separado y cada uno tiene un nombre distinto. 
+La función `rbind()` permite unir data.frames uno debajo del otro. 
+Usá el siguiente código y completalo para generar un data.frame con los datos de todas las estaciones.
 
-`remotes::install_github("yabellini/TextMiningTutorial")`
-
-Puede ser que si hay versiones más nuevas de los paquetes que necesitas en la consola te aparezca un mensaje similar a este:
-
-```
-These packages have more recent versions available.
-It is recommended to update all of them.
-Which would you like to update?
-
- 1: All                                 
- 2: CRAN packages only                  
- 3: None                                
- 4: colorspace (1.4-1  -> 2.0-1 ) [CRAN]
- 5: rlang      (0.4.2  -> 0.4.11) [CRAN]
- 6: glue       (1.4.0  -> 1.4.2 ) [CRAN]
- 
- Enter one or more numbers, or an empty line to skip updates:
+```r
+nuevo_nombre <- rbind(___, ____, ____)
 
 ```
 
-Ese mensaje nos indica que paquetes podríamos actualizar. Si no queremos actualizar podemos presionar Enter o bien seleccionar el número que dice None, en este caso el 3.
+*Preguntas*
 
-y luego ejecutar de esta manera el Tutorial:
+1. ¿Cuántas observaciones de temperatura se hicieron en cada estación? 
 
-`learnr::run_tutorial("TextMining", package = "TextMiningTutorial")`
+2. ¿Cuál es la proporción de `NA` en temperatura de abrigo a 150 cm? Pista: podés calcular la proporción como cantidad de NA dividido la cantidad total de observaciones.
+La función `is.na()` devuelve `TRUE` si el valor es un `NA`, al mismo tiempo `TRUE` es igual a `1` (así es como R lo interpreta) por lo que `sum(is.na(variable))` te va a dar la cantidad de `NA` en esa variable.
+
+3. ¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
+
+4. ¿Cuál es el promedio anual de la temperatura de abrigo a 150 cm en cada estación? Pista, podés extraer el año de la variable `fecha` con anio = `year(fecha)` y usar esa nueva variable para agrupar los datos.
+
+5. ¿Cuál es la precipitación acumulada mensual en cada estación? Pista: la precipitación acumulada mensual es la *suma* de la precipitación en cada mes. 
+En este caso necesitas agrupar los datos por año y mes, una posibilidad es usar `floor_date(fecha, "month")`.
+
+6. ¿Cuál es la temperatura mínima registrada y la máxima registrada en cada estación?
+
+
+
+
 
 :::
