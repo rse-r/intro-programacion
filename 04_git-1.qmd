@@ -57,8 +57,8 @@ Herramientas como GitHub también incluyen funciones que te ayudan a colaborar y
 
 Antes de crear tu primer repositorio tenes que asegurarte de que git y RStudio entienden y de que git te conoce. Si seguiste las instrucciones [instrucciones previas al curso](A_instalacion.html) seguro que RStudio, git y GitHub se hablan entre sí.
 
-::: {.alert .alert-dismissible .alert-primary}
-Puedes comprobar que RStudio "sabe" donde está git yendo a `Tools --> Global Options --> Git/SVN`. Allí deberías encontrar la ruta en tu computadora a la instalación de git.
+::: importante
+Podés comprobar que RStudio "sabe" donde está git yendo a `Tools --> Global Options --> Git/SVN`. Allí deberías encontrar la ruta en tu computadora a la instalación de git.
 :::
 
 Para presentarte con git, es decir, para que reconozca tu nombre y correo electrónico, puedes utilizar el comando *usethis* paquete.
@@ -75,8 +75,8 @@ Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de G
 
 Hay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la Termianl, desde GitHub (o sus amigos) ¡o desde RStudio! Aca te mostraremos cómo crear un repositorio desde GitHub, asociarlo a un proyecto de RStudio y trabajar con él. Pero tené en cuenta que hay muchas otras formas de trabajar con git.
 
-::: {.alert .alert-dismissible .alert-light}
-### 1. Creá un repositorio online.
+::: ejercicio
+**1. Creá un repositorio online.**
 
 -   Entrá en [github.com](https://github.com) e inicia sesión.
 -   En la esquina superior derecha, hacé click en el botón "+" y luego en "New repository".
@@ -92,9 +92,9 @@ A continuación completá la información del repositorio:
 Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://github.com/paocorrales/myrepo.git`
 :::
 
-::: {.alert .alert-dismissible .alert-light}
+::: ejercicio
 
-### 2. En RStudio, inicia un nuevo Proyecto:
+**2. En RStudio, inicia un nuevo Proyecto:**
 
 -   `File > New Project > Version Control > Git`. En la "URL del repositorio" pegá la URL de tu nuevo repositorio de GitHub, tiene que tener esta pinta: `https://github.com/paocorrales/myrepo.git`.
 -   Elejí la carpeta donde querés crear el proyecto.
@@ -110,8 +110,8 @@ También agrema un archivo llamado `.gitignore` que incluye una lista de archivo
 
 Es hora de poner en práctica algunas de las cosas de las que hemos estado hablando.
 
-::: {.alert .alert-dismissible .alert-light}
-### Add, commit
+::: ejercicio
+**Add, commit**
 
 1.  Creá un nuevo archivo RMarkdown y guardalo.
 2.  Agregalo al área de preparación con add y luego hace un commit. ¡Vas a tener que pensar un mensaje descriptivo!
@@ -127,9 +127,9 @@ Es hora de poner en práctica algunas de las cosas de las que hemos estado habla
 
 Si todo salió bien, empezaste a rastrear archivos, hiciste cambios y commits para guardar esa versión en el repositorio local. Puede que veas un mensaje en la pestaña de git diciendo que el repositorio local "is ahead of 'origin/master` by 2 commits". No verás ningún cambio en GitHub hasta que hagas push y envíes esos commits al repositorio remoto. Podés hacer esto al final del día si preferis, pero si trabajas con otras personas puede ser una buena idea hacer push luego de cada commit.
 
-::: {.alert .alert-dismissible .alert-light}
+::: ejercicio
 
-### ¡Push!
+**¡Push!**
 
 1.  Ahora, hacé push para enviar los commits al repositorio remoto utilizando el botón con la flecha verde apuntando hacia arriba. 
 
@@ -141,9 +141,9 @@ Volvamos a GitHub. Si actualizas la página, ahora verás los archivos que acaba
 
 Ahora, podemos intentar hacer cambios aquí.
 
-::: {.alert .alert-dismissible .alert-light}
+::: ejercicio
 
-### Crear un README
+**Crear un README**
 
 1.  En la página principal, hacé click en el botón verde que dice "Add a README".
 2.  Agregá algo en archivo. Los README suelen estar escritos en Markdown y contienen información sobre el repositorio.
@@ -156,9 +156,9 @@ El nuevo archivo y los cambios que hagas en GitHub sólo estarán en el reposito
 
 Para evitar este problema (lo más posible), tenes que hacer un pull antes de empezar a hacer cualquier otra cosa. La mayoría de las veces RStudio mostrará el mensaje "Already up to date", pero es bueno hacerlo un hábito.
 
-::: {.alert .alert-dismissible .alert-light}
+::: ejercicio
 
-### Pull desde GitHub
+**Pull desde GitHub**
 
 1.  Volvé a RStudio.
 2.  Revisá panel de Git.
