@@ -181,8 +181,15 @@ Para evitar este problema (lo más posible), tenes que hacer un pull antes de em
 
 -   *Issues.* Te permiten gestionar el proyecto, discutir problemas y mejoras con otras personas.
 
-::: enconstruccion
+::: ejercicio
 
-Agregar insturcciones para github classroom y para tareas ahi
+Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar GitHub Classroom. 
+
+¿Cómo funciona? 
+
+Preparamos repositorios con distintos ejercicios para que resuelvan. 
+Cada persona tendrá su repositorio para trabajar de manera individual, aunque siempre pueden resolver los ejercicios en gruupos (pequeños!)
+
+En el campus encontrarás las instrucciones para acceder a tu repositorio. 
 
 :::
