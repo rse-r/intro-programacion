@@ -250,6 +250,9 @@ pinguinos |>
 ```
 
 
+### Construyendo un paquete de R paso a paso {#ex-exploracion}
+
+
 ::: ejercicio
 
 Ahora que ya tenés las herramientas para manipular y transformar datos ordenados, es hora de familiarizarte más con los datos de las estaciones meteorológicas. 

@@ -85,7 +85,7 @@ La primera línea dice que es una `tibble`, que es un caso especial de la estruc
 Tiene `r nrow(pinguinos)` filas (las **observaciones**) y `r ncol(pinguinos)` columnas (o **variables** que describen las observaciones).
 Las siguientes líneas nos dicen los nombres de las columnas (`r knitr::combine_words(colnames(pinguinos), and = "y ")`), su tipo de dato (`chr` o `num`), la longitud (`r paste0("[1:", nrow(pinguinos), "]")`) y sus primeros elementos.
 
-
+### Construyendo un paquete de R paso a paso {#ex-lectura}
 
 ::: ejercicio
 

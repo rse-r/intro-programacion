@@ -274,7 +274,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#trabajando-con-datos" id="toc-trabajando-con-datos" class="nav-link active" data-scroll-target="#trabajando-con-datos"><span class="header-section-number">3.1</span> Trabajando con datos</a></li>
-  <li><a href="#leer-datos-csv" id="toc-leer-datos-csv" class="nav-link" data-scroll-target="#leer-datos-csv"><span class="header-section-number">3.2</span> Leer datos csv</a></li>
+  <li><a href="#leer-datos-csv" id="toc-leer-datos-csv" class="nav-link" data-scroll-target="#leer-datos-csv"><span class="header-section-number">3.2</span> Leer datos csv</a>
+  <ul class="collapse">
+  <li><a href="#ex-lectura" id="toc-ex-lectura" class="nav-link" data-scroll-target="#ex-lectura"><span class="header-section-number">3.2.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -384,6 +387,8 @@ dbl (5): largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, anio
 </div>
 </div>
 <p>Esto nos dice un montón. La primera línea dice que es una <code>tibble</code>, que es un caso especial de la estructura de datos tabular básica de R llamada <code>data.frame</code>. Tiene 344 filas (las <strong>observaciones</strong>) y 8 columnas (o <strong>variables</strong> que describen las observaciones). Las siguientes líneas nos dicen los nombres de las columnas (especie, isla, largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, sexo, y anio), su tipo de dato (<code>chr</code> o <code>num</code>), la longitud ([1:344]) y sus primeros elementos.</p>
+<section id="ex-lectura" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="ex-lectura"><span class="header-section-number">3.2.1</span> Construyendo un paquete de R paso a paso</h3>
 <div class="ejercicio">
 <p>A lo largo del curso vamos a construir y probar paquete de R que nos permita trabajar y analizar datos de estaciones meteorológicas. El objetivo de este ejercicio es que comiences a familiarizarte con estos datos.</p>
 <p>Utilizaremos datos que diponibiliza el Institulo Nacional de Tecnología Agropecuaria <a href="https://www.argentina.gob.ar/inta">INTA</a> a traves del Sistema de Información y Gestión Agropecuaria <a href="https://siga.inta.gob.ar/#/">SIGA</a>. Por ahora y para practicar lo que vimos en esta sección, usaremos una parte de esos datos que guardamos en un repositorio.</p>
@@ -408,6 +413,7 @@ dbl (5): largo_pico_mm, alto_pico_mm, largo_aleta_mm, masa_corporal_g, anio
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
