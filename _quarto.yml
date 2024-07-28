@@ -16,15 +16,16 @@ book:
     - 02_lectura.qmd
     - 03_manipulacion-1.qmd
     - 04_git-1.qmd
-    - 05_manipulacion-2.qmd
-    - 06_funciones.qmd
-    - 07_git-2.qmd
-    - 08_paquetes-1.qmd
-    - 09_errores.qmd
-    - 10_paquetes-2.qmd
-    - 11_documentacion.qmd
-    - 12_publicacion.qmd
-    - 13_reproducibilidad.qmd
+    - 05_graficos.qmd
+    - 06_manipulacion-2.qmd
+    - 07_funciones.qmd
+    - 08_git-2.qmd
+    - 09_paquetes-1.qmd
+    - 10_errores.qmd
+    - 11_paquetes-2.qmd
+    - 12_documentacion.qmd
+    - 13_publicacion.qmd
+    - 14_reproducibilidad.qmd
     - references.qmd
   appendices:
     - A_instalacion.qmd

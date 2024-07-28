@@ -1,4 +1,0 @@
----
-title: "Manipulación de datos II"
----
-
