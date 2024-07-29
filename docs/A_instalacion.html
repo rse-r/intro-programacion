@@ -291,7 +291,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#crear-una-cuenta-en-github" id="toc-crear-una-cuenta-en-github" class="nav-link" data-scroll-target="#crear-una-cuenta-en-github">Crear una cuenta en GitHub</a></li>
   <li><a href="#crear-una-cuenta-en-posit-cloud" id="toc-crear-una-cuenta-en-posit-cloud" class="nav-link" data-scroll-target="#crear-una-cuenta-en-posit-cloud">Crear una cuenta en Posit Cloud</a></li>
   </ul></li>
-  <li><a href="#configurando-git-github-y-rstudio" id="toc-configurando-git-github-y-rstudio" class="nav-link" data-scroll-target="#configurando-git-github-y-rstudio"><span class="header-section-number">A.1</span> Configurando Git, GitHub y RStudio</a></li>
   </ul>
 </nav>
     </div>
@@ -425,43 +424,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>Ir a <a href="https://posit.cloud/plans/free" class="uri">https://posit.cloud/plans/free</a>.</p></li>
 <li><p>Hacer clik en “Sign Up” y seguir las indicaciones para crear la cuenta personal.</p></li>
 </ul>
-</section>
-</section>
-<section id="configurando-git-github-y-rstudio" class="level2" data-number="A.1">
-<h2 data-number="A.1" class="anchored" data-anchor-id="configurando-git-github-y-rstudio"><span class="header-section-number">A.1</span> Configurando Git, GitHub y RStudio</h2>
-<p>Para que Git, GitHub y RStudio trabajen juntos hay que presentarlos. Vamos a seguir los siguientes pasos:</p>
-<ol type="1">
-<li>Dale tus credenciales a git ejecutando el siguiente codigo desde la consola de R, sustituyendo el nombre y el correo electrónico por tu nombre y el correo electrónico que utilizaste para registrarte en GitHub</li>
-</ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">use_git_config</span>(<span class="at">user.name =</span> <span class="st">"Jane Doe"</span>, </span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>                        <span class="at">user.email =</span> <span class="st">"jane@example.org"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="2" type="1">
-<li>Ahora tenemos que generar un token de acceso personal (Personal access token (PAT) para que RStudio pueda acceder a GitHub. Ejecuta el siguiente codigo en la consola de R:</li>
-</ol>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="3" type="1">
-<li><p>Asumiendo que estas logueado en GitHub, el codigo abrira una nueva ventana en tu navegador de internet para que puedas crear un nuevo PAT. En la pagina de GitHub, haz click en “Generate new token” y en la siguiente pagina selecciona los permisos que necesitas. No cierres esta ventana porque tendrás que copiar el token en el portapapeles.</p></li>
-<li><p>El siguiente paso es configurar RStudio para que use el token que acabas de crear. Para eso, ejecuta el siguiente codigo en la consola de R:</p></li>
-</ol>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="5" type="1">
-<li>Si aún no tienes un PAT almacenado, te pedirá que introduzcas tu PAT. Ve a la ventana anterior, copia el token, pégalo en tu consola y pulsa enter.</li>
-</ol>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gitcreds<span class="sc">::</span><span class="fu">gitcreds_set</span>()</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>? Enter password or token<span class="sc">:</span> ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="ot">-&gt;</span> Adding new credentials...</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="ot">-&gt;</span> Removing credentials from cache...</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="ot">-&gt;</span> Done.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ol start="6" type="1">
-<li>Por último, para comprobar que todo va bien con este comando</li>
-</ol>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>useethis<span class="sc">::</span><span class="fu">gh_token_help</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Debería imprimir una lista de detalles personales, incluyendo:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Personal access token <span class="cf">for</span> <span class="st">'https://github.com'</span><span class="sc">:</span> <span class="st">'&lt;discovered&gt;'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
