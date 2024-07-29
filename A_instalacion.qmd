@@ -104,6 +104,7 @@ Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana
 
 
 ![](images/rstudio-principal.png) 
+
 ### Mac {-}
 
 La primera vez que abrimos RStudio nos ofrece instalar las herramientas de XCode para línea de comandos. Aceptamos haciendo clic en instalar.
@@ -139,3 +140,53 @@ GitHub es una de las interfaces y repositorios mundiales mas conocidos y utiliza
 - Ir a <https://posit.cloud/plans/free>.
 
 - Hacer clik en "Sign Up" y seguir las indicaciones para crear la cuenta personal. 
+
+## Configurando Git, GitHub y RStudio 
+
+Para que Git, GitHub y RStudio trabajen juntos hay que presentarlos. Vamos a seguir los siguientes pasos:
+
+1. Dale tus credenciales a git ejecutando el siguiente codigo desde la consola de R, sustituyendo el nombre y el correo electrónico por tu nombre y el correo electrónico que utilizaste para registrarte en GitHub
+
+``` r
+usethis::use_git_config(user.name = "Jane Doe", 
+                        user.email = "jane@example.org")
+```
+
+2. Ahora tenemos que generar un token de acceso personal (Personal access token (PAT) para que RStudio pueda acceder a GitHub. Ejecuta el siguiente codigo en la consola de R:
+
+``` r
+usethis::create_github_token()
+```
+
+3. Asumiendo que estas logueado en GitHub, el codigo abrira una nueva ventana en tu navegador de internet para que puedas crear un nuevo PAT. En la pagina de GitHub, haz click en "Generate new token" y en la siguiente pagina selecciona los permisos que necesitas.  No cierres esta ventana porque tendrás que copiar el token en el portapapeles. 
+
+4. El siguiente paso es configurar RStudio para que use el token que acabas de crear. Para eso, ejecuta el siguiente codigo en la consola de R:
+
+``` r
+gitcreds::gitcreds_set()
+```
+
+5. Si aún no tienes un PAT almacenado, te pedirá que introduzcas tu PAT. Ve a la ventana anterior, copia el token, pégalo en tu consola y pulsa enter.
+
+``` r
+
+> gitcreds::gitcreds_set()
+
+? Enter password or token: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-> Adding new credentials...
+-> Removing credentials from cache...
+-> Done.
+
+```
+
+6. Por último, para comprobar que todo va bien con este comando
+
+``` r
+useethis::gh_token_help()
+```
+
+Debería imprimir una lista de detalles personales, incluyendo:
+
+``` r
+Personal access token for 'https://github.com': '<discovered>'
+```
