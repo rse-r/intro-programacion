@@ -131,7 +131,24 @@ pinguinos |>
 :::
 
 Como seguramente notaste en el ejercicio cuando aplicamos filtros usamos operaciones lógicas que devuelven `TRUE` o `FALSE` según si cumplen o no con la condición. 
-Para esto usamos operadores lógicos como `==`, `>`, `<`, `>=`, `<=`, etc. 
+Para esto usamos _operadores lógicos_ como `==`, `>`, `<`, `>=`, `<=`, etc. R tiene varios operadores lógicos:
+
+
+|Operador |	Definición |		
+|---------|------------|
+| <	|menor que|
+| x\|y |	x **o** y |
+| <=	| menor o igual a |
+| is.na(x)	| chequea si x es NA |
+| !is.na(x)	| chequea si x **no** es NA |
+| >	| mayor que |
+| >= |	mayor o igual a	|
+| x %in% y |	chequea si x esta en y |
+| !(x %in% y)	| chequea si x **no esta** en y |
+| == |	igual a |
+| != | no igual a |
+|!x	| no x |
+| x & z	| x **y** z |
 
 ## Agrupando y reduciendo con `group_by() |> summarise()`
 
