@@ -259,7 +259,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
 <li><a href="#de-ancho-a-largo-con-pivot_longer" id="toc-de-ancho-a-largo-con-pivot_longer" class="nav-link active" data-scroll-target="#de-ancho-a-largo-con-pivot_longer"><span class="header-section-number">7.1</span> De ancho a largo con <code>pivot_longer()</code></a></li>
   <li><a href="#de-largo-a-ancho-con-pivot_wider" id="toc-de-largo-a-ancho-con-pivot_wider" class="nav-link" data-scroll-target="#de-largo-a-ancho-con-pivot_wider"><span class="header-section-number">7.2</span> De largo a ancho con <code>pivot_wider()</code></a></li>
-  <li><a href="#uniendo-tablas" id="toc-uniendo-tablas" class="nav-link" data-scroll-target="#uniendo-tablas"><span class="header-section-number">7.3</span> Uniendo tablas</a></li>
+  <li>
+<a href="#uniendo-tablas" id="toc-uniendo-tablas" class="nav-link" data-scroll-target="#uniendo-tablas"><span class="header-section-number">7.3</span> Uniendo tablas</a>
+  <ul class="collapse">
+<li><a href="#ex-exploracion" id="toc-ex-exploracion" class="nav-link" data-scroll-target="#ex-exploracion"><span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -640,9 +645,28 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </ol>
 <p>Podés descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_completo.csv</p>
 </div>
+<section id="ex-exploracion" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="ex-exploracion">
+<span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</h3>
+<div class="ejericios">
+<p><strong>pivots!</strong></p>
+<p>Recordás el ejercicio 3 de dplyr?</p>
+<ol start="3" type="1">
+<li><p>¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para <em>sacar</em> los <code>NA</code> del cálculo, revisá la documentación de <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> y de <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>.</p></li>
+<li><p>Usando las funciones <code>pivot_</code> alargá el resultado anterior.</p></li>
+<li><p>A continuación volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.</p></li>
+</ol>
+<p><strong>uniones</strong></p>
+<p>A la hora de analizar datos meteorológicos, tener en cuenta la ubicación y altitud de las estaciones donde se toman las mediciones es muy importane. Sin embargo eso no está incluido en los datos con los que venimos trabajando.</p>
+<p>Esta información son <strong>metadatos</strong> y suelen venir por separado (si tenemos suerte!). En este caso los tenemos y están disponibles en <a href="https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv">https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv</a>.</p>
+<ol type="1">
+<li>Lee los metadatos</li>
+<li>Identifica cuales son las variables clave, aquellas que son comunes entre los datos meteorológicos con los que venís trabajando y esta nueva tabla.</li>
+<li>Uní los datos con joins. ¿Cuál es la mejor opción?</li>
+</ol>
+</div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
