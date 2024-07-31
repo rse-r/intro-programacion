@@ -235,3 +235,28 @@ Estuvimos trabajando con una parte de la base de datos de emisiones. Pero tambi�
 
 Podés descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_completo.csv
 :::
+
+### Construyendo un paquete de R paso a paso {#ex-exploracion}
+
+::: ejericios
+
+**pivots!**
+
+Recordás el ejercicio 3 de dplyr?
+
+3. ¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
+
+1. Usando las funciones `pivot_` alargá el resultado anterior. 
+2. A continuación volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.
+
+**uniones**
+
+A la hora de analizar datos meteorológicos, tener en cuenta la ubicación y altitud de las estaciones donde se toman las mediciones es muy importane. Sin embargo eso no está incluido en los datos con los que venimos trabajando. 
+
+Esta información son **metadatos** y suelen venir por separado (si tenemos suerte!). En este caso los tenemos y están disponibles en [https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv](https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv). 
+
+1. Lee los metadatos
+2. Identifica cuales son las variables clave, aquellas que son comunes entre los datos meteorológicos con los que venís trabajando y esta nueva tabla.
+3. Uní los datos con joins. ¿Cuál es la mejor opción? 
+
+:::
