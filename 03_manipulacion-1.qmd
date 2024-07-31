@@ -291,17 +291,19 @@ nuevo_nombre <- rbind(___, ____, ____)
 
 1. ¿Cuántas observaciones de temperatura se hicieron en cada estación? 
 
-2. ¿Cuál es la proporción de `NA` en temperatura de abrigo a 150 cm? Pista: podés calcular la proporción como cantidad de NA dividido la cantidad total de observaciones.
-La función `is.na()` devuelve `TRUE` si el valor es un `NA`, al mismo tiempo `TRUE` es igual a `1` (así es como R lo interpreta) por lo que `sum(is.na(variable))` te va a dar la cantidad de `NA` en esa variable.
+2. ¿Cuál es la temperatura mínima registrada y la máxima registrada en cada estación?
 
 3. ¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
 
-4. ¿Cuál es el promedio anual de la temperatura de abrigo a 150 cm en cada estación? Pista, podés extraer el año de la variable `fecha` con anio = `year(fecha)` y usar esa nueva variable para agrupar los datos.
+4. ¿Cuál es la proporción de `NA` en temperatura de abrigo a 150 cm? Pista: podés calcular la proporción como cantidad de NA dividido la cantidad total de observaciones.
+La función `is.na()` devuelve `TRUE` si el valor es un `NA`, al mismo tiempo `TRUE` es igual a `1` (así es como R lo interpreta) por lo que `sum(is.na(variable))` te va a dar la cantidad de `NA` en esa variable.
 
-5. ¿Cuál es la precipitación acumulada mensual en cada estación? Pista: la precipitación acumulada mensual es la *suma* de la precipitación en cada mes. 
+5. ¿Cuál es el promedio anual de la temperatura de abrigo a 150 cm en cada estación? Pista, podés extraer el año de la variable `fecha` con anio = `year(fecha)` y usar esa nueva variable para agrupar los datos.
+
+6. ¿Cuál es la precipitación acumulada mensual en cada estación? Pista: la precipitación acumulada mensual es la *suma* de la precipitación en cada mes. 
 En este caso necesitas agrupar los datos por año y mes, una posibilidad es usar `floor_date(fecha, "month")`.
 
-6. ¿Cuál es la temperatura mínima registrada y la máxima registrada en cada estación?
+
 
 
 
