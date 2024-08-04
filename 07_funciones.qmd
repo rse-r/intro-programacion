@@ -18,7 +18,7 @@ En estas situaciones es una buena idea comenzar a encapsular código en funcione
 Escribir funciones tiene tres grandes ventajas sobre copiar y pegar código:
 
 * Podés nombrar tus funciones con un nombre descriptivo que facilite la comprensión del código.
-* Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un úncio lugar.
+* Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un único lugar.
 * Eliminás la posibilidad de cometer errores al copiar y pegar código.
 
 En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts.
