@@ -21,11 +21,11 @@ Escribir funciones tiene tres grandes ventajas sobre copiar y pegar código:
 * Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un único lugar.
 * Eliminás la posibilidad de cometer errores al copiar y pegar código.
 
-En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts.
+En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts (.R).
 
 ## Esqueleto de una función
 
-Cualquier función en R tendrá la siguiqnete pinta:
+Cualquier función en R tendrá la siguiente pinta (se le llama firma de una función):
 
 ```r
 nombre_de_funcion <- function(arg1, arg2, ...) {
@@ -56,26 +56,26 @@ fahrenheit_a_centigrados <- function(temperatura_ayer) {
 }
 ```
 
-Está función está lista para usar, por ejemplo podemos convertir 32 Fahrenheit a centigrados:
+Está función está lista para usar, por ejemplo podemos convertir 100 Fahrenheit a centigrados:
 
 ```{r}
 fahrenheit_a_centigrados(100)
 ```
 
-Si bien podemos nombrar a los argumentos de las funciones de cualquier manera, `temperatura_ayer` no razonable para una función general. Un mejor nombre podría ser `temperatura_centigrados`
+Si bien podemos nombrar a los argumentos de las funciones de cualquier manera, `temperatura_ayer` no es razonable para una función general. Un mejor nombre podría ser `temperatura_fahrenheit`
 
 ```{r}
-fahrenheit_a_centigrados <- function(temperatura_centigrados) {
-  (temperatura_centigrados - 32) * 5/9
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  (temperatura_fahrenheit - 32) * 5/9
 }
 ```
 
 Es posible que te encuentres con algo del estilo:
 
 ```{r}
-fahrenheit_a_centigrados <- function(temperatura_centigrados) {
-  resultado <- (temperatura_centigrados - 32) * 5/9
-  return(resultado)
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  resultado <- (temperatura_fahrenheit - 32) * 5/9
+  return(temperatura_centigrados)
 }
 ```
 
@@ -113,7 +113,7 @@ Es importante que pruebes tu función de distintas maneras. Primero, con algún 
 fahrenheit_a_centigrados(32)
 ```
 
-También es importante testear la función con datos diferentes, por ejemplo en vez de 1 enero, podemos usar un real o un vector de números.
+También es importante testear la función con datos diferentes, por ejemplo en vez de 1 número entero, podemos usar un real o un vector de números.
 
 ```{r}
 fahrenheit_a_centigrados(25.5)
