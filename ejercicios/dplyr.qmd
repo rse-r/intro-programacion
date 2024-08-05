@@ -1,0 +1,84 @@
+---
+title: "Ejercicios de dplyr"
+---
+
+Este archivo incluye ejercicios para practicar como manipular datos usando dplyr. Es importante que guardes este archivo en el proyecto de RStudio que usas durante las clases.  
+Seguiremos trabajando con los datos de pingüinos. 
+
+Siempre arrancamos cargando las librerías que vamos a usar. Completá el código y corré el bloque de código para comenzar. 
+
+```{r}
+# Cargá las librerias necesarias en este bloque de código
+
+library(______)
+library(______)
+
+```
+
+Es momento de leer los datos de pingüinos (si, también hay que practicar leer datos). 
+
+```{r}
+# Lectura de datos de pinguinos
+pinguinos <- __________________________
+```
+
+
+## Filtrando datos
+
+Completá el código y correlo para verificar el resultado. 
+
+¿Cuántos pingüinos tienen aletas de más de 225 mm? 
+
+```{r}
+pinguinos |> 
+  filter(____________________)
+```
+
+¿Algún pingüino tiene un pico de exactamente 40.9 mm?
+
+```{r}
+
+```
+
+¿Cuántos pingüinos hembra hay en la especie Papúa? 
+
+```{r}
+
+```
+
+## Resumiendo los datos
+
+¿Cuántos pingüinos hay en cada isla?
+
+```{r}
+pinguinos |> 
+  group_by(_______) |> 
+  summarise(______)
+```
+
+¿Todas las especies viven en las mismas islas?
+
+```{r}
+
+```
+
+¿Cuánto pesa el pinguino más liviano y el más pesado de cada especie?
+
+```{r}
+
+```
+
+## Transformando variables
+
+Calculá la relación entre el alto y el largo del pico (alto_pico_mm/largo_pico_mm)
+
+```{r}
+pinguinos |> 
+  mutate(__________)
+```
+Transformá todas las variables de mm a cm. 
+
+```{r}
+
+```
+
