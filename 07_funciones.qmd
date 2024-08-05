@@ -74,7 +74,7 @@ Es posible que te encuentres con algo del estilo:
 
 ```{r}
 fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
-  resultado <- (temperatura_fahrenheit - 32) * 5/9
+  temperatura_centigrados <- (temperatura_fahrenheit - 32) * 5/9
   return(temperatura_centigrados)
 }
 ```
@@ -83,7 +83,7 @@ Usar la función `return()` no es necesario, R devuelve el último elemento con 
 
 ::: informacion
 
-Notá además que cuando corrimos la función anterior, en ningún momento se creó la variable `resultado`, si revisas el Environment no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en un "ambiente" independiente de el ambiente general. 
+Notá además que cuando corrimos la función anterior, en ningún momento se creó la variable `temperatura_centigrados`, si revisas el Environment no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en un "ambiente" independiente de el ambiente general. 
 :::
 
 Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:
@@ -96,15 +96,19 @@ Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apr
 
 ::: ejercicio
 
-1.  Creá un archivo .R con alguna función. Puede ser la que vimos como ejemplo o alguna otra que prefieras.
+1.  Creá un archivo .R con las siguientes funciones:
+  1. Una función que convierta la temperatura de centigrados a fahrenheit.
+  2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
+  3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
 2.  Guardá el archivo con un nombre informativo.
-3.  Al comienzo del archivo, en comentarios, incluí que hace la función, que argumentos requiere y que genera.
+3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.
 :::
 
 Ahora si quisieramos usar esa función en el análisis, podemos "cargarla" con `source("archivo.R")`.
 
 La escritura de una función debería arrancar con un código que ya funciona. Es decir, en lugar de
 empezar desde cero `fahrenheit_a_centigrados()` usamos el código que ya tenemos y que funciona para un ejemplo particular. Luego cambiando el nombre del argumento podemos generalizar el código. 
+
 ## Testeá tu función
 
 Es importante que pruebes tu función de distintas maneras. Primero, con algún valor para el que sabes el resultado, por ejemplo 32 fahrenheit es 0º centigrados.
@@ -128,10 +132,14 @@ Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valore
 Finalmente, tenemos que probar la función con otras cosas. 
 
 ```{r}
+#| error: true
+
 fahrenheit_a_centigrados("100")
 ```
 
 ```{r}
+#| error: true
+
 fahrenheit_a_centigrados(TRUE)
 ```
 
@@ -144,30 +152,49 @@ Por estas situaciones es importante chequear que lo que ingresa a la función es
 El primer acercamiento a esto es la función `stopifnot()`
 
 ```{r}
-fahrenheit_a_centigrados <- function(temperatura_centigrados) {
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
   
-  stopifnot(is.numeric(temperatura_centigrados))
+  stopifnot(is.numeric(temperatura_fahrenheit))
   
-  (temperatura_centigrados - 32) * 5/9
+  (temperatura_fahrenheit - 32) * 5/9
 }
 ```
 
 Ahora si volvemos a correr algunos de los ejemplos previos, obtendremos:
 
 ```{r}
+#| error: true
+
 fahrenheit_a_centigrados("100")
 ```
 
 Pero de nuevo, esta función no devuelve un mensaje muy informativo.
 
+::: importante
+
+Para lo que sigue vamos a necesitar usar esquemas de flujo, `if`, `else`, etc. 
+Revisemos como es la sintaxis en R.
+
+```
+if (condición) {
+  # código que se ejecuta cuando la condición es TRUE
+} else {
+  # código que se ejecuta cuando la condición es FALSE
+}
+```
+En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *rama* de nuestro código, no es suficiente con indentar las líneas de código (aunque ayuda en la lectura!). 
+
+Además de `if` y `else`, podemos usar `else if` cuando queremos probar distintas condiciones. 
+:::
+
 La siguiente solución implica encapsular la función `stop()` en una estructura `if` para poder incluir un mensaje de error apropiado:
 
 ```{r}
-fahrenheit_a_centigrados <- function(temperatura_centigrados) {
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
   
-  if (!is.numeric(temperatura_centigrados)) {
+  if (!is.numeric(temperatura_fahrenheit)) {
     stop("temperatura_centigrados debe ser numérico,\n",
-         "La variable ingresada es un ", class(temperatura_centigrados)[1])
+         "La variable ingresada es un ", class(temperatura_fahrenheit)[1])
   }
   
   (temperatura_centigrados - 32) * 5/9
@@ -175,6 +202,8 @@ fahrenheit_a_centigrados <- function(temperatura_centigrados) {
 ```
 
 ```{r}
+#| error: true
+
 fahrenheit_a_centigrados("100")
 ```
 
@@ -186,21 +215,23 @@ Este mensaje nos da mucha más información:
 Pero hay otras soluciones aún  más superadoras, podemos escribir mensajes de error y warnings (advertencias en inglés) usando el paquete `cli`:
 
 ```{r}
-fahrenheit_a_centigrados <- function(temperatura_centigrados) {
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
   
-  if (!is.numeric(temperatura_centigrados)) {
+  if (!is.numeric(temperatura_fahrenheit)) {
     cli::cli_abort(c(
-      "temperatura_centigrados debe ser numérico.",
-      "i" =  "La variable ingresada es un {class(temperatura_centigrados)[1]}."
+      "temperatura_fahrenheit debe ser numérico.",
+      "i" =  "La variable ingresada es un {class(temperatura_fahrenheit)[1]}."
     ))
   }
   
-  (temperatura_centigrados - 32) * 5/9
+  (temperatura_fahrenheit - 32) * 5/9
 }
 ```
 
 
 ```{r}
+#| error: true
+
 fahrenheit_a_centigrados("100")
 ```
 
