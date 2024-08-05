@@ -15,8 +15,7 @@ En este curso vamos a centrarnos las cinco más comunes:
 -   `summarise()`: calcula estadísticas para cada grupo de una tabla.
 
 
-::: {.alert .alert-info}
-**Primer desafío:**
+::: ejercicio
 
 Te dieron una tabla con datos de pinguinos de 3 especies (Adelia, Barbijo y Papua).
 Las columnas son: `especie`, `largo_aleta`, `largo_pico`,  
