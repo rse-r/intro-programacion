@@ -11,17 +11,18 @@ title: "Funciones"
 
 ## Trabajando con funciones y otro código
 
-Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Inicialmente escribir el código necesairo para resolver un problema, leer un archivo o calcular medidas estadísticas es lo más razonable. Pero es posible que te encuentres repitiendo las mismas lineas de código o copiado y pegando código de un lado para el otro porque necesitás reutilizar algo que ya escribíste. 
+Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Inicialmente escribir el código necesario para resolver un problema, leer un archivo o calcular medidas estadísticas es lo más razonable. Pero es posible que te encuentres repitiendo las mismas lineas de código o copiado y pegando código de un lado para el otro porque necesitás reutilizar algo que ya escribíste. 
 
 En estas situaciones es una buena idea comenzar a encapsular código en funciones. En esta sección veremos como escribir funciones, más adelante *empaquetaremos* esas funciones en un paquete. 
 
-Escribir funciones tiene tres grandes ventajas sobre copiar y pegar código:
+Escribir funciones tiene cuatro grandes ventajas sobre copiar y pegar código:
 
 * Podés nombrar tus funciones con un nombre descriptivo que facilite la comprensión del código.
 * Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un único lugar.
 * Eliminás la posibilidad de cometer errores al copiar y pegar código.
+* Podés reutilizar el código en las funciones en otros proyectos. 
 
-En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts (.R).
+En las situaciones donde nuestro código no produce salidas como graficos o tablas, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts (.R).
 
 ## Esqueleto de una función
 
@@ -83,7 +84,7 @@ Usar la función `return()` no es necesario, R devuelve el último elemento con 
 
 ::: informacion
 
-Notá además que cuando corrimos la función anterior, en ningún momento se creó la variable `temperatura_centigrados`, si revisas el Environment no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en un "ambiente" independiente de el ambiente general. 
+Cada vez que se ejecuta una función se crea un nuevo entorno, desde cero, propio de la función para contener su ejecución. Notá que si buscas la variable `temperatura_centigrados` en el _Environment_ no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en ese "entorno" independiente del entorno general.
 :::
 
 Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:
@@ -100,7 +101,7 @@ Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apr
   1. Una función que convierta la temperatura de centigrados a fahrenheit.
   2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
   3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
-2.  Guardá el archivo con un nombre informativo.
+2.  Guardá el archivo .R con un nombre informativo.
 3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.
 :::
 
@@ -182,7 +183,7 @@ if (condición) {
   # código que se ejecuta cuando la condición es FALSE
 }
 ```
-En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *rama* de nuestro código, no es suficiente con indentar las líneas de código (aunque ayuda en la lectura!). 
+En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *rama* de nuestro código, no es necesario indentar las líneas de código (aunque ayuda en la lectura!). 
 
 Además de `if` y `else`, podemos usar `else if` cuando queremos probar distintas condiciones. 
 :::
@@ -212,7 +213,7 @@ Este mensaje nos da mucha más información:
 * En que función ocurre el error
 * La causa del error y como resolverlo.
 
-Pero hay otras soluciones aún  más superadoras, podemos escribir mensajes de error y warnings (advertencias en inglés) usando el paquete `cli`:
+Pero hay otras soluciones aún más superadoras, podemos escribir mensajes de error y _warnings_ (advertencias en inglés) usando el paquete `cli`:
 
 ```{r}
 fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
@@ -235,7 +236,7 @@ fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
 fahrenheit_a_centigrados("100")
 ```
 
-El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos `cli_abort()` pero hay toda una familia de funciones según la circusntancia, por ejemplo si queremos mostrar un warning, si la función corrió con exito, etc.
+El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos `cli_abort()` pero hay toda una familia de funciones según la circusntancia, por ejemplo si queremos mostrar un _warning_, si la función corrió con exito, etc.
 
 Además podemos mostrar distintos tipos de mensajes:
 
@@ -288,11 +289,11 @@ penguins <- datos_pinguinos("datos/datos_pinguinos.csv")
 
 ## Escribí funciones para humanos y computadoras
 
-Es importante recordar que las funciones no son sólo para las entienda R, sino también para los humanos. A R no le importa cómo se llama tu función, o qué comentarios contiene, pero éstos son importantes para que vos y otras personas entiendan lo que hace. 
+Es importante recordar que las funciones no son sólo para que las entienda R, sino también para las personas que las van a usar. A R no le importa cómo se llama tu función, o qué comentarios contiene, pero éstos son importantes para que vos y otras personas entiendan lo que hace. 
 
 El nombre de una función es importante. Lo ideal es que el nombre de tu función sea corto, pero que describa claramente lo que hace la función. Eso es difícil. Pero es mejor que el nombre sea claro a que sea muy corto. También que ayude a RStudio a autocompletar.
 
-Generalmente, los nombres de las funciones son verbos, y los argumentos sustantivos.Esto es porque las funciones *hacen* algo, tienen una acción asociada. Por supuesto, hay excepciones a la regla. Los sustantivos como nombre de funciones están bien si la función calcula un sustantivo muy conocido (por ejemplo, `promedio()` es mejor que `calcula_promedio()`), o accede a alguna propiedad de un objeto (por ejemplo, `coef()` es mejor que `extraer_coeficientes()`). Una buena señal de que un sustantivo puede ser una mejor opción es si se utiliza un verbo muy amplio como «obtener», «computar», «calcular» o «determinar». Usa tu mejor criterio y no tengas miedo de cambiar el nombre de una función si más adelante se te ocurre uno mejor.
+Generalmente, los nombres de las funciones son verbos, y los argumentos sustantivos.Esto es porque las funciones **hacen** algo, tienen una acción asociada. Por supuesto, hay excepciones a la regla. Los sustantivos como nombre de funciones están bien si la función calcula un sustantivo muy conocido (por ejemplo, `promedio()` es mejor que `calcula_promedio()`), o accede a alguna propiedad de un objeto (por ejemplo, `coef()` es mejor que `extraer_coeficientes()`). Una buena señal de que un sustantivo puede ser una mejor opción es si se utiliza un verbo muy amplio como «obtener», «computar», «calcular» o «determinar». Usa tu mejor criterio y no tengas miedo de cambiar el nombre de una función si más adelante se te ocurre uno mejor.
 
 **Muy corto**
 
@@ -307,7 +308,7 @@ Generalmente, los nombres de las funciones son verbos, y los argumentos sustanti
 * `computa_faltantes()`
 * `colapsa_anios()`
 
-Si el nombre de tu función está compuesto por varias palabras, te recomendamos utlizar «snake_case», donde cada palabra en minúscula está separada por un guión bajo. camelCase es otra buena alternativa. Lo importante es ser coherente: elegí una y no cambies.
+Si el nombre de tu función está compuesto por varias palabras, te recomendamos utlizar «snake_case», donde cada palabra en minúscula está separada por un guión bajo. camelCase es otra buena alternativa (es mas amigable con lectores de pantallas). Lo importante es ser coherente: elegí una y no cambies.
 
 Para ayudar a RStudio a autocompletar el nombre de las funciones es mejor esto:
 
@@ -326,5 +327,6 @@ que esto:
 
 ::: ejercicio
 
-Agregar 2 o 3 funciones que se puedan generar usando los ejercicios de dplyr
+Agregar 2 o 3 funciones que se puedan generar usando los ejercicios de dplyr.
+
 :::
