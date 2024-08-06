@@ -2,3 +2,234 @@
 title: "Git para trabajar en equipo"
 ---
 
+## Objetivos de aprendizaje
+
+- Aplicar conceptos de flujos de trabajo usando Git básicos al trabajo colaborativo
+  utilizando GitHub.
+- Identificar las diferencias entre branchs y forks e identificar situaciones en las que
+  utilizar cada una.
+- Comprender el uso y el rol de las branchs y los pull requests en
+  la colaboración en un proyecto.
+- Utilizar funciones del paquete `usethis` en un proyecto.
+- Gestiona pull requests como responsable o líder de un proyecto.
+
+### Forks, branchs y pull requests en GitHub {#sec-workflows-explained}
+
+En este capítulo vamos a ver que pinta tiene flujo de trabajo colaborativo entre personas 
+hacer análisis de daos y desarrollo de software. 
+Previamente estuviste trabajando con git de manera individual:
+
+```
+Modificar un archivo --> Add --> Commit 
+```
+
+Todo esto lo hiciste en una branch (o rama) del repositorio que normalmente llamamos *main* 
+por ser la principal. 
+**Branchs:** en git es una etiqueta que señala
+a un commit específico en el repositorio. Trabajar en una branch
+te permite modificar archivos sin modificar los mismos archivos en otras
+branchs, porque esencialmente estás trabajando en un conjunto "paralelo" de
+archivos. Cuando quieras pasar los cambios que hiciste a la rama principal, 
+tendrías que hacer un **merge** para combinar las branchs. En entornos de equipo, 
+trabajar en branchs te permite hacer cambios en los archivos sin afectar el trabajo
+de otras personas en el equipo. Cuando hayas terminado de modificar los archivos, podés
+hacer un merge con tus cambios en la rama principal para que el resto del equipo
+tengan también esos cambios. Las branchs se utilizan mucho en proyectos de software y paquetes R.
+
+El flujo de trabajo colaborativo incluye dos nuevos términos y conceptos: *forks*
+y *pull requests*.
+
+- **Forks** Un fork es una copia de un repositorio de otra persona o equipo que
+  se almacenará en tu cuenta de GitHub. Tanto el original como el fork están en GitHub.
+- **Pull Requests** Un pull request o PR es una herramienta de GitHub que permite
+  hacer cambios en un fork o branch y luego solicitar que
+  que la persona a cargo del proyecto haga un merge con esos cambios en el repositorio principal.
+  Los pull requests pueden proceder de forks o de branchs independientes
+  dentro del repositorio. Permiten que las personas que mantienen y quienes colaboran
+  en el proyecto revisen, discutan, soliciten más cambios y aprueben los cambios para hacer
+  el merge a la branch main.
+  
+Aprender a utilizar eficazmente estas herramientas y conceptos puede hacer que
+que colaborar con otras persona sea mucho más fácil y facilita la contribución
+a otros proyectos. Incluso podrías utilizar este flujo de trabajo aún de manera individual.
+
+Cuando estás colaborando en un proyecto te podés encontrar en una de estas situaciones.
+
+-   Escenario 1: Tenés permisos de escritura en el repositorio remoto, en ese caso no necesitas utilizar forks.
+-   Escenario 2: No tenés permisos de escritura en el repositorio remoto, por lo que tendrías que trabajar en un fork de
+repositorio original.
+
+En ambas situaciones asumiremos que trabajarás con branchs para separar tu trabajo del de otras personas
+antes de pasarlas a la branch main. 
+
+#### Escenario 1
+
+Este esquema muestra el flujo de trabajo cuando no necesitamos hacer un fork.
+
+[](images/no_fork.png)
+
+1. Cloná el repositorio en tu computadora
+2. Crear una nueva branch.
+3. Edita archivos agregalos y hacé commits en esa branch.
+4. Cuando los cambios estén hechos y listos, envía un pull request al repositorio
+remoto para comparar tus cambios en tu branch con main.
+5. El pull request es aceptado y fusionado o hay que hacer nuevos cambios (paso 3).
+6. Una vez que el PR es aceptado y fusionado, la branch principal tiene ahora
+  los cambios actualizados y ya se puede eliminar la branch donde estabas trabajando.
+7. El proceso puede repetirse varias veces, en paralelo o en secuencia
+  dependiendo del tamaño del equipo.
+  
+#### Escenario 2
+
+Para los flujos de trabajo basados en forks, el proceso es el siguiente:
+
+[](images/si_fork.png)
+
+1. Crear un fork del repositorio principal (si aún no lo tienes).
+2. Cloná el repositorio en tu computadora
+3. Crear una nueva branch en tu copia del repositorio.
+4. Realiza ediciones y cambios en los archivos y envíalos a la branch.
+5. Cuando esté todo listo, abrí el pull request. Si te piden nuevos cambios tendrías que volver 
+al paso 4. 
+5. Si el PR aceptado y fusionad, la branch principal en el 
+repositorio principal se actualizá y la nueva branch se puede borrar.
+6. Finalmente podés sincronizar tu fork del repositorio con el repositorio principal.
+
+Un reto que surge a menudo es saber cómo y cuándo usar branchs. 
+¿Hacés todos cambios cambios allí y luego abrir un PR a la branch main? ¿creás una branch, haces PR y
+y la borras inmediatamente después? ¿Qué cambios haces en la nueva branch? La
+respuesta a estas preguntas dependen del contexto, del equipo, del paquete en el que estés
+trabajando, de cuáles sean tus objetivos para el paquete, etc. Sin embargo, te damos 
+algunos consejos:
+
+1. Cuando haces cambios pequeños y enfocados con el error u objetivo específico
+  (por ejemplo, actualizar la documentación para arreglar un error de tipeo) creá un
+  nueva branch y abrí un PR. Cuanto más pequeños sean los cambios más fácil será 
+  revisarlos y aceptarlos.
+2. Si hacés grandes cambios, lo mejor es que estén relacionados a un problema u 
+  objetivo, de modo que al revisar el PR sea más fáci seguirlo y entenderlo.
+3. Haz cambios relacionados con un issue específico y agregá comentarios en el issue para
+mantener todo al mundo al tanto.
+
+## Cómo trabajar
+
+Vamos a mostrar algunos ejemplos de cómo utilizar los flujos de trabajo que vimos recién en 
+distintas situaciones.
+
+1. **Desarrollando software de manera individual** En este caso, probablemente
+  tengas que pensar si tenés que hacer un fork, ya que podés trabajar fácilmente 
+  con git sin hacer nunca una branch. Sin embargo, si quisieras experimentar con el código 
+  (o texto) sin modificar la branch main, estarás en el escenario 1.
+2. **Desarrollando software de manera individual pero otras personas colaboran** Si estás
+  trabajando en un paquete R de código abierto y hay personas que ocacionalmente
+  contribuyen a tu paquete, como resposanble de mantenerlo y desarrollarlo recibirás 
+  issues y PR que tendrías que revisar y responder. En este caso es muy importante utilizar
+  branches para reducir la
+  posibilidad de que hagas un cambio en main que
+  puedan afectar a usuarios de tu paquete.
+3. **Colaborando en un proyecto del que no sos parte** Si contribuís
+  ocasionalmente con un paquete de R, tendrás que usar el flujo de trabajo del escenario 2.
+  Tendrás que hacer un fork del repositorio del paquete, hacer cambios en
+  nuevas branchs, y abrir PR para proponer esos cambios en el paquete. 
+  Este escenario es el más habitual en el mundo de los paquetes R de código abierto,
+  ya que la mayoría de los paquetes son mantenidos por una o varios
+  personas.
+4. **Como miembro de un equipo** Si tenés permisos de escritura en el
+  repositorio y formás parte de un equipo que trabaja en ese repositorio, podés trabajar
+  siguiendo el flujo de trabajo en el escenario 1. Harás cambios en los archivos
+  creando primero una branch y, cuando el cambio esté listo, enviarás
+  los cambios al repositorio remoto abriendo un PR para que otras personas en el equipo
+  puedan revisar tu propuesta.
+  
+
+::: ejercicio
+
+**¿Qué flujo de trabajo necesitan estas situaciones?**
+
+Considerá estas situaciones y decidí que flujo de trabajo que utilizarías para
+cada una de ellas.
+
+1. Estás en una clase en la que una de las tareas es un trabajo en grupo
+  para crear un paquete de software. ¿Cuál de los flujos de trabajo anteriores
+  será el mejor enfoque para completar un proyecto en equipo?
+  ¿Se te ocurren otros enfoques que puedan funcionar igual de bien? ¿Qué
+  ¿Cuáles son los puntos fuertes y débiles de cada enfoque?
+2. Un amigo se entera de que estás creando un paquete R en tu tiempo libre
+  y quiere contribuir. ¿Qué instrucciones le darías a tu amigo/a para que pueda
+  contribuir? ¿Qué enfoque funcionaría mejor para vos?
+3. Mientras navegás por la página web de un paquete de R, encontrás algunos errores de tipeo y
+  decidís arreglarlos. ¿Cuál de los enfoques anteriores utilizarías?
+:::
+
+### Plantemos árboles!
+
+Como ejemplo y ejercicio colaboraremos con la recientemente abierta galera de arte Flametree, haremos PR en el camino.
+
+::: ejercicio 
+
+Fork del repositorio
+
+1. Ingresá a [github.com/paocorrales/flametree\_gallery](https://github.com/paocorrales/flametree_gallery)
+2. Hacé un fork del repositorio utilizando el botón "Fork" de la esquina superior derecha.
+
+![Captura de pantalla de un repositorio mostrando dónde está el botón "Fork".](images/fork.png)
+
+Ahora tenés una copia del repositorio en tu cuenta de GitHub.
+
+3. Copia la url del repositorio y clónalo en tu computadora siguiendo las instrucciones [para crear un nuevo repositorio que vimos en la sección de git trabajando de manera individual.](04_git-1.qmd)
+
+![Captura de pantalla de un repositorio fork*eado* mostrando dónde copiar la url para clonar el repositorio.](images/clone.png)
+
+:::
+
+Ahora tenés un proyecto RStudio (que también es un repositorio) que es una copia del que está en el repositorio original. Es un proyecto muy pequeño con unos pocos archivos. `template_script.R` incluye el código necesario para crear bellas imágenes como ésta:
+
+![Imagen de árboles creada con R](images/tree_pao.png)
+
+Utiliza el paquete de R [*flametree*](https://github.com/djnavarro/flametree) creado por [Danielle Navarro](https://djnavarro.net/). No vamos a discutir en profundidad cómo funciona este paquete, pero es una buena excusa para practicar pull requests.
+
+::: ejercicio 
+
+Hacé un cambio en el repositorio
+
+1. Hacé una copia del archivo `template_script.R` y cámbiale el nombre a `<tu-nombre.R>`
+
+2. Cambiá el valor de las 3 primeras variables del script:
+  
+  - `name`: tu nombre.
+  - `seed`: porque hay cosas aleatorias en el código.
+  - `shades`: elegí 4 colores que te gusten.
+
+Podés ejecutar el código si querés ver tu árbol (necesitarás instalar el paquete).
+
+3. Guardá el archivo, **add** al área de preparación y hacé un **commit** (*incluí sólo el archivo .R que creaste*).
+4. Hacé **push* a tu repositorio remoto.
+
+:::
+
+Hasta este punto hiciste un cambio en tu repositorio local (que es una copia del repositorio principal) y has subido esos cambios a tu repositorio remoto en GitHub. El repositorio original no se enteró de estos cambios porque hasta este punto todo el trabajo lo hiciste en tu repositorio.
+
+Si querés contribuir con los cambios que hiciste (el archivo .R con el código para crear tu árbol) en el repositorio original, es hora de hacer un pull request.
+
+:::ejercicio
+
+Hacé un pull request
+
+1. Entrá a tu repositorio en GitHub, ahí encontrarás tu último commit y un mensaje como este:
+
+![Captura de pantalla de un repositorio bifurcado en GitHub con un nuevo commit. Muestra cómo iniciar un nuevo pull request.](images/pr1.png)
+
+2. Haz clic en "Open pull request".
+3. Y haz clic en "Create pull request".
+4. Ahora completa el pull request con un título y un mensaje y luego termina el PR.
+
+![Captura de pantalla de GitHub que muestra cómo añadir un título, un mensaje y finalizar un pull request](images/pr2.png)
+
+¡Listo!
+
+:::
+
+Quien esté a cargo del repositorio recibirá un correo electrónico. Pueden revisar el pull request, hacer comentarios y, finalmente, aceptar la contribución. Cuando esto ocurra, los cambios que hayas hecho aparecerán en el repositorio.
+
+
+
