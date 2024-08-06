@@ -17,7 +17,7 @@ En este curso vamos a centrarnos las cinco más comunes:
 
 ::: ejercicio
 
-Te dieron una tabla con datos de pinguinos de 3 especies (Adelia, Barbijo y Papua).
+Te dieron una tabla con datos de pingüinos de 3 especies (Adelia, Barbijo y Papua).
 Las columnas son: `especie`, `largo_aleta`, `largo_pico`,  
 En base a esos datos, te piden que calcules la proporción promedio entre el largo de la aleta y el largo del pico para las especies Adelia y Barbijo.  
 
@@ -41,7 +41,7 @@ y luego cargarlo en memoria con
 library(dplyr)
 ```
 
-Volvé a cargar los datos de turistas por edad (para un recordatorio, podés ir a [Lectura de datos ordenados](02_lectura.qmd)):
+Volvé a cargar los datos de pingüinos (para un recordatorio, podés ir a [Lectura de datos ordenados](02_lectura.qmd)):
 
 ```{r message=FALSE, warning=FALSE}
 library(readr)
@@ -50,7 +50,7 @@ pinguinos <- read_csv("datos/pinguinos.csv")
 
 ## Seleccionando columnas con `select()`
 
-Para quedarse únicamente con las columnas de índice de tiempo y turistas, usá `select()`
+Para quedarse únicamente con las columnas de especie y largo del pico, usá `select()`
 
 ```{r}
 select(pinguinos, especie, largo_pico_mm)
@@ -164,7 +164,7 @@ pinguinos |>
 A primera vista parecería que la función no hizo nada, pero fijate que el resultado ahora dice que tiene grupos ("Groups: "), y nos dice qué columna es la que agrupa los datos ("especie") y cuántos grupos hay ("3").
 Cualquier operación que hagamos a continuación del `group_by()` van a aplicarse *para cada grupo*.
 
-Para ver esto en acción, usá `summarise()` para computar el promedio de turistas 
+Para ver esto en acción, usá `summarise()` para computar el promedio del largo de la aleta. 
 
 ```{r}
 pinguinos |> 
