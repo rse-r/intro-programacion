@@ -85,6 +85,27 @@ La primera línea dice que es una `tibble`, que es un caso especial de la estruc
 Tiene `r nrow(pinguinos)` filas (las **observaciones**) y `r ncol(pinguinos)` columnas (o **variables** que describen las observaciones).
 Las siguientes líneas nos dicen los nombres de las columnas (`r knitr::combine_words(colnames(pinguinos), and = "y ")`), su tipo de dato (`chr` o `num`), la longitud (`r paste0("[1:", nrow(pinguinos), "]")`) y sus primeros elementos.
 
+::: ejercicio
+
+En el portal de datos de Argentina encontramos muchos conjuntos de datos con informacion oficial. Vamos a descargar y leer un archivo de Excel.
+
+1. Dirigirse a esta pagina web con datos abiertos: <https://datos.gob.ar/dataset/produccion-innovacion-productiva-empresas-que-mas-invierten-id-nivel-mundial>
+
+2. Realizar los pasos necesarios para descargar el archivo de Excel del conjunto de datos "Las 50 empresas más innovadoras entre 2013 y 2019" de forma programatica.
+
+3. Cargar el conjunto de datos en r y explorar su estructura con la función `str()`.
+
+4. Contestar:
+  
+  4.1 ¿Cuántas columnas y filas tiene el data.frame?
+  
+  4.2 ¿Qué tipo de dato hay en cada columna? ¿el tipo de dato es correcto según el contenido que vez?
+  
+  4.3 ¿Que funcion usaste para leer el archivo de Excel?
+ 
+Al final del ejercicio deberías tener un archivo .qmd o .R con el código que lo resuelve. Nombrá el archivo siguiendo los consejos que vimos en clase.
+:::
+
 ### Construyendo un paquete de R paso a paso {#ex-lectura}
 
 ::: ejercicio
@@ -111,3 +132,6 @@ Utilizaremos datos que diponibiliza el Institulo Nacional de Tecnología Agropec
 
 :::
 
+### Recursos
+
+[Usando Apache Arrow para analizar el padron electoral argentino del 2011](https://yabellini.netlify.app/blog/2024-01-02-arrow-es/)
