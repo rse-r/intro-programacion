@@ -91,7 +91,7 @@ En el portal de datos de Argentina encontramos muchos conjuntos de datos con inf
 
 1. Dirigirse a esta pagina web con datos abiertos: <https://datos.gob.ar/dataset/produccion-innovacion-productiva-empresas-que-mas-invierten-id-nivel-mundial>
 
-2. Realizar los pasos necesarios para descargar el archivo de Excel del conjunto de datos "Las 50 empresas más innovadoras entre 2013 y 2019."de forma programatica.
+2. Realizar los pasos necesarios para descargar el archivo de Excel del conjunto de datos "Las 50 empresas más innovadoras entre 2013 y 2019" de forma programatica.
 
 3. Cargar el conjunto de datos en r y explorar su estructura con la función `str()`.
 
@@ -102,7 +102,8 @@ En el portal de datos de Argentina encontramos muchos conjuntos de datos con inf
   4.2 ¿Qué tipo de dato hay en cada columna? ¿el tipo de dato es correcto según el contenido que vez?
   
   4.3 ¿Que funcion usaste para leer el archivo de Excel?
-  
+ 
+Al final del ejercicio deberías tener un archivo .qmd o .R con el código que lo resuelve. Nombrá el archivo siguiendo los consejos que vimos en clase.
 :::
 
 ### Construyendo un paquete de R paso a paso {#ex-lectura}
