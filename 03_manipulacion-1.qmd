@@ -149,6 +149,17 @@ Para esto usamos _operadores lógicos_ como `==`, `>`, `<`, `>=`, `<=`, etc. R t
 |!x	| no x |
 | x & z	| x **y** z |
 
+::: ejercicio
+
+Es hora de revisar lo que vimos hasta acá. 
+
+1. Descargá el archivo que se encuentra [en este link](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd) y guardalo en tu proyecto de trabajo en clase.
+2. Resolvé los ejercicios propuestos de lectura (yapa!) y de filtros. En algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+3. El archivo tiene más ejercicios, pero no te adelantes. Vamos a ver esos temas a continuación.
+
+:::
+
+
 ## Agrupando y reduciendo con `group_by() |> summarise()`
 
 Si quisieramos responder ¿cuál es el largo promedio de la aleta para cada especie de pingüino? tenemos que usar un combo de funciones: `group_by() |> summarise()`.
@@ -266,6 +277,17 @@ pinguinos |>
 ```
 
 
+::: ejercicio
+
+¿Te acordás del ejercicio que arrancaste cuando vimos filtros? Es hora de completarlo!
+
+1. Completá los ejercicios de [este archivo](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd) que ya deberías tener en tu proyecto.
+2. Te vas a encontrar con ejercicios para practicar `summarise()` y `mutate()`. De nuevo, en algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+3. Cuando hayas terminado, *knitea* el archivo para generar un html y ver como queda el resultado.
+
+:::
+
+
 ### Construyendo un paquete de R paso a paso {#ex-exploracion}
 
 
@@ -301,11 +323,6 @@ La función `is.na()` devuelve `TRUE` si el valor es un `NA`, al mismo tiempo `T
 
 6. ¿Cuál es la precipitación acumulada mensual en cada estación? Pista: la precipitación acumulada mensual es la *suma* de la precipitación en cada mes. 
 En este caso necesitas agrupar los datos por año y mes, una posibilidad es usar `floor_date(fecha, "month")`.
-
-
-
-
-
 
 
 :::
