@@ -306,7 +306,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>: calcula estadísticas para cada grupo de una tabla.</li>
 </ul>
 <div class="ejercicio">
-<p>Te dieron una tabla con datos de pinguinos de 3 especies (Adelia, Barbijo y Papua). Las columnas son: <code>especie</code>, <code>largo_aleta</code>, <code>largo_pico</code>,<br>
+<p>Te dieron una tabla con datos de pingüinos de 3 especies (Adelia, Barbijo y Papua). Las columnas son: <code>especie</code>, <code>largo_aleta</code>, <code>largo_pico</code>,<br>
 En base a esos datos, te piden que calcules la proporción promedio entre el largo de la aleta y el largo del pico para las especies Adelia y Barbijo.</p>
 <p>¿En qué orden ejecutarías estos pasos para obtener el resultado deseado?</p>
 <ul>
@@ -326,7 +326,7 @@ En base a esos datos, te piden que calcules la proporción promedio entre el lar
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Volvé a cargar los datos de turistas por edad (para un recordatorio, podés ir a <a href="./02_lectura.html">Lectura de datos ordenados</a>):</p>
+<p>Volvé a cargar los datos de pingüinos (para un recordatorio, podés ir a <a href="./02_lectura.html">Lectura de datos ordenados</a>):</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span></span>
 <span><span class="va">pinguinos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"datos/pinguinos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -334,7 +334,7 @@ En base a esos datos, te piden que calcules la proporción promedio entre el lar
 <section id="seleccionando-columnas-con-select" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="seleccionando-columnas-con-select">
 <span class="header-section-number">4.1</span> Seleccionando columnas con <code>select()</code>
 </h2>
-<p>Para quedarse únicamente con las columnas de índice de tiempo y turistas, usá <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p>
+<p>Para quedarse únicamente con las columnas de especie y largo del pico, usá <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code></p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">pinguinos</span>, <span class="va">especie</span>, <span class="va">largo_pico_mm</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -526,7 +526,16 @@ Esto es porque la pipe implícitamente pasa el resultado de las líneas anterior
 <td>x <strong>y</strong> z</td>
 </tr>
 </tbody>
-</table></section><section id="agrupando-y-reduciendo-con-group_by-summarise" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="agrupando-y-reduciendo-con-group_by-summarise">
+</table>
+<div class="ejercicio">
+<p>Es hora de revisar lo que vimos hasta acá.</p>
+<ol type="1">
+<li>Descargá el archivo que se encuentra <a href="https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd">en este link</a> y guardalo en tu proyecto de trabajo en clase.</li>
+<li>Resolvé los ejercicios propuestos de lectura (yapa!) y de filtros. En algunos casos tendrías que reemplazar los <code>_____</code> con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero.</li>
+<li>El archivo tiene más ejercicios, pero no te adelantes. Vamos a ver esos temas a continuación.</li>
+</ol>
+</div>
+</section><section id="agrupando-y-reduciendo-con-group_by-summarise" class="level2" data-number="4.3"><h2 data-number="4.3" class="anchored" data-anchor-id="agrupando-y-reduciendo-con-group_by-summarise">
 <span class="header-section-number">4.3</span> Agrupando y reduciendo con <code>group_by() |&gt; summarise()</code>
 </h2>
 <p>Si quisieramos responder ¿cuál es el largo promedio de la aleta para cada especie de pingüino? tenemos que usar un combo de funciones: <code>group_by() |&gt; summarise()</code>. Es decir, primero agrupamos las filas de nuestro data.frame según la columna <code>especie</code> (esto genera 3 grupos) y luego calculamos el promedio de <code>largo_aleta_mm</code> para cada grupo.</p>
@@ -554,7 +563,7 @@ Esto es porque la pipe implícitamente pasa el resultado de las líneas anterior
 </div>
 </div>
 <p>A primera vista parecería que la función no hizo nada, pero fijate que el resultado ahora dice que tiene grupos (“Groups:”), y nos dice qué columna es la que agrupa los datos (“especie”) y cuántos grupos hay (“3”). Cualquier operación que hagamos a continuación del <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> van a aplicarse <em>para cada grupo</em>.</p>
-<p>Para ver esto en acción, usá <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> para computar el promedio de turistas</p>
+<p>Para ver esto en acción, usá <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> para computar el promedio del largo de la aleta.</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pinguinos</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">especie</span><span class="op">)</span> <span class="op">|&gt;</span>   </span>
@@ -714,6 +723,14 @@ dplyr 1.1.0.
 # ℹ 334 more rows
 # ℹ 1 more variable: anio &lt;dbl&gt;</code></pre>
 </div>
+</div>
+<div class="ejercicio">
+<p>¿Te acordás del ejercicio que arrancaste cuando vimos filtros? Es hora de completarlo!</p>
+<ol type="1">
+<li>Completá los ejercicios de <a href="https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd">este archivo</a> que ya deberías tener en tu proyecto.</li>
+<li>Te vas a encontrar con ejercicios para practicar <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. De nuevo, en algunos casos tendrías que reemplazar los <code>_____</code> con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero.</li>
+<li>Cuando hayas terminado, <em>knitea</em> el archivo para generar un html y ver como queda el resultado.</li>
+</ol>
 </div>
 <section id="ex-exploracion" class="level3" data-number="4.4.1"><h3 data-number="4.4.1" class="anchored" data-anchor-id="ex-exploracion">
 <span class="header-section-number">4.4.1</span> Construyendo un paquete de R paso a paso</h3>
