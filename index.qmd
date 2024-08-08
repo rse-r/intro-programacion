@@ -105,7 +105,4 @@ Este libro utilizo como fuentes los siguientes materiales:
 
 * R for Data Science (2e) de Hadley Wickham, Mine Cetinkaya-Rundel y Garrett Grolemund. Disponible de manera gratuita: https://r4ds.hadley.nz/. Primera edición en español: https://es.r4ds.hadley.nz/
 
-* Curso
-
-* Curso
 
