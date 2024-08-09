@@ -35,33 +35,39 @@ Si trabajas en equipo, podés aprovechar todo lo anterior y utilizar también el
 
 ## Pero, ¿qué entendemos por control de versiones?
 
-Imaginemos que tenemos un repositorio funcionando ([más adelante](04-git-1/#rear-un-nuevo-repositorio) veremos cómo crear uno). Cuando creas un nuevo archivo como parte del repositorio (o *repo*), ese archivo no es **trackeado** o **no está versionado**. Esto significa que git ignorará el archivo y cualquier cambio que hayas hecho hasta que lo *agregues* al repositorio (*add* en inglés) y empieces a registrar sus cambios. En ese momento el archivo está en el area **staging** (en el escenario de git) y está listo para entrar en el repositorio. Para eso hay que *confirmar* (*commit* en inglés) esa versión del archivo en el repositorio. Este flujo de trabajo `modify --> add --> commit` se repetirá cada vez que quieras guardar una versión del archivo. No recomendamos hacer un commit cada vez que guardes el archivo o cambies una coma, y tampoco es buena idea hacer un commit con mil millones de cambios. Con la práctica y dependiendo de cómo trabajes, encontrarás un punto medio cómodo.
+Imaginemos que tenemos un repositorio funcionando ([más adelante](04-git-1/#crear-un-nuevo-repositorio) veremos cómo crear uno). Cuando creas un nuevo archivo como parte del repositorio (o *repo*), ese archivo no es **trackeado** o **no está versionado**. Esto significa que git ignorará el archivo y cualquier cambio que hayas hecho hasta que lo *agregues* al repositorio (*add* en inglés) y empieces a registrar sus cambios. En ese momento el archivo está en el area **staging** (en el escenario de git) y está listo para entrar en el repositorio. Para eso hay que *confirmar* (*commit* en inglés) esa versión del archivo en el repositorio. Este flujo de trabajo `modify --> add --> commit` se repetirá cada vez que quieras guardar una versión del archivo. 
+
+::: tip
+
+No recomendamos hacer un _commit_ cada vez que guardes el archivo o cambies una coma, y tampoco es buena idea hacer un _commit_ con mil millones de cambios. Con la práctica y dependiendo de cómo trabajes, encontrarás un punto medio cómodo.
+
+:::
 
 ![La figura muestra el ciclo de cambios en un archivo: versionado o sin versional. Cuando es versionado y forma parte del repositorio, las acciones son add, commit, y modificar. Con la acción add, el archivo se "prepara"; con la acción de commit, el archivo se "guarda" en el repositorio. Este ciclo se repite cada vez que se modifica el archivo.](images/file_cycle2.png)
 
-Estas acciones son `add` y `commit` son comandos de git. Si tenes experiencia trabajando con la terminal podés utilizar git desde ahí, pero los mismos comandos pueden ejecutarse desde una GUI como [GitHub Desktop](https://desktop.github.com/) o [GitKraken](https://www.gitkraken.com/). Durante este curso utilizaremos RStudio.
+Mencionamos las acciones `add` y `commit` que son los nombres de dos comandos de git. Si tenes experiencia trabajando con la terminal podés utilizar git desde ahí, pero los mismos comandos pueden ejecutarse desde una GUI como [GitHub Desktop](https://desktop.github.com/) o [GitKraken](https://www.gitkraken.com/). Durante este curso utilizaremos RStudio.
 
 ## ¿Ya mencionamos "repositorio remoto"?
 
 Antes revisamos el **flujo de trabajo local**. El repositorio (una carpeta oculta llamada `.git`) vive en tu computadora y con eso ya estas usando control de versiones. Pero, también podrías conectar el **repositorio local** con un **repositorio remoto**. En este curso vamos a utilizar [GitHub](https://www.github.com) para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como [GitLab](https://about.gitlab.com/).
 
-Imaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego commits para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello **empujamos (push en inglés)** los commits al repositorio remoto y entonces, los dos repositorios están "actualizados", tienen la misma versión de los archivos.
+Imaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego _commits_ para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello **empujamos (push en inglés)** los _commits_ al repositorio remoto y entonces, los dos repositorios están "actualizados", tienen la misma versión de los archivos.
 
 Luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" y necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
 
 ![Modelo conceptual de un flujo de trabajo utilizando proyectos RStudio y git. Los archivos se añaden al área de preparación y luego se envían al repositorio local. Puedes enviar commits al repositorio remoto y bajar nuevos commits a tu computadora.](images/local_remote.png)
 
-Herramientas como GitHub también incluyen funciones que te ayudan a colaborar y gestionar repositorios. Por ejemplo, puedes modificar archivos y hacer commits con esos cambios utilizando la interfaz web.
+Herramientas como GitHub también incluyen funciones que te ayudan a colaborar y gestionar repositorios. Por ejemplo, puedes modificar archivos y hacer _commits_ con esos cambios utilizando la interfaz web.
 
 ## Preséntate con Git
 
-Antes de crear tu primer repositorio tenes que asegurarte de que git y RStudio entienden y de que git te conoce. Si seguiste las instrucciones [instrucciones previas al curso](A_instalacion.html) seguro que RStudio, git y GitHub se hablan entre sí.
+Antes de crear tu primer repositorio tenes que asegurarte de que git y RStudio se entienden y de que git te conoce. Si seguiste las instrucciones [instrucciones previas al curso](A_instalacion.html) seguro que RStudio, git y GitHub se hablan entre sí.
 
 ::: importante
 Podés comprobar que RStudio "sabe" donde está git yendo a `Tools --> Global Options --> Git/SVN`. Allí deberías encontrar la ruta en tu computadora a la instalación de git.
 :::
 
-Para presentarte con git, es decir, para que reconozca tu nombre y correo electrónico, puedes utilizar el comando *usethis* paquete.
+Para presentarte con git, es decir, para que reconozca tu nombre y correo electrónico, puedes utilizar el comando `use_git_config` del paquete *usethis*.
 
 ``` r
 library(usethis) 
@@ -73,7 +79,7 @@ Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de G
 
 ## Creando un nuevo repositorio
 
-Hay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la Termianl, desde GitHub (o sus amigos) ¡o desde RStudio! Aca te mostraremos cómo crear un repositorio desde GitHub, asociarlo a un proyecto de RStudio y trabajar con él. Pero tené en cuenta que hay muchas otras formas de trabajar con git.
+Hay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la terminal, desde GitHub (o sus amigos) ¡o desde RStudio!. Aca te mostraremos cómo crear un repositorio desde GitHub, asociarlo a un proyecto de RStudio y trabajar con él. Pero tené en cuenta que hay muchas otras formas de trabajar con git.
 
 ::: ejercicio
 **1. Creá un repositorio online.**
@@ -97,7 +103,7 @@ Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://gi
 **2. En RStudio, inicia un nuevo Proyecto:**
 
 -   `File > New Project > Version Control > Git`. En la "URL del repositorio" pegá la URL de tu nuevo repositorio de GitHub, tiene que tener esta pinta: `https://github.com/paocorrales/myrepo.git`.
--   Elejí la carpeta donde querés crear el proyecto.
+-   Elejí la carpeta en tu disco donde querés crear el proyecto.
 -   Elejí "Open in new sesion".
 -   Y haz clic en "Create project". 
 :::
@@ -125,7 +131,7 @@ Es hora de poner en práctica algunas de las cosas de las que hemos estado habla
 ![Interfaz RStudio para ver las diferencias entre archivos, escribir el mensaje para el commit y enviarlo al repositorio remoto.](images/add3.png)
 :::
 
-Si todo salió bien, empezaste a rastrear archivos, hiciste cambios y commits para guardar esa versión en el repositorio local. Puede que veas un mensaje en la pestaña de git diciendo que el repositorio local "is ahead of 'origin/master` by 2 commits". No verás ningún cambio en GitHub hasta que hagas push y envíes esos commits al repositorio remoto. Podés hacer esto al final del día si preferis, pero si trabajas con otras personas puede ser una buena idea hacer push luego de cada commit.
+Si todo salió bien, empezaste a rastrear archivos, hiciste cambios y commits para guardar esa versión en el repositorio local. Puede que veas un mensaje en la pestaña de git diciendo que el repositorio local "is ahead of 'origin/master` by 2 commits". No verás ningún cambio en GitHub hasta que hagas **push** y envíes esos commits al repositorio remoto. Podés hacer esto al final del día si preferis, pero si trabajas con otras personas puede ser una buena idea hacer push luego de cada commit.
 
 ::: ejercicio
 
@@ -152,7 +158,7 @@ Ahora, podemos intentar hacer cambios aquí.
 
 :::
 
-El nuevo archivo y los cambios que hagas en GitHub sólo estarán en el repositorio remoto hasta que hagas un pull en el repositorio local. Si realizas cambios en el repositorio local mientras no está actualizado, podés encontrarte con conflictos cuando intentes unir las 2 versiones, lo que suele generar dolores de cabeza. Esto ocurre cuando la versión de un archivo en el repositorio local no es compatible con su versión en el repositorio remoto. En esos casos, git no puede decidir qué versión es la correcta y tenés que hacerlo vos.
+El nuevo archivo y los cambios que hagas en GitHub sólo estarán en el repositorio remoto hasta que hagas un **pull** en el repositorio local. Si realizas cambios en el repositorio local mientras no está actualizado, podés encontrarte con conflictos cuando intentes unir las 2 versiones, lo que suele generar dolores de cabeza. Esto ocurre cuando la versión de un archivo en el repositorio local no es compatible con su versión en el repositorio remoto. En esos casos, git no puede decidir qué versión es la correcta y tenés que hacerlo vos.
 
 Para evitar este problema (lo más posible), tenes que hacer un pull antes de empezar a hacer cualquier otra cosa. La mayoría de las veces RStudio mostrará el mensaje "Already up to date", pero es bueno hacerlo un hábito.
 
@@ -177,18 +183,18 @@ Para evitar este problema (lo más posible), tenes que hacer un pull antes de em
 
 -   *Guía para colaborar.* Un archivo llamado `CONTRIBUTING.md` que incluye las instrucciones que personas que quieren conlaborar en tu proyecto sepan lo que deben hacer si quieren ayudarte.
 
--   *Código de conducta.* Los buenos proyectos tienen códigos de conducta para garantizar un ambiente amigable donde las personas puede colaborar. Github tiene atajos para agregar Código de Conducta facilmente.
+-   *Código de conducta.* Los buenos proyectos tienen códigos de conducta para garantizar un ambiente amigable donde las personas pueden colaborar. Github tiene atajos para agregar Código de Conducta facilmente.
 
 -   *Issues.* Te permiten gestionar el proyecto, discutir problemas y mejoras con otras personas.
 
 ::: ejercicio
 
-Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar GitHub Classroom. 
+Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar _GitHub Classroom_. 
 
 ¿Cómo funciona? 
 
 Preparamos repositorios con distintos ejercicios para que resuelvan. 
-Cada persona tendrá su repositorio para trabajar de manera individual, aunque siempre pueden resolver los ejercicios en gruupos (pequeños!)
+Cada persona tendrá su repositorio para trabajar de manera individual, aunque siempre pueden resolver los ejercicios en grupos (pequeños!, 2 o 3 personas)
 
 En el campus encontrarás las instrucciones para acceder a tu repositorio. 
 
