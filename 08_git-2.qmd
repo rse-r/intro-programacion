@@ -15,8 +15,8 @@ title: "Git para trabajar en equipo"
 
 ### Forks, branchs y pull requests en GitHub {#sec-workflows-explained}
 
-En este capítulo vamos a ver que pinta tiene flujo de trabajo colaborativo entre personas 
-hacer análisis de daos y desarrollo de software. 
+En este capítulo vamos a ver que pinta tiene el flujo de trabajo colaborativo entre personas 
+para hacer análisis de datos y desarrollo de software. 
 Previamente estuviste trabajando con git de manera individual:
 
 ```
@@ -26,7 +26,7 @@ Modificar un archivo --> Add --> Commit
 Todo esto lo hiciste en una branch (o rama) del repositorio que normalmente llamamos *main* 
 por ser la principal. 
 **Branchs:** en git es una etiqueta que señala
-a un commit específico en el repositorio. Trabajar en una branch
+a un _commit_ específico en el repositorio. Trabajar en una branch
 te permite modificar archivos sin modificar los mismos archivos en otras
 branchs, porque esencialmente estás trabajando en un conjunto "paralelo" de
 archivos. Cuando quieras pasar los cambios que hiciste a la rama principal, 
@@ -70,7 +70,7 @@ Este esquema muestra el flujo de trabajo cuando no necesitamos hacer un fork.
 
 1. Cloná el repositorio en tu computadora
 2. Crear una nueva branch.
-3. Edita archivos agregalos y hacé commits en esa branch.
+3. Edita archivos, agregalos y hacé commits en esa branch.
 4. Cuando los cambios estén hechos y listos, envía un pull request al repositorio
 remoto para comparar tus cambios en tu branch con main.
 5. El pull request es aceptado y fusionado o hay que hacer nuevos cambios (paso 3).
@@ -109,7 +109,7 @@ algunos consejos:
 2. Si hacés grandes cambios, lo mejor es que estén relacionados a un problema u 
   objetivo, de modo que al revisar el PR sea más fáci seguirlo y entenderlo.
 3. Haz cambios relacionados con un issue específico y agregá comentarios en el issue para
-mantener todo al mundo al tanto.
+mantener a todo el mundo al tanto.
 
 ## Cómo trabajar
 
@@ -132,7 +132,7 @@ distintas situaciones.
   Tendrás que hacer un fork del repositorio del paquete, hacer cambios en
   nuevas branchs, y abrir PR para proponer esos cambios en el paquete. 
   Este escenario es el más habitual en el mundo de los paquetes R de código abierto,
-  ya que la mayoría de los paquetes son mantenidos por una o varios
+  ya que la mayoría de los paquetes son mantenidos por una o varias
   personas.
 4. **Como miembro de un equipo** Si tenés permisos de escritura en el
   repositorio y formás parte de un equipo que trabaja en ese repositorio, podés trabajar
@@ -154,7 +154,7 @@ cada una de ellas.
   será el mejor enfoque para completar un proyecto en equipo?
   ¿Se te ocurren otros enfoques que puedan funcionar igual de bien? ¿Qué
   ¿Cuáles son los puntos fuertes y débiles de cada enfoque?
-2. Un amigo se entera de que estás creando un paquete R en tu tiempo libre
+2. Un amigo/a se entera de que estás creando un paquete R en tu tiempo libre
   y quiere contribuir. ¿Qué instrucciones le darías a tu amigo/a para que pueda
   contribuir? ¿Qué enfoque funcionaría mejor para vos?
 3. Mientras navegás por la página web de un paquete de R, encontrás algunos errores de tipeo y
