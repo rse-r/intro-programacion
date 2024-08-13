@@ -1,0 +1,52 @@
+---
+title: "Ejercicios de visualización de datos"
+---
+
+En este archivo vas a encontrar ejercicios para practicar cómo hacer gráficos con `ggplot2`.
+En este caso vamos a usar datos que forman parte de un paquete llamado `datos`. 
+De hecho este paquete tiene muchas bases de datos en español. 
+Antes de empezar a trabajar recordá instalar este nuevo paquete y el paquete `lubridate` desde la consola.
+
+```{r}
+# Cargá ggplot2 y dplyr
+
+
+clima <- datos::clima #esta es otra manera de acceder a las funciones y datos de un paquete
+```
+
+Esta base de datos tiene datos de distintas variables meterológicas en 3 aeropuertos (en la columna origen) a lo largo de un año. 
+Revisa que columnas incluyen y como se llaman en el siguiente bloque de código.
+
+```{r}
+
+```
+
+Habrás notado que no hay una única columna con la fecha y la hora, está separada en varias columnas, vamos a crear esta columna con `mutate()` y la función `make_datetime()` de lubridate.
+
+```{r}
+clima <- clima |> 
+  mutate(fecha_hora = lubridate::make_datetime(anio, mes, dia, hora))
+```
+¿Cómo es la relación entre el punto de rocio (a que temperatura el vapor de agua se condensa) y la humedad? 
+
+```{r}
+ggplot(clima, aes(________, _________)) +
+  geom_point()
+```
+
+Sumá un suavizado para visuzalizar mejor la relación. Usá el método lm.
+
+```{r}
+ggplot(clima, aes(________, _________)) +
+  geom_point() +
+  _______________
+```
+
+Veamos ahora como cambia la temperatura a lo largo del año parada estación. El gráfico resultante debería tener el tiempo en el eje x y mostrar 3 lineas de distinto color, una para cada estación.
+
+¿En qué parte del mundo están estos aeropuertos?
+
+```{r}
+
+```
+
