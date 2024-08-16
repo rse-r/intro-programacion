@@ -405,6 +405,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Git es una herramienta para control de versiones, vamos a utilizarla para trabajar colaborativamente.</p>
 <p>En la pagina de <a href="https://git-scm.com/">Git</a> podemos descargar el instalador para nuestro sistema operativo.</p>
 <p>En esa misma pagina <a href="https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git">hay una guia de instalacion para cada sistema operativo en castellano</a>. Sigue las instrucciones detallas en la misma.</p>
+<p>Una vez que tengas git instalado y tu cuenta de GitHub hay que conectarlo con RStudio. En particular hay que setear el “token”, una especie de contraseña para poder hacer cambios en GitHub.</p>
+<p>Primero tendrás que correr el siguente código (tenés que instalar usethis primero)</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Se abrirá la ventana de git y ahí tendrás que seguir los pasos para crear el token y copiarlo (muy importante!).</p>
+<p>Ahora corré el siguiente código (necesitas el paquete credentials)</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>credentials<span class="sc">::</span><span class="fu">set_github_pat</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Elegí crear/guardar el token.</p>
 </section>
 <section id="crear-cuentas" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="crear-cuentas">Crear cuentas</h2>

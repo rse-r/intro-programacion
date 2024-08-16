@@ -121,6 +121,23 @@ En la pagina de [Git](https://git-scm.com/) podemos descargar el instalador para
 
 En esa misma pagina [hay una guia de instalacion para cada sistema operativo en castellano](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git).  Sigue las instrucciones detallas en la misma.  
 
+Una vez que tengas git instalado y tu cuenta de GitHub hay que conectarlo con RStudio. En particular hay que setear el "token", una especie de contraseña para poder hacer cambios en GitHub.
+
+Primero tendrás que correr el siguente código (tenés que instalar usethis primero)
+
+```r
+usethis::create_github_token()
+```
+
+Se abrirá la ventana de git y ahí tendrás que seguir los pasos para crear el token y copiarlo (muy importante!).
+
+Ahora corré el siguiente código (necesitas el paquete credentials)
+
+```r
+credentials::set_github_pat()
+```
+Elegí crear/guardar el token.
+
 ## Crear cuentas {-}
 
 ### Crear una cuenta en GitHub {-}
