@@ -324,5 +324,48 @@ La función `is.na()` devuelve `TRUE` si el valor es un `NA`, al mismo tiempo `T
 6. ¿Cuál es la precipitación acumulada mensual en cada estación? Pista: la precipitación acumulada mensual es la *suma* de la precipitación en cada mes. 
 En este caso necesitas agrupar los datos por año y mes, una posibilidad es usar `floor_date(fecha, "month")`.
 
+```{r message=FALSE, warning=FALSE, echo=FALSE, eval=FALSE}
+estaciones_santafe <- c("NH0472", "NH0910", "NH0046", "NH0098", "NH0437")
+santa_fe <- purrr::map_df(here::here(paste0("datos/", estaciones_santafe, ".csv")), readr::read_csv)
 
+# 1. ¿Cuántas observaciones de temperatura se hicieron en cada estación?
+
+santa_fe |> 
+  group_by(id) |> 
+  count() # o summarise(n = n())
+
+# 2. ¿Cuál es la temperatura mínima registrada y la máxima registrada en cada estación?
+
+santa_fe |> 
+  group_by(id) |> 
+  summarise(t_min = min(temperatura_abrigo_150cm_minima, na.rm = TRUE),
+            t_max = max(temperatura_abrigo_150cm_maxima, na.rm = TRUE))
+
+# 3.  ¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar?
+
+santa_fe |> 
+  group_by(id) |> 
+  summarise(t_min = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+            t_max = sd(temperatura_abrigo_150cm, na.rm = TRUE))
+
+# 4. ¿Cuál es la proporción de `NA` en temperatura de abrigo a 150 cm?
+
+santa_fe |> 
+  group_by(id) |> 
+  summarise(nas = sum(is.na(temperatura_abrigo_150cm)),
+            n_total = n(),
+            prop_na = nas/n_total)
+
+# 5. ¿Cuál es el promedio anual de la temperatura de abrigo a 150 cm en cada estación?
+
+santa_fe |> 
+  group_by(id, anio = lubridate::year(fecha)) |>
+  summarise(t_anual = mean(temperatura_abrigo_150cm, na.rm = TRUE))
+
+# 6. ¿Cuál es la precipitación acumulada mensual en cada estación?
+
+santa_fe |> 
+  group_by(id, anio_mes = lubridate::floor_date(fecha, "month")) |>
+  summarise(pp_mensual = sum(precipitacion_pluviometrica, na.rm = TRUE))
+```
 :::

@@ -204,6 +204,15 @@ paises |>
 ```
 ::: 
 
+::: ejercicio
+
+Es hora de revisar lo que vimos hasta acá. 
+
+1. Descargá el archivo que se encuentra [en este link](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/ggplot.qmd) y guardalo en tu proyecto de trabajo en clase.
+2. Resolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+:::
+
+
 Vamos a seguir aprovechando el paquete datos, en este caso `diamantes` que contiene información sobre ~ 54000 diamantes, incluido el `precio`, el `quilate`, el `color`, la `claridad` y el `corte` de cada uno.
 
 ```{r message=FALSE}
@@ -351,6 +360,9 @@ ggplot(diamantes, aes(claridad, precio, fill = claridad)) +
   facet_wrap(~corte)
 ```
 :::
+
+
+### Construyendo un paquete de R paso a paso {#ex-graficos}
 
 ::: ejercicio
 

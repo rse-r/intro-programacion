@@ -114,7 +114,7 @@ A lo largo del curso vamos a construir y probar paquete de R que nos permita tra
 
 Utilizaremos datos que diponibiliza el Institulo Nacional de Tecnología Agropecuaria [INTA](https://www.argentina.gob.ar/inta) a traves del Sistema de Información y Gestión Agropecuaria [SIGA](https://siga.inta.gob.ar/#/). Por ahora y para practicar lo que vimos en esta sección, usaremos una parte de esos datos que guardamos en un repositorio.
 
-* Metadatos: 
+* Metadatos: https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv
 * Estación NH0472: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0472.csv
 * Estación NH0910: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0910.csv
 * Estación NH0046: https://github.com/rse-r/intro-programacion/blob/main/datos/NH0046.csv

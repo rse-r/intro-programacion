@@ -264,7 +264,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#relaci%C3%B3n-entre-variables" id="toc-relación-entre-variables" class="nav-link" data-scroll-target="#relaci%C3%B3n-entre-variables"><span class="header-section-number">6.0.5</span> Relación entre variables</a></li>
   <li><a href="#gr%C3%A1ficos-de-frecuencias" id="toc-gráficos-de-frecuencias" class="nav-link" data-scroll-target="#gr%C3%A1ficos-de-frecuencias"><span class="header-section-number">6.1</span> Gráficos de frecuencias</a></li>
   <li><a href="#gr%C3%A1ficos-de-caja" id="toc-gráficos-de-caja" class="nav-link" data-scroll-target="#gr%C3%A1ficos-de-caja"><span class="header-section-number">6.2</span> Gráficos de caja</a></li>
-  <li><a href="#graficando-en-m%C3%BAltiples-paneles" id="toc-graficando-en-múltiples-paneles" class="nav-link" data-scroll-target="#graficando-en-m%C3%BAltiples-paneles"><span class="header-section-number">6.3</span> Graficando en múltiples paneles</a></li>
+  <li>
+<a href="#graficando-en-m%C3%BAltiples-paneles" id="toc-graficando-en-múltiples-paneles" class="nav-link" data-scroll-target="#graficando-en-m%C3%BAltiples-paneles"><span class="header-section-number">6.3</span> Graficando en múltiples paneles</a>
+  <ul class="collapse">
+<li><a href="#ex-graficos" id="toc-ex-graficos" class="nav-link" data-scroll-target="#ex-graficos"><span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -522,6 +527,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<div class="ejercicio">
+<p>Es hora de revisar lo que vimos hasta acá.</p>
+<ol type="1">
+<li>Descargá el archivo que se encuentra <a href="https://github.com/rse-r/intro-programacion/blob/main/ejercicios/ggplot.qmd">en este link</a> y guardalo en tu proyecto de trabajo en clase.</li>
+<li>Resolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los <code>_____</code> con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero.</li>
+</ol>
+</div>
 <p>Vamos a seguir aprovechando el paquete datos, en este caso <code>diamantes</code> que contiene información sobre ~ 54000 diamantes, incluido el <code>precio</code>, el <code>quilate</code>, el <code>color</code>, la <code>claridad</code> y el <code>corte</code> de cada uno.</p>
 <div class="cell">
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamantes</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/diamantes.html">diamantes</a></span></span>
@@ -709,6 +721,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<section id="ex-graficos" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="ex-graficos">
+<span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</h3>
 <div class="ejercicio">
 <p>Sigamos analizando los datos de estaciones meteorológicas.</p>
 <ol type="1">
@@ -731,7 +745,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
