@@ -5,9 +5,9 @@ title: git para trabajar individualmente
 ## Objetivos de aprendizaje
 
 * Identificar por qué el control de versiones, específicamente Git, es importante para el desarrollo de software y análisis de datos.
-* Diferenciar métodos para trabajar con Git y R: integración con RStudio
+* Diferenciar métodos para trabajar con Git y R: integración con RStudio.
 * Aplicar el proceso de modificación-add-commit como el flujo de trabajo de Git para el seguimiento de los cambios y ver el historial de commits de un repositorio.
-* Publicar repositorios en GitHub y coordinar versiones remotas y locales
+* Publicar repositorios en GitHub y coordinar versiones remotas y locales.
 
 
 ## ¿Por qué git?
@@ -29,7 +29,7 @@ title: git para trabajar individualmente
 
 Probablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos **repositorio**. Si alguna vez has mirado el historial de un archivo de Google Docs, es así pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.
 
-Si trabajas de manera individual, git es estupendo para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También puedes utilizar **repositorio remoto** (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.
+Si trabajas de manera individual, git es estupendo para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También puedes utilizar un **repositorio remoto** (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.
 
 Si trabajas en equipo, podés aprovechar todo lo anterior y utilizar también el control de versiones como herramienta para colaborar y organizar las distintas versiones de un mismo archivo presentes en las múltiples computadoras que vos y las otras personas usen.
 
@@ -110,7 +110,7 @@ Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://gi
 
 La nueva carpeta en tu computadora será un repositorio git, vinculado a un repositorio remoto de GitHub y un proyecto de RStudio al mismo tiempo. Este flujo de trabajo también se asegura de que toda la configuración entre los repositorios local y remoto se realice correctamente.
 
-También agrema un archivo llamado `.gitignore` que incluye una lista de archivos que no queremos sumar al repositorio (por ejemplo `.Rhistory`).
+También agrega un archivo llamado `.gitignore` que incluye una lista de archivos que no queremos sumar al repositorio (por ejemplo `.Rhistory`).
 
 ## Cambios locales
 
@@ -120,7 +120,7 @@ Es hora de poner en práctica algunas de las cosas de las que hemos estado habla
 **Add, commit**
 
 1.  Creá un nuevo archivo RMarkdown y guardalo.
-2.  Agregalo al área de preparación con add y luego hace un commit. ¡Vas a tener que pensar un mensaje descriptivo!
+2.  Agregalo al área de preparación con _add_ y luego hace un _commit_. ¡Vas a tener que pensar un mensaje descriptivo!
 3.  Hace un cambio en el archivo, puede ser cualquier cosa. Guardalo.
 4.  Repetí el paso 2.
 
@@ -137,7 +137,7 @@ Si todo salió bien, empezaste a rastrear archivos, hiciste cambios y commits pa
 
 **¡Push!**
 
-1.  Ahora, hacé push para enviar los commits al repositorio remoto utilizando el botón con la flecha verde apuntando hacia arriba. 
+1.  Ahora, hacé _push_ para enviar los commits al repositorio remoto utilizando el botón con la flecha verde apuntando hacia arriba. 
 
 :::
 
@@ -152,8 +152,8 @@ Ahora, podemos intentar hacer cambios aquí.
 **Crear un README**
 
 1.  En la página principal, hacé click en el botón verde que dice "Add a README".
-2.  Agregá algo en archivo. Los README suelen estar escritos en Markdown y contienen información sobre el repositorio.
-3.  Al final de la página añadí un mensaje hacé click en "Confirm changes...".
+2.  Agregá algo en el archivo. Los README suelen estar escritos en Markdown y contienen información sobre el repositorio.
+3.  Al final de la página añadí un mensaje y hacé click en "Confirm changes...".
 4.  Volvé a la página principal para ver el README. 
 
 :::
