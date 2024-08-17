@@ -240,11 +240,11 @@ Podés descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-p
 
 ::: ejericios
 
-**pivots!**
+**Pivots!**
 
 Recordás el ejercicio 3 de dplyr?
 
-3. ¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
+>¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
 
 1. Usando las funciones `pivot_` alargá el resultado anterior. 
 2. A continuación volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.
