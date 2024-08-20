@@ -231,5 +231,11 @@ Hacé un pull request
 
 Quien esté a cargo del repositorio recibirá un correo electrónico. Pueden revisar el pull request, hacer comentarios y, finalmente, aceptar la contribución. Cuando esto ocurra, los cambios que hayas hecho aparecerán en el repositorio.
 
+::: ejercicio
 
+Ahora que sabes como contribuir con un proyecto, podés ayudarnos! Estos materiales están plagados de errores de tipeo y cosas para mejorar, y a esta altura seguro encontraste un montón. 
+
+Para practicar como hacer un PR en un repositorio donde no tenés permisos, te proponemos que busques un error y propongas como arreglarlo. Cada una de estas secciones es un archivo .qmd como los que venimos usando y el repositorio se encuentra en [github.com/rse-r/intro-programacion](https://github.com/rse-r/intro-programacion).
+
+:::
 
