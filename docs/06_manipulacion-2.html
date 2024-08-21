@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.47">
+<meta name="generator" content="quarto-1.4.528">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-<title>7&nbsp; Manipulación de datos ordenados II – Introducción a la Programación II</title>
+
+<title>Introducción a la Programación II - 7&nbsp; Manipulación de datos ordenados II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -54,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -71,7 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,24 +103,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 </head>
+
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_manipulacion-2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados II</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
@@ -130,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
@@ -234,44 +248,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#de-ancho-a-largo-con-pivot_longer" id="toc-de-ancho-a-largo-con-pivot_longer" class="nav-link active" data-scroll-target="#de-ancho-a-largo-con-pivot_longer"><span class="header-section-number">7.1</span> De ancho a largo con <code>pivot_longer()</code></a></li>
+  <li><a href="#de-ancho-a-largo-con-pivot_longer" id="toc-de-ancho-a-largo-con-pivot_longer" class="nav-link active" data-scroll-target="#de-ancho-a-largo-con-pivot_longer"><span class="header-section-number">7.1</span> De ancho a largo con <code>pivot_longer()</code></a></li>
   <li><a href="#de-largo-a-ancho-con-pivot_wider" id="toc-de-largo-a-ancho-con-pivot_wider" class="nav-link" data-scroll-target="#de-largo-a-ancho-con-pivot_wider"><span class="header-section-number">7.2</span> De largo a ancho con <code>pivot_wider()</code></a></li>
-  <li>
-<a href="#uniendo-tablas" id="toc-uniendo-tablas" class="nav-link" data-scroll-target="#uniendo-tablas"><span class="header-section-number">7.3</span> Uniendo tablas</a>
+  <li><a href="#uniendo-tablas" id="toc-uniendo-tablas" class="nav-link" data-scroll-target="#uniendo-tablas"><span class="header-section-number">7.3</span> Uniendo tablas</a>
   <ul class="collapse">
-<li><a href="#ex-exploracion" id="toc-ex-exploracion" class="nav-link" data-scroll-target="#ex-exploracion"><span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  <li><a href="#ex-exploracion" id="toc-ex-exploracion" class="nav-link" data-scroll-target="#ex-exploracion"><span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">
-<span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados II</span>
-</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados II</span></h1>
 </div>
 
 
@@ -285,7 +301,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Venimos hablando y trabajando con datos ordenados, o en formato largo, donde:</p>
+</header>
+
+
+<p>Venimos hablando y trabajando con datos ordenados, o en formato largo, donde:</p>
 <ul>
 <li>cada fila es una observación</li>
 <li>cada columna es una variable</li>
@@ -305,13 +324,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>En esta sección vamos a usar el paquete <code>tidyr</code> para manipular datos. Si no lo tenés instalado, instalalo con el comando:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"tidyr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(como siempre, recordá que esto hay que hacerlo una única vez en la consola)</p>
 <p>Y luego cargá tidyr y dplyr con:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -327,12 +346,11 @@ Attaching package: 'dplyr'</code></pre>
     intersect, setdiff, setequal, union</code></pre>
 </div>
 </div>
-<section id="de-ancho-a-largo-con-pivot_longer" class="level2" data-number="7.1"><h2 data-number="7.1" class="anchored" data-anchor-id="de-ancho-a-largo-con-pivot_longer">
-<span class="header-section-number">7.1</span> De ancho a largo con <code>pivot_longer()</code>
-</h2>
+<section id="de-ancho-a-largo-con-pivot_longer" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="de-ancho-a-largo-con-pivot_longer"><span class="header-section-number">7.1</span> De ancho a largo con <code>pivot_longer()</code></h2>
 <p>Antes, usamos el set de datos de paises que viene en el paquete datos. Vamos a usar los datos originales que tienen un formato ancho.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/paises_ancho.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>paises_ancho <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/paises_ancho.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 142 Columns: 38
 ── Column specification ────────────────────────────────────────────────────────
@@ -343,7 +361,7 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>paises_ancho</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 38
    pais       continente `esperanza_de_vida-1952` `esperanza_de_vida-1957`
@@ -368,19 +386,19 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </div>
 </div>
 <div class="importante">
-<p>¿Notaste que en el código anterior no usaste <code><a href="https://readr.tidyverse.org">library(readr)</a></code> para cargar el paquete y luego leer? Con la notación <code>paquete::funcion()</code> podés acceder a las funciones de un paquete sin tener que cargarlo. Es una buena forma de no tener que cargar un montón de paquetes innecesarios si vas a correr una única función de un paquete pocas veces.</p>
+<p>¿Notaste que en el código anterior no usaste <code>library(readr)</code> para cargar el paquete y luego leer? Con la notación <code>paquete::funcion()</code> podés acceder a las funciones de un paquete sin tener que cargarlo. Es una buena forma de no tener que cargar un montón de paquetes innecesarios si vas a correr una única función de un paquete pocas veces.</p>
 </div>
 <p>Esta tabla, increíblemente ancha, es muy difícil de manejar. Por ejemplo, es imposible hacer una serie de tiempo de una variable, o calcular el promedio por variable y país; ni hablar de calcular una regresión lineal.</p>
-<p>Para convertirlo en una tabla más larga, se usa <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> (“longer” es “más largo” en inglés):</p>
+<p>Para convertirlo en una tabla más larga, se usa <code>pivot_longer()</code> (“longer” es “más largo” en inglés):</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">paises_ancho</span>,</span>
-<span>                             cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'pob'</span><span class="op">)</span>, </span>
-<span>                                      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'esperanza'</span><span class="op">)</span>, </span>
-<span>                                      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'pib_per'</span><span class="op">)</span><span class="op">)</span>,</span>
-<span>                             names_to <span class="op">=</span> <span class="st">"variable_anio"</span>, </span>
-<span>                             values_to <span class="op">=</span> <span class="st">"valor"</span></span>
-<span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>paises_largo <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(paises_ancho,</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                             <span class="at">cols =</span> <span class="fu">c</span>(<span class="fu">starts_with</span>(<span class="st">'pob'</span>), </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">starts_with</span>(<span class="st">'esperanza'</span>), </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                                      <span class="fu">starts_with</span>(<span class="st">'pib_per'</span>)),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>                             <span class="at">names_to =</span> <span class="st">"variable_anio"</span>, </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>                             <span class="at">values_to =</span> <span class="st">"valor"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>paises_largo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 4
    pais       continente variable_anio     valor
@@ -398,23 +416,25 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 # ℹ 5,102 more rows</code></pre>
 </div>
 </div>
-<p>El primer argumento de<code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> es la tabla que va a modificar: <code>paises_ancho</code>. El segundo argumento se llama <code>cols</code> y es un vector con las columnas que tienen los valores a “alargar”. Podría ser un vector escrito a mano (algo como <code>c("pib_per_capita-1952", "pib_per_capita-1957"...)</code>) pero con más de 30 columnas, escribir todo eso sería tedioso y probablemente estaría lleno de errores. Por eso tidyr provee funciones de ayuda para seleccionar columnas en base a patrones. El código de arriba usa <code><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with()</a></code> que, como su nombre en inglés lo indica, selecciona las columnas que <em>empiezan con</em> una determinada cadena de caracteres. El vector <code>c(starts_with('pob'), starts_with('esperanza'), starts_with('pib_per'))</code> le dice a <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> que seleccione las columnas que empieza con “pob”, las que empiezan con “esperanza” y las que empiezan con “pib_per”.</p>
+<p>El primer argumento de<code>pivot_longer()</code> es la tabla que va a modificar: <code>paises_ancho</code>. El segundo argumento se llama <code>cols</code> y es un vector con las columnas que tienen los valores a “alargar”. Podría ser un vector escrito a mano (algo como <code>c("pib_per_capita-1952", "pib_per_capita-1957"...)</code>) pero con más de 30 columnas, escribir todo eso sería tedioso y probablemente estaría lleno de errores. Por eso tidyr provee funciones de ayuda para seleccionar columnas en base a patrones. El código de arriba usa <code>starts_with()</code> que, como su nombre en inglés lo indica, selecciona las columnas que <em>empiezan con</em> una determinada cadena de caracteres. El vector <code>c(starts_with('pob'), starts_with('esperanza'), starts_with('pib_per'))</code> le dice a <code>pivot_longer()</code> que seleccione las columnas que empieza con “pob”, las que empiezan con “esperanza” y las que empiezan con “pib_per”.</p>
 <div class="importante">
-<p>Estas funciones accesorias para seleccionar muchas funciones se llaman “tidyselect”. Si querés leer más detalles de las distintas formas que podés seleccionar variables leé la documentación usando <code><a href="https://tidyselect.r-lib.org/reference/language.html">?tidyselect::language</a></code>.</p>
+<p>Estas funciones accesorias para seleccionar muchas funciones se llaman “tidyselect”. Si querés leer más detalles de las distintas formas que podés seleccionar variables leé la documentación usando <code>?tidyselect::language</code>.</p>
 </div>
 <p>El tercer y cuarto argumento son los nombres de las columnas de “nombre” y de “valor” que va a tener la nueva tabla. Como la nueva columna de identificación tiene los datos de la variable y el año a medir, “variable_anio” es un buen nombre. Y la columna de valor va a tener… bueno, el valor.</p>
 <p>Tomate un momento para visualizar lo que acaba de pasar. La tabla ancha tenía un montón de columnas con distintos datos. Ahora estos datos están uno arriba de otro en la columna “valor”, pero para identificar el nombre de la columna de la cual vinieron, se agrega la columna “variable_anio”.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="images/ancho-a-largo.png" class="img-fluid figure-img"></p>
-<figcaption>Proceso de largo a ancho</figcaption></figure>
+<div class="img-fluid quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/ancho-a-largo.png" class="img-fluid figure-img"></p>
+<figcaption>Proceso de largo a ancho</figcaption>
+</figure>
 </div>
-<p>La columna <code>variable_anio</code> todavía no es muy útil porque contiene 2 datos, la variable (población, expectativa de vida o PBI per cápita) y el año. Sería mejor separar esta información en dos columnas llamadas “variable” y “anio”. Para eso está la función <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code>.</p>
+<p>La columna <code>variable_anio</code> todavía no es muy útil porque contiene 2 datos, la variable (población, expectativa de vida o PBI per cápita) y el año. Sería mejor separar esta información en dos columnas llamadas “variable” y “anio”. Para eso está la función <code>separate()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
-<span>         col <span class="op">=</span> <span class="va">variable_anio</span>, </span>
-<span>         delim <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>         names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"variable"</span>, <span class="st">"anio"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>paises_largo <span class="ot">&lt;-</span> <span class="fu">separate_wider_delim</span>(paises_largo, </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>         <span class="at">col =</span> variable_anio, </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">delim =</span> <span class="st">"-"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>         <span class="at">names =</span> <span class="fu">c</span>(<span class="st">"variable"</span>, <span class="st">"anio"</span>))</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>paises_largo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 5
    pais       continente variable  anio     valor
@@ -432,12 +452,12 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 # ℹ 5,102 more rows</code></pre>
 </div>
 </div>
-<p>El primer argumento, como siempre, es la tabla a procesar. El segundo, <code>col</code>, es la columna a separar en dos (o más) columnas nuevas. El segundo argumento indica cómo se separan los elementos, en este caso con guíon “-”. El tercero, <code>names</code> es el nombre de las nuevas columnas que <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> va a crear.</p>
-<p>Y ya casi. Pero fijate que debajo de la columna <code>anio</code> dice <code>&lt;chr&gt;</code>; eso significa que el tipo de la columna es caracter, pero los años son números. Usando <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> podemos convertir la columna <code>anio</code> a entero usando <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>:</p>
+<p>El primer argumento, como siempre, es la tabla a procesar. El segundo, <code>col</code>, es la columna a separar en dos (o más) columnas nuevas. El segundo argumento indica cómo se separan los elementos, en este caso con guíon “-”. El tercero, <code>names</code> es el nombre de las nuevas columnas que <code>separate_wider_delim()</code> va a crear.</p>
+<p>Y ya casi. Pero fijate que debajo de la columna <code>anio</code> dice <code>&lt;chr&gt;</code>; eso significa que el tipo de la columna es caracter, pero los años son números. Usando <code>mutate()</code> podemos convertir la columna <code>anio</code> a entero usando <code>as.integer()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
-<span>                       anio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">anio</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>paises_largo <span class="ot">&lt;-</span> <span class="fu">mutate</span>(paises_largo, </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>                       <span class="at">anio =</span> <span class="fu">as.integer</span>(anio))</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>paises_largo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 5
    pais       continente variable   anio    valor
@@ -458,14 +478,14 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <div class="ejercicio">
 <p>Juntá todos los pasos anteriores en una sola cadena de operaciones usando <code>|&gt;</code>.</p>
 </div>
-</section><section id="de-largo-a-ancho-con-pivot_wider" class="level2" data-number="7.2"><h2 data-number="7.2" class="anchored" data-anchor-id="de-largo-a-ancho-con-pivot_wider">
-<span class="header-section-number">7.2</span> De largo a ancho con <code>pivot_wider()</code>
-</h2>
+</section>
+<section id="de-largo-a-ancho-con-pivot_wider" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="de-largo-a-ancho-con-pivot_wider"><span class="header-section-number">7.2</span> De largo a ancho con <code>pivot_wider()</code></h2>
 <p>Ahora la variable <code>paises_largo</code> está en el formato más largo posible. Tiene 5 columnas, de las cuales sólo una es la columnas con valores. Pero con los datos así no podrías hacer un gráfico de puntos que muestre la relación entre el PBI per cápita y la expectativa de vida como en la <a href="06_graficos.html">sección de gráficos</a>. Fijate que los valores de la columna <code>valor</code> no tienen todos las mismas unidades, por lo que operar con ese vector podría dar resultados sin sentido. Muchas veces es conveniente y natural tener los datos en un formato intermedio en donde hay múltiples columnas con los valores de distintas variables observadas.</p>
-<p>Pasa “ensanchar” una tabla está la función <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> (“wider” es “más ancha” en inglés) y el código para conseguir este formato intermedio es:</p>
+<p>Pasa “ensanchar” una tabla está la función <code>pivot_wider()</code> (“wider” es “más ancha” en inglés) y el código para conseguir este formato intermedio es:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_medio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, names_from <span class="op">=</span> <span class="va">variable</span>, values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span>
-<span><span class="va">paises_medio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>paises_medio <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(paises_largo, <span class="at">names_from =</span> variable, <span class="at">values_from =</span> valor)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>paises_medio</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    pais       continente  anio poblacion esperanza_de_vida pib_per_capita
@@ -486,10 +506,10 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Nuevamente el primer argumento es la tabla original. El segundo, <code>names_from</code> es la columna cuyos valores únicos van a convertirse en nuevas columnas. La columna <code>variable</code> tiene los valores <code>"población"</code>, <code>"esperanza_de_vida"</code> y <code>"pib_per_capita"</code> y entonces la tabla nueva tendrá tres columnas con esos nombres. El tercer argumento, <code>values_from</code>, es la columna de la cual sacar los valores.</p>
 <p>Para volver al formato más ancho, basta con agregar más columnas en el argumento <code>names_from</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
-<span>            names_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">anio</span><span class="op">)</span>, </span>
-<span>            names_sep <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>            values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(paises_largo, </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>            <span class="at">names_from =</span> <span class="fu">c</span>(variable, anio), </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">names_sep =</span> <span class="st">"-"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">values_from =</span> valor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 38
    pais       continente `poblacion-1952` `poblacion-1957` `poblacion-1962`
@@ -520,25 +540,27 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <li><p>¿Cómo es la tabla más ancha posible que podés generar con estos datos? ¿Cuántas filas y columnas tiene?</p></li>
 </ul>
 </div>
-</section><section id="uniendo-tablas" class="level2" data-number="7.3"><h2 data-number="7.3" class="anchored" data-anchor-id="uniendo-tablas">
-<span class="header-section-number">7.3</span> Uniendo tablas</h2>
+</section>
+<section id="uniendo-tablas" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="uniendo-tablas"><span class="header-section-number">7.3</span> Uniendo tablas</h2>
 <p>Hasta ahora todo lo que usaste de dplyr involucra trabajar y modificar con una sola tabla a la vez, pero es muy común tener dos o más tablas con datos relacionados. En ese caso, tenemos que <em>unir</em> estas tablas. a partir de una o más variables en común o <em>keys</em>. En el mundo de dplyr hay que usar la familia de funciones <code>*_join()</code>. Hay una función cada tipo de unión que queramos hacer.</p>
 <p>Asumiendo que querés unir dos data.frames o tablas <code>x</code> e <code>y</code> que tienen en común una variable <code>A</code>:</p>
 <p><img src="images/join.png" class="img-fluid"></p>
 <ul>
-<li><p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>: devuelve todas las filas y todas las columnas de ambas tablas <code>x</code> e <code>y</code>. Cuando no coinciden los elementos en <code>x1</code>, devuelve <code>NA</code> (dato faltante). Esto significa que no se pierden filas de ninguna de las dos tablas aún cuando no hay coincidencia. Está es la manera más segura de unir tablas.</p></li>
-<li><p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code>: devuelve todas las filas de <code>x</code> y todas las columnas de <code>x</code> e <code>y</code>. Las filas en <code>x</code> que no tengan coincidencia con <code>y</code> tendrán <code>NA</code> en las nuevas columnas. Si hay múltiples coincidencias entre <code>x</code>e <code>y</code>, devuelve todas las coincidencias posibles.</p></li>
-<li><p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">right_join()</a></code>: es igual que <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> pero intercambiando el orden de <code>x</code> e <code>y</code>. En otras palabras, <code>right_join(x, y)</code> es idéntico a <code>left_join(y, x)</code>.</p></li>
-<li><p><code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>: devuelve todas las filas de <code>x</code> donde hay coincidencias con <code>y</code> y todas las columnas de <code>x</code> e <code>y</code>. Si hay múltiples coincidencias entre <code>x</code> e <code>y</code>, entonces devuelve todas las coincidencias. Esto significa que eliminará las filas (observaciones) que no coincidan en ambas tablas, lo que puede ser peligroso.</p></li>
+<li><p><code>full_join()</code>: devuelve todas las filas y todas las columnas de ambas tablas <code>x</code> e <code>y</code>. Cuando no coinciden los elementos en <code>x</code> o <code>y</code>, devuelve <code>NA</code> (dato faltante). Esto significa que no se pierden filas de ninguna de las dos tablas aún cuando no hay coincidencia. Está es la manera más segura de unir tablas, para no perder datos.</p></li>
+<li><p><code>left_join()</code>: devuelve todas las filas de <code>x</code> y todas las columnas de <code>x</code> e <code>y</code>. Las filas en <code>x</code> que no tengan coincidencia con <code>y</code> tendrán <code>NA</code> en las nuevas columnas. Si hay múltiples coincidencias entre <code>x</code>e <code>y</code>, devuelve todas las coincidencias posibles.</p></li>
+<li><p><code>right_join()</code>: es igual que <code>left_join()</code> pero intercambiando el orden de <code>x</code> e <code>y</code>. En otras palabras, <code>right_join(x, y)</code> es idéntico a <code>left_join(y, x)</code>.</p></li>
+<li><p><code>inner_join()</code>: devuelve todas las filas de <code>x</code> donde hay coincidencias con <code>y</code> y todas las columnas de <code>x</code> e <code>y</code>. Si hay múltiples coincidencias entre <code>x</code> e <code>y</code>, entonces devuelve todas las coincidencias. Esto significa que eliminará las filas (observaciones) que no coincidan en ambas tablas, lo que puede ser peligroso.</p></li>
+<li><p><code>anti_join()</code>: devuelve todas las filas de <code>x</code> que no tienen coincidencias con <code>y</code>. Identifica observaciones no coincidentes entre dos conjunto de datos. Es muy util para encontrar datos faltantes o para eliminar datos duplicados.</p></li>
 </ul>
 <p><img src="images/join_family.png" class="img-fluid"></p>
 <p>Ahora vamos a seguir trabajando con las base de datos de <code>paises</code> pero nos vamos a quedar solo con las observaciones del 2007 y de paso unirlo a una nueva base de datos <code>co2</code> que contiene información de la emisión de dióxido de carbono de cada país para ese mismo año.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_2007</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/paises.html">paises</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">anio</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> </span>
-<span></span>
-<span><span class="va">co2_2007</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_2007.csv"</span><span class="op">)</span></span>
-<span><span class="va">co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>paises_2007 <span class="ot">&lt;-</span> datos<span class="sc">::</span>paises <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(anio <span class="sc">==</span> <span class="dv">2007</span>) </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>co2_2007 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_2007.csv"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>co2_2007</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 218 × 3
    codigo_iso emision_co2 pais                  
@@ -562,10 +584,10 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <li>las tablas a unir: son los dos primeros argumentos.</li>
 <li>qué variable o variables (se puede usar más de una!) usar para identificar coincidencias: el argumento <code>by</code>.</li>
 </ul>
-<p>Unamos <code>paises_2007</code> y <code>co2_2007</code> primero con <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>:</p>
+<p>Unamos <code>paises_2007</code> y <code>co2_2007</code> primero con <code>full_join()</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>paises_co2_2007 <span class="ot">&lt;-</span> <span class="fu">full_join</span>(paises_2007, co2_2007, <span class="at">by =</span> <span class="st">"pais"</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>paises_co2_2007</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 241 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -592,8 +614,8 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Esta es la opción más segura si no sabemos si todas las observaciones de una tabla están presente en a otra.</p>
 <p>Si solo nos interesa conservar las filas de la tabla <em>de la izquierda</em>, en este caso <code>paises_2007</code> entonces:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>paises_co2_2007 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(paises_2007, co2_2007, <span class="at">by =</span> <span class="st">"pais"</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>paises_co2_2007</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -613,10 +635,10 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </div>
 </div>
 <p>Ahora esperamos que la tabla resultante tenga la misma cantidad de filas que <code>paises_2007</code> y efectivamente eso ocurre. Pero al mismo tiempo varios países en esa tabla no encontraron coincidencia en <code>co2_2007</code> y por esa razón, la columna nueva columna <code>emisiones_co2</code> tiene <code>NA</code>.</p>
-<p>Finalmente, si quisiéramos quedarnos <em>solo</em> con las observaciones que están presentes en ambas tablas usamos <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>.</p>
+<p>Si quisiéramos quedarnos <em>solo</em> con las observaciones que están presentes en ambas tablas usamos <code>inner_join()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>paises_co2_2007 <span class="ot">&lt;-</span> <span class="fu">inner_join</span>(paises_2007, co2_2007, <span class="at">by =</span> <span class="st">"pais"</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>paises_co2_2007</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 119 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -636,22 +658,46 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </div>
 </div>
 <p>En este caso, perdemos las filas de <code>co2_2007</code> que no encontraron coincidencia en <code>paises_2007</code> y viceversa y la tabla resultante tiene aún menos filas (119).</p>
+<p>Finalmente, si quisieramos quedarnos con los paises para los cuales no tenemos datos de co2, o sea las observaciones en <code>paises_2007</code> que no tienen coincidencia en <code>co2_2007</code> usamos <code>anti_join()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>sin_co2_2007 <span class="ot">&lt;-</span> <span class="fu">anti_join</span>(paises_2007, co2_2007)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Joining with `by = join_by(pais)`</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>sin_co2_2007</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 23 × 6
+   pais              continente  anio esperanza_de_vida poblacion pib_per_capita
+   &lt;fct&gt;             &lt;fct&gt;      &lt;int&gt;             &lt;dbl&gt;     &lt;int&gt;          &lt;dbl&gt;
+ 1 Afganistán        Asia        2007              43.8  31889923           975.
+ 2 Argelia           África      2007              72.3  33333216          6223.
+ 3 Baréin            Asia        2007              75.6    708573         29796.
+ 4 Benin             África      2007              56.7   8078314          1441.
+ 5 Camboya           Asia        2007              59.7  14131858          1714.
+ 6 República Centro… África      2007              44.7   4369038           706.
+ 7 Comoras           África      2007              65.2    710960           986.
+ 8 Congo             África      2007              55.3   3800610          3633.
+ 9 Yibuti            África      2007              54.8    496374          2082.
+10 Guinea Bissau     África      2007              46.4   1472041           579.
+# ℹ 13 more rows</code></pre>
+</div>
+</div>
 <div class="ejercicio">
 <p>Estuvimos trabajando con una parte de la base de datos de emisiones. Pero también está disponible <code>co2_completo.csv</code> que contiene las emisiones para distintos años. El objetivo es que unas <code>paises</code> y <code>co2</code> teniendo en cuenta tanto el país como el año. Para eso:</p>
 <ol type="1">
 <li>Lee la base de datos <code>co2_completo.csv</code> en una nueva variable que se llame <code>co2</code>.</li>
 <li>Revisá el nombre de las variables en esta base de datos, ¿se llaman igual que las variables en <code>paises</code>?</li>
-<li>Uní las dos tablas usando <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>, tené en cuenta que ahora usamos dos variables llave <code>pais</code> y <code>anio</code>. Buscá en la documentación cómo indicarle eso a la función <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>.</li>
+<li>Uní las dos tablas usando <code>full_join()</code>, tené en cuenta que ahora usamos dos variables llave <code>pais</code> y <code>anio</code>. Buscá en la documentación cómo indicarle eso a la función <code>full_join()</code>.</li>
 </ol>
 <p>Podés descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_completo.csv</p>
 </div>
-<section id="ex-exploracion" class="level3" data-number="7.3.1"><h3 data-number="7.3.1" class="anchored" data-anchor-id="ex-exploracion">
-<span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</h3>
+<section id="ex-exploracion" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="ex-exploracion"><span class="header-section-number">7.3.1</span> Construyendo un paquete de R paso a paso</h3>
 <div class="ejericios">
 <p><strong>Pivots!</strong></p>
 <p>Recordás el ejercicio 3 de dplyr?</p>
 <blockquote class="blockquote">
-<p>¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para <em>sacar</em> los <code>NA</code> del cálculo, revisá la documentación de <code><a href="https://rdrr.io/r/base/mean.html">mean()</a></code> y de <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code>.</p>
+<p>¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para <em>sacar</em> los <code>NA</code> del cálculo, revisá la documentación de <code>mean()</code> y de <code>sd()</code>.</p>
 </blockquote>
 <ol type="1">
 <li>Usando las funciones <code>pivot_</code> alargá el resultado anterior.</li>
@@ -668,7 +714,11 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -703,7 +753,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const onCopySuccess = function(e) {
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -735,47 +796,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
   });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -810,11 +831,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
+      return note.innerHTML;
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -862,12 +879,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
-      }
+      return note.innerHTML;
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1087,18 +1099,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./05_graficos.html" class="pagination-link" aria-label="Graficado datos">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./05_graficos.html" class="pagination-link  aria-label=" &lt;span="" datos&lt;="" span&gt;"="">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Graficado datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./07_funciones.html" class="pagination-link" aria-label="Funciones">
+      <a href="./07_funciones.html" class="pagination-link" aria-label="<span class='chapter-number'>8</span>&nbsp; <span class='chapter-title'>Funciones</span>">
         <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Funciones</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -165,13 +165,15 @@ Asumiendo que querés unir dos data.frames o tablas `x` e `y` que tienen en com�
 
 ![](images/join.png)
 
-* `full_join()`: devuelve todas las filas y todas las columnas de ambas tablas `x` e `y`. Cuando no coinciden los elementos en `x1`, devuelve `NA` (dato faltante). Esto significa que no se pierden filas de ninguna de las dos tablas aún cuando no hay coincidencia. Está es la manera más segura de unir tablas.
+* `full_join()`: devuelve todas las filas y todas las columnas de ambas tablas `x` e `y`. Cuando no coinciden los elementos en `x` o `y`, devuelve `NA` (dato faltante). Esto significa que no se pierden filas de ninguna de las dos tablas aún cuando no hay coincidencia. Está es la manera más segura de unir tablas, para no perder datos.
 
 * `left_join()`: devuelve todas las filas de `x` y todas las columnas de `x` e `y`. Las filas en `x` que no tengan coincidencia con `y` tendrán `NA` en las nuevas columnas. Si hay múltiples coincidencias entre `x`e `y`, devuelve todas las coincidencias posibles. 
 
 * `right_join()`: es igual que `left_join()` pero intercambiando el orden de `x` e `y`. En otras palabras, `right_join(x, y)` es idéntico a `left_join(y, x)`.
 
 * `inner_join()`: devuelve todas las filas de `x` donde hay coincidencias con `y` y todas las columnas de `x` e `y`. Si hay múltiples coincidencias entre `x` e `y`, entonces devuelve todas las coincidencias. Esto significa que eliminará las filas (observaciones) que no coincidan en ambas tablas, lo que puede ser peligroso.
+
+* `anti_join()`: devuelve todas las filas de `x` que no tienen coincidencias con `y`. Identifica observaciones no coincidentes entre dos conjunto de datos. Es muy util para encontrar datos faltantes o para eliminar datos duplicados.
 
 ![](images/join_family.png)
 
@@ -216,7 +218,7 @@ paises_co2_2007
 Ahora esperamos que la tabla resultante tenga la misma cantidad de filas que `paises_2007` y efectivamente eso ocurre. Pero al mismo tiempo varios países en esa tabla no encontraron coincidencia en `co2_2007` y por esa razón, la columna nueva columna `emisiones_co2` tiene `NA`. 
 
 
-Finalmente, si quisiéramos quedarnos *solo* con las observaciones que están presentes en ambas tablas usamos `inner_join()`.
+Si quisiéramos quedarnos *solo* con las observaciones que están presentes en ambas tablas usamos `inner_join()`.
 
 ```{r}
 paises_co2_2007 <- inner_join(paises_2007, co2_2007, by = "pais")
@@ -224,6 +226,14 @@ paises_co2_2007
 ```
 
 En este caso, perdemos las filas de `co2_2007` que no encontraron coincidencia en `paises_2007` y viceversa y la tabla resultante tiene aún menos filas (119).
+
+
+Finalmente, si quisieramos quedarnos con los paises para los cuales no tenemos datos de co2, o sea las observaciones en `paises_2007` que no tienen coincidencia en `co2_2007` usamos `anti_join()`.
+
+```{r}
+sin_co2_2007 <- anti_join(paises_2007, co2_2007)
+sin_co2_2007
+```
 
 ::: ejercicio
 
