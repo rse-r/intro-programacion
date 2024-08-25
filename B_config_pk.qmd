@@ -1,0 +1,89 @@
+---
+title: Configuración para desarrollar paquetes
+---
+
+## Prepara tu sistema {#setup-prep}
+
+Para empezar, asegurate de que tenés la última versión de R (al menos `r paste0(version$major, ".", version$minor)` que es la versión que se utiliza para generar estos materiales), y luego ejecuta el siguiente código para obtener los paquetes que necesitarás:
+
+```{r, eval=FALSE}
+install.packages(c("devtools", "roxygen2", "testthat", "knitr", "usethis"))
+```
+
+## Herramientas para construir R {#setup-tools}
+
+Para ser plenamente capaz de construir paquetes de R a partir del código fuente, también necesitarás un compilador y algunas otras herramientas.
+Esto puede no ser estrictamente necesario hasta que quieras construir paquetes que contengan código C o C++.
+Especialmente si utilizás RStudio, podés saltear esto por ahora.
+RStudio te avisará y te proporcionará ayuda cuando intentes hacer algo que requiera que configures tu entorno de desarrollo.
+A continuación están las instrucciones según el sitema operativo que uses.
+
+### Windows
+
+::: importante
+
+Si seguiste los pasos que describimos en [Preparando el entorno de trabajo](B_config_pk.qmd), ya tenés Rtools instalado!
+:::
+
+En Windows, la colección de herramientas necesarias para construir paquetes a partir del código fuente se llama Rtools.
+
+Rtools NO es un paquete de R.
+NO se instala con `install.packages()`.
+En su lugar, descargalo de <https://cran.r-project.org/bin/windows/Rtools/> y ejecuta el instalador.
+
+Durante la instalación de Rtools es posible que aparezca una ventana pidiéndote que "selecciones tareas adicionales".
+
+- Selecciona *no* en la casilla "Editar el PATH del sistema". devtools y RStudio deberían poner Rtools en el `PATH` automáticamente cuando sea necesario.
+- Selecciona la casilla "Guardar información de la versión en el registro". Debería estar seleccionada por defecto.
+
+### macOS
+
+Necesitas instalar las herramientas de línea de comandos de Xcode, lo que requiere que [te registres como desarrollador/a de Apple](https://developer.apple.com/programs/enroll/). No te preocupes, esto es gratuito para quien sólo desee instalar apps, como las herramientas de línea de comandos Xcode. 
+
+A continuación, en la terminal escribí:
+
+```shell
+xcode-select --install
+```
+
+Alternativamente, puedes instalar la versión actual de [Xcode desde el Mac App Store](https://itunes.apple.com/ca/app/xcode/id497799835?mt=12).
+Esto incluye una gran cantidad de cosas que no necesitas, pero ofrece la ventaja de la comodidad del App Store.
+
+### Linux
+
+Asegurate de haber instalado no sólo R, sino también las herramientas de desarrollo de R.
+Por ejemplo, en Ubuntu (y Debian) tienes que instalar el programa `r-base-dev` con el paquete
+
+```
+sudo apt install r-base-dev
+```
+
+En Fedora y RedHat, las herramientas de desarrollo (llamadas `R-core-devel`) se instalarán automáticamente cuando instales R con `sudo dnf install R`.
+
+## Verifica la preparación del sistema
+
+Podés chequear que todo esté en orden con `devtools::dev_sitrep()`:
+
+```{r, eval=FALSE}
+devtools::dev_sitrep()
+#> ── R ───────────────────────────────────────────────────────────────────────
+#> • version: 4.1.2
+#> • path: '/Library/Frameworks/R.framework/Versions/4.1/Resources/'
+#> ── RStudio ─────────────────────────────────────────────────────────────────
+#> • version: 2022.2.0.443
+#> ── devtools ────────────────────────────────────────────────────────────────
+#> • version: 2.4.3.9000
+#> • devtools or its dependencies out of date:
+#>   'gitcreds', 'gh'
+#>   Update them with `devtools::update_packages("devtools")`
+#> ── dev package ─────────────────────────────────────────────────────────────
+#> • package: 'rpkgs'
+#> • path: '/Users/jenny/rrr/r-pkgs/'
+#> • rpkgs dependencies out of date:
+#>   'gitcreds', 'generics', 'tidyselect', 'dplyr', 'tidyr', 'broom', 'gh'
+#>  Update them with `devtools::install_dev_deps()`
+```
+
+Si te indica que algo está desactualizado, te recomendamos que hagas las actualizaciones. En particular si no tenés la última versión de R pero difiere solo en el último número de la versión (por ejemplo tenés 4.4.0 y la última versión es 4.4.1), entonces no es impresindible actualizarlo.
+
+
