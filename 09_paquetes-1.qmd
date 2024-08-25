@@ -2,3 +2,190 @@
 title: "Empaquetando funciones"
 ---
 
+## Objetivos de aprendizaje
+
+- Identificar cuándo y por qué crear un paquete R.
+- Conocer y utilizar los paquetes R `{devtools}` y `{usethis}` para
+  automatizar y agilizar muchas de las tareas de desarrollo de paquetes.
+- Aprende a crear un nuevo paquete R utilizando
+  `usethis::create_package()`.
+- Describir y explicar la finalidad de las carpetas y archivos de un
+  paquete de R.
+- Aprender cómo y por qué puedes añadir datos a un paquete de R.
+
+## ¿Por qué crear un paquete R?
+
+El objetivo principal del desarrollo de software es simplificar alguna tarea o un conjunto de
+tareas para vos y para los demás (como tu equipo, u otras personas que usen tu trabajo).
+Esto también se aplica al desarrollo de software en R. Crear un paquete R
+es una de las formas más potentes de simplificar tareas, independientemente de lo
+sencillas o complejas que sean.
+
+A lo largo de esta sección mostraremos que crear y desarrollar un programa R
+no es tan difícil como parece a primera vista. Pero antes de hacer un
+paquete, tenes que definir algunas cosas. Por ejemplo, ¿cómo
+determinar si tiene sentido hacer un paquete R? Respondé a las siguientes
+preguntas:
+
+* ¿Creaste alguna vez una función, por sencilla que sea? 
+* ¿Utilizaste esa función más de una vez en más de un proyecto o
+archivo, ya sea copiándola y pegándola o utilizando el archivo que
+que la contiene? 
+
+Si respondiste afirmativamente a estas dos preguntas, entonces deberías
+crear un paquete R para esa función. Pero puede que te preguntes, ¿por qué hacer un
+paquete con una sola función? Porque nunca se acaba con *sólo* una
+función, es muy probable sumes otras a tu trabajo. Aparte de
+empaquetar las funciones de R, si tienes conjuntos de datos pequeños o medianos
+que utilizas en varios proyectos o archivos, puedes incluso empaquetar
+los datos.
+
+Además, hacer un paquete de R ahora es mucho
+más fácil que en el pasado. Esto se debe en gran parte a otros paquetes de R como
+`{devtools}` y `{usethis}` que están diseñados para simplificar el desarrollo de
+paquetes. A esto se suman recursos gratuitos como
+libros y blogs y páginas en Internet para aprender a crear paquetes R y hacer
+desarrollo de software en R.
+
+Crear un paquete R y publicarlo en GitHub o en
+CRAN como parate de trabajo científico, un proyecto o análisis 
+ayuda a su reproducibilidad. Esto se debe a que hacer un paquete de R
+suele requerir un mayor nivel de rigor, tests, documentación y
+inspección del código, lo que significa que tú y los demás podrán confiar más en
+en los resultados. Y si está en GitHub, es mucho más fácil compartir tu trabajo.
+con otras pesonas y lo lograr que tu trabajo tenga mayor impacto en general.
+
+## ¿Qué es un paquete R?
+
+Para entender qué es un paquete R, daremos un paso atrás y consideraremos
+lo que ocurre cuando interactuamos con R. El primer acercamiento a R
+es a través de la consola, donde escribís funciones en R para realizar tareas que
+que se imprimen en pantalla. Si no cambiaste la configuración inicial esa sesión
+de R correrar en tu carpeta raiz, normalmente algo parecido a `/home/username/`
+en Linux, `/Users/username/` para macOS, o `C:\Users\username` para
+Windows. Así que cualquier dato o gráfico que guardes o importes debe incluir
+la ruta del archivo a la ubicación correcta. Desde un punto de vista reproducible y modular
+esto va en contra de las buenas prácticas. Asimismo, el código de R
+qeu escribas en la consola no se guarda en ningún lado. Por tanto, no podés
+reutilizarlo o compartirlo fácilmente.
+
+El siguiente nivel es guardar el código en un scriptde  R (un archivo almacenado en cualquier lugar
+en el ordenador que termina en `.R`) y hacer que R ejecute este código en
+secuencia. En el pasado, la gente podía escribir scripts de R en editores de texto como
+vim, emacs o Notepad, y ejecutar manualmente el script en la consola de R.
+En la actualidad, la mayoría de la gente utiliza un Editor de Desarrollo Integrado (IDE)
+como RStudio o VS Code. Este es el método más utilizado para realizar cualquier tipo de trabajo en R.
+Teóricamente, el código escrito de esta forma es reproducible y se puede
+compartir. Sin embargo, en la práctica, las personas escriben código de manera
+secuencial, resolviendo un problema luego del otro y trabajan con R de forma más interactiva que
+programáticamente. El directorio de trabajo de un script R en este caso
+no está definido, por lo que seguimos encontrando problemas similares
+a los que tenemos al usar la consola. Si bien se puede 
+almacenar código o funciones de  R en un script y *cargarlas* con `source()`
+desde otros scripts, esto implica hacer un seguimiento de los archivos con estas
+funciones y actualizarlos cuando corresponda.
+
+Un paquete de R no es muy diferente de utilizar varios scripts. Existen
+ciertas expectativas y convenciones que deben seguirse para
+para que que el paquete se "instale" en tu computadora y quede disponible como 
+paquete. Algunas de estas convenciones son:
+
+- Debe haber un archivo llamado `DESCRIPTION` que contiene los metadatos
+  necesarios para que R sepa cómo instalar el paquete. Veremos qué
+  debe incluir más adelante.
+
+- Debe haber una carpeta llamada `R/`. Normalmente sólo contendrá archivos `.R`
+  y sólo incluirán las funciones que hayas creado. Veremos como incorporar las 
+  funciones que ya tenemos dentro de un paquete.
+
+- Debe haber un archivo `NAMESPACE` que contenga la lista de funciones
+  de tu paquete que esten disponibles para ser usadas. Este archivo 
+  se gestiona automáticamente
+  con funciones de `{devtools}` y `{roxygen2}`.
+
+- La carpeta que contiene todo, aunque no es obligatorio debería llamarse como
+  el paquete. Por ejemplo, el paquete
+  `{usethis}` tiene el nombre de carpeta `usethis/`. Esto no es un
+  requisito explícito, pero es muy recomendable. R determina el
+  nombre del paquete a partir del campo `Package:` en el archivo `DESCRIPTION`.
+
+Nada de esto es algo de lo que tengas que preocuparte realmente porque los
+paquetes `{usethis}` y `{devtools}` están diseñados para hacer muchas de estas
+tareas de configuración de paquetes por ti, o al menos simplificarlas.
+
+¿Cómo funciona la instalación de paquetes? Cuando le dices a R que instale un
+paquete, que es un conjunto de archivos y carpetas que siguen un
+convención específica, R toma la carpeta y la convierte en un formato especial. 
+Luego R guarda este formato especial en una ubicación por defecto que es
+específica del sistema operativo, como macOS, Windows o Linux. Para ver
+dónde están instalados los paquetes, utiliza
+
+```{r}
+.libPaths()
+```
+
+Si escribes esto en tu Consola, lo que verás probablemente será un
+un poco diferente a esto. Si `.libPaths()` muestra más de una ruta,
+normalmente la primera contendrá todos los paquetes. 
+
+```{r echo=FALSE, message=FALSE}
+library(fs)
+# R prioritizes the first path, so we'll select it
+primary_library_path <- .libPaths()[1]
+packages <- dir_ls(path(primary_library_path))
+
+# Number of installed packages
+length(packages)
+# See the first few package names
+head(packages)
+```
+
+Si queremos ver cómo almacena R los paquetes en su formato especial, podemos
+utilizar `dir_tree()` y el contenido de la instalación de `devtools/`.
+
+```{r}
+fs::dir_tree(path(primary_library_path, "devtools"))
+```
+
+Los archivos `R/devtools.rdb` y `R/devtools.rdx` son los archivos cons formatos especiales
+que contienen las funciones dentro de `{devtools}` que R buscará cuando
+carga el paquete. Cuando se instala un paquete en R, se crea una carpeta en `.libPaths()` con
+los archivos en el formato específico que necesita R. Así que cuando ejecutes `library(devtools)`, R
+sabrá que debe buscar las funciones que se encuentran en la carpeta `devtools/`.
+
+Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu computadora
+(es decir, no está publicado en CRAN o en GitHub) no es
+no difiere de instalar un paquete de CRAN con
+`install.packages()` o desde GitHub con `pak::pak()`. La única
+diferencia es que los paquetes en CRAN o GitHub 
+pueden ser utilizados por cualquiera que tenga acceso a internet.
+
+
+::: informacion
+Te habrás dado cuenta de que hemos utilizado la sintaxis
+`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R que 
+utilice la función de un paquete concreto. Así que `pak::pak()` es
+decirle a R que utilice la función `pak()` del paquete `pak`. En
+desarrollo de paquetes en particular, utilizaremos esto en lugar de cargar las librerias
+con `library(pak)` porque queremos ser explícitos sobre qué
+función queremos utilizar y porque no necesitamos cargar todas las
+funciones del paquete cuando sólo queremos utilizar una o dos.
+:::
+
+> Hasta acá
+
+Una mejor opción es crear una ubicación específica para el código que
+que no es parte del paquete, y asegurarse de que es ignorado cuando el paquete
+se construye. Hay una función `usethis` `use_directory()` que ayuda a configurar esto.
+esto. Vamos a crear un directorio `dev/` en nuestro proyecto de paquete:
+
+```{r cs-setup-dev-dir, eval = FALSE}
+use_directory("dev", ignore = TRUE)
+```
+
+    ✓ Creating 'dev/'
+    ✓ Adding '^dev$' to '.Rbuildignore'
+
+The argument `ignore = TRUE` adds this folder to `.Rbuildignore` - a
+file that lists things that shouldn't be included in the package when it
+is built.
