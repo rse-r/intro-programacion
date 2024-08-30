@@ -1,0 +1,178 @@
+## Soluciones Ejercicios {.appendix}
+
+Este anexo detalla resultados validos para todos los ejercicios desde el capitulo 1 al 6.  Recuerda que pueden existir mas de una manera de resolver los ejercicios de forma correcta.
+
+
+### Capitulo 3 - Lectura de datos
+
+::: ejercicio
+
+En el portal de datos de Argentina encontramos muchos conjuntos de datos con informacion oficial. Vamos a descargar y leer un archivo de Excel.
+
+1. Dirigirse a esta pagina web con datos abiertos: <https://datos.gob.ar/dataset/produccion-innovacion-productiva-empresas-que-mas-invierten-id-nivel-mundial>
+
+2. Realizar los pasos necesarios para descargar el archivo de Excel del conjunto de datos "Las 50 empresas más innovadoras entre 2013 y 2019" de forma programatica.
+
+3. Cargar el conjunto de datos en r y explorar su estructura con la función `str()`.
+
+4. Contestar:
+  
+  4.1 ¿Cuántas columnas y filas tiene el data.frame?
+  
+  4.2 ¿Qué tipo de dato hay en cada columna? ¿el tipo de dato es correcto según el contenido que vez?
+  
+  4.3 ¿Que funcion usaste para leer el archivo de Excel?
+ 
+Al final del ejercicio deberías tener un archivo .qmd o .R con el código que lo resuelve. Nombrá el archivo siguiendo los consejos que vimos en clase.
+:::
+
+#### Soluciones
+
+
+```{r, eval = FALSE}
+
+# 1. Descargar el archivo de Excel
+
+url <- "https://datos.produccion.gob.ar/dataset/369e2ef5-f8bc-4b37-a3e7-f7ad8d5fceb7/resource/64aa7c24-2adc-46f1-b60d-1d34e2c7dbee/download/las-50-empresas-mas-innovadoras-entre-2013-y-2019.xlsx"
+
+download.file(url, destfile = "empresas-que-mas-invierten-en-innovacion.xlsx")
+
+# 2. Leer el archivo de Excel
+
+library(readxl)
+
+empresas <- read_excel("empresas-que-mas-invierten-en-innovacion.xlsx")
+
+# 3. Explorar la estructura del data.frame
+
+str(empresas)
+
+# 4. Contestar
+
+# 4.1. Tiene 5 columnas y 50 fila
+
+# 4.2. empresa es caracter, pais_origen es caracter, sector_productivo es caracter, inversion_acumulada_2013_2019_EUR es numerico y varion_porcentual_2013_2019 es numerico. Si el tipo de dato es correcto.
+
+# 4.3 Se uso la funcion read_excel() del paquete readxl
+
+
+```
+
+## Capitulo 4 - Manipulación de datos ordenados I
+
+
+::: ejercicio
+
+Es hora de revisar lo que vimos hasta acá. 
+
+1. Descargá el archivo que se encuentra [en este link](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd) y guardalo en tu proyecto de trabajo en clase.
+2. Resolvé los ejercicios propuestos de lectura (yapa!) y de filtros. En algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+3. El archivo tiene más ejercicios, pero no te adelantes. Vamos a ver esos temas a continuación.
+
+:::
+
+
+::: ejercicio
+
+¿Te acordás del ejercicio que arrancaste cuando vimos filtros? Es hora de completarlo!
+
+1. Completá los ejercicios de [este archivo](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/dplyr.qmd) que ya deberías tener en tu proyecto.
+2. Te vas a encontrar con ejercicios para practicar `summarise()` y `mutate()`. De nuevo, en algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+3. Cuando hayas terminado, *knitea* el archivo para generar un html y ver como queda el resultado.
+
+:::
+
+### Soluciones
+
+Este archivo incluye ejercicios para practicar como manipular datos usando dplyr. Es importante que guardes este archivo en el proyecto de RStudio que usas durante las clases.  
+Seguiremos trabajando con los datos de pingüinos. 
+
+Siempre arrancamos cargando las librerías que vamos a usar. Completá el código y corré el bloque de código para comenzar. 
+
+```{r, eval = FALSE}
+# Cargá las librerias necesarias en este bloque de código
+
+library(dplyr)
+library(readr)
+
+```
+
+Es momento de leer los datos de pingüinos (si, también hay que practicar leer datos). 
+
+```{r, eval = FALSE}
+# Lectura de datos de pinguinos
+pinguinos <- read_csv(here::here("datos/pinguinos.csv"))
+```
+
+
+#### Filtrando datos
+
+Completá el código y correlo para verificar el resultado. 
+
+¿Cuántos pingüinos tienen aletas de más de 225 mm? 
+
+```{r, eval = FALSE}
+pinguinos |> 
+  filter(largo_aleta_mm > 225)
+```
+
+¿Algún pingüino tiene un pico de exactamente 40.9 mm?
+
+```{r, eval = FALSE}
+pinguinos |> 
+  filter(largo_pico_mm == 40.9)
+```
+
+¿Cuántos pingüinos hembra hay en la especie Papúa? 
+
+```{r, eval = FALSE}
+pinguinos |> 
+  filter(especie == "Papúa", sexo == "hembra")
+```
+
+#### Resumiendo los datos
+
+¿Cuántos pingüinos hay en cada isla?
+
+```{r, eval = FALSE}
+pinguinos |> 
+  group_by(isla) |> 
+  summarise(n())
+```
+
+¿Todas las especies viven en las mismas islas?
+
+```{r, eval = FALSE }
+pinguinos |> 
+  group_by(isla, especie) |> 
+  summarise(n())
+```
+
+¿Cuánto pesa el pinguino más liviano y el más pesado de cada especie?
+
+```{r, eval = FALSE}
+pinguinos |> 
+  group_by(isla, especie) |> 
+  summarise(mas_liviano = min(masa_corporal_g, na.rm = TRUE),
+            mas_pesado = max(masa_corporal_g, na.rm = TRUE))
+```
+
+#### Transformando variables
+
+Calculá la relación entre el alto y el largo del pico (alto_pico_mm/largo_pico_mm)
+
+```{r, eval = FALSE}
+pinguinos |> 
+  mutate(pico = alto_pico_mm/largo_pico_mm)
+```
+Transformá todas las variables de mm a cm. 
+
+```{r, eval = FALSE}
+pinguinos |> 
+  mutate(largo_pico_cm = largo_pico_mm/10,
+         alto_pico_cm = alto_pico_mm/10,
+         largo_aleta_cm = largo_aleta_mm/10)
+```
+
+
+
