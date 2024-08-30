@@ -29,6 +29,7 @@ book:
     - references.qmd
   appendices:
     - A_instalacion.qmd
+    - B_config_pk.qmd
     - C_soluciones.qmd
   sidebar:
     background: "#916699"
