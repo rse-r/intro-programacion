@@ -281,3 +281,25 @@ ggplot(diamantes, aes(claridad, precio, fill = claridad)) +
 
 
 
+## Capitulo 7 - Manipulacion de Datos II
+
+::: ejercicio
+
+* Creá una nueva tabla, llamada `paises_superduper_ancho` que tenga una columna para cada variable, anio y país. (Consejo: la tabla final tiene que tener 5 filas).
+
+* ¿Cómo es la tabla más ancha posible que podés generar con estos datos? ¿Cuántas filas y columnas tiene?
+
+:::
+
+### Solucion
+
+```{r, eval = FALSE}
+  
+paises_superduper_ancho <- pivot_wider(paises_largo, 
+            names_from = c(variable, anio, pais), 
+            names_sep = "-",
+            values_from = valor)
+
+
+
+```

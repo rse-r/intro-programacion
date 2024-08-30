@@ -590,5 +590,16 @@
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Soluciones Ejercicios</span>"
     ]
+  },
+  {
+    "objectID": "B_soluciones.html#capitulo-7---manipulacion-de-datos-ii",
+    "href": "B_soluciones.html#capitulo-7---manipulacion-de-datos-ii",
+    "title": "Appendix B — Soluciones Ejercicios",
+    "section": "\nB.3 Capitulo 7 - Manipulacion de Datos II",
+    "text": "B.3 Capitulo 7 - Manipulacion de Datos II\n\n\nCreá una nueva tabla, llamada paises_superduper_ancho que tenga una columna para cada variable, anio y país. (Consejo: la tabla final tiene que tener 5 filas).\n¿Cómo es la tabla más ancha posible que podés generar con estos datos? ¿Cuántas filas y columnas tiene?\n\n\n\nB.3.1 Solucion\n\npaises_superduper_ancho &lt;- pivot_wider(paises_largo, \n            names_from = c(variable, anio, pais), \n            names_sep = \"-\",\n            values_from = valor)",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Soluciones Ejercicios</span>"
+    ]
   }
 ]
