@@ -579,5 +579,16 @@
       "Appendices",
       "<span class='chapter-number'>B</span>  <span class='chapter-title'>Soluciones Ejercicios</span>"
     ]
+  },
+  {
+    "objectID": "B_soluciones.html#capitulo-6---graficado-datos",
+    "href": "B_soluciones.html#capitulo-6---graficado-datos",
+    "title": "Appendix B — Soluciones Ejercicios",
+    "section": "\nB.2 Capitulo 6 - Graficado datos",
+    "text": "B.2 Capitulo 6 - Graficado datos\n\nModificá el siguiente código para obtener el gráfico que se muestra más abajo.\n\npaises |&gt; \n  group_by(continente, _____) |&gt; \n  summarise(esperanza_de_vida_media = mean(esperanza_de_vida)) |&gt; \n  ggplot(aes(anio, ________________)) +  \n  geom_point(aes(color = continente), size = 3, shape = _____) +\n  geom_smooth(color = continente) \n\n\n\nB.2.1 Solucion\n\npaises |&gt; \n  group_by(continente, anio) |&gt; \n  summarise(esperanza_de_vida_media = mean(esperanza_de_vida)) |&gt; \n  ggplot(aes(anio, esperanza_de_vida_media)) +  \n  geom_smooth(aes(color = continente)) +\n  geom_point(aes(color = continente), shape = 8, size = 3) \n\n\nEs hora de revisar lo que vimos hasta acá.\n\nDescargá el archivo que se encuentra en este link y guardalo en tu proyecto de trabajo en clase.\nResolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los _____ con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero.\n\n\n\nB.2.2 Soluciones\n\nGenerá boxplots para analizar como se comporta el precio según la claridad para cada tipo de corte como se ve acá.\n\n\nB.2.3 Solucion\n\nggplot(diamantes, aes(claridad, precio, fill = claridad)) +\n  geom_boxplot() +\n  facet_wrap(~corte)",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>B</span>  <span class='chapter-title'>Soluciones Ejercicios</span>"
+    ]
   }
 ]

@@ -269,6 +269,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><a href="#soluciones-1" id="toc-soluciones-1" class="nav-link" data-scroll-target="#soluciones-1"><span class="header-section-number">B.1.1</span> Soluciones</a></li>
   </ul>
 </li>
+  <li>
+<a href="#capitulo-6---graficado-datos" id="toc-capitulo-6---graficado-datos" class="nav-link" data-scroll-target="#capitulo-6---graficado-datos"><span class="header-section-number">B.2</span> Capitulo 6 - Graficado datos</a>
+  <ul class="collapse">
+<li><a href="#solucion" id="toc-solucion" class="nav-link" data-scroll-target="#solucion"><span class="header-section-number">B.2.1</span> Solucion</a></li>
+  <li><a href="#soluciones-2" id="toc-soluciones-2" class="nav-link" data-scroll-target="#soluciones-2"><span class="header-section-number">B.2.2</span> Soluciones</a></li>
+  <li><a href="#solucion-1" id="toc-solucion-1" class="nav-link" data-scroll-target="#solucion-1"><span class="header-section-number">B.2.3</span> Solucion</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -417,9 +425,51 @@ Seguiremos trabajando con los datos de pingüinos.</p>
 <span>         alto_pico_cm <span class="op">=</span> <span class="va">alto_pico_mm</span><span class="op">/</span><span class="fl">10</span>,</span>
 <span>         largo_aleta_cm <span class="op">=</span> <span class="va">largo_aleta_mm</span><span class="op">/</span><span class="fl">10</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+</section></section></section><section id="capitulo-6---graficado-datos" class="level2" data-number="B.2"><h2 data-number="B.2" class="anchored" data-anchor-id="capitulo-6---graficado-datos">
+<span class="header-section-number">B.2</span> Capitulo 6 - Graficado datos</h2>
+<div class="ejercicio">
+<p>Modificá el siguiente código para obtener el gráfico que se muestra más abajo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>paises <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continente, _____) <span class="sc">|&gt;</span> </span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">esperanza_de_vida_media =</span> <span class="fu">mean</span>(esperanza_de_vida)) <span class="sc">|&gt;</span> </span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, ________________)) <span class="sc">+</span>  </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> continente), <span class="at">size =</span> <span class="dv">3</span>, <span class="at">shape =</span> _____) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">color =</span> continente) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<section id="solucion" class="level3" data-number="B.2.1"><h3 data-number="B.2.1" class="anchored" data-anchor-id="solucion">
+<span class="header-section-number">B.2.1</span> Solucion</h3>
+<div class="cell">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continente</span>, <span class="va">anio</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>esperanza_de_vida_media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span><span class="va">anio</span>, <span class="va">esperanza_de_vida_media</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
+<span>  <span class="fu">geom_smooth</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fl">8</span>, size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="ejercicio">
+<p>Es hora de revisar lo que vimos hasta acá.</p>
+<ol type="1">
+<li>Descargá el archivo que se encuentra <a href="https://github.com/rse-r/intro-programacion/blob/main/ejercicios/ggplot.qmd">en este link</a> y guardalo en tu proyecto de trabajo en clase.</li>
+<li>Resolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los <code>_____</code> con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero.</li>
+</ol>
+</div>
+</section><section id="soluciones-2" class="level3" data-number="B.2.2"><h3 data-number="B.2.2" class="anchored" data-anchor-id="soluciones-2">
+<span class="header-section-number">B.2.2</span> Soluciones</h3>
+<div class="ejercicio">
+<p>Generá boxplots para analizar como se comporta el <code>precio</code> según la <code>claridad</code> para cada tipo de <code>corte</code> como se ve acá.</p>
+</div>
+</section><section id="solucion-1" class="level3" data-number="B.2.3"><h3 data-number="B.2.3" class="anchored" data-anchor-id="solucion-1">
+<span class="header-section-number">B.2.3</span> Solucion</h3>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">ggplot</span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu">aes</span><span class="op">(</span><span class="va">claridad</span>, <span class="va">precio</span>, fill <span class="op">=</span> <span class="va">claridad</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">geom_boxplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span><span class="va">corte</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
-</section></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");

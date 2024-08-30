@@ -174,5 +174,63 @@ pinguinos |>
          largo_aleta_cm = largo_aleta_mm/10)
 ```
 
+## Capitulo 6 - Graficado datos
+
+::: ejercicio
+
+Modificá el siguiente código para obtener el gráfico que se muestra más abajo.
+
+```{r eval=FALSE}
+paises |> 
+  group_by(continente, _____) |> 
+  summarise(esperanza_de_vida_media = mean(esperanza_de_vida)) |> 
+  ggplot(aes(anio, ________________)) +  
+  geom_point(aes(color = continente), size = 3, shape = _____) +
+  geom_smooth(color = continente) 
+```
+
+::: 
+
+### Solucion
+
+```{r, eval=FALSE}
+paises |> 
+  group_by(continente, anio) |> 
+  summarise(esperanza_de_vida_media = mean(esperanza_de_vida)) |> 
+  ggplot(aes(anio, esperanza_de_vida_media)) +  
+  geom_smooth(aes(color = continente)) +
+  geom_point(aes(color = continente), shape = 8, size = 3) 
+```
+
+::: ejercicio
+
+Es hora de revisar lo que vimos hasta acá. 
+
+1. Descargá el archivo que se encuentra [en este link](https://github.com/rse-r/intro-programacion/blob/main/ejercicios/ggplot.qmd) y guardalo en tu proyecto de trabajo en clase.
+2. Resolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
+:::
+
+### Soluciones
+
+
+
+
+
+
+::: ejercicio
+
+Generá boxplots para analizar como se comporta el `precio` según la `claridad` para cada tipo de `corte` como se ve acá.
+
+
+:::
+
+### Solucion
+
+```{r, eval = FALSE}
+ggplot(diamantes, aes(claridad, precio, fill = claridad)) +
+  geom_boxplot() +
+  facet_wrap(~corte)
+```
+
 
 
