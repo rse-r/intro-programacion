@@ -191,7 +191,7 @@ paises |>
 
 ::: 
 
-### Solucion
+### Solucion grafico Esperanza de Vida
 
 ```{r, eval=FALSE}
 paises |> 
@@ -210,21 +210,68 @@ Es hora de revisar lo que vimos hasta acá.
 2. Resolvé los ejercicios propuestos. En algunos casos tendrías que reemplazar los `_____` con el código correspondiente. En otros casos el ejercicio te pedirá escribir el código desde cero. 
 :::
 
-### Soluciones
+### Soluciones - ejercicios ggplot
 
 
+En este archivo vas a encontrar ejercicios para practicar cómo hacer gráficos con `ggplot2`.
+En este caso vamos a usar datos que forman parte de un paquete llamado `datos`. 
+De hecho este paquete tiene muchas bases de datos en español. 
+Antes de empezar a trabajar recordá instalar este nuevo paquete y el paquete `lubridate` desde la consola.
 
+```{r, eval = FALSE}
+# Cargá ggplot2 y dplyr
+library(ggplot2)
+library(dplyr)
 
+clima <- datos::clima #esta es otra manera de acceder a las funciones y datos de un paquete
+```
+
+Esta base de datos tiene datos de distintas variables meterológicas en 3 aeropuertos (en la columna origen) a lo largo de un año. 
+Revisa que columnas incluyen y como se llaman en el siguiente bloque de código.
+
+```{r, eval = FALSE}
+str(clima)
+```
+
+Habrás notado que no hay una única columna con la fecha y la hora, está separada en varias columnas, vamos a crear esta columna con `mutate()` y la función `make_datetime()` de lubridate.
+
+```{r, eval = FALSE}
+clima <- clima |> 
+  mutate(fecha_hora = lubridate::make_datetime(anio, mes, dia, hora))
+```
+
+¿Cómo es la relación entre el punto de rocio (a que temperatura el vapor de agua se condensa) y la humedad? 
+
+```{r, eval = FALSE}
+ggplot(clima, aes(punto_rocio, humedad)) +
+  geom_point()
+```
+
+Sumá un suavizado para visuzalizar mejor la relación. Usá el método lm.
+
+```{r, eval = FALSE}
+ggplot(clima, aes(punto_rocio, humedad)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+Veamos ahora como cambia la temperatura a lo largo del año parada estación. El gráfico resultante debería tener el tiempo en el eje x y mostrar 3 lineas de distinto color, una para cada estación.
+
+¿En qué parte del mundo están estos aeropuertos?
+
+```{r, eval = FALSE}
+ggplot(clima, aes(fecha_hora, temperatura)) +
+  geom_line(aes(color = origen))
+```
 
 
 ::: ejercicio
 
 Generá boxplots para analizar como se comporta el `precio` según la `claridad` para cada tipo de `corte` como se ve acá.
 
-
 :::
 
-### Solucion
+### Solucion Bloxplots
 
 ```{r, eval = FALSE}
 ggplot(diamantes, aes(claridad, precio, fill = claridad)) +
