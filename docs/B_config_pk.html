@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.47">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-
-<title>12&nbsp; Manejo de paquetes – Introducción a la Programación II</title>
+<title>Appendix B — Configuración para desarrollar paquetes – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -31,8 +61,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./12_documentacion.html" rel="next">
-<link href="./10_errores.html" rel="prev">
+<link href="./C_soluciones.html" rel="next">
+<link href="./A_instalacion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -41,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -69,33 +98,24 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./11_paquetes-2.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Manejo de paquetes</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A_instalacion.html">Appendices</a></li><li class="breadcrumb-item"><a href="./B_config_pk.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuración para desarrollar paquetes</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
@@ -110,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
@@ -184,7 +204,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_paquetes-2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./11_paquetes-2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Manejo de paquetes</span></span></a>
   </div>
 </li>
@@ -220,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
@@ -229,7 +249,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./B_config_pk.html" class="sidebar-item-text sidebar-link">
+  <a href="./B_config_pk.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuración para desarrollar paquetes</span></span></a>
   </div>
 </li>
@@ -240,21 +260,30 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#setup-prep" id="toc-setup-prep" class="nav-link active" data-scroll-target="#setup-prep"><span class="header-section-number">B.1</span> Prepara tu sistema</a></li>
+  <li>
+<a href="#setup-tools" id="toc-setup-tools" class="nav-link" data-scroll-target="#setup-tools"><span class="header-section-number">B.2</span> Herramientas para construir R</a>
+  <ul class="collapse">
+<li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows"><span class="header-section-number">B.2.1</span> Windows</a></li>
+  <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos"><span class="header-section-number">B.2.2</span> macOS</a></li>
+  <li><a href="#linux" id="toc-linux" class="nav-link" data-scroll-target="#linux"><span class="header-section-number">B.2.3</span> Linux</a></li>
+  </ul>
+</li>
+  <li><a href="#verifica-la-preparaci%C3%B3n-del-sistema" id="toc-verifica-la-preparación-del-sistema" class="nav-link" data-scroll-target="#verifica-la-preparaci%C3%B3n-del-sistema"><span class="header-section-number">B.3</span> Verifica la preparación del sistema</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Manejo de paquetes</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./A_instalacion.html">Appendices</a></li><li class="breadcrumb-item"><a href="./B_config_pk.html"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuración para desarrollar paquetes</span></a></li></ol></nav><div class="quarto-title">
+<h1 class="title">Appendix B — Configuración para desarrollar paquetes</h1>
 </div>
 
 
@@ -268,14 +297,63 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><section id="setup-prep" class="level2" data-number="B.1"><h2 data-number="B.1" class="anchored" data-anchor-id="setup-prep">
+<span class="header-section-number">B.1</span> Prepara tu sistema</h2>
+<p>Para empezar, asegurate de que tenés la última versión de R (al menos 4.4.0 que es la versión que se utiliza para generar estos materiales), y luego ejecuta el siguiente código para obtener los paquetes que necesitarás:</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span>, <span class="st">"knitr"</span>, <span class="st">"usethis"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="setup-tools" class="level2" data-number="B.2"><h2 data-number="B.2" class="anchored" data-anchor-id="setup-tools">
+<span class="header-section-number">B.2</span> Herramientas para construir R</h2>
+<p>Para ser plenamente capaz de construir paquetes de R a partir del código fuente, también necesitarás un compilador y algunas otras herramientas. Esto puede no ser estrictamente necesario hasta que quieras construir paquetes que contengan código C o C++. Especialmente si utilizás RStudio, podés saltear esto por ahora. RStudio te avisará y te proporcionará ayuda cuando intentes hacer algo que requiera que configures tu entorno de desarrollo. A continuación están las instrucciones según el sitema operativo que uses.</p>
+<section id="windows" class="level3" data-number="B.2.1"><h3 data-number="B.2.1" class="anchored" data-anchor-id="windows">
+<span class="header-section-number">B.2.1</span> Windows</h3>
+<div class="importante">
+<p>Si seguiste los pasos que describimos en <a href="./B_config_pk.html">Preparando el entorno de trabajo</a>, ya tenés Rtools instalado!</p>
+</div>
+<p>En Windows, la colección de herramientas necesarias para construir paquetes a partir del código fuente se llama Rtools.</p>
+<p>Rtools NO es un paquete de R. NO se instala con <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. En su lugar, descargalo de <a href="https://cran.r-project.org/bin/windows/Rtools/" class="uri">https://cran.r-project.org/bin/windows/Rtools/</a> y ejecuta el instalador.</p>
+<p>Durante la instalación de Rtools es posible que aparezca una ventana pidiéndote que “selecciones tareas adicionales”.</p>
+<ul>
+<li>Selecciona <em>no</em> en la casilla “Editar el PATH del sistema”. devtools y RStudio deberían poner Rtools en el <code>PATH</code> automáticamente cuando sea necesario.</li>
+<li>Selecciona la casilla “Guardar información de la versión en el registro”. Debería estar seleccionada por defecto.</li>
+</ul></section><section id="macos" class="level3" data-number="B.2.2"><h3 data-number="B.2.2" class="anchored" data-anchor-id="macos">
+<span class="header-section-number">B.2.2</span> macOS</h3>
+<p>Necesitas instalar las herramientas de línea de comandos de Xcode, lo que requiere que <a href="https://developer.apple.com/programs/enroll/">te registres como desarrollador/a de Apple</a>. No te preocupes, esto es gratuito para quien sólo desee instalar apps, como las herramientas de línea de comandos Xcode.</p>
+<p>A continuación, en la terminal escribí:</p>
+<pre class="shell"><code>xcode-select --install</code></pre>
+<p>Alternativamente, puedes instalar la versión actual de <a href="https://itunes.apple.com/ca/app/xcode/id497799835?mt=12">Xcode desde el Mac App Store</a>. Esto incluye una gran cantidad de cosas que no necesitas, pero ofrece la ventaja de la comodidad del App Store.</p>
+</section><section id="linux" class="level3" data-number="B.2.3"><h3 data-number="B.2.3" class="anchored" data-anchor-id="linux">
+<span class="header-section-number">B.2.3</span> Linux</h3>
+<p>Asegurate de haber instalado no sólo R, sino también las herramientas de desarrollo de R. Por ejemplo, en Ubuntu (y Debian) tienes que instalar el programa <code>r-base-dev</code> con el paquete</p>
+<pre><code>sudo apt install r-base-dev</code></pre>
+<p>En Fedora y RedHat, las herramientas de desarrollo (llamadas <code>R-core-devel</code>) se instalarán automáticamente cuando instales R con <code>sudo dnf install R</code>.</p>
+</section></section><section id="verifica-la-preparación-del-sistema" class="level2" data-number="B.3"><h2 data-number="B.3" class="anchored" data-anchor-id="verifica-la-preparación-del-sistema">
+<span class="header-section-number">B.3</span> Verifica la preparación del sistema</h2>
+<p>Podés chequear que todo esté en orden con <code><a href="https://devtools.r-lib.org/reference/dev_sitrep.html">devtools::dev_sitrep()</a></code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/dev_sitrep.html">dev_sitrep</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; ── R ───────────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • version: 4.1.2</span></span>
+<span><span class="co">#&gt; • path: '/Library/Frameworks/R.framework/Versions/4.1/Resources/'</span></span>
+<span><span class="co">#&gt; ── RStudio ─────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • version: 2022.2.0.443</span></span>
+<span><span class="co">#&gt; ── devtools ────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • version: 2.4.3.9000</span></span>
+<span><span class="co">#&gt; • devtools or its dependencies out of date:</span></span>
+<span><span class="co">#&gt;   'gitcreds', 'gh'</span></span>
+<span><span class="co">#&gt;   Update them with `devtools::update_packages("devtools")`</span></span>
+<span><span class="co">#&gt; ── dev package ─────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • package: 'rpkgs'</span></span>
+<span><span class="co">#&gt; • path: '/Users/jenny/rrr/r-pkgs/'</span></span>
+<span><span class="co">#&gt; • rpkgs dependencies out of date:</span></span>
+<span><span class="co">#&gt;   'gitcreds', 'generics', 'tidyselect', 'dplyr', 'tidyr', 'broom', 'gh'</span></span>
+<span><span class="co">#&gt;  Update them with `devtools::install_dev_deps()`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Si te indica que algo está desactualizado, te recomendamos que hagas las actualizaciones. En particular si no tenés la última versión de R pero difiere solo en el último número de la versión (por ejemplo tenés 4.4.0 y la última versión es 4.4.1), entonces no es impresindible actualizarlo.</p>
 
 
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -694,21 +772,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./10_errores.html" class="pagination-link" aria-label="Resolviendo y evitando errores">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span>
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./A_instalacion.html" class="pagination-link" aria-label="Preparando el entorno de trabajo">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./12_documentacion.html" class="pagination-link" aria-label="Documentando paquetes y funciones">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./C_soluciones.html" class="pagination-link" aria-label="Soluciones de ejercicios">
+        <span class="nav-page-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Soluciones de ejercicios</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
