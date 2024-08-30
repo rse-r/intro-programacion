@@ -29,7 +29,7 @@ book:
     - references.qmd
   appendices:
     - A_instalacion.qmd
-    - B_soluciones.qmd
+    - C_soluciones.qmd
   sidebar:
     background: "#916699"
     search: true

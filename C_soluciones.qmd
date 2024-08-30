@@ -1,4 +1,4 @@
-## Soluciones Ejercicios {.appendix}
+## Soluciones de ejercicios {.appendix}
 
 Este anexo detalla resultados validos para todos los ejercicios desde el capitulo 1 al 6.  Recuerda que pueden existir mas de una manera de resolver los ejercicios de forma correcta.
 
