@@ -345,8 +345,8 @@ santa_fe |>
 
 santa_fe |> 
   group_by(id) |> 
-  summarise(t_min = mean(temperatura_abrigo_150cm, na.rm = TRUE),
-            t_max = sd(temperatura_abrigo_150cm, na.rm = TRUE))
+  summarise(t_media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+            t_ds = sd(temperatura_abrigo_150cm, na.rm = TRUE))
 
 # 4. ¿Cuál es la proporción de `NA` en temperatura de abrigo a 150 cm?
 
