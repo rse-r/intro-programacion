@@ -98,9 +98,9 @@ Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apr
 ::: ejercicio
 
 1.  Creá un archivo .R con las siguientes funciones:
-1. Una función que convierta la temperatura de centigrados a fahrenheit.
-2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
-3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
+  * Una función que convierta la temperatura de centigrados a fahrenheit.
+  * Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
+  * Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
 2.  Guardá el archivo .R con un nombre informativo.
 3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.
 :::
