@@ -2,27 +2,92 @@
 title: "Funciones"
 ---
 
-Intro
+## Objetivos de aprendizaje
 
+- Convertir un bloque de código R en una función
+- Utilizar funciones de otros paquetes en una función de su propio paquete
+- Devolver un mensaje de error desde una función
 
 
 ## Trabajando con funciones y otro código
 
-Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Además vimos en detalle como utilizar archivos .Rmd o .qmd *autocontenidos*, que incluyan el código y texto necesario para generar un análisis. Pero es posible que nuestro trabajo necesite funciones que generamos para hacer nuestro trabajo más simple. Si incluimos el código que define estas funciones en nuestro .Rmd, puede complejizar nuestro código y que sea más dificil de interpretar. Aquí podemos comenzar a incluir archivos secundarios que contengan estas funciones.
+Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Inicialmente escribir el código necesario para resolver un problema, leer un archivo o calcular medidas estadísticas es lo más razonable. Pero es posible que te encuentres repitiendo las mismas lineas de código o copiado y pegando código de un lado para el otro porque necesitás reutilizar algo que ya escribíste. 
 
-En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd. En estos casos podemos volver a los tradicionales scripts.
+En estas situaciones es una buena idea comenzar a encapsular código en funciones. En esta sección veremos como escribir funciones, más adelante *empaquetaremos* esas funciones en un paquete. 
 
-Si hipotéticamente quisieramos definir una función que convierte la temperatura en kelvin (algo muy común entre meteorólogos) a la temperatura en grados centígrados tendriamos el siguiente código:
+Escribir funciones tiene cuatro grandes ventajas sobre copiar y pegar código:
+
+* Podés nombrar tus funciones con un nombre descriptivo que facilite la comprensión del código.
+* Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un único lugar.
+* Eliminás la posibilidad de cometer errores al copiar y pegar código.
+* Podés reutilizar el código en las funciones en otros proyectos. 
+
+En las situaciones donde nuestro código no produce salidas como graficos o tablas, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts (.R).
+
+## Esqueleto de una función
+
+Cualquier función en R tendrá la siguiente pinta (se le llama firma de una función):
+
+```r
+nombre_de_funcion <- function(arg1, arg2, ...) {
+# código que hace algo 
+}
+```
+Como habrás notado necesitamos la función `function()` para crear una función. Hay tres pasos clave para crear una nueva función:
+
+* Tenés que elegir un nombre para la función.
+* Enumeras los argumentos, los elementos de entrada que necesita el código para correr, en el ejemplo `arg1`, `arg2`, `...`.
+* Colocas el código que has desarrollado en el cuerpo de la función, un bloque entre `{}` inmediatamente después de `function(...)`.
+
+Imaginemos que tenemos este código:
 
 ```{r}
-kelvin_a_centigrados <- function(temperatura) {
-  
-  return(temperatura - 273.15)
-  
+temperatura_ayer <- 53.6 # en Fahrenheit!
+
+temperatura_ayer_c <- (temperatura_ayer - 32) * 5/9 # convierto a centigrados
+```
+
+De nuevo, este código no va a ser útil si querés usarlo en otro lugares, necesitamos generalizarlo en una función. 
+
+El primer paso es pensar un nombre, por ejemplo `fahrenheit_a_centigrados`. Luego tenemos que analizar el código e identificar cuales son los argumentos, la información que necesita la función, en este caso la temperatura en Fahrenheit, es es un argumento. 
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_ayer) {
+  (temperatura_ayer - 32) * 5/9
 }
 ```
 
-que podríamos guardar en un script de R que se llame `funciones_secundarias.R` que por supuesto guardaremos en la carpeta "scripts". Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:
+Está función está lista para usar, por ejemplo podemos convertir 100 Fahrenheit a centigrados:
+
+```{r}
+fahrenheit_a_centigrados(100)
+```
+
+Si bien podemos nombrar a los argumentos de las funciones de cualquier manera, `temperatura_ayer` no es razonable para una función general. Un mejor nombre podría ser `temperatura_fahrenheit`
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  (temperatura_fahrenheit - 32) * 5/9
+}
+```
+
+Es posible que te encuentres con algo del estilo:
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  temperatura_centigrados <- (temperatura_fahrenheit - 32) * 5/9
+  return(temperatura_centigrados)
+}
+```
+
+Usar la función `return()` no es necesario, R devuelve el último elemento con o sin el `return()` presente. Sin embargo, puede ayudar a la lectura del código cuando la función es más compleja.
+
+::: informacion
+
+Cada vez que se ejecuta una función se crea un nuevo entorno, desde cero, propio de la función para contener su ejecución. Notá que si buscas la variable `temperatura_centigrados` en el _Environment_ no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en ese "entorno" independiente del entorno general.
+:::
+
+Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:
 
 -   Qué hace o cual es su propósito.
 
@@ -32,83 +97,386 @@ que podríamos guardar en un script de R que se llame `funciones_secundarias.R` 
 
 ::: ejercicio
 
-**Crea una función**
-
-1.  Creá un archivo .R con alguna función. Puede ser la que vimos como ejemplo o alguna otra que prefieras.
-2.  Guardá el archivo en la carpeta scripts
+1.  Creá un archivo .R con las siguientes funciones:
+1. Una función que convierta la temperatura de centigrados a fahrenheit.
+2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
+3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
+2.  Guardá el archivo .R con un nombre informativo.
+3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.
 :::
 
-Ahora el desafío es lograr usar esa función que está en un archivo .R en el reporte .Rmd. Necesitamos *cargar* el script al comienzo de nuestro archivo para que la función quede disponible para ser utilizada más adelante.
+Ahora si quisieramos usar esa función en el análisis, podemos "cargarla" con `source("archivo.R")`.
 
-El mejor lugar para hacer esto es, en el caso de R Markdown, el bloque de código setup donde además cargamos las librerías que usaremos. Por ejemplo:
+La escritura de una función debería arrancar con un código que ya funciona. Es decir, en lugar de
+empezar desde cero `fahrenheit_a_centigrados()` usamos el código que ya tenemos y que funciona para un ejemplo particular. Luego cambiando el nombre del argumento podemos generalizar el código. 
 
-    library(ggplo2)
-    library(data.table)
-    source(here::here("scripts/funciones_secundarias.R"))
+## Testeá tu función
+
+Es importante que pruebes tu función de distintas maneras. Primero, con algún valor para el que sabes el resultado, por ejemplo 32 fahrenheit es 0º centigrados.
+
+```{r}
+fahrenheit_a_centigrados(32)
+```
+
+También es importante testear la función con datos diferentes, por ejemplo en vez de 1 número entero, podemos usar un real o un vector de números.
+
+```{r}
+fahrenheit_a_centigrados(25.5)
+```
+
+```{r}
+fahrenheit_a_centigrados(c(0, 32, 100))
+```
+
+Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valores en el segundo último ejemplo? ¿tiene sentido que haga esto?
+
+Finalmente, tenemos que probar la función con otras cosas. 
+
+```{r}
+#| error: true
+
+fahrenheit_a_centigrados("100")
+```
+
+```{r}
+#| error: true
+
+fahrenheit_a_centigrados(TRUE)
+```
+
+El primero ejemplo da un error, poco informativo pero un error al fin. El segundo ejemplo devuelve un resultado, pero ¿no debería dar error? 
+
+Por estas situaciones es importante chequear que lo que ingresa a la función es lo esperado, antes de hacer ninguna otra operación. 
+
+### Revisá que los argumentos sean válidos
+
+El primer acercamiento a esto es la función `stopifnot()`
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  
+  stopifnot(is.numeric(temperatura_fahrenheit))
+  
+  (temperatura_fahrenheit - 32) * 5/9
+}
+```
+
+Ahora si volvemos a correr algunos de los ejemplos previos, obtendremos:
+
+```{r}
+#| error: true
+
+fahrenheit_a_centigrados("100")
+```
+
+Pero de nuevo, esta función no devuelve un mensaje muy informativo.
+
+::: importante
+
+Para lo que sigue vamos a necesitar usar esquemas de flujo, `if`, `else`, etc. 
+Revisemos como es la sintaxis en R.
+
+```
+if (condición) {
+# código que se ejecuta cuando la condición es TRUE
+} else {
+# código que se ejecuta cuando la condición es FALSE
+}
+```
+En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *rama* de nuestro código, no es necesario indentar las líneas de código (aunque ayuda en la lectura!). 
+
+Además de `if` y `else`, podemos usar `else if` cuando queremos probar distintas condiciones. 
+:::
+
+La siguiente solución implica encapsular la función `stop()` en una estructura `if` para poder incluir un mensaje de error apropiado:
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  
+  if (!is.numeric(temperatura_fahrenheit)) {
+    stop("temperatura_centigrados debe ser numérico,\n",
+         "La variable ingresada es un ", class(temperatura_fahrenheit)[1])
+  }
+  
+  (temperatura_centigrados - 32) * 5/9
+}
+```
+
+```{r}
+#| error: true
+
+fahrenheit_a_centigrados("100")
+```
+
+Este mensaje nos da mucha más información:
+
+* En que función ocurre el error
+* La causa del error y como resolverlo.
+
+Pero hay otras soluciones aún más superadoras, podemos escribir mensajes de error y _warnings_ (advertencias en inglés) usando el paquete `cli`:
+
+```{r}
+fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
+  
+  if (!is.numeric(temperatura_fahrenheit)) {
+    cli::cli_abort(c(
+      "temperatura_fahrenheit debe ser numérico.",
+      "i" =  "La variable ingresada es un {class(temperatura_fahrenheit)[1]}."
+    ))
+  }
+  
+  (temperatura_fahrenheit - 32) * 5/9
+}
+```
+
+
+```{r}
+#| error: true
+
+fahrenheit_a_centigrados("100")
+```
+
+El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos `cli_abort()` pero hay toda una familia de funciones según la circusntancia, por ejemplo si queremos mostrar un _warning_, si la función corrió con exito, etc.
+
+Además podemos mostrar distintos tipos de mensajes:
+
+```{r}
+cli::cli_bullets(c(
+  "noindent",
+  " " = "indent",
+  "*" = "bullet",
+  ">" = "arrow",
+  "v" = "success",
+  "x" = "danger",
+  "!" = "warning",
+  "i" = "info"
+))
+```
 
 ::: ejercicio
 
-**Carga la función**
+Escribí una función para descargar y leer los datos de pingüinos. 
 
-1.  Agrega `source(here::here("scripts/funciones_secundarias.R"))` al comienzo del archivo .Rmd
-2.  Usa la función en algún bloque de código
-3.  Knitea el archivo para ver el resultado final
-:::
+1. La función debe aceptar un argumento, la ruta al archivo en tu computadora.
+2. Revisá si el archivo ya existe en esa ruta, usá la función `file.exist()`.
+* Si el archivo no está descargado, el código debe descargarlo y luego leerlo.
+* Si el archivo ya está descargado, el código debe leerlo. 
+3. Agrega mensajes con `cli_inform()` para que el usuario sepa lo que  la función hizo. 
 
-## Trabajando con datos
+```{r eval=FALSE, include=FALSE}
 
-Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.
-
-El código que genera la descarga de datos podría estar incluido en el archivo .Rmd si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.
-
-Veamos un ejemplo de descarga de datos desde Zenodo.
-
-Si revisamos la base de datos <https://sandbox.zenodo.org/record/1029654> veremos que incluye un solo archivo en formato .csv.
-
-```{r file-list, echo=FALSE}
-knitr::include_graphics("images/file_list.png")
-```
-
-Vemos también el botón "Download" para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.
-
-Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos. Podríamos crear una función `descarga_pinguinos()`:
-
-``` r
-descarga_pinguinos <- function() {
-  file <- here::here("datos/datos_crudos/penguins.csv")
-  url <- "https://sandbox.zenodo.org/record/1029654/files/penguins.csv?download=1"
+descarga_pinguinos <- function(ruta_archivo) {
+  file <- here::here(ruta_archivo)
+  url <- "https://zenodo.org/records/12772944/files/pinguinos.csv?download=1"
   download.file(url, file)
 }
-```
 
-Para obtener la dirección url del archivo, hay que hacer click derecho sobre el botón Download y copiar el link.
-
-Ahora si deseas descargar los datos solo hay que llamar a la función `descarga_pinguinos()` y los datos se guardaran en la carpeta correcta.
-
-Podríamos mejorar esto generando una función que solo descargue los datos en caso de que no estén presentes en el proyecto. Esta función podría escribirse de esta manera:
-
-``` r
-datos_pinguinos <- function() {
-  file <- here::here("datos/datos_crudos/penguins.csv")
+datos_pinguinos <- function(ruta_archivo) {
+  file <- here::here(ruta_archivo)
   if (!file.exists(file)) {
-    descarga_pinguinos()
+    descarga_pinguinos(ruta_archivo)
+    cli::cli_inform(c("v" = "Descargado el archivo en {ruta_archivo}"))
   } 
-  return(read.csv(file))
+  cli::cli_inform(c("v" = "Leyendo los datos"))
+  return(read_csv(file))
 }
+
+penguins <- datos_pinguinos("datos/datos_pinguinos.csv")
+
 ```
 
-Con esta última función en nuestro archivo .Rmd nos podemos olvidar de la descarga de datos, que se hará automáticamente.
+::: 
 
-``` r
-penguins <- datos_pinguinos()
-```
+## Escribí funciones para humanos y computadoras
+
+Es importante recordar que las funciones no son sólo para que las entienda R, sino también para las personas que las van a usar. A R no le importa cómo se llama tu función, o qué comentarios contiene, pero éstos son importantes para que vos y otras personas entiendan lo que hace. 
+
+El nombre de una función es importante. Lo ideal es que el nombre de tu función sea corto, pero que describa claramente lo que hace la función. Eso es difícil. Pero es mejor que el nombre sea claro a que sea muy corto. También que ayude a RStudio a autocompletar.
+
+Generalmente, los nombres de las funciones son verbos, y los argumentos sustantivos.Esto es porque las funciones **hacen** algo, tienen una acción asociada. Por supuesto, hay excepciones a la regla. Los sustantivos como nombre de funciones están bien si la función calcula un sustantivo muy conocido (por ejemplo, `promedio()` es mejor que `calcula_promedio()`), o accede a alguna propiedad de un objeto (por ejemplo, `coef()` es mejor que `extraer_coeficientes()`). Una buena señal de que un sustantivo puede ser una mejor opción es si se utiliza un verbo muy amplio como «obtener», «computar», «calcular» o «determinar». Usa tu mejor criterio y no tengas miedo de cambiar el nombre de una función si más adelante se te ocurre uno mejor.
+
+**Muy corto**
+
+* `f()`
+
+**No es un verbo y no es descriptivo**
+
+* `funcion_hermosa()`
+
+**Nombre largo pero claro**
+
+* `computa_faltantes()`
+* `colapsa_anios()`
+
+Si el nombre de tu función está compuesto por varias palabras, te recomendamos utlizar «snake_case», donde cada palabra en minúscula está separada por un guión bajo. camelCase es otra buena alternativa (es mas amigable con lectores de pantallas). Lo importante es ser coherente: elegí una y no cambies.
+
+Para ayudar a RStudio a autocompletar el nombre de las funciones es mejor esto:
+
+
+* `input_select()`
+* `input_checkbox()`
+* `input_text()`
+
+que esto:
+
+* `select_input()`
+* `checkbox_input()`
+* `text_input()`
+
+### Construyendo un paquete de R paso a paso {#ex-lectura}
 
 ::: ejercicio
 
+1. Crea una función para descagar y leer los datos de estaciones. Importante:
+* Usá como base la función que creamos para leer los datos de pinguinos.
+* La función deberá recibir **2 argumentos**, el id de la estación (por ejemplo "NH0437") y la ruta donde se guardará el archivo (por ejemplo "datos/NH0437.csv")
+* Debe poder descargar y leer los datos de cualquier estación. 
 
-**Descarga de datos programática**
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
 
--   Siguiendo los pasos anteriores, general las funciones necesarias para descargar los datos prográtiacamente en la carpeta correcta.
--   Las funciones pueden estar al comienzo del archivo o puedes guardarlas en el script `funciones_secundarias.R` (o un nuevo script) y cargarlas al comienzo.
--   Para revisar que todo funciona, knitea el archivo y chequea que los datos estén en la carpeta correcta.
+descarga_estacion <- function(id, ruta_archivo) {
+  file <- here::here(ruta_archivo)
+  url <- paste0("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/", id, ".csv")
+  download.file(url, file)
+}
+
+datos_estacion <- function(id, ruta_archivo) {
+  file <- here::here(ruta_archivo)
+  if (!file.exists(file)) {
+    descarga_estacion(id, ruta_archivo)
+    cli::cli_inform(c("v" = "Descargado la estación {id} en {ruta_archivo}"))
+  } 
+  cli::cli_inform(c("v" = "Leyendo los datos"))
+  return(readr::read_csv(file))
+}
+
+estacion_NH0437 <- datos_estacion("NH0437", "datos/NH0437.csv")
+
+```
+
+2. Crea una función que se llame `tabla_resumen_temperatura` y que devuelva una tabla de resumen de la `temperatura_abrigo_150cm` para una o más estaciones. Usá el código que generaste en el ejercicio 1 de tidyr.
+
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+
+estaciones_santafe <- c("NH0472", "NH0910", "NH0046", "NH0098", "NH0437")
+santa_fe <- purrr::map_df(here::here(paste0("datos/", estaciones_santafe, ".csv")), readr::read_csv)
+
+# A este nivel hardcodeamos la variable temperatura
+tabla_resumen_temperatura <- function(datos, variable) {
+  
+  # TODO: chequear que datos sea un data.frame/tibble y que tenga la variable temperatura_abrigo_150cm
+  
+  datos |> 
+    group_by(id) |> 
+    summarise(media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+              desvio = sd(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+    pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor") |> 
+    pivot_wider(names_from = id, values_from = valor)
+  
+}
+
+tabla_resumen_temperatura(santa_fe)
+
+# Más adelate capaz llegamos a tidy evaluation para generalizar la función
+# https://dplyr.tidyverse.org/articles/programming.html
+
+tabla_resumen <- function(datos, variable) {
+  
+  datos |> 
+    group_by(id) |> 
+    summarise(media = mean({{ variable }}, na.rm = TRUE),
+              desvio = sd({{ variable }}, na.rm = TRUE)) |> 
+    pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor") |> 
+    pivot_wider(names_from = id, values_from = valor)
+  
+}
+
+tabla_resumen(santa_fe, temperatura_abrigo_150cm_minima)
+```
+3. Generá una función `grafico_temperatura_mensual` que devuelva un gráfico que muestre el promedio mensual de la temperatura de abrigo. usá el código que generaste para el ejercicio 2 de ggplot2. La función debe:
+  * Recibir el data.frame con los datos (que pueden ser de 1 o más estaciones).
+  * Tener un argumento para indicarle que colores debe usar para el gráfico. 
+  * Tener un argumento para definir el título del gráfico. Por defecto, si no se define el título deberá aparecer "Temperatura"
+  
+Desafio extra (opcional): modificá la función para que si no le pasas los colores necesarios, elija colores de manera aleatoria. Pista: revisá `colors()`
+
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+grafico_temperatura_mensual <- function(datos, colores, titulo = "Temperatura") {
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(temperatura_media = mean(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+    ggplot(aes(mes, temperatura_media)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_temperatura_mensual(santa_fe, 
+                            colores = c("darkorange", "purple", "cyan4", "steelblue", "pink3"),
+                            titulo = "Ciclo anual de temperatura")
+
+# Mismo problema de tidy evaluation
+
+grafico_mensual <- function(datos, variable, colores, titulo = "Temperatura") {
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(promedio = mean({{ variable }}, na.rm = TRUE)) |> 
+    ggplot(aes(mes, promedio)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_mensual(santa_fe,
+                temperatura_abrigo_150cm_minima,
+                colores = c("darkorange", "purple", "cyan4", "steelblue", "pink3"),
+                titulo = "Ciclo anual de temperatura minima")
+
+# Generalizando el uso de colores
+grafico_mensual <- function(datos, variable, colores = NULL, titulo = "Temperatura") {
+  
+  if (is.null(colores)) {
+    
+    n <- nrow(distinct(datos, id))
+    colores <- sample(colors(), n)
+    
+  }
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(promedio = mean({{ variable }}, na.rm = TRUE)) |> 
+    ggplot(aes(mes, promedio)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_mensual(santa_fe,
+                temperatura_abrigo_150cm_minima,
+                titulo = "Ciclo anual de temperatura minima")
+```
 :::
