@@ -248,7 +248,7 @@ Podés descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-p
 
 ### Construyendo un paquete de R paso a paso {#ex-exploracion}
 
-::: ejericios
+::: ejercicios
 
 **Pivots!**
 
@@ -256,8 +256,32 @@ Recordás el ejercicio 3 de dplyr?
 
 >¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
 
-1. Usando las funciones `pivot_` alargá el resultado anterior. 
-2. A continuación volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.
+1. Usando las funciones `pivot_` alargá el resultado anterior de tal manera que queden los valores de temperatura máxima y mínima en la misma columna. 
+2. A continuación **usando el resultado anterior** volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.
+
+```{r, echo=FALSE, eval=FALSE}
+library(dplyr)
+library(tidyr)
+
+estaciones_santafe <- c("NH0472", "NH0910", "NH0046", "NH0098", "NH0437")
+santa_fe <- purrr::map_df(here::here(paste0("datos/", estaciones_santafe, ".csv")), readr::read_csv)
+
+# 1.
+santa_fe |> 
+  group_by(id) |> 
+  summarise(media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+            desvio = sd(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+  pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor")
+
+# 2. 
+santa_fe |> 
+  group_by(id) |> 
+  summarise(media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+            desvio = sd(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+  pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor") |> 
+  pivot_wider(names_from = id, values_from = valor)
+```
+
 
 **uniones**
 
@@ -269,4 +293,12 @@ Esta información son **metadatos** y suelen venir por separado (si tenemos suer
 2. Identifica cuales son las variables clave, aquellas que son comunes entre los datos meteorológicos con los que venís trabajando y esta nueva tabla.
 3. Uní los datos con joins. ¿Cuál es la mejor opción? 
 
+```{r, echo=FALSE, eval=FALSE}
+
+metadatos <- readr::read_csv("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/metadatos_completos.csv")
+
+santa_fe |> 
+  left_join(metadatos, by = "id")
+
+```
 :::
