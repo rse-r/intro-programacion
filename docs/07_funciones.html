@@ -269,8 +269,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#trabajando-con-funciones-y-otro-c%C3%B3digo" id="toc-trabajando-con-funciones-y-otro-código" class="nav-link active" data-scroll-target="#trabajando-con-funciones-y-otro-c%C3%B3digo"><span class="header-section-number">8.1</span> Trabajando con funciones y otro código</a></li>
-  <li><a href="#trabajando-con-datos" id="toc-trabajando-con-datos" class="nav-link" data-scroll-target="#trabajando-con-datos"><span class="header-section-number">8.2</span> Trabajando con datos</a></li>
+<li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">8.1</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#trabajando-con-funciones-y-otro-c%C3%B3digo" id="toc-trabajando-con-funciones-y-otro-código" class="nav-link" data-scroll-target="#trabajando-con-funciones-y-otro-c%C3%B3digo"><span class="header-section-number">8.2</span> Trabajando con funciones y otro código</a></li>
+  <li><a href="#esqueleto-de-una-funci%C3%B3n" id="toc-esqueleto-de-una-función" class="nav-link" data-scroll-target="#esqueleto-de-una-funci%C3%B3n"><span class="header-section-number">8.3</span> Esqueleto de una función</a></li>
+  <li>
+<a href="#teste%C3%A1-tu-funci%C3%B3n" id="toc-testeá-tu-función" class="nav-link" data-scroll-target="#teste%C3%A1-tu-funci%C3%B3n"><span class="header-section-number">8.4</span> Testeá tu función</a>
+  <ul class="collapse">
+<li><a href="#revis%C3%A1-que-los-argumentos-sean-v%C3%A1lidos" id="toc-revisá-que-los-argumentos-sean-válidos" class="nav-link" data-scroll-target="#revis%C3%A1-que-los-argumentos-sean-v%C3%A1lidos"><span class="header-section-number">8.4.1</span> Revisá que los argumentos sean válidos</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#escrib%C3%AD-funciones-para-humanos-y-computadoras" id="toc-escribí-funciones-para-humanos-y-computadoras" class="nav-link" data-scroll-target="#escrib%C3%AD-funciones-para-humanos-y-computadoras"><span class="header-section-number">8.5</span> Escribí funciones para humanos y computadoras</a>
+  <ul class="collapse">
+<li><a href="#ex-lectura" id="toc-ex-lectura" class="nav-link" data-scroll-target="#ex-lectura"><span class="header-section-number">8.5.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul>
+</li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -291,89 +304,312 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Intro</p>
-<section id="trabajando-con-funciones-y-otro-código" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="trabajando-con-funciones-y-otro-código">
-<span class="header-section-number">8.1</span> Trabajando con funciones y otro código</h2>
-<p>Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Además vimos en detalle como utilizar archivos .Rmd o .qmd <em>autocontenidos</em>, que incluyan el código y texto necesario para generar un análisis. Pero es posible que nuestro trabajo necesite funciones que generamos para hacer nuestro trabajo más simple. Si incluimos el código que define estas funciones en nuestro .Rmd, puede complejizar nuestro código y que sea más dificil de interpretar. Aquí podemos comenzar a incluir archivos secundarios que contengan estas funciones.</p>
-<p>En las situaciones donde nuestro código no produce resultados, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd. En estos casos podemos volver a los tradicionales scripts.</p>
-<p>Si hipotéticamente quisieramos definir una función que convierte la temperatura en kelvin (algo muy común entre meteorólogos) a la temperatura en grados centígrados tendriamos el siguiente código:</p>
+</header><section id="objetivos-de-aprendizaje" class="level2" data-number="8.1"><h2 data-number="8.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje">
+<span class="header-section-number">8.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>Convertir un bloque de código R en una función</li>
+<li>Utilizar funciones de otros paquetes en una función de su propio paquete</li>
+<li>Devolver un mensaje de error desde una función</li>
+</ul></section><section id="trabajando-con-funciones-y-otro-código" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="trabajando-con-funciones-y-otro-código">
+<span class="header-section-number">8.2</span> Trabajando con funciones y otro código</h2>
+<p>Hasta ahora tenemos un proyecto con una determinada estructura de carpetas que nos permite ordenar nuestro trabajo. Inicialmente escribir el código necesario para resolver un problema, leer un archivo o calcular medidas estadísticas es lo más razonable. Pero es posible que te encuentres repitiendo las mismas lineas de código o copiado y pegando código de un lado para el otro porque necesitás reutilizar algo que ya escribíste.</p>
+<p>En estas situaciones es una buena idea comenzar a encapsular código en funciones. En esta sección veremos como escribir funciones, más adelante <em>empaquetaremos</em> esas funciones en un paquete.</p>
+<p>Escribir funciones tiene cuatro grandes ventajas sobre copiar y pegar código:</p>
+<ul>
+<li>Podés nombrar tus funciones con un nombre descriptivo que facilite la comprensión del código.</li>
+<li>Si por alguna razón tenés que cambiar el código, sólo es necesitás hacerlo en un único lugar.</li>
+<li>Eliminás la posibilidad de cometer errores al copiar y pegar código.</li>
+<li>Podés reutilizar el código en las funciones en otros proyectos.</li>
+</ul>
+<p>En las situaciones donde nuestro código no produce salidas como graficos o tablas, más bien son definiciones de funciones secundarias u otras herramientras, no tiene tanto sentido usar archivos .Rmd o .qmd. En estos casos podemos volver a los tradicionales scripts (.R).</p>
+</section><section id="esqueleto-de-una-función" class="level2" data-number="8.3"><h2 data-number="8.3" class="anchored" data-anchor-id="esqueleto-de-una-función">
+<span class="header-section-number">8.3</span> Esqueleto de una función</h2>
+<p>Cualquier función en R tendrá la siguiente pinta (se le llama firma de una función):</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nombre_de_funcion</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<span><span class="co"># código que hace algo </span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Como habrás notado necesitamos la función <code>function()</code> para crear una función. Hay tres pasos clave para crear una nueva función:</p>
+<ul>
+<li>Tenés que elegir un nombre para la función.</li>
+<li>Enumeras los argumentos, los elementos de entrada que necesita el código para correr, en el ejemplo <code>arg1</code>, <code>arg2</code>, <code>...</code>.</li>
+<li>Colocas el código que has desarrollado en el cuerpo de la función, un bloque entre <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> inmediatamente después de <code>function(...)</code>.</li>
+</ul>
+<p>Imaginemos que tenemos este código:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">kelvin_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temperatura</span> <span class="op">-</span> <span class="fl">273.15</span><span class="op">)</span></span>
-<span>  </span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">temperatura_ayer</span> <span class="op">&lt;-</span> <span class="fl">53.6</span> <span class="co"># en Fahrenheit!</span></span>
+<span></span>
+<span><span class="va">temperatura_ayer_c</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">temperatura_ayer</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span> <span class="co"># convierto a centigrados</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>De nuevo, este código no va a ser útil si querés usarlo en otro lugares, necesitamos generalizarlo en una función.</p>
+<p>El primer paso es pensar un nombre, por ejemplo <code>fahrenheit_a_centigrados</code>. Luego tenemos que analizar el código e identificar cuales son los argumentos, la información que necesita la función, en este caso la temperatura en Fahrenheit, es es un argumento.</p>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_ayer</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="op">(</span><span class="va">temperatura_ayer</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>que podríamos guardar en un script de R que se llame <code>funciones_secundarias.R</code> que por supuesto guardaremos en la carpeta “scripts”. Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:</p>
+<p>Está función está lista para usar, por ejemplo podemos convertir 100 Fahrenheit a centigrados:</p>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="fl">100</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 37.77778</code></pre>
+</div>
+</div>
+<p>Si bien podemos nombrar a los argumentos de las funciones de cualquier manera, <code>temperatura_ayer</code> no es razonable para una función general. Un mejor nombre podría ser <code>temperatura_fahrenheit</code></p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="op">(</span><span class="va">temperatura_fahrenheit</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Es posible que te encuentres con algo del estilo:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">temperatura_centigrados</span> <span class="op">&lt;-</span> <span class="op">(</span><span class="va">temperatura_fahrenheit</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">temperatura_centigrados</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Usar la función <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> no es necesario, R devuelve el último elemento con o sin el <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> presente. Sin embargo, puede ayudar a la lectura del código cuando la función es más compleja.</p>
+<div class="informacion">
+<p>Cada vez que se ejecuta una función se crea un nuevo entorno, desde cero, propio de la función para contener su ejecución. Notá que si buscas la variable <code>temperatura_centigrados</code> en el <em>Environment</em> no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en ese “entorno” independiente del entorno general.</p>
+</div>
+<p>Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:</p>
 <ul>
 <li><p>Qué hace o cual es su propósito.</p></li>
 <li><p>Qué argumentos requiere y de que tipo de datos son.</p></li>
 <li><p>Qué genera cómo resultado.</p></li>
 </ul>
 <div class="ejercicio">
-<p><strong>Crea una función</strong></p>
 <ol type="1">
-<li>Creá un archivo .R con alguna función. Puede ser la que vimos como ejemplo o alguna otra que prefieras.</li>
-<li>Guardá el archivo en la carpeta scripts</li>
+<li>Creá un archivo .R con las siguientes funciones:</li>
+<li>Una función que convierta la temperatura de centigrados a fahrenheit.</li>
+<li>Una función utilizando el siguiente código <code>mean(is.na(x))</code>. ¿Qué resultado da este código? Probalo con <code>x &lt;- c(0, 1, 2, NA, 4, NA)</code>.</li>
+<li>Una función utilizando el siguiente código <code>x / sum(x, na.rm = TRUE)</code>. ¿Qué resultado da este código? Probalo con <code>x &lt;- c(1:5)</code>.</li>
+<li>Guardá el archivo .R con un nombre informativo.</li>
+<li>Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.</li>
 </ol>
 </div>
-<p>Ahora el desafío es lograr usar esa función que está en un archivo .R en el reporte .Rmd. Necesitamos <em>cargar</em> el script al comienzo de nuestro archivo para que la función quede disponible para ser utilizada más adelante.</p>
-<p>El mejor lugar para hacer esto es, en el caso de R Markdown, el bloque de código setup donde además cargamos las librerías que usaremos. Por ejemplo:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(ggplo2)
-library(data.table)
-source(here::here("scripts/funciones_secundarias.R"))</a></code></pre>
-<div class="ejercicio">
-<p><strong>Carga la función</strong></p>
-<ol type="1">
-<li>Agrega <code>source(here::here("scripts/funciones_secundarias.R"))</code> al comienzo del archivo .Rmd</li>
-<li>Usa la función en algún bloque de código</li>
-<li>Knitea el archivo para ver el resultado final</li>
-</ol>
-</div>
-</section><section id="trabajando-con-datos" class="level2" data-number="8.2"><h2 data-number="8.2" class="anchored" data-anchor-id="trabajando-con-datos">
-<span class="header-section-number">8.2</span> Trabajando con datos</h2>
-<p>Muchas veces los datos están disponibles en distintos servicios en páginas de internet. Muchos gobiernos por ejemplo, tienen portales de datos abiertos. Organizaciones generan APIs para poner a disposición sus datos o tal vez otras personas publicaron sus datos en servicios como Zenodo y queremos aprovecharlos. Es posible que se puedan decargar los datos visitando la web y haciendo click en un botón, sin embargo podríamos escribir el código necesario para hacer esto de manera programática. Esto hace que nuestro trabajo sea más reproducible y disminuye las chances de error.</p>
-<p>El código que genera la descarga de datos podría estar incluido en el archivo .Rmd si la descarga no demora. En general querremos incluir la opción de no descargar los datos si el código encuentra que ya fueron descargados previamente. También podríamos generar un script de descarga de datos que corra una sola vez. Esta es una buena idea cuando el código de descarga demora o es complejo.</p>
-<p>Veamos un ejemplo de descarga de datos desde Zenodo.</p>
-<p>Si revisamos la base de datos <a href="https://sandbox.zenodo.org/record/1029654" class="uri">https://sandbox.zenodo.org/record/1029654</a> veremos que incluye un solo archivo en formato .csv.</p>
+<p>Ahora si quisieramos usar esa función en el análisis, podemos “cargarla” con <code>source("archivo.R")</code>.</p>
+<p>La escritura de una función debería arrancar con un código que ya funciona. Es decir, en lugar de empezar desde cero <code>fahrenheit_a_centigrados()</code> usamos el código que ya tenemos y que funciona para un ejemplo particular. Luego cambiando el nombre del argumento podemos generalizar el código.</p>
+</section><section id="testeá-tu-función" class="level2" data-number="8.4"><h2 data-number="8.4" class="anchored" data-anchor-id="testeá-tu-función">
+<span class="header-section-number">8.4</span> Testeá tu función</h2>
+<p>Es importante que pruebes tu función de distintas maneras. Primero, con algún valor para el que sabes el resultado, por ejemplo 32 fahrenheit es 0º centigrados.</p>
 <div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="images/file_list.png" class="img-fluid figure-img" width="434"></p>
-</figure>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="fl">32</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
 </div>
 </div>
+<p>También es importante testear la función con datos diferentes, por ejemplo en vez de 1 número entero, podemos usar un real o un vector de números.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="fl">25.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -3.611111</code></pre>
 </div>
-<p>Vemos también el botón “Download” para la descarga del archivo. Podríamos usarlo para descargar el archivo haciendo click.</p>
-<p>Pero como mencionaba previamente, se puede escribir el código necesario para hacer la descarga de manera programática y asegurarnos que tenemos los datos correctos. Podríamos crear una función <code>descarga_pinguinos()</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">descarga_pinguinos</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"datos/datos_crudos/penguins.csv"</span><span class="op">)</span></span>
-<span>  <span class="va">url</span> <span class="op">&lt;-</span> <span class="st">"https://sandbox.zenodo.org/record/1029654/files/penguins.csv?download=1"</span></span>
-<span>  <span class="fu"><a href="https://rdrr.io/r/utils/download.file.html">download.file</a></span><span class="op">(</span><span class="va">url</span>, <span class="va">file</span><span class="op">)</span></span>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">32</span>, <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -17.77778   0.00000  37.77778</code></pre>
+</div>
+</div>
+<p>Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valores en el segundo último ejemplo? ¿tiene sentido que haga esto?</p>
+<p>Finalmente, tenemos que probar la función con otras cosas.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in temperatura_fahrenheit - 32: non-numeric argument to binary operator</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -17.22222</code></pre>
+</div>
+</div>
+<p>El primero ejemplo da un error, poco informativo pero un error al fin. El segundo ejemplo devuelve un resultado, pero ¿no debería dar error?</p>
+<p>Por estas situaciones es importante chequear que lo que ingresa a la función es lo esperado, antes de hacer ninguna otra operación.</p>
+<section id="revisá-que-los-argumentos-sean-válidos" class="level3" data-number="8.4.1"><h3 data-number="8.4.1" class="anchored" data-anchor-id="revisá-que-los-argumentos-sean-válidos">
+<span class="header-section-number">8.4.1</span> Revisá que los argumentos sean válidos</h3>
+<p>El primer acercamiento a esto es la función <code><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot()</a></code></p>
+<div class="cell">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/stopifnot.html">stopifnot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span><span class="op">)</span></span>
+<span>  </span>
+<span>  <span class="op">(</span><span class="va">temperatura_fahrenheit</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Para obtener la dirección url del archivo, hay que hacer click derecho sobre el botón Download y copiar el link.</p>
-<p>Ahora si deseas descargar los datos solo hay que llamar a la función <code>descarga_pinguinos()</code> y los datos se guardaran en la carpeta correcta.</p>
-<p>Podríamos mejorar esto generando una función que solo descargue los datos en caso de que no estén presentes en el proyecto. Esta función podría escribirse de esta manera:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">datos_pinguinos</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">file</span> <span class="op">&lt;-</span> <span class="fu">here</span><span class="fu">::</span><span class="fu"><a href="https://here.r-lib.org//reference/here.html">here</a></span><span class="op">(</span><span class="st">"datos/datos_crudos/penguins.csv"</span><span class="op">)</span></span>
-<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/files.html">file.exists</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
-<span>    <span class="fu">descarga_pinguinos</span><span class="op">(</span><span class="op">)</span></span>
-<span>  <span class="op">}</span> </span>
-<span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="va">file</span><span class="op">)</span><span class="op">)</span></span>
+</div>
+<p>Ahora si volvemos a correr algunos de los ejemplos previos, obtendremos:</p>
+<div class="cell">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in fahrenheit_a_centigrados("100"): is.numeric(temperatura_fahrenheit) is not TRUE</code></pre>
+</div>
+</div>
+<p>Pero de nuevo, esta función no devuelve un mensaje muy informativo.</p>
+<div class="importante">
+<p>Para lo que sigue vamos a necesitar usar esquemas de flujo, <code>if</code>, <code>else</code>, etc. Revisemos como es la sintaxis en R.</p>
+<pre><code>if (condición) {
+# código que se ejecuta cuando la condición es TRUE
+} else {
+# código que se ejecuta cuando la condición es FALSE
+}</code></pre>
+<p>En R la condición que evaluamos va entre <code>()</code> y usamos <code><a href="https://rdrr.io/r/base/Paren.html">{}</a></code> para separar cada <em>rama</em> de nuestro código, no es necesario indentar las líneas de código (aunque ayuda en la lectura!).</p>
+<p>Además de <code>if</code> y <code>else</code>, podemos usar <code>else if</code> cuando queremos probar distintas condiciones.</p>
+</div>
+<p>La siguiente solución implica encapsular la función <code><a href="https://rdrr.io/r/base/stop.html">stop()</a></code> en una estructura <code>if</code> para poder incluir un mensaje de error apropiado:</p>
+<div class="cell">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"temperatura_centigrados debe ser numérico,\n"</span>,</span>
+<span>         <span class="st">"La variable ingresada es un "</span>, <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="op">(</span><span class="va">temperatura_centigrados</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Con esta última función en nuestro archivo .Rmd nos podemos olvidar de la descarga de datos, que se hará automáticamente.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">penguins</span> <span class="op">&lt;-</span> <span class="fu">datos_pinguinos</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="ejercicio">
-<p><strong>Descarga de datos programática</strong></p>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in fahrenheit_a_centigrados("100"): temperatura_centigrados debe ser numérico,
+La variable ingresada es un character</code></pre>
+</div>
+</div>
+<p>Este mensaje nos da mucha más información:</p>
 <ul>
-<li>Siguiendo los pasos anteriores, general las funciones necesarias para descargar los datos prográtiacamente en la carpeta correcta.</li>
-<li>Las funciones pueden estar al comienzo del archivo o puedes guardarlas en el script <code>funciones_secundarias.R</code> (o un nuevo script) y cargarlas al comienzo.</li>
-<li>Para revisar que todo funciona, knitea el archivo y chequea que los datos estén en la carpeta correcta.</li>
+<li>En que función ocurre el error</li>
+<li>La causa del error y como resolverlo.</li>
 </ul>
+<p>Pero hay otras soluciones aún más superadoras, podemos escribir mensajes de error y <em>warnings</em> (advertencias en inglés) usando el paquete <code>cli</code>:</p>
+<div class="cell">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">fahrenheit_a_centigrados</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  </span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">temperatura_fahrenheit</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_abort.html">cli_abort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>      <span class="st">"temperatura_fahrenheit debe ser numérico."</span>,</span>
+<span>      <span class="st">"i"</span> <span class="op">=</span>  <span class="st">"La variable ingresada es un {class(temperatura_fahrenheit)[1]}."</span></span>
+<span>    <span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span>  </span>
+<span>  <span class="op">(</span><span class="va">temperatura_fahrenheit</span> <span class="op">-</span> <span class="fl">32</span><span class="op">)</span> <span class="op">*</span> <span class="fl">5</span><span class="op">/</span><span class="fl">9</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fahrenheit_a_centigrados</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>Error in `fahrenheit_a_centigrados()`:
+! temperatura_fahrenheit debe ser numérico.
+ℹ La variable ingresada es un character.</code></pre>
+</div>
+</div>
+<p>El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos <code>cli_abort()</code> pero hay toda una familia de funciones según la circusntancia, por ejemplo si queremos mostrar un <em>warning</em>, si la función corrió con exito, etc.</p>
+<p>Además podemos mostrar distintos tipos de mensajes:</p>
+<div class="cell">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_bullets.html">cli_bullets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"noindent"</span>,</span>
+<span>  <span class="st">" "</span> <span class="op">=</span> <span class="st">"indent"</span>,</span>
+<span>  <span class="st">"*"</span> <span class="op">=</span> <span class="st">"bullet"</span>,</span>
+<span>  <span class="st">"&gt;"</span> <span class="op">=</span> <span class="st">"arrow"</span>,</span>
+<span>  <span class="st">"v"</span> <span class="op">=</span> <span class="st">"success"</span>,</span>
+<span>  <span class="st">"x"</span> <span class="op">=</span> <span class="st">"danger"</span>,</span>
+<span>  <span class="st">"!"</span> <span class="op">=</span> <span class="st">"warning"</span>,</span>
+<span>  <span class="st">"i"</span> <span class="op">=</span> <span class="st">"info"</span></span>
+<span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>noindent</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>  indent</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• bullet</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>→ arrow</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✔ success</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>✖ danger</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>! warning</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ info</code></pre>
+</div>
+</div>
+<div class="ejercicio">
+<p>Escribí una función para descargar y leer los datos de pingüinos.</p>
+<ol type="1">
+<li>La función debe aceptar un argumento, la ruta al archivo en tu computadora.</li>
+<li>Revisá si el archivo ya existe en esa ruta, usá la función <code>file.exist()</code>.</li>
+</ol>
+<ul>
+<li>Si el archivo no está descargado, el código debe descargarlo y luego leerlo.</li>
+<li>Si el archivo ya está descargado, el código debe leerlo.</li>
+</ul>
+<ol start="3" type="1">
+<li>Agrega mensajes con <code>cli_inform()</code> para que el usuario sepa lo que la función hizo.</li>
+</ol>
+</div>
+</section></section><section id="escribí-funciones-para-humanos-y-computadoras" class="level2" data-number="8.5"><h2 data-number="8.5" class="anchored" data-anchor-id="escribí-funciones-para-humanos-y-computadoras">
+<span class="header-section-number">8.5</span> Escribí funciones para humanos y computadoras</h2>
+<p>Es importante recordar que las funciones no son sólo para que las entienda R, sino también para las personas que las van a usar. A R no le importa cómo se llama tu función, o qué comentarios contiene, pero éstos son importantes para que vos y otras personas entiendan lo que hace.</p>
+<p>El nombre de una función es importante. Lo ideal es que el nombre de tu función sea corto, pero que describa claramente lo que hace la función. Eso es difícil. Pero es mejor que el nombre sea claro a que sea muy corto. También que ayude a RStudio a autocompletar.</p>
+<p>Generalmente, los nombres de las funciones son verbos, y los argumentos sustantivos.Esto es porque las funciones <strong>hacen</strong> algo, tienen una acción asociada. Por supuesto, hay excepciones a la regla. Los sustantivos como nombre de funciones están bien si la función calcula un sustantivo muy conocido (por ejemplo, <code>promedio()</code> es mejor que <code>calcula_promedio()</code>), o accede a alguna propiedad de un objeto (por ejemplo, <code><a href="https://rdrr.io/r/stats/coef.html">coef()</a></code> es mejor que <code>extraer_coeficientes()</code>). Una buena señal de que un sustantivo puede ser una mejor opción es si se utiliza un verbo muy amplio como «obtener», «computar», «calcular» o «determinar». Usa tu mejor criterio y no tengas miedo de cambiar el nombre de una función si más adelante se te ocurre uno mejor.</p>
+<p><strong>Muy corto</strong></p>
+<ul>
+<li><code>f()</code></li>
+</ul>
+<p><strong>No es un verbo y no es descriptivo</strong></p>
+<ul>
+<li><code>funcion_hermosa()</code></li>
+</ul>
+<p><strong>Nombre largo pero claro</strong></p>
+<ul>
+<li><code>computa_faltantes()</code></li>
+<li><code>colapsa_anios()</code></li>
+</ul>
+<p>Si el nombre de tu función está compuesto por varias palabras, te recomendamos utlizar «snake_case», donde cada palabra en minúscula está separada por un guión bajo. camelCase es otra buena alternativa (es mas amigable con lectores de pantallas). Lo importante es ser coherente: elegí una y no cambies.</p>
+<p>Para ayudar a RStudio a autocompletar el nombre de las funciones es mejor esto:</p>
+<ul>
+<li><code>input_select()</code></li>
+<li><code>input_checkbox()</code></li>
+<li><code>input_text()</code></li>
+</ul>
+<p>que esto:</p>
+<ul>
+<li><code>select_input()</code></li>
+<li><code>checkbox_input()</code></li>
+<li><code>text_input()</code></li>
+</ul>
+<section id="ex-lectura" class="level3" data-number="8.5.1"><h3 data-number="8.5.1" class="anchored" data-anchor-id="ex-lectura">
+<span class="header-section-number">8.5.1</span> Construyendo un paquete de R paso a paso</h3>
+<div class="ejercicio">
+<ol type="1">
+<li>Crea una función para descagar y leer los datos de estaciones. Importante:</li>
+</ol>
+<ul>
+<li>Usá como base la función que creamos para leer los datos de pinguinos.</li>
+<li>La función deberá recibir <strong>2 argumentos</strong>, el id de la estación (por ejemplo “NH0437”) y la ruta donde se guardará el archivo (por ejemplo “datos/NH0437.csv”)</li>
+<li>Debe poder descargar y leer los datos de cualquier estación.</li>
+</ul>
+<ol start="2" type="1">
+<li><p>Crea una función que se llame <code>tabla_resumen_temperatura</code> y que devuelva una tabla de resumen de la <code>temperatura_abrigo_150cm</code> para una o más estaciones. Usá el código que generaste en el ejercicio 1 de tidyr.</p></li>
+<li><p>Generá una función <code>grafico_temperatura_mensual</code> que devuelva un gráfico que muestre el promedio mensual de la temperatura de abrigo. usá el código que generaste para el ejercicio 2 de ggplot2. La función debe:</p></li>
+</ol>
+<ul>
+<li>Recibir el data.frame con los datos (que pueden ser de 1 o más estaciones).</li>
+<li>Tener un argumento para indicarle que colores debe usar para el gráfico.</li>
+<li>Tener un argumento para definir el título del gráfico. Por defecto, si no se define el título deberá aparecer “Temperatura”</li>
+</ul>
+<p>Desafio extra (opcional): modificá la función para que si no le pasas los colores necesarios, elija colores de manera aleatoria. Pista: revisá <code><a href="https://rdrr.io/r/grDevices/colors.html">colors()</a></code></p>
 </div>
 
 
-</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
