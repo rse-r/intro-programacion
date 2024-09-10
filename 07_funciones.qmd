@@ -323,7 +323,7 @@ que esto:
 * `checkbox_input()`
 * `text_input()`
 
-### Construyendo un paquete de R paso a paso {#ex-lectura}
+### Construyendo un paquete de R paso a paso {#ex-funciones}
 
 ::: ejercicio
 
