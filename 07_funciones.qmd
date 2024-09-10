@@ -98,9 +98,9 @@ Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apr
 ::: ejercicio
 
 1.  Creá un archivo .R con las siguientes funciones:
-  1. Una función que convierta la temperatura de centigrados a fahrenheit.
-  2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
-  3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
+1. Una función que convierta la temperatura de centigrados a fahrenheit.
+2. Una función utilizando el siguiente código `mean(is.na(x))`. ¿Qué resultado da este código? Probalo con `x <- c(0, 1, 2, NA, 4, NA)`. 
+3. Una función utilizando el siguiente código `x / sum(x, na.rm = TRUE)`. ¿Qué resultado da este código? Probalo con `x <- c(1:5)`.
 2.  Guardá el archivo .R con un nombre informativo.
 3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí que hace la función, que argumentos requiere y que genera.
 :::
@@ -178,9 +178,9 @@ Revisemos como es la sintaxis en R.
 
 ```
 if (condición) {
-  # código que se ejecuta cuando la condición es TRUE
+# código que se ejecuta cuando la condición es TRUE
 } else {
-  # código que se ejecuta cuando la condición es FALSE
+# código que se ejecuta cuando la condición es FALSE
 }
 ```
 En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *rama* de nuestro código, no es necesario indentar las líneas de código (aunque ayuda en la lectura!). 
@@ -278,7 +278,7 @@ datos_pinguinos <- function(ruta_archivo) {
     cli::cli_inform(c("v" = "Descargado el archivo en {ruta_archivo}"))
   } 
   cli::cli_inform(c("v" = "Leyendo los datos"))
-  return(read.csv(file))
+  return(read_csv(file))
 }
 
 penguins <- datos_pinguinos("datos/datos_pinguinos.csv")
@@ -327,6 +327,156 @@ que esto:
 
 ::: ejercicio
 
-Agregar 2 o 3 funciones que se puedan generar usando los ejercicios de dplyr.
+1. Crea una función para descagar y leer los datos de estaciones. Importante:
+* Usá como base la función que creamos para leer los datos de pinguinos.
+* La función deberá recibir **2 argumentos**, el id de la estación (por ejemplo "NH0437") y la ruta donde se guardará el archivo (por ejemplo "datos/NH0437.csv")
+* Debe poder descargar y leer los datos de cualquier estación. 
 
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
+
+descarga_estacion <- function(id, ruta_archivo) {
+  file <- here::here(ruta_archivo)
+  url <- paste0("https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/", id, ".csv")
+  download.file(url, file)
+}
+
+datos_estacion <- function(id, ruta_archivo) {
+  file <- here::here(ruta_archivo)
+  if (!file.exists(file)) {
+    descarga_estacion(id, ruta_archivo)
+    cli::cli_inform(c("v" = "Descargado la estación {id} en {ruta_archivo}"))
+  } 
+  cli::cli_inform(c("v" = "Leyendo los datos"))
+  return(readr::read_csv(file))
+}
+
+estacion_NH0437 <- datos_estacion("NH0437", "datos/NH0437.csv")
+
+```
+
+2. Crea una función que se llame `tabla_resumen_temperatura` y que devuelva una tabla de resumen de la `temperatura_abrigo_150cm` para una o más estaciones. Usá el código que generaste en el ejercicio 1 de tidyr.
+
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(tidyr)
+
+estaciones_santafe <- c("NH0472", "NH0910", "NH0046", "NH0098", "NH0437")
+santa_fe <- purrr::map_df(here::here(paste0("datos/", estaciones_santafe, ".csv")), readr::read_csv)
+
+# A este nivel hardcodeamos la variable temperatura
+tabla_resumen_temperatura <- function(datos, variable) {
+  
+  # TODO: chequear que datos sea un data.frame/tibble y que tenga la variable temperatura_abrigo_150cm
+  
+  datos |> 
+    group_by(id) |> 
+    summarise(media = mean(temperatura_abrigo_150cm, na.rm = TRUE),
+              desvio = sd(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+    pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor") |> 
+    pivot_wider(names_from = id, values_from = valor)
+  
+}
+
+tabla_resumen_temperatura(santa_fe)
+
+# Más adelate capaz llegamos a tidy evaluation para generalizar la función
+# https://dplyr.tidyverse.org/articles/programming.html
+
+tabla_resumen <- function(datos, variable) {
+  
+  datos |> 
+    group_by(id) |> 
+    summarise(media = mean({{ variable }}, na.rm = TRUE),
+              desvio = sd({{ variable }}, na.rm = TRUE)) |> 
+    pivot_longer(cols = c("media", "desvio"), names_to = "variable", values_to = "valor") |> 
+    pivot_wider(names_from = id, values_from = valor)
+  
+}
+
+tabla_resumen(santa_fe, temperatura_abrigo_150cm_minima)
+```
+3. Generá una función `grafico_temperatura_mensual` que devuelva un gráfico que muestre el promedio mensual de la temperatura de abrigo. usá el código que generaste para el ejercicio 2 de ggplot2. La función debe:
+  * Recibir el data.frame con los datos (que pueden ser de 1 o más estaciones).
+  * Tener un argumento para indicarle que colores debe usar para el gráfico. 
+  * Tener un argumento para definir el título del gráfico. Por defecto, si no se define el título deberá aparecer "Temperatura"
+  
+Desafio extra (opcional): modificá la función para que si no le pasas los colores necesarios, elija colores de manera aleatoria. Pista: revisá `colors()`
+
+```{r eval=FALSE, include=FALSE, message=FALSE, warning=FALSE}
+library(ggplot2)
+
+grafico_temperatura_mensual <- function(datos, colores, titulo = "Temperatura") {
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(temperatura_media = mean(temperatura_abrigo_150cm, na.rm = TRUE)) |> 
+    ggplot(aes(mes, temperatura_media)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_temperatura_mensual(santa_fe, 
+                            colores = c("darkorange", "purple", "cyan4", "steelblue", "pink3"),
+                            titulo = "Ciclo anual de temperatura")
+
+# Mismo problema de tidy evaluation
+
+grafico_mensual <- function(datos, variable, colores, titulo = "Temperatura") {
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(promedio = mean({{ variable }}, na.rm = TRUE)) |> 
+    ggplot(aes(mes, promedio)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_mensual(santa_fe,
+                temperatura_abrigo_150cm_minima,
+                colores = c("darkorange", "purple", "cyan4", "steelblue", "pink3"),
+                titulo = "Ciclo anual de temperatura minima")
+
+# Generalizando el uso de colores
+grafico_mensual <- function(datos, variable, colores = NULL, titulo = "Temperatura") {
+  
+  if (is.null(colores)) {
+    
+    n <- nrow(distinct(datos, id))
+    colores <- sample(colors(), n)
+    
+  }
+  
+  datos |> 
+    group_by(id, mes = lubridate::month(fecha)) |> 
+    summarise(promedio = mean({{ variable }}, na.rm = TRUE)) |> 
+    ggplot(aes(mes, promedio)) +
+    geom_line(aes(color = id)) +
+    scale_color_manual(values = colores) +
+    labs(title = titulo,
+         x = "Mes",
+         y = "Temperatura media",
+         color = "Estación") +
+    theme_minimal()
+  
+  
+}
+
+grafico_mensual(santa_fe,
+                temperatura_abrigo_150cm_minima,
+                titulo = "Ciclo anual de temperatura minima")
+```
 :::
