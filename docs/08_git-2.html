@@ -246,8 +246,21 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">9.1</span> Objetivos de aprendizaje</a>
+  <ul class="collapse">
+  <li><a href="#sec-workflows-explained" id="toc-sec-workflows-explained" class="nav-link" data-scroll-target="#sec-workflows-explained"><span class="header-section-number">9.1.1</span> Forks, branchs y pull requests en GitHub</a></li>
+  </ul></li>
+  <li><a href="#cómo-trabajar" id="toc-cómo-trabajar" class="nav-link" data-scroll-target="#cómo-trabajar"><span class="header-section-number">9.2</span> Cómo trabajar</a>
+  <ul class="collapse">
+  <li><a href="#plantemos-árboles" id="toc-plantemos-árboles" class="nav-link" data-scroll-target="#plantemos-árboles"><span class="header-section-number">9.2.1</span> Plantemos árboles!</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -271,8 +284,175 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="objetivos-de-aprendizaje" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje"><span class="header-section-number">9.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>Aplicar conceptos de flujos de trabajo usando Git básicos al trabajo colaborativo utilizando GitHub.</li>
+<li>Identificar las diferencias entre branchs y forks e identificar situaciones en las que utilizar cada una.</li>
+<li>Comprender el uso y el rol de las branchs y los pull requests en la colaboración en un proyecto.</li>
+<li>Utilizar funciones del paquete <code>usethis</code> en un proyecto.</li>
+<li>Gestiona pull requests como responsable o líder de un proyecto.</li>
+</ul>
+<section id="sec-workflows-explained" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="sec-workflows-explained"><span class="header-section-number">9.1.1</span> Forks, branchs y pull requests en GitHub</h3>
+<p>En este capítulo vamos a ver que pinta tiene el flujo de trabajo colaborativo entre personas para hacer análisis de datos y desarrollo de software. Previamente estuviste trabajando con git de manera individual:</p>
+<pre><code>Modificar un archivo --&gt; Add --&gt; Commit </code></pre>
+<p>Todo esto lo hiciste en una branch (o rama) del repositorio que normalmente llamamos <em>main</em> por ser la principal. Una <strong>Branchs</strong> en git es una etiqueta que señala a un <em>commit</em> específico en el repositorio a partir del cual las versiones del repositorio se bifurcan. Trabajar en una branch te permite modificar archivos sin modificar los mismos archivos en otras branchs, porque esencialmente estás trabajando en un conjunto “paralelo” de archivos. Cuando quieras pasar los cambios que hiciste a la rama principal, tendrías que hacer un <strong>merge</strong> para combinar las branchs. En entornos de equipo, trabajar en branchs te permite hacer cambios en los archivos sin afectar el trabajo de otras personas en el equipo. Cuando hayas terminado de modificar los archivos, podés hacer un merge con tus cambios en la rama principal para que el resto del equipo tengan también esos cambios. Las branchs se utilizan mucho en proyectos de software y paquetes de R.</p>
+<p>El flujo de trabajo colaborativo incluye dos nuevos términos y conceptos: <em>forks</em> y <em>pull requests</em>.</p>
+<ul>
+<li><strong>Forks</strong> Un fork es una copia de un repositorio de otra persona o equipo que se almacenará en tu cuenta de GitHub. Tanto el original como el fork están en GitHub, la diferencia es que podés hacer modificaciones en la versión que está en tu cuenta.</li>
+<li><strong>Pull Requests</strong> Un pull request o PR es una herramienta de GitHub que permite hacer cambios en un fork o branch y luego solicitar que que la persona a cargo del proyecto haga un merge con esos cambios en el repositorio principal. Los pull requests pueden proceder de forks o de branchs independientes dentro del repositorio. Permiten que las personas que mantienen y quienes colaboran en el proyecto revisen, discutan, soliciten más cambios y aprueben los cambios para hacer el merge a la branch main.</li>
+</ul>
+<p>Aprender a utilizar eficazmente estas herramientas y conceptos puede hacer que que colaborar con otras persona sea mucho más fácil y facilita la contribución a otros proyectos. Incluso podrías utilizar este flujo de trabajo aún de manera individual.</p>
+<p>Cuando estás colaborando en un proyecto te podés encontrar en una de estas situaciones:</p>
+<ul>
+<li>Escenario 1: Tenés permisos de escritura en el repositorio remoto, en ese caso no necesitas utilizar forks.</li>
+<li>Escenario 2: No tenés permisos de escritura en el repositorio remoto, por lo que tendrías que trabajar en un fork de repositorio original.</li>
+</ul>
+<p>En ambas situaciones asumiremos que trabajarás con branchs para separar tu trabajo del de otras personas antes de pasarlas a la branch main.</p>
+<section id="escenario-1" class="level4" data-number="9.1.1.1">
+<h4 data-number="9.1.1.1" class="anchored" data-anchor-id="escenario-1"><span class="header-section-number">9.1.1.1</span> Escenario 1</h4>
+<p>Este esquema muestra el flujo de trabajo cuando <strong>no</strong> necesitamos hacer un fork.</p>
+<p><img src="images/no_fork.png" class="img-fluid"></p>
+<ol type="1">
+<li>Cloná el repositorio en tu computadora</li>
+<li>Crear una nueva branch.</li>
+<li>Edita archivos, agregalos y hacé commits en esa branch.</li>
+<li>Cuando los cambios estén hechos y listos, envía un pull request al repositorio remoto para comparar tus cambios en tu branch con main.</li>
+<li>El pull request es aceptado y fusionado o hay que hacer nuevos cambios (vuelve al paso 3).</li>
+<li>Una vez que el PR es aceptado y fusionado, la branch principal tiene ahora los cambios actualizados y ya se puede eliminar la branch donde estabas trabajando.</li>
+<li>El proceso puede repetirse varias veces, en paralelo o en secuencia dependiendo del tamaño del equipo.</li>
+</ol>
+</section>
+<section id="escenario-2" class="level4" data-number="9.1.1.2">
+<h4 data-number="9.1.1.2" class="anchored" data-anchor-id="escenario-2"><span class="header-section-number">9.1.1.2</span> Escenario 2</h4>
+<p>Para los flujos de trabajo basados en forks, el proceso es el siguiente:</p>
+<p><img src="images/si_fork.png" class="img-fluid"></p>
+<ol type="1">
+<li>Crear un fork del repositorio principal (si aún no lo tenés).</li>
+<li>Cloná el repositorio en tu computadora.</li>
+<li>Crear una nueva branch en tu copia del repositorio.</li>
+<li>Realiza ediciones y cambios en los archivos y envíalos a la branch.</li>
+<li>Cuando esté todo listo, abrí el pull request. Si te piden nuevos cambios tendrás que volver al paso 4.</li>
+<li>Si el PR aceptado y fusionado, la branch principal en el repositorio principal se actualizará y la nueva branch se puede borrar.</li>
+<li>Finalmente podés sincronizar tu fork del repositorio con el repositorio principal.</li>
+</ol>
+<p>Un reto que surge a menudo es saber cómo y cuándo usar branchs. ¿Hacés todos cambios cambios allí y luego abris un PR a la branch main? ¿creás una branch, haces PR y y la borras inmediatamente después? ¿Qué cambios haces en la nueva branch? La respuesta a estas preguntas dependen del contexto, del equipo, del paquete en el que estés trabajando, de cuáles sean tus objetivos para el paquete, etc. Sin embargo, te damos algunos consejos:</p>
+<ol type="1">
+<li>Cuando haces cambios pequeños y enfocados con un error u objetivo específico (por ejemplo, actualizar la documentación para arreglar un error de tipeo) creá un nueva branch y abrí un PR. Cuanto más pequeños sean los cambios más fácil será revisarlos y aceptarlos.</li>
+<li>Si hacés grandes cambios, lo mejor es que estén relacionados a un problema u objetivo, de modo que al revisar el PR sea más fáci seguirlo y entenderlo.</li>
+<li>Haz cambios relacionados con un issue específico y agregá comentarios en el issue para mantener a todo el mundo al tanto.</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="cómo-trabajar" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="cómo-trabajar"><span class="header-section-number">9.2</span> Cómo trabajar</h2>
+<p>Vamos a mostrar algunos ejemplos de cómo utilizar los flujos de trabajo que vimos recién en distintas situaciones.</p>
+<ol type="1">
+<li><strong>Desarrollando software de manera individual</strong> En este caso, probablemente tengas que pensar si tenés que hacer una branch, ya que podés trabajar fácilmente con git sin hacer nunca una branch. Sin embargo, si quisieras experimentar con el código (o texto) sin modificar la branch main, estarás en el escenario 1.</li>
+<li><strong>Desarrollando software de manera individual pero otras personas colaboran</strong> Si estás trabajando en un paquete R de código abierto y hay personas que ocacionalmente contribuyen a tu paquete, como resposanble de mantenerlo y desarrollarlo recibirás issues y PR que tendrás que revisar y responder. En este caso es muy importante utilizar branches para reducir la posibilidad de que hagas un cambio en main que puedan afectar a usuarios de tu paquete.</li>
+<li><strong>Colaborando en un proyecto del que no sos parte</strong> Si contribuís ocasionalmente con un paquete de R, tendrás que usar el flujo de trabajo del escenario 2. Tendrás que hacer un fork del repositorio del paquete, hacer cambios en nuevas branchs, y abrir PR para proponer esos cambios en el paquete. Este escenario es el más habitual en el mundo de los paquetes R de código abierto, ya que la mayoría de los paquetes son mantenidos por una o varias personas.</li>
+<li><strong>Como miembro de un equipo</strong> Si tenés permisos de escritura en el repositorio y formás parte de un equipo que trabaja en ese repositorio, podés trabajar siguiendo el flujo de trabajo en el escenario 1. Harás cambios en los archivos creando primero una branch y, cuando el cambio esté listo, enviarás los cambios al repositorio remoto abriendo un PR para que otras personas en el equipo puedan revisar tu propuesta.</li>
+</ol>
+<div class="ejercicio">
+<p><strong>¿Qué flujo de trabajo necesitan estas situaciones?</strong></p>
+<p>Considerá estas situaciones y decidí que flujo de trabajo que utilizarías para cada una de ellas.</p>
+<ol type="1">
+<li>Estás en una clase en la que una de las tareas es un trabajo en grupo para crear un paquete de software. ¿Cuál de los flujos de trabajo anteriores será el mejor enfoque para completar un proyecto en equipo? ¿Se te ocurren otros enfoques que puedan funcionar igual de bien? ¿Qué ¿Cuáles son los puntos fuertes y débiles de cada enfoque?</li>
+<li>Un amigo/a se entera de que estás creando un paquete R en tu tiempo libre y quiere contribuir. ¿Qué instrucciones le darías a tu amigo/a para que pueda contribuir? ¿Qué enfoque funcionaría mejor para vos?</li>
+<li>Mientras navegás por la página web de un paquete de R, encontrás algunos errores de tipeo y decidís arreglarlos. ¿Cuál de los enfoques anteriores utilizarías?</li>
+</ol>
+</div>
+<section id="plantemos-árboles" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="plantemos-árboles"><span class="header-section-number">9.2.1</span> Plantemos árboles!</h3>
+<p>Como ejemplo y ejercicio colaboraremos con la recientemente abierta galeria de arte Flametree, y haremos PRs en el camino.</p>
+<div class="ejercicio">
+<p>Fork del repositorio</p>
+<ol type="1">
+<li>Ingresá a <a href="https://github.com/paocorrales/flametree_gallery">github.com/paocorrales/flametree_gallery</a></li>
+<li>Hacé un fork del repositorio utilizando el botón “Fork” de la esquina superior derecha.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/fork.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de pantalla de un repositorio mostrando dónde está el botón “Fork”.</figcaption>
+</figure>
+</div>
+<p>Ahora tenés una copia del repositorio en tu cuenta de GitHub.</p>
+<ol start="3" type="1">
+<li>Copia la url del repositorio y clónalo en tu computadora siguiendo las instrucciones <a href="./04_git-1.html">para crear un nuevo repositorio que vimos en la sección de git trabajando de manera individual.</a></li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clone.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de pantalla de un repositorio fork<em>eado</em> mostrando dónde copiar la url para clonar el repositorio.</figcaption>
+</figure>
+</div>
+</div>
+<p>Ahora tenés un proyecto RStudio (que también es un repositorio) que es una copia del que está en el repositorio original. Es un proyecto muy pequeño con unos pocos archivos. <code>template_script.R</code> incluye el código necesario para crear bellas imágenes como ésta:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/tree_pao.png" class="img-fluid figure-img"></p>
+<figcaption>Imagen de árboles creada con R</figcaption>
+</figure>
+</div>
+<p>Utiliza el paquete de R <a href="https://github.com/djnavarro/flametree"><em>flametree</em></a> creado por <a href="https://djnavarro.net/">Danielle Navarro</a>. No vamos a discutir en profundidad cómo funciona este paquete, pero es una buena excusa para practicar pull requests.</p>
+<div class="ejercicio">
+<p>Hacé un cambio en el repositorio</p>
+<ol type="1">
+<li><p>Hacé una copia del archivo <code>template_script.R</code> y cámbiale el nombre a <code>&lt;tu-nombre.R&gt;</code></p></li>
+<li><p>Cambiá el valor de las 3 primeras variables del script:</p></li>
+</ol>
+<ul>
+<li><code>name</code>: tu nombre.</li>
+<li><code>seed</code>: porque hay cosas aleatorias en el código.</li>
+<li><code>shades</code>: elegí 4 colores que te gusten.</li>
+</ul>
+<p>Podés ejecutar el código si querés ver tu árbol (necesitarás instalar el paquete).</p>
+<ol start="3" type="1">
+<li>Guardá el archivo, <strong>add</strong> al área de preparación y hacé un <strong>commit</strong> (<em>incluí sólo el archivo .R que creaste</em>).</li>
+<li>Hacé <strong>push</strong> a tu repositorio remoto.</li>
+</ol>
+</div>
+<p>Hasta este punto hiciste el cambio en tu repositorio local (que es una copia del repositorio principal) y subiste esos cambios a tu repositorio remoto en GitHub. El repositorio original no se enteró de estos cambios porque hasta este punto todo el trabajo lo hiciste en tu repositorio.</p>
+<p>Si querés contribuir con los cambios que hiciste (el archivo .R con el código para crear tu árbol) en el repositorio original, es hora de hacer un pull request.</p>
+<div class="ejercicio">
+<p>Hacé un pull request</p>
+<ol type="1">
+<li>Entrá a tu repositorio en GitHub, ahí encontrarás tu último commit y un mensaje como este:</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pr1.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de pantalla de un repositorio bifurcado en GitHub con un nuevo commit. Muestra cómo iniciar un nuevo pull request.</figcaption>
+</figure>
+</div>
+<ol start="2" type="1">
+<li>Hacé click en “Open pull request”.</li>
+<li>Y hacé click en “Create pull request”.</li>
+<li>Ahora completá el pull request con un título y un mensaje y luego termina el PR.</li>
+</ol>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pr2.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de pantalla de GitHub que muestra cómo añadir un título, un mensaje y finalizar un pull request</figcaption>
+</figure>
+</div>
+<p>¡Listo!</p>
+</div>
+<p>Quien esté a cargo del repositorio recibirá un correo electrónico. Pueden revisar el pull request, hacer comentarios y, finalmente, aceptar la contribución. Cuando esto ocurra, los cambios que hayas hecho aparecerán en el repositorio.</p>
+<div class="ejercicio">
+<p>¿En que escenario trabajamos recién? ¿Cuáles serían la diferencias con el otro escenario?</p>
+</div>
+<div class="ejercicio">
+<p>Ahora que sabes como contribuir con un proyecto, podés ayudarnos! Estos materiales están plagados de errores de tipeo y cosas para mejorar, y a esta altura seguro encontraste un montón.</p>
+<p>Para practicar como hacer un PR en un repositorio donde no tenés permisos, te proponemos que busques un error y propongas como arreglarlo. Cada una de estas secciones es un archivo .qmd como los que venimos usando y el repositorio se encuentra en <a href="https://github.com/rse-r/intro-programacion">github.com/rse-r/intro-programacion</a>.</p>
+</div>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
