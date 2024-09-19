@@ -300,7 +300,7 @@ Para eso tenes que:
 
 1. Crear un repositorio en tu cuenta con el mismo nombre que tu usuario de github.  Por ejemplo, el usuario de GitHub de Yanina es _yabellini_ entonces el repositorio se tiene que llamar _yabellini_.
 
-2 - Agregarle un archivo README.md
+2. Agregarle un archivo README.md
 
 3 - Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. [Hay listado de ejemplos de diferentes perfiles de GitHub para todos los gustos.](https://zzetao.github.io/awesome-github-profile/)
 
