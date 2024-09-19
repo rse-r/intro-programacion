@@ -302,5 +302,5 @@ Para eso tenes que:
 
 2. Agregarle un archivo README.md
 
-3 - Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. [Hay listado de ejemplos de diferentes perfiles de GitHub para todos los gustos.](https://zzetao.github.io/awesome-github-profile/)
+3. Pensar en que queres poner en tu perfil y modificar el readme son esa informacion. [Hay listado de ejemplos de diferentes perfiles de GitHub para todos los gustos.](https://zzetao.github.io/awesome-github-profile/)
 
