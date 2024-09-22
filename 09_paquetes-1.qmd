@@ -432,18 +432,57 @@ Es hora de empezar a unir lo que hicimos. El objetivo de este ejercicio es crear
 **Crear el paquete**
 
 1. Piensen un nombre para el paquete, debe seguir las reglas pero no importa si se repite en otro ámbito.
-2. Creen la estructura del paquete con `usethis`.
-3 Modifiquen el archivo DESCRIPTION con todo lo necesario.
+2. El paquete debera estar en la cuenta de GitHub de una de las personas que integran el grupo.  Decidan quien sera y realicen los siguientes pasos en la computadora de esa persona.
 
-**Crear un repositorio remoto**
+3. Creen la estructura del paquete con `usethis`.
+4. Modifiquen el archivo DESCRIPTION con todo lo necesario.
 
-1. Creen un repositorio remoto (público) en la cuenta de una las personas que integran el grupo. Debe llamarse igual que el paquete. 
-2. Conectarlo con el repositorio local siguiendo las indicaciones:
+**Conectarlo con Git localmente**
 
-TODO: armar indicaciones
+1. Para crear el repositorio local corran la siguiente funcion de usethis en la consola de R con el proyecto del paquete abierto en RStudio en la maquina de la persona que seleccionaron para que tenga el repo en su cuenta:
+
+`usethis::use_git()`
+
+Esta funcion va a crear el repositorio y generara un commit inicial de todos los archivos que tiene el proyecto. Va a preguntarte si queres hacer esto. Contestale que si. Tambien va a reiniciar RStudio para que la pestaña de Git aparezca en nuestro proyecto.   Va a preguntarte si queres hacer esto. Contestale que si. 
+**Crear el repo remoto en GitHub**
+
+1. Con el proyecto del paquete abierto en RStudio en la computadora de la persona que tendra el repo en GitHub, corran la siguiente funcion de usethis en la consola:
+
+`usethis::use_github()`
+
+Esta funcion hace lo siguiente:
+
+- Crea un nuevo repositorio en GitHub con el nombre del proyecto.
+- Configura ese nuevo repositorio como origen remoto para el repositorio local.
+- Configura tu branch local por defecto para realizar el mismo seguimiento en el origen y realiza un push inicial.
+- Abre el nuevo repositorio en tu navegador. 
+
+Te presenta algo similar a esto en la consola:
+
+ℹ Defaulting to "https" Git protocol.
+✔ Creating GitHub repository "yabellini/inventarioRRNN".
+✔ Setting remote "origin" to "https://github.com/yabellini/inventarioRRNN.git".
+✔ Adding "https://github.com/yabellini/inventarioRRNN" to URL.
+✔ Adding "https://github.com/yabellini/inventarioRRNN/issues" to BugReports.
+ℹ There is 1 uncommitted file:
+• DESCRIPTION
+! Is it ok to commit it?
+
+1: Absolutely not
+2: Not now
+3: Yes
+
+Selection: 3
+✔ Adding files.
+✔ Making a commit with message "Add GitHub links to DESCRIPTION".
+✔ Pushing "master" branch to GitHub and setting "origin/master" as upstream branch.
+✔ Opening URL <https://github.com/yabellini/inventarioRRNN>.
+ 
 3. Modificar la configuración del repositorio en GitHub para que la otra persona del grupo tenga permisos para hacer commits y push. 
 
 TODO armar indicaciones.
-4. Modificá el README.md para indicar que el paquete es de prueba, que no está pensado
+4. La otra persona del grupo ahora puede clonar el repo en su computadora, siguiendo los pasos que vimos en como trabajar individualmente.
+
+5. Modificá el README.md para indicar que el paquete es de prueba, que no está pensado
 para ser usado como tal.
 ::: 
