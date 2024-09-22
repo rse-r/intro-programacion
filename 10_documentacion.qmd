@@ -1,0 +1,239 @@
+---
+title: "Documentando paquetes y funciones"
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+## Objetivos de aprendizaje
+
+-   Describir el propósito de documentar código y paquetes
+-   Documentar funciones con `roxygen2`
+-   Crear un README y una viñeta para la documentación de paquetes
+-   Crear la web del paquete
+
+## ¿Por qué necesitamos documentación?
+
+Igual que el control de versiones rastrea qué cambios haces y por qué,
+la documentación del código y de los paquetes informa a las personas en
+tu equipo y futuras y futuros usuarios *lo que* hace el código y *por
+qué*.
+
+Con el tiempo, los lenguajes de programación se han hecho más "legibles
+para el ser humano": una persona con mucha experinecia podría leer el
+código y entender lo que hace. Pero aunque entienda *lo que hace* el
+código, puede que no sea obvio *por qué* lo hace. Los lenguajes de
+programación vienen con herramientas incorporadas para agregar
+comentarios y documentación que no son leídos por la computadora, sino
+que existen únicamente para ayudarte a vos y otras personas a describir
+y comprender el código. Una buena documentación es clave para la
+apertura, la reproducibilidad y la sostenibilidad del proyecto.
+
+La buena documentación se da en todas las escalas del código: a nivel de
+objetos individuales, funciones y test, así como de todo el paquete. En
+este capítulo, describimos el flujo de trabajo de la documentación de un
+paquete como parte de su desarrollo y esbozamos los componentes de un
+paquete bien documentado.
+
+## Documentación de funciones
+
+La documentación de funciones en R es posiblemente la más usada y
+accesible. Podemos revisarla con `?unafuncion` o `help("unafuncion")` y
+para quienes les gusta los atajos de teclado, con F1 si el cursor está
+en el nombre de la función. R Base proporciona una forma estándar de
+documentar un paquete donde cada función se documenta en un tema o
+**topic**, un archivo `.Rd` ("R documentation") en el directorio `man/`.
+Si bien los archivos .Rd utilizan una sintaxis basada en LaTeX no es
+necesario aprenderla ya que el paquete `roxigen2` hace gran parte del
+trabajo.
+
+La mayor ventaja es que podemos escribir la documentación en el mismo
+archivo `.R` y dejarle la tarea de generar los archivos `.Rd`a roxigen2.
+
+``` r
+#' Suma dos números
+#' 
+#' Suma dos números .
+#'
+#' @param x Un número.
+#' @param y Un número.
+#'
+#' @returns Un vector numérico.
+#'
+#' @examples
+#' suma(1, 1)
+#' suma(10, 1)
+#'
+#' @export
+suma <- function(x = 2, y = 2) {
+  x + y
+}
+```
+
+La manera en que veamos esta documentación depende de donde estemos ya
+que los archivos `.Rd` son la base de lo que vemos en la pestaña help de
+RStudio, los pdf de cada paquete, su página web, etc.
+
+::: tip
+
+Se puede insetar un esqueleto de la documención nos paramos 
+sobre la definición de la función y vamos a
+`Code > Insert roxygen skeleton` en RStudio.
+Este comando añade los componentes por defecto de la función para no empezar a
+escribir la documentación desde cero.
+:::
+
+Así es como se ve la documentación de nuestra función `suma()`.
+
+![](images/clipboard-4078423590.png)
+
+En resumen hay cuatro pasos en el flujo de trabajo básico de roxygen2:
+
+1.  Agregar comentarios de roxygen2 a losr archivos .R de funciones.
+2.  Ejecutar `devtools::document()` o `Ctrl/Cmd + Mayús + D` para
+    convertir los comentarios de roxygen2 en archivos .Rd.
+3.  Previsualizá la documentación con `?function`.
+4.  Revisá, modificá y repetí hasta que la documentación tenga el
+    aspecto que necesites.
+
+### roxigen2 sintaxis
+
+Ahora si podemos ver en detalle como suar roxigen2. Lo primero que
+habrás notado es que todas las líneas de la documentación comienzan con
+`#'`. Además algunas líneas tienen este patrón: `@tagname tagvalue`. Es
+decir, una etiqueta y un valor asociado, por ejemplo `@param` es una
+etiqueta y `x` es el valor asociado. Otra etiqueta importante es `@export` que 
+es la que indica que la función se exporta, es decir, queda disponible para que 
+pueda usarse al cargar el paquete.
+
+#### Título, descripción, detalles
+
+La introducción de la documentación incluye un título, una descripción
+y, opcionalmente, detalles de la función. Aunque es posible utilizar
+etiquetas explícitas en la introducción, solemos utilizar etiquetas
+implícitas cuando es posible:
+
+-   El **título** se genera con la primera frase. Debe escribirse en
+    mayúsculas, sin punto final y seguido de una línea en blanco. El
+    título se muestra en varios índices de funciones (por ejemplo,
+    `help(paquete = «algúnpaquete»))` y es lo que una persona suele ver
+    cuando navega por varias funciones.
+
+-   La **descripción** se genera con el párrafo siguiente. Se muestra en
+    la parte superior de la documentación y debe describir brevemente
+    las características más importantes de la función. Escribir la
+    descripción puede resultar difícil en el caso de funciones
+    sencillas, ya que puede parecer que se está repitiendo el título de
+    la función. Intentá encontrar otra manera de describir la función si
+    es posible.
+
+-   Los **detalles** adicionales son cualquier cosa después de la
+    descripción. Los detalles son opcionales, pero pueden ser de
+    cualquier longitud, por lo que resultan útiles para profundizar en
+    algún aspecto importante de la función. Tené en cuenta que, aunque
+    los detalles vienen justo después de la descripción en la
+    introducción, aparecen mucho más adelante en la documentación
+    renderizada.
+
+#### Argumentos
+
+Documentar los argumentos de la función es probablemente la mayor parte
+del trabajo. Para esto vamos a usar la etiqueta `@param` (que viene de
+parámetro, otra manera de decir argumento). Es necesario documentar
+todos los argumentos en el orden en el que aparecen en la función.
+
+La documentación de cada argumento incluye una descripción breve del
+imput permitido y que rol cumple en la función. Por ejemplo, estos son
+los argumentos de la función `sd()`
+
+``` r
+#' @param x a numeric vector or an **R** object but not a [factor] coercible to numeric by `as.double(x)`.
+#' @param na.rm	logical. Should missing values be removed?
+```
+
+Mencionan que tipo de objeto requiere cada uno y una descripción. Es
+recomendable también mencionar cual es el valor por defecto si lo tiene
+y si el argumento es opcional.
+
+Cuando 2 o más argumentos están muy relacionados (por ejemplo en la
+función `suma()`) es recomendable documentarlos juntos de la siguiente
+manera:
+
+``` r
+#' @param x,y Un par de valores numéricos.
+```
+
+#### Resultado 
+
+Documentar el resultado de una función es tan importante como documentar
+sus argumentos. Para esto usamos la etiqueta `@return` y aparece en la
+documentación bajo el título **Value**. Aquí la prioridad es describir
+la *forma* general del resultado, es decir, qué tipo de objeto es y sus
+dimensiones (si eso tiene sentido). Por ejemplo, si la función devuelve
+un vector, describiremos de que tipo y su longitud, o si devuelve un
+data.frame, se puede describir los nombres y tipos de las columnas y el
+número previsto de filas.
+
+Por ejemplo esta es la sección correspondiente para la función
+`read_csv()` :
+
+``` r
+#' @return
+#' A [tibble()]. If there are parsing problems, a warning will alert you. You can retrieve the full details by calling [problems()] on your dataset.
+```
+
+#### Ejemplos
+
+Esta sección de la documentación es importantísima porque le permite a
+cualquier nuevo usuario entender en detalle como funciona la función.
+Usaremos la etiqueta `@examples` (en plural!).
+
+El principal dilema de los ejemplos es que deben satisfacer dos
+requisitos al mismo tiempo:
+
+-   El código de ejemplo debe ser legible y realista.
+
+-   El código de ejemplo debe ejecutarse sin errores.
+
+Usamose ejemplos para mostrar en primer lugar el funcionamiento básico
+de la función y, a continuación, para destacar las propiedades más
+importantes. Intentá centrarte en las aplicaciones más importantes sin
+entrar en todos los detalles. Si te encontrás escribiendo ejemplos muy
+largos es posible que sea hora de revisarlos.
+
+### Documentar datos
+
+Los datos que forman parte del paquete también deben documentarse.  Documentar datos es como documentar una función con algunas pequeñas diferencias. En lugar de documentar los datos directamente, se documenta el nombre del conjunto de datos y se guarda en un archivo `.R` en la carpeta `R/`. Por ejemplo, el bloque roxygen2 utilizado para documentar los datos de pingüinos tiene este aspecto:
+
+```r
+#' Medidas de tamaño de pingüinos adultos en busca de comida cerca de la estación Palmer en la Antártica.
+#' 
+#' Incluye medidas para: especie de pingüino, isla dentro del Archipiélago de Palmer, tamaño (largo de aleta, masa corporal, dimensiones de pico) y sexo.
+#' 
+#' @format Un tibble con 344 filas y 8 variables
+#' 
+#'\describe{
+#'  \item{especie}{un factor que indica la especie de pingüino (Adelia, Barbijo y Papúa)}
+#'  \item{isla}{un factor que indica la isla en el archipiélago de Palmer (Biscoe, Dream o Torgersen)}
+#'  \item{largo_pico_mm}{un número que indica el largo del pico (milímetros)}
+#'  \item{alto_pico_mm}{un número que indica el alto del pico (milímetros)}
+#'  \item{largo_aleta_mm}{un entero que indica el largo de la aleta (milímetros)}
+#'  \item{masa_corporal_g}{un entero que indica la masa corporal (gramos)}
+#'  \item{sexo}{un factor que indica el sexo del pingüino (hembra, macho)}
+#'  \item{anio}{un entero que indica el año estudiado (2007, 2008 o 2009)}
+#'}
+#'
+#'@source Pingüinos Adelia: Palmer Station Antarctica LTER and K. Gorman. 2020. Structural size measurements and isotopic signatures of foraging among adult male and female Adélie penguins (Pygoscelis adeliae) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 5. Environmental Data Initiative https://doi.org/10.6073/pasta/98b16d7d563f265cb52372c8ca99e60f. 
+#'
+"pinguinos"
+```
+::: ejercicio
+
+1. Elegí al menos una de las funciones que creaste durante la [sección funciones](07_funciones.qmd). 
+2. Agregala al paquete de prueba en un nuevo archivo `.R` usando el flujo de trabajo que vimos.
+3. Documentá la función y practicá el flujo de documentación: `Ctrl+Shif+D` para documentar y luego `Ctrl+Shif+L` para cargar el paquete, revisar la documentación y mejorarla
+:::
+
+## Viñetas
+
+## Website
