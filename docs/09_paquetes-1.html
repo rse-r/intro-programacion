@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.47">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-
 <title>10&nbsp; Empaquetando funciones – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
-
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
@@ -41,8 +71,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -69,16 +98,11 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-
-
 </head>
-
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
@@ -89,13 +113,9 @@ ul.task-list li input[type="checkbox"] {
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
@@ -110,7 +130,7 @@ ul.task-list li input[type="checkbox"] {
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
@@ -220,8 +240,8 @@ ul.task-list li input[type="checkbox"] {
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
@@ -240,21 +260,44 @@ ul.task-list li input[type="checkbox"] {
   </div>
 </li>
       </ul>
-  </li>
+</li>
     </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">10.1</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#por-qu%C3%A9-crear-un-paquete-r" id="toc-por-qué-crear-un-paquete-r" class="nav-link" data-scroll-target="#por-qu%C3%A9-crear-un-paquete-r"><span class="header-section-number">10.2</span> ¿Por qué crear un paquete R?</a></li>
+  <li><a href="#qu%C3%A9-es-un-paquete-r" id="toc-qué-es-un-paquete-r" class="nav-link" data-scroll-target="#qu%C3%A9-es-un-paquete-r"><span class="header-section-number">10.3</span> ¿Qué es un paquete R?</a></li>
+  <li>
+<a href="#nombrar-un-paquete" id="toc-nombrar-un-paquete" class="nav-link" data-scroll-target="#nombrar-un-paquete"><span class="header-section-number">10.4</span> Nombrar un paquete</a>
+  <ul class="collapse">
+<li><a href="#requisitos-formales" id="toc-requisitos-formales" class="nav-link" data-scroll-target="#requisitos-formales"><span class="header-section-number">10.4.1</span> Requisitos formales</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#estructura-de-un-paquete" id="toc-estructura-de-un-paquete" class="nav-link" data-scroll-target="#estructura-de-un-paquete"><span class="header-section-number">10.5</span> Estructura de un paquete</a>
+  <ul class="collapse">
+<li><a href="#completando-el-archivo-description" id="toc-completando-el-archivo-description" class="nav-link" data-scroll-target="#completando-el-archivo-description"><span class="header-section-number">10.5.1</span> Completando el archivo DESCRIPTION</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#flujo-de-trabajo-para-el-desarrollo-de-paquetes" id="toc-flujo-de-trabajo-para-el-desarrollo-de-paquetes" class="nav-link" data-scroll-target="#flujo-de-trabajo-para-el-desarrollo-de-paquetes"><span class="header-section-number">10.6</span> Flujo de trabajo para el desarrollo de paquetes</a>
+  <ul class="collapse">
+<li><a href="#datos-en-paquetes" id="toc-datos-en-paquetes" class="nav-link" data-scroll-target="#datos-en-paquetes"><span class="header-section-number">10.6.1</span> Datos en paquetes</a></li>
+  <li><a href="#ex-paquete" id="toc-ex-paquete" class="nav-link" data-scroll-target="#ex-paquete"><span class="header-section-number">10.6.2</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Empaquetando funciones</span></h1>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Empaquetando funciones</span>
+</h1>
 </div>
 
 
@@ -268,14 +311,401 @@ ul.task-list li input[type="checkbox"] {
   
 
 
-</header>
+</header><section id="objetivos-de-aprendizaje" class="level2" data-number="10.1"><h2 data-number="10.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje">
+<span class="header-section-number">10.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>Identificar cuándo y por qué crear un paquete R.</li>
+<li>Conocer y utilizar los paquetes R <a href="https://devtools.r-lib.org/">devtools</a> y <a href="https://usethis.r-lib.org">usethis</a> para automatizar y agilizar muchas de las tareas de desarrollo de paquetes.</li>
+<li>Aprende a crear un nuevo paquete R utilizando <code><a href="https://usethis.r-lib.org/reference/create_package.html">usethis::create_package()</a></code>.</li>
+<li>Describir y explicar la finalidad de las carpetas y archivos de un paquete de R.</li>
+<li>Aprender cómo y por qué puedes añadir datos a un paquete de R.</li>
+</ul></section><section id="por-qué-crear-un-paquete-r" class="level2" data-number="10.2"><h2 data-number="10.2" class="anchored" data-anchor-id="por-qué-crear-un-paquete-r">
+<span class="header-section-number">10.2</span> ¿Por qué crear un paquete R?</h2>
+<p>El objetivo principal del desarrollo de software es simplificar alguna tarea o un conjunto de tareas para vos y para los demás (como tu equipo, u otras personas que usen tu trabajo). Esto también se aplica al desarrollo de software en R. Crear un paquete R es una de las formas más potentes de simplificar tareas, independientemente de lo sencillas o complejas que sean.</p>
+<p>A lo largo de esta sección mostraremos que crear y desarrollar un programa R no es tan difícil como parece a primera vista. Pero antes de hacer un paquete, tenes que definir algunas cosas. Por ejemplo, ¿cómo determinar si tiene sentido hacer un paquete R? Respondé a las siguientes preguntas:</p>
+<ul>
+<li>¿Creaste alguna vez una función, por sencilla que sea?</li>
+<li>¿Utilizaste esa función más de una vez en más de un proyecto o archivo, ya sea copiándola y pegándola o utilizando el archivo que que la contiene?</li>
+</ul>
+<p>Si respondiste afirmativamente a estas dos preguntas, entonces deberías crear un paquete R para esa función. Pero puede que te preguntes, ¿por qué hacer un paquete con una sola función? Porque nunca se acaba con <em>sólo</em> una función, es muy probable sumes otras a tu trabajo. Aparte de empaquetar las funciones de R, si tienes conjuntos de datos pequeños o medianos que utilizas en varios proyectos o archivos, puedes incluso empaquetar los datos.</p>
+<p>Además, hacer un paquete de R ahora es mucho más fácil que en el pasado. Esto se debe en gran parte a otros paquetes de R como <a href="https://devtools.r-lib.org/">devtools</a> y <a href="https://usethis.r-lib.org">usethis</a> que están diseñados para simplificar el desarrollo de paquetes. A esto se suman recursos gratuitos como libros y blogs y páginas en Internet para aprender a crear paquetes R y hacer desarrollo de software en R.</p>
+<p>Crear un paquete R y publicarlo en GitHub o en CRAN como parate de trabajo científico, un proyecto o análisis ayuda a su reproducibilidad. Esto se debe a que hacer un paquete de R suele requerir un mayor nivel de rigor, tests, documentación y inspección del código, lo que significa que tú y los demás podrán confiar más en en los resultados. Y si está en GitHub, es mucho más fácil compartir tu trabajo. con otras pesonas y lo lograr que tu trabajo tenga mayor impacto en general.</p>
+</section><section id="qué-es-un-paquete-r" class="level2" data-number="10.3"><h2 data-number="10.3" class="anchored" data-anchor-id="qué-es-un-paquete-r">
+<span class="header-section-number">10.3</span> ¿Qué es un paquete R?</h2>
+<p>Para entender qué es un paquete R, daremos un paso atrás y consideraremos lo que ocurre cuando interactuamos con R. El primer acercamiento a R es a través de la consola, donde escribís funciones en R para realizar tareas que que se imprimen en pantalla. Si no cambiaste la configuración inicial esa sesión de R correrar en tu carpeta raiz, normalmente algo parecido a <code>/home/username/</code> en Linux, <code>/Users/username/</code> para macOS, o <code>C:\Users\username</code> para Windows. Así que cualquier dato o gráfico que guardes o importes debe incluir la ruta del archivo a la ubicación correcta. Desde un punto de vista reproducible y modular esto va en contra de las buenas prácticas. Asimismo, el código de R qeu escribas en la consola no se guarda en ningún lado. Por tanto, no podés reutilizarlo o compartirlo fácilmente.</p>
+<p>El siguiente nivel es guardar el código en un scriptde R (un archivo almacenado en cualquier lugar en el ordenador que termina en <code>.R</code>) y hacer que R ejecute este código en secuencia. En el pasado, la gente podía escribir scripts de R en editores de texto como vim, emacs o Notepad, y ejecutar manualmente el script en la consola de R. En la actualidad, la mayoría de la gente utiliza un Entorno de Desarrollo Integrado (IDE) como RStudio o VS Code. Este es el método más utilizado para realizar cualquier tipo de trabajo en R. Teóricamente, el código escrito de esta forma es reproducible y se puede compartir. Sin embargo, en la práctica, las personas escriben código de manera secuencial, resolviendo un problema luego del otro y trabajan con R de forma más interactiva que programáticamente. El directorio de trabajo de un script R en este caso no está definido, por lo que seguimos encontrando problemas similares a los que tenemos al usar la consola. Si bien se puede almacenar código o funciones de R en un script y <em>cargarlas</em> con <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> desde otros scripts, esto implica hacer un seguimiento de los archivos con estas funciones y actualizarlos cuando corresponda.</p>
+<p>Un paquete de R no es muy diferente de utilizar varios scripts. Existen ciertas expectativas y convenciones que deben seguirse para para que que el paquete se “instale” en tu computadora y quede disponible como paquete. Algunas de estas convenciones son:</p>
+<ul>
+<li><p>Debe haber un archivo llamado <code>DESCRIPTION</code> que contiene los metadatos necesarios para que R sepa cómo instalar el paquete. Veremos qué debe incluir más adelante.</p></li>
+<li><p>Debe haber una carpeta llamada <code>R/</code>. Normalmente sólo contendrá archivos <code>.R</code> y sólo incluirán las funciones que hayas creado. Veremos como incorporar las funciones que ya tenemos dentro de un paquete.</p></li>
+<li><p>Debe haber un archivo <code>NAMESPACE</code> que contenga la lista de funciones de tu paquete que esten disponibles para ser usadas. Este archivo se gestiona automáticamente con funciones de <a href="https://devtools.r-lib.org/">devtools</a> y <a href="https://roxygen2.r-lib.org/">roxygen2</a>.</p></li>
+<li><p>La carpeta que contiene todo, aunque no es obligatorio debería llamarse como el paquete. Por ejemplo, el paquete <a href="https://usethis.r-lib.org">usethis</a> tiene el nombre de carpeta <code>usethis/</code>. Esto no es un requisito explícito, pero es muy recomendable. R determina el nombre del paquete a partir del campo <code>Package:</code> en el archivo <code>DESCRIPTION</code>.</p></li>
+</ul>
+<p>Nada de esto es algo de lo que tengas que preocuparte realmente porque los paquetes <a href="https://usethis.r-lib.org">usethis</a> y <a href="https://devtools.r-lib.org/">devtools</a> están diseñados para hacer muchas de estas tareas de configuración de paquetes por ti, o al menos simplificarlas.</p>
+<p>¿Cómo funciona la instalación de paquetes? Cuando le dices a R que instale un paquete, que es un conjunto de archivos y carpetas que siguen un convención específica, R toma la carpeta y la convierte en un formato especial. Luego R guarda este formato especial en una ubicación por defecto que es específica del sistema operativo, como macOS, Windows o Linux. Para ver dónde están instalados los paquetes, utiliza</p>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "C:/Users/tonin/AppData/Local/R/win-library/4.4"
+[2] "C:/Program Files/R/R-4.4.0/library"            </code></pre>
+</div>
+</div>
+<p>Si escribes esto en tu Consola, lo que verás probablemente será un un poco diferente a esto. Si <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> muestra más de una ruta, normalmente la primera contendrá todos los paquetes.</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 324</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>C:/Users/tonin/AppData/Local/R/win-library/4.4/abind
+C:/Users/tonin/AppData/Local/R/win-library/4.4/agroclimatico
+C:/Users/tonin/AppData/Local/R/win-library/4.4/askpass
+C:/Users/tonin/AppData/Local/R/win-library/4.4/assertthat
+C:/Users/tonin/AppData/Local/R/win-library/4.4/audio
+C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
+</div>
+</div>
+<p>Si queremos ver cómo almacena R los paquetes en su formato especial, podemos utilizar <code>dir_tree()</code> y el contenido de la instalación de <code>devtools/</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="fu">path</span><span class="op">(</span><span class="va">primary_library_path</span>, <span class="st">"devtools"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>C:/Users/tonin/AppData/Local/R/win-library/4.4/devtools
+├── DESCRIPTION
+├── doc
+│   ├── dependencies.html
+│   ├── dependencies.Rmd
+│   └── index.html
+├── help
+│   ├── aliases.rds
+│   ├── AnIndex
+│   ├── devtools.rdb
+│   ├── devtools.rdx
+│   ├── figures
+│   │   ├── lifecycle-archived.svg
+│   │   ├── lifecycle-defunct.svg
+│   │   ├── lifecycle-deprecated.svg
+│   │   ├── lifecycle-experimental.svg
+│   │   ├── lifecycle-maturing.svg
+│   │   ├── lifecycle-questioning.svg
+│   │   ├── lifecycle-stable.svg
+│   │   ├── lifecycle-superseded.svg
+│   │   └── logo.svg
+│   └── paths.rds
+├── html
+│   ├── 00Index.html
+│   └── R.css
+├── INDEX
+├── LICENSE
+├── MD5
+├── Meta
+│   ├── features.rds
+│   ├── hsearch.rds
+│   ├── links.rds
+│   ├── nsInfo.rds
+│   ├── package.rds
+│   ├── Rd.rds
+│   └── vignette.rds
+├── NAMESPACE
+├── NEWS.md
+├── R
+│   ├── devtools
+│   ├── devtools.rdb
+│   └── devtools.rdx
+├── rstudio
+│   └── addins.dcf
+└── WORDLIST</code></pre>
+</div>
+</div>
+<p>Los archivos <code>R/devtools.rdb</code> y <code>R/devtools.rdx</code> son los archivos cons formatos especiales que contienen las funciones dentro de <a href="https://devtools.r-lib.org/">devtools</a> que R buscará cuando carga el paquete. Cuando se instala un paquete en R, se crea una carpeta en <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> con los archivos en el formato específico que necesita R. Así que cuando ejecutes <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code>, R sabrá que debe buscar las funciones que se encuentran en la carpeta <code>devtools/</code>.</p>
+<p>Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu computadora (es decir, no está publicado en CRAN o en GitHub) no es no difiere de instalar un paquete de CRAN con <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> o desde GitHub con <code><a href="https://pak.r-lib.org/reference/pak.html">pak::pak()</a></code>. La única diferencia es que los paquetes en CRAN o GitHub pueden ser utilizados por cualquiera que tenga acceso a internet.</p>
+<div class="informacion">
+<p>Te habrás dado cuenta de que hemos utilizado la sintaxis <code>nombrepaquete::nombrefuncion()</code> unas cuantas veces. Esto le dice a R que utilice la función de un paquete concreto. Así que <code><a href="https://pak.r-lib.org/reference/pak.html">pak::pak()</a></code> es decirle a R que utilice la función <code>pak()</code> del paquete <code>pak</code>. En desarrollo de paquetes en particular, utilizaremos esto en lugar de cargar las librerias con <code><a href="https://pak.r-lib.org/">library(pak)</a></code> porque queremos ser explícitos sobre qué función queremos utilizar y porque no necesitamos cargar todas las funciones del paquete cuando sólo queremos utilizar una o dos.</p>
+</div>
+</section><section id="nombrar-un-paquete" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="nombrar-un-paquete">
+<span class="header-section-number">10.4</span> Nombrar un paquete</h2>
+<p>Crear un paquete no es complicado. Lo complicado es es <em>nombrar</em> el paquete. Crear un nombre significativo, que la gente recuerde y que se pueda buscar en Google es <em>realmente difícil</em>. No hay una manera fácil de y a menudo requiere varios días de pensar opciones. Pero además hay que asegurarse de que el nombre que estamos pensando usar no lo esté usando alguien más. Esto se puede hacer con el paquete <code>pak</code>. Por ahora para revisar el paso a paso para crear un paquete usaremos <code>paqueteprueba</code> como nombre. Revisemos si está disponible</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>╔══════════════════════════════════════════════════════════════════════════════╗
+║                             –*– paqueteprueba –*–                            ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ✔  valid name      ✔  CRAN            ✔  Bioconductor    ✔  not a profanity  │
+└──────────────────────────────────────────────────────────────────────────────┘
+┌ Wikipedia ───────────────────────────────────────────────────────────────────┐
+│ Paqueteprueba No definition found                                            │
+└──────────────────────────────────────────────────────────────────────────────┘
+┌ Wiktionary ──────────────────────────────────────────────────────────────────┐
+│ paqueteprueba No English definition found                                    │
+└──────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ Sentiment: :| (0)                                                            │
+└──────────────────────────────────────────────────────────────────────────────┘</code></pre>
+</div>
+</div>
+<p>En este caso <code>paqueteprueba</code> está disponible para que lo usemos.</p>
+<section id="requisitos-formales" class="level3" data-number="10.4.1"><h3 data-number="10.4.1" class="anchored" data-anchor-id="requisitos-formales">
+<span class="header-section-number">10.4.1</span> Requisitos formales</h3>
+<p>Existen tres requisitos formales:</p>
+<ol type="1">
+<li>El nombre sólo puede estar formado por letras, números y puntos, es decir, .</li>
+<li>Debe empezar por una letra.</li>
+<li>No puede terminar con un punto.</li>
+</ol>
+<p>Lamentablemente, esto significa que no puede utilizar guiones ni guiones bajos, es decir, - o _, en el nombre del paquete. Desaconsejamos el uso de puntos en los nombres de paquetes, para evitar que se confunda con extensiones de archivos y métodos S3.</p>
+</section></section><section id="estructura-de-un-paquete" class="level2" data-number="10.5"><h2 data-number="10.5" class="anchored" data-anchor-id="estructura-de-un-paquete">
+<span class="header-section-number">10.5</span> Estructura de un paquete</h2>
+<p>Ahora que tenemos un nombre, el siguiente paso es configurar la infraestructura básica para el paquete. Afortunadamente, el paquete <code>usethis</code> ayuda resolver gran parte del trabajo. Cuando usemosla función <code><a href="https://usethis.r-lib.org/reference/create_package.html">usethis::create_package()</a></code> configurará los archivos y carpetas básicos que necesitamos para crear un paquete y que R lo instale como tal. Utilizaremos esta función para crear el paquete <code>paqueteprueba</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"~/Documentos/paqueteprueba"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este caso estamos creando el paquete en la carpeta Documentos, pero también podríamos crearlo en cualquier otra carpeta. Esta linea de código además se corre en la consola, no tendría sentido que corra en un script ya que no es algo que haremos todos los días. El resultado es el siguiente</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'C:/Users/tonin/Documentos/paqueteprueba/'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'C:/Users/tonin/Documentos/paqueteprueba'</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'R/'</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'DESCRIPTION'</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>Package<span class="sc">:</span> paqueteprueba</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>Title<span class="sc">:</span> What the Package <span class="fu">Does</span> (One Line, Title Case)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>Version<span class="sc">:</span> <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>Authors<span class="sc">@</span><span class="fu">R</span> (parsed)<span class="sc">:</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    <span class="er">*</span> First Last <span class="sc">&lt;</span>first.last<span class="sc">@</span>example.com<span class="sc">&gt;</span> [aut, cre] (YOUR<span class="sc">-</span>ORCID<span class="sc">-</span>ID)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>Description<span class="sc">:</span> What the package <span class="fu">does</span> (one paragraph).</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>License<span class="sc">:</span> <span class="st">`</span><span class="at">use_mit_license()</span><span class="st">`</span>, <span class="st">`</span><span class="at">use_gpl3_license()</span><span class="st">`</span> or friends to</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    pick a license</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>Encoding<span class="sc">:</span> UTF<span class="dv">-8</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>Roxygen<span class="sc">:</span> <span class="fu">list</span>(<span class="at">markdown =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>RoxygenNote<span class="sc">:</span> <span class="dv">7</span>.<span class="fl">3.1</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'NAMESPACE'</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'paqueteprueba.Rproj'</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^paqueteprueba</span><span class="sc">\\</span><span class="st">.Rproj$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'.Rproj.user'</span> to <span class="st">'.gitignore'</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^</span><span class="sc">\\</span><span class="st">.Rproj</span><span class="sc">\\</span><span class="st">.user$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>✔ Opening <span class="st">'C:/Users/tonin/Documentos/paqueteprueba/'</span> <span class="cf">in</span> new RStudio session</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'&lt;no active project&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada <code>paqueteprueba</code> con los archivos mínimos para instalar el paquete. Esta carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos usando usethis y RStudio y viene con todas las ventajas que vimos. Sin embargo, no es impresindible que un paquete sea un proyecto al mismo tiempo. usethis tiene aún otra ventaja más, inicia automáticamente un repositorio. Esto es importantísimo, desarrollar software viene de la mano del control de versiones. Además, si estuvieramos creando un paquete de verdad, contectar este repositorio local con uno remoto en GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan usar otras personas.</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"C:/Users/tonin/Downloads/paqueteprueba/"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>C:/Users/tonin/Downloads/paqueteprueba/
+├── .gitignore
+├── .Rbuildignore
+├── .Rhistory
+├── .Rproj.user
+│   ├── 35B631FD
+│   │   ├── bibliography-index
+│   │   ├── cpp-definition-cache
+│   │   ├── ctx
+│   │   ├── explorer-cache
+│   │   ├── pcs
+│   │   │   ├── files-pane.pper
+│   │   │   ├── source-pane.pper
+│   │   │   ├── windowlayoutstate.pper
+│   │   │   └── workbench-pane.pper
+│   │   ├── presentation
+│   │   ├── profiles-cache
+│   │   ├── rmd-outputs
+│   │   ├── saved_source_markers
+│   │   ├── sources
+│   │   │   ├── per
+│   │   │   │   ├── t
+│   │   │   │   │   ├── 8C71E35A
+│   │   │   │   │   ├── 8C71E35A-contents
+│   │   │   │   │   ├── AFE0269A
+│   │   │   │   │   └── AFE0269A-contents
+│   │   │   │   └── u
+│   │   │   └── prop
+│   │   │       ├── A9A0748B
+│   │   │       ├── B9D8921D
+│   │   │       └── INDEX
+│   │   ├── tutorial
+│   │   └── viewer-cache
+│   └── shared
+│       └── notebooks
+│           └── patch-chunk-names
+├── DESCRIPTION
+├── NAMESPACE
+├── paqueteprueba.Rproj
+└── R
+    └── funcion_prueba.R</code></pre>
+</div>
+</div>
+<p>Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya presentamos, hay algunos archivos y carpetas ocultas. Conocés el .gitignore, pero .Rbuildignore y .Rproj.user son nuevos. El primero es parecido a .gitignore, incluye la lista de archivos y carpetas que R deberá ignorar al momento de construir el paquete, por ahora la lista es corta pero ira creciendo a medida que sumemos cosas al paquete. La carpeta .Rproj.user es algo que está en todo projecto de RStudio e incluye las configuraciones específicas del proyecto.</p>
+<section id="completando-el-archivo-description" class="level3" data-number="10.5.1"><h3 data-number="10.5.1" class="anchored" data-anchor-id="completando-el-archivo-description">
+<span class="header-section-number">10.5.1</span> Completando el archivo DESCRIPTION</h3>
+<p>El archivo <code>DESCRIPTION</code> contiene los metadatos del paquete paquete y algunos parámetros de configuración que R utiliza al construirlo e instalarlo. El formato de los metadatos utiliza el patrón <code>key: value</code>. Así, por ejemplo, la clave <code>Package</code> tiene el valor <code>paqueteprueba</code>, que le dice a R cuál es el nombre del paquete. Asimismo, <code>Title</code> y <code>Authors</code> proporcionan un poco más de información sobre lo que hace el paquete y quién lo creó. Un archivo DESCRIPTION completo tiene muchas otros campos, alguns de los cuales no son importantes ya que son creadas automáticamente y usados internamente por R para propósitos generales durante la construcción del paquete. Otros, son bastante importantes. Específicamente, las claves <code>Title</code>, <code>Authors</code>, y <code>Description</code> deberían tener más valores más apropiados.</p>
+<p>Los campos <code>Title</code> y <code>Description</code> describen lo que hace el paquete. Sólo se diferencian en la longitud:</p>
+<ul>
+<li>El <strong>título</strong> es una descripción del paquete en una línea, y a menudo se muestra en listados de paquetes. Debe ser texto plano (sin marcas), cada palabra en mayúsculas como un título, y NO terminar en un punto. Se breve: los listados suelen truncar el título a 65 caracteres.</li>
+<li>La <strong>descripción</strong> es más detallada que el título. Puede utilizar varias frases, pero está limitado a un párrafo. Si la descripción abarca varias líneas (y así debe ser), cada una de ellas no debe superar los 80 caracteres. Deje 4 espacios entre las líneas siguientes.</li>
+</ul>
+<p>Por ejemplo el título y la descripción de ggplot2 tienen esta pinta:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Title</span><span class="kw">:</span><span class="at"> Create Elegant Data Visualisations Using the Grammar of Graphics</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Description</span><span class="kw">:</span><span class="at"> A system for 'declaratively' creating graphics,</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    based on "The Grammar of Graphics". You provide the data, tell 'ggplot2'</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="at">    how to map variables to aesthetics, what graphical primitives to use,</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="at">    and it takes care of the details.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>El campo <code>Authors@R</code> se utiliza para identificar al autoro autora del paquete, y a quién contactar si algo no funciona. Este campo es inusual porque contiene código R en lugar de texto plano. Este es un ejemplo:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Autores@R</span><span class="kw">:</span><span class="at"> person("Paola", "Corrales", email = "mimail@pao.com",</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="at">  role = c("aut", "cre"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Estamos usando la función <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> que viene con R base en el paquete <code>utils</code>.</p>
+<div class="cell">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span><span class="st">"Paola"</span>, <span class="st">"Corrales"</span>, email <span class="op">=</span> <span class="st">"mimail@pao.com"</span>,</span>
+<span>  role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"aut"</span>, <span class="st">"cre"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Paola Corrales &lt;mimail@pao.com&gt; [aut, cre]"</code></pre>
+</div>
+</div>
+<p>Esta función dice que Paola Corrales está a cargo de mantener el paquete (<code>cre</code>) y es autora (<code>aut</code>) y que su dirección de correo electrónico es <code>mimail@pao.com</code>. Es posible listar a más de una persona en este campo. La función <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> tiene cuatro argumentos principales:</p>
+<ul>
+<li><p>El nombre, especificado por los dos primeros argumentos, <code>given</code> y <code>family</code>. En la cultura occidental, <code>given</code> (nombre) va antes que <code>family</code> (apellido). En muchas otras culturas, esta convención no es válida. Para agregar una entidad, empresa u organización, como “R Core Team” o “Posit Software, PBC”, se usa el argumento <code>given</code> (y se omite <code>family</code>).</p></li>
+<li><p>La dirección de <code>email</code>, es solo un requisito para quien mantiene el paquete. Es importante que uses una dirección de correo electrónico a la que tengas acceso permanente. La política de CRAN requiere que sea para una persona, en lugar de, por ejemplo, una lista de correo.</p></li>
+<li>
+<p>Uno o más códigos de tres letras especificando el <code>role</code>. Estos son los roles más importantes que hay que conocer:</p>
+<ul>
+<li><p><code>cre</code>: quien mantiene le paquete y la persona a la que deberías molestar si tenés problemas usandolo. A pesar de ser la abreviatura de «creator», este es el rol correcto para el mantenedor, incluso si no es la persona que inicialmente creó el paquete.</p></li>
+<li><p><code>aut</code>: autores, aquellas personas que han hecho contribuciones significativas al paquete.</p></li>
+<li><p><code>ctb</code>: contribuidores, aquellas personas que han hecho contribuciones menores, como parches.</p></li>
+<li><p><code>cph</code>: titular de los derechos de autor. Se utiliza para listar titulares de copyright adicionales que no son autores, normalmente empresas, como un empleador de uno o más de los autores.</p></li>
+<li><p>fnd`: financiador, las personas u organizaciones que han proporcionado apoyo financiero para el desarrollo del paquete.</p></li>
+</ul>
+</li>
+<li><p>El argumento opcional <code>comment</code> se usa para incluir el <a href="https://orcid.org">identificador de ORCID</a>. Y es particularmente útil en el ámbito académico.</p></li>
+</ul>
+<div class="ejercicio">
+<p>Es momento de empezar a darle forma al paquete.</p>
+<ol type="1">
+<li>Si aún no seguiste las instrucciones para crear el <code>paqueteprueba</code>, es el momento. No te preocupes por el nombre, este paquete es solo para practicar.</li>
+<li>Abrí el projecto/paquete.</li>
+<li>Abrí el archivo DESCRIPTION y completá los campos <code>Title</code>, <code>Authors</code>, y <code>Description</code>
+</li>
+</ol>
+</div>
+</section></section><section id="flujo-de-trabajo-para-el-desarrollo-de-paquetes" class="level2" data-number="10.6"><h2 data-number="10.6" class="anchored" data-anchor-id="flujo-de-trabajo-para-el-desarrollo-de-paquetes">
+<span class="header-section-number">10.6</span> Flujo de trabajo para el desarrollo de paquetes</h2>
+<p>Aunque hay varias formas de desarrollar un paquete R, un flujo de trabajo bien establecido y documentado gira en torno a hacer uso de <code>usethis</code> y <code>devtools</code>.</p>
+<p>Los pasos típicos utilizados en este flujo de trabajo de desarrollo son:</p>
+<ol type="1">
+<li><p>Cuando tengas una idea de una función o conjunto de funciones similares, por por ejemplo, sumar 2 números, es momento de iniciar un nuevo script. Para eso escribí en la consola <code>usethis::use_r("suma")</code>. Se creará un nuevo archivo R en la carpeta <code>R/</code> y se abrirá en RStudio.</p></li>
+<li><p>En este nuevo archivo podrás empezar a crear y desarrollar la función, escribiendo los argumentos de entrada y la eventual salida. Por ahora llegamos hasta acá pero pronto veremos como documentar la función.</p></li>
+<li><p>Una vez que sienta que la función está lista para ser probada, podés probar la función ejecutándola en el mismo script, en la consola o en un archivo R Markdown. La otra alternativa para que la función esté disponible para R, es cargarla con <code>Ctrl-Shift-L</code> que ejecuta el comando <code>load_all()</code> (de <code>devtools</code>). Esto solo funciona porque estamos desarrollando un paquete.</p></li>
+<li><p>A menos que la función que creaste sea muy simple es <em>muy</em> improbable que funcione perfectamente la primera, lo más probable es que la función exactamente como esperabas o de un error. En ese caso tendrás que modificarla, cargarla nuevamente con <code>load_all()</code> y probarla nuevamenta tantas veces como sea neceasario hasta conseguir los resultados que necesitas. función.</p></li>
+</ol>
+<p>Vamos a probar un poco de este flujo de trabajo haciendo una función de práctica. En la consola, escribí esta función:</p>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_r.html">use_r</a></span><span class="op">(</span><span class="st">"funcion_prueba"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>A continuación se abrirá el recientemente creado archivo <code>R/funcion_prueba.R</code>. Escribí la función y guardá los cambios en el archivo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">suma</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Antes de hacer nada, escribe <code>suma(2, 2)</code> en la Consola y apretá enter para ejecutarlo. ¿Qué ocurre? Nada. Eso es porque R no sabe que la función existe. Tenemos que hacer que R la conozca ya sea ejecutando la función directamente desde el script (<code>Ctrl-Enter</code> para enviar a la Consola), usando <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> en el script, instalando el paquete, o imitando la instalación del paquete con la función <code>load_all()</code>. Como estamos desarrollando un paquete usaremos la función <code>load_all()</code>.</p>
+<p>Vamos a probar la función <code>load_all()</code> con el atajo <code>Ctrl-Shift-L</code>. Ahora si, volvé a escribir <code>suma(2, 2)</code> en la consola. Ahora deberías ver que funciona.</p>
+<div class="ejercicio">
+<p><strong>Practiquemos el flujo de trabajo</strong></p>
+<p>Ya que usarás este flujo de trabajo cuando hagas paquetes en R, es hora de que lo practiques.</p>
+<p>Realiza los siguientes cambios en la función. Con cada cambio, vuelva a cargarla (<code>Ctrl-Shift-L</code> en RStudio o <code>load_all()</code> en la Consola) para que las funciones actualizadas estén disponibles. Después de cada cambio probá que la función haga lo que debe hacer.</p>
+<ul>
+<li><p>Agregá valores por defecto para los argumentos <code>x</code> e <code>y</code>. Probá correr la función sin pasarle argumentos: <code>suma()</code>.</p></li>
+<li><p>Modificá la función para que chequee que los argumentos sean numéricos. Probá la función con <code>suma("1", 1)</code></p></li>
+<li><p>Modifica nuevamente la función para que si <code>x</code> o <code>y</code> son negativos, la función devuelva “No puedo sumar negativos”.</p></li>
+</ul>
+</div>
+<section id="datos-en-paquetes" class="level3" data-number="10.6.1"><h3 data-number="10.6.1" class="anchored" data-anchor-id="datos-en-paquetes">
+<span class="header-section-number">10.6.1</span> Datos en paquetes</h3>
+<p>Muchos paquetes de R incluyen datos, en algunos casos porque son útiles para mostrar como usar las funciones que incluye, en otros casos porque es el objetivo principal de ese paquete. El paquete <code>datos</code> es el mejor ejemplo de esto último.</p>
+<p>En la mayoría de los casos los datos en el paquete estarán disponibles para que las personas los usen. Guardaremos estos datos en la carpeta <code>/data</code> y el flujo de trabajo usando <code>usethis</code> tendrá esta pinta:</p>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Leer datos desde algún archivo</span></span>
+<span><span class="co"># o generar datos</span></span>
+<span></span>
+<span><span class="co"># Manipular los datos para que tengan la pinta que necesitamos</span></span>
+<span></span>
+<span><span class="va">datos</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1000</span><span class="op">)</span></span>
+<span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">datos</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La función nos devolverá lo siguiente:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'R'</span> to Depends field <span class="cf">in</span> DESCRIPTION</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'data/'</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>✔ Setting LazyData to <span class="st">'true'</span> <span class="cf">in</span> <span class="st">'DESCRIPTION'</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>✔ Saving <span class="st">'datos'</span> to <span class="st">'data/datos.rda'</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>• Document your <span class="fu">data</span> (see <span class="st">'https://r-pkgs.org/data.html'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Es decir, automáticamente crea la carpeta y guarda los datos con formato <code>.rds</code> (un tipo de archivo específico de R). En principio el código de arriba solo se correrá una vez a menos que sea necesario actualizar los datos. Sin embargo es una buena idea guarda el código y los datos crudos si los hubiera en <code>data_raw</code>. Esta carpeta además no debe incluirse cuando se construye el paquete por lo que hay que agregarla a <code>Rbuildignore</code>.</p>
+<p>Ahora si apretamos <code>Ctrl-Shift-L</code> para cargar de nuevo el paquete de prueba y escribimos <code>datos</code> en la consola veremos los datos que creamos.</p>
+</section><section id="ex-paquete" class="level3" data-number="10.6.2"><h3 data-number="10.6.2" class="anchored" data-anchor-id="ex-paquete">
+<span class="header-section-number">10.6.2</span> Construyendo un paquete de R paso a paso</h3>
+<div class="ejercicio">
+<p>Es hora de empezar a unir lo que hicimos. El objetivo de este ejercicio es crear la estructura de un paquete que lean y analice datos de estaciones meteorológicas. Pero además este será un trabajo colaborativo entre 2 personas para practicar como desarrollar software en equipo usando GitHub.</p>
+<p><strong>Crear el paquete</strong></p>
+<ol type="1">
+<li><p>Piensen un nombre para el paquete, debe seguir las reglas pero no importa si se repite en otro ámbito.</p></li>
+<li><p>El paquete debera estar en la cuenta de GitHub de una de las personas que integran el grupo. Decidan quien sera y realicen los siguientes pasos en la computadora de esa persona.</p></li>
+<li><p>Creen la estructura del paquete con <code>usethis</code>.</p></li>
+<li><p>Modifiquen el archivo DESCRIPTION con todo lo necesario.</p></li>
+</ol>
+<p><strong>Conectarlo con Git localmente</strong></p>
+<ol type="1">
+<li>Para crear el repositorio local corran la siguiente funcion de usethis en la consola de R con el proyecto del paquete abierto en RStudio en la maquina de la persona que seleccionaron para que tenga el repo en su cuenta:</li>
+</ol>
+<p><code><a href="https://usethis.r-lib.org/reference/use_git.html">usethis::use_git()</a></code></p>
+<p>Esta funcion va a crear el repositorio y generara un commit inicial de todos los archivos que tiene el proyecto. Va a preguntarte si queres hacer esto. Contestale que si. Tambien va a reiniciar RStudio para que la pestaña de Git aparezca en nuestro proyecto. Va a preguntarte si queres hacer esto. Contestale que si.<br><br><strong>Crear el repo remoto en GitHub</strong></p>
+<ol type="1">
+<li>Con el proyecto del paquete abierto en RStudio en la computadora de la persona que tendra el repo en GitHub, corran la siguiente funcion de usethis en la consola:</li>
+</ol>
+<p><code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code></p>
+<p>Esta funcion hace lo siguiente:</p>
+<ul>
+<li>Crea un nuevo repositorio en GitHub con el nombre del proyecto.</li>
+<li>Configura ese nuevo repositorio como origen remoto para el repositorio local.</li>
+<li>Configura tu branch local por defecto para realizar el mismo seguimiento en el origen y realiza un push inicial.</li>
+<li>Abre el nuevo repositorio en tu navegador.</li>
+</ul>
+<p>Te presenta algo similar a esto en la consola:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>ℹ Defaulting to <span class="st">"https"</span> Git protocol.</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>✔ Creating GitHub repository <span class="st">"yabellini/inventarioRRNN"</span>. </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>✔ Setting remote <span class="st">"origin"</span> to <span class="st">"https://github.com/yabellini/inventarioRRNN.git"</span>. </span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">"https://github.com/yabellini/inventarioRRNN"</span> to URL. </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">"https://github.com/yabellini/inventarioRRNN/issues"</span> to BugReports. </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>ℹ There is <span class="dv">1</span> uncommitted file<span class="sc">:</span> • DESCRIPTION <span class="sc">!</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>Is it ok to commit it?</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> Absolutely not </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> Not now </span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> Yes</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>Selection<span class="sc">:</span> <span class="dv">3</span> </span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>✔ Adding files. </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>✔ Making a commit with message <span class="st">"Add GitHub inks to DESCRIPTION"</span>. </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>✔ Pushing <span class="st">"master"</span> branch to GitHub and setting <span class="st">"origin/master"</span> as upstream branch. </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>✔ Opening URL <span class="sc">&lt;</span>https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>yabellini<span class="sc">/</span>inventarioRRNN<span class="sc">&gt;</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ol start="3" type="1">
+<li>Modificar la configuración del repositorio en GitHub para que la otra persona del grupo tenga permisos para hacer commits y push. Necesitarás sabes su nombre de usuario
+<ol type="1">
+<li><p>En GitHub.com, navega a la página principal del repositorio.</p></li>
+<li>
+<p>Hacé clic en <strong>Settings</strong>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="https://docs.github.com/assets/cb-28260/images/help/repository/repo-actions-settings.png" class="img-fluid figure-img"></p>
+<figcaption>Captura de pantalla de un encabezado de repositorio en el que se muestran las pestañas. La pestaña “Configuración” está resaltada con un contorno naranja oscuro.</figcaption></figure>
+</div>
+</li>
+<li><p>En la sección “Access” de la barra lateral, haz clic en <strong>Colaborators</strong>.</p></li>
+<li><p>Hacé clik en el botón verde <strong>Add people</strong>.</p></li>
+<li><p>Comenzá a teclear el nombre de la persona que deseas invitar dentro del campo de búsqueda hasta que aparezca.</p></li>
+<li><p>Hacé clikc en <strong>Add NOMBRE to this repository</strong>.</p></li>
+<li><p>La persona recibirá un correo electrónico invitándole al repositorio. Una vez que acepte la invitación, tendrá acceso de colaborador a tu repositorio.</p></li>
+</ol>
+</li>
+</ol>
+<p>4. La otra persona del grupo ahora puede clonar el repo en su computadora, siguiendo los pasos que vimos en como trabajar individualmente.</p>
+<ol start="5" type="1">
+<li>Modificá el README.md para indicar que el paquete es de prueba, que no está pensado para ser usado como tal.</li>
+</ol>
+</div>
 
 
-
-
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -694,9 +1124,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="./08_git-2.html" class="pagination-link" aria-label="Git para trabajar en equipo">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git para trabajar en equipo</span></span>
       </a>          
@@ -708,7 +1136,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
-
 
 
 
