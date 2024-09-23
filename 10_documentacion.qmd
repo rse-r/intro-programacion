@@ -75,12 +75,10 @@ que los archivos `.Rd` son la base de lo que vemos en la pestaña help de
 RStudio, los pdf de cada paquete, su página web, etc.
 
 ::: tip
-
-Se puede insetar un esqueleto de la documención nos paramos 
-sobre la definición de la función y vamos a
-`Code > Insert roxygen skeleton` en RStudio.
-Este comando añade los componentes por defecto de la función para no empezar a
-escribir la documentación desde cero.
+Se puede insetar un esqueleto de la documención nos paramos sobre la
+definición de la función y vamos a `Code > Insert roxygen skeleton` en
+RStudio. Este comando añade los componentes por defecto de la función
+para no empezar a escribir la documentación desde cero.
 :::
 
 Así es como se ve la documentación de nuestra función `suma()`.
@@ -102,9 +100,9 @@ Ahora si podemos ver en detalle como suar roxigen2. Lo primero que
 habrás notado es que todas las líneas de la documentación comienzan con
 `#'`. Además algunas líneas tienen este patrón: `@tagname tagvalue`. Es
 decir, una etiqueta y un valor asociado, por ejemplo `@param` es una
-etiqueta y `x` es el valor asociado. Otra etiqueta importante es `@export` que 
-es la que indica que la función se exporta, es decir, queda disponible para que 
-pueda usarse al cargar el paquete.
+etiqueta y `x` es el valor asociado. Otra etiqueta importante es
+`@export` que es la que indica que la función se exporta, es decir,
+queda disponible para que pueda usarse al cargar el paquete.
 
 #### Título, descripción, detalles
 
@@ -148,7 +146,7 @@ los argumentos de la función `sd()`
 
 ``` r
 #' @param x a numeric vector or an **R** object but not a [factor] coercible to numeric by `as.double(x)`.
-#' @param na.rm	logical. Should missing values be removed?
+#' @param na.rm logical. Should missing values be removed?
 ```
 
 Mencionan que tipo de objeto requiere cada uno y una descripción. Es
@@ -163,7 +161,7 @@ manera:
 #' @param x,y Un par de valores numéricos.
 ```
 
-#### Resultado 
+#### Resultado
 
 Documentar el resultado de una función es tan importante como documentar
 sus argumentos. Para esto usamos la etiqueta `@return` y aparece en la
@@ -203,9 +201,14 @@ largos es posible que sea hora de revisarlos.
 
 ### Documentar datos
 
-Los datos que forman parte del paquete también deben documentarse.  Documentar datos es como documentar una función con algunas pequeñas diferencias. En lugar de documentar los datos directamente, se documenta el nombre del conjunto de datos y se guarda en un archivo `.R` en la carpeta `R/`. Por ejemplo, el bloque roxygen2 utilizado para documentar los datos de pingüinos tiene este aspecto:
+Los datos que forman parte del paquete también deben documentarse.
+Documentar datos es como documentar una función con algunas pequeñas
+diferencias. En lugar de documentar los datos directamente, se documenta
+el nombre del conjunto de datos y se guarda en un archivo `.R` en la
+carpeta `R/`. Por ejemplo, el bloque roxygen2 utilizado para documentar
+los datos de pingüinos tiene este aspecto:
 
-```r
+``` r
 #' Medidas de tamaño de pingüinos adultos en busca de comida cerca de la estación Palmer en la Antártica.
 #' 
 #' Incluye medidas para: especie de pingüino, isla dentro del Archipiélago de Palmer, tamaño (largo de aleta, masa corporal, dimensiones de pico) y sexo.
@@ -227,13 +230,135 @@ Los datos que forman parte del paquete también deben documentarse.  Documentar 
 #'
 "pinguinos"
 ```
-::: ejercicio
 
-1. Elegí al menos una de las funciones que creaste durante la [sección funciones](07_funciones.qmd). 
-2. Agregala al paquete de prueba en un nuevo archivo `.R` usando el flujo de trabajo que vimos.
-3. Documentá la función y practicá el flujo de documentación: `Ctrl+Shif+D` para documentar y luego `Ctrl+Shif+L` para cargar el paquete, revisar la documentación y mejorarla
+::: ejercicio
+1.  Elegí al menos una de las funciones que creaste durante la [sección
+    funciones](07_funciones.qmd).
+2.  Agregala al paquete de prueba en un nuevo archivo `.R` usando el
+    flujo de trabajo que vimos.
+3.  Documentá la función y practicá el flujo de documentación:
+    `Ctrl+Shif+D` para documentar y luego `Ctrl+Shif+L` para cargar el
+    paquete, revisar la documentación y mejorarla
 :::
 
 ## Viñetas
+
+Todo lo que hemos dicho hasta ahora sobre la documentación se aplica a
+todos los proyectos de programación en casi cualquier lenguaje. Las
+"viñetas", en cambio son un tipo de documentación distintivo de R:
+describen en gran detalle algún aspecto de tu paquete con ejemplos de
+uso y explicaciones detalladas.
+
+La función `browseVignettes()` te permite explorar las viñetas
+existentes en los paquetes que tenés instalados. Si corrés la función
+sin argumentos se abrirá una ventana de en tu navegador con una lista de
+las viñetas disponibles, mientras que `browseVignettes("nombrepaquete")`
+mostrará las viñetas de un paquete concreto. También podés llamar
+directamente a una viñeta si conoces su nombre con
+`vignette("vignettename")` que se mostrará en la pestaña help.
+
+```{r cs-vignette, eval=FALSE}
+browseVignettes("tidyr")
+vignette("nest")
+```
+
+Las viñetas también aparecerán como artículos en la página web del
+paquete (que aprenderemos a crear al final de esta sección), esta es una
+gran manera de consultarlas porque no requiere la instalación del
+paquete o correr su código. Por ejemplo en [este
+link](https://tidyr.tidyverse.org/articles/nest.html) se encuentra la
+misma viñeta de tidyr que vimos recién.
+
+### Crear una viñeta
+
+Una vez más, `usethis` tiene una función útil para ayudarnos a crear
+viñetas. La función `usethis::use_vignette()` toma el título de la
+viñeta y crea un breve documento R Markdown a modor de plantilla en la
+carpeta `vignettes/`.
+
+Además añade las dependencias necesarias a DESCRIPTION, es decir, añade
+knitr al campo VignetteBuilder y añade tanto knitr como rmarkdown a
+Suggests (veremos más sobre dependencias en la próxima sección). Y
+también añade patrones a .gitignore para garantizar que los archivos
+creados como efecto secundario de la previsualización de tus viñetas se
+mantengan fuera del repositorio.
+
+Sumemos una viñeta a nuestro paquete de prueba:
+
+```{r, eval=FALSE}
+usethis::use_vignette("viñeta_prueba")
+```
+
+Y de paso agreguemos algo de contenido, por ejemplo como usar la función
+`suma()`.
+
+````r
+---
+title: "viñeta_prueba"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{viñeta_prueba}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(paqueteprueba)
+```
+
+Esta es una viñeta de prueba. Podemos mostrar como usar la función `suma()`
+
+```{r}
+suma(2, 2)
+```
+````
+
+Normalmente, *kniteariamos* este archivo bastante seguido para ver como
+va quedando la viñeta, sin embargo, si intentamos hacer eso ahora nos
+dará un error "No existe el paquete 'paqueteprueba"'. Esto puede
+parecerte raro porque estamos creando el paquete, claro que existe!
+Pero, resulta que crear la documentación y cargarlo con `Ctrl+Shif+L` no
+es suficiente, necesitamos instalarlo.
+
+Como estamos en el contexto de desarrollar el paquete, la instalación no
+se hace con `install.packages()`. Necesitamos instalar el paquete usando
+el mismo código fuente que estamos desarrollando y para eso podemos usar
+el atajo de teclado `Ctrl+Shif+B` (que viene de *build* o construir en
+inglés).
+
+Ahora si, podremos knitear nuestra viñeta que por ahora esbastante
+corta:
+
+![](images/clipboard-46566759.png)
+
+Una vez que tengas el borrador de la viñeta, el flujo de trabajo es sencillo:
+
+1. Empezá a añadir fragmentos de texto y código a la viñeta. Probá el código para asegurarte de que corra y genere los resultados que querés mostrar.
+
+2. Knitea toda la viñeta periódicamente.
+
+3. Repetí los pasos hasta que la completes. 
+
+Al trabajar con el formato RMarkdown se puede hacer uso de markdown para dar formato al texto y contenido. 
+
+Al escribir una viñeta, estás enseñando a alguien a utilizar tu paquete. Tenés que ponerte en el lugar de quien la leerá y asumilar que esa persona es novata. Esto puede resultar difícil, porque es fácil olvidar todos los conocimientos que ya se han interiorizado y todas las desiciones que tomaste sobre tu paquete. Te recomendamos que le pidas a alguien más leer la viñeta y te de feedback para mejorarla.
+
+::: ejercicio
+
+**Completá la viñeta del paquete de prueba**
+
+Si hiciste el ejercicio anterior, nuestro paquete de prueba ahora no solo tiene la función `suma()`, tiene varias más. 
+
+Completá la viñeta agregando ejemplos y explicaciones sobre como se usan las funciones y para que sirven. 
+
+No te olvides de knitear para ver el resultado.
+:::
 
 ## Website
