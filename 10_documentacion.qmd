@@ -361,4 +361,41 @@ Completá la viñeta agregando ejemplos y explicaciones sobre como se usan las f
 No te olvides de knitear para ver el resultado.
 :::
 
+## README
+
+El README es es la puerta de entrada a tu paquete, incluye las instrucciones sobre cómo instalarlo
+y ejemplos de cómo utilizarlo. 
+
+La función `usethis::use_readme_rmd()` crea un documento R Markdown
+con algunas secciones y texto estándar que podemos usar como base para crear un documento útil y descriptivo.
+
+```{r cs-readme, eval=TRUE}
+use_readme_rmd()
+```
+
+::: ejercicio: 
+
+R Markdown vs. Mardown
+
+Lee la ayuda de `use_readme_rmd()` y `use_readme_md()`. ¿Qué diferencias hay entre archivos `.Rmd` y `.md`? ¿Por qué usarías uno u otro para el README?
+
+::: 
+
+GitHub trata al archivo `README.md` de forma especial, mostrándolo en la pestaña principal del repositorio. El README creado por `use_readme_rmd()` entonces, debe ser kniteado antes de subirlo al 
+repositorio remoto.
+
+El encabeza YAML que incluye el README `output: github_document` indicará a `knitr` que cree una salida Markdown para GitHub en lugar del HTML por defecto. Para esto podés usar el botón `Knit` en el menú situado encima del editor, o ejecutá 
+`devtools::build_readme()` en la consola.
+
+
+::: ejercicio
+
+Edita y knitea el README del paquete de prueba
+
+1. Editá `README.Rmd` para incluir una descripción del paquete de prueba, su instalación
+y un ejemplo de su uso. 
+2. kniteá el `README.Rmd` para que
+crea la salida `README.md`.
+:::
+
 ## Website
