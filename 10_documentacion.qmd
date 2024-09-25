@@ -399,3 +399,111 @@ crea la salida `README.md`.
 :::
 
 ## Website
+
+En este punto nuestro paquete de prueba tiene sus funciones documentadas, incluye una viñeta que detalla el uso de las funciones y un README con la información más importante que necesita cualquier persona para comenzar a usarlo. 
+
+El objetivo ahora es construir una página web para el paquete de manera programática usando todo lo anterior. Para esto usaremos el paquete `pkgdown`. Para darte una idea de lo que estamos hablando podés visitar la pagína web del paquete pkgdown: [https://pkgdown.r-lib.org/](https://pkgdown.r-lib.org/).
+
+Si al ver el ejemplo asumiste que esto lleva muchísimo tiempo, la realidad no podría ser más diferente. Con un par de funciones podemos tener una página web funcionando. La primera función es por supuesto de usethis:
+
+```{r eval=FALSE}
+usethis::use_pkgdown()
+```
+
+Al ejecutar esta función veremos algo así:
+
+```r
+✔ Setting active project to 'C:/Users/tonin/Downloads/paqueteprueba'
+✔ Adding '^_pkgdown\\.yml$', '^docs$', '^pkgdown$' to '.Rbuildignore'
+✔ Adding 'docs' to '.gitignore'
+✔ Writing '_pkgdown.yml'
+• Modify '_pkgdown.yml'
+```
+La función hace todo lo siguiente:
+
+* Crea `_pkgdown.yml`, el archivo de configuración principal de la web. Podrías revisar este archivo y cambiar cosas pero no hay necesidad inmediata de cambiar o añadir nada.
+
+* Añade varios archivos a `.Rbuildignore`, para evitar que algunos archivos y directorios específicos de pkgdown se incluyan en tu paquete.
+
+* Añade `docs`, el destino por defecto para un sitio renderizado, a `.gitignore`. Hacemos esto porque esperamos que la web definitiva se construya y publique usando GitHub Actions y Pages. Esto significa que el sitio web renderizado en docs/ sólo sirve como vista previa local.
+
+* `pkgdown::build_site()` es una función a la que llamarás repetidamente, para volver a renderizar tu sitio localmente. 
+
+Además de revisar la web de esta manera también es posile hacer click en el archivo `docs/index.html` en el explorador.
+
+::: informacion
+Una GitHub Action o "acción" de GitHub es un script que corre directamente en GitHub y puede cumplir muchas funciones. Se pueden construir a mano o aprovechar las plantillas que ya existen. 
+
+Estas acciones además pueden programarse para que se ejecuten de manera automática en un determinado horario, cada vez que se hace un commit al repositorio remoto o en otras circunstancias.
+:::
+
+Para publicar la web necesitamos hacer commits y push al repositorio remoto. A continuación, una "acción" de GitHub construirá y publicará la web en una url con nombre `<nombreusuario>.github.io/<nombrepaquete>`. Los pasos para llegar a este punto son varios y si bien se pueden hacer a mano vamos a usar una función de usethis para automatizar todo.
+
+```{r eval=FALSE}
+usethis::use_github()
+```
+
+```r
+✔ Writing '_pkgdown.yml'
+• Modify '_pkgdown.yml'
+✔ Initializing empty, orphan 'gh-pages' branch in GitHub repo paocorrales/paqueteprueba'
+✔ GitHub Pages is publishing from:
+• URL: 'https://paocorrales.github.io/paqueteprueba/'
+• Branch: 'gh-pages'
+• Path: '/'
+✔ Creating '.github/'
+✔ Adding '^\\.github$' to '.Rbuildignore'
+✔ Adding '*.html' to '.github/.gitignore'
+✔ Creating '.github/workflows/'
+✔ Saving 'r-lib/actions/examples/pkgdown.yaml@v2' to '.github/workflows/pkgdown.yaml'
+• Learn more at <https://github.com/r-lib/actions/blob/v2/examples/README.md>.
+✔ Recording 'https://paocorrales.github.io/paqueteprueba/' as site's url in '_pkgdown.yml'
+✔ Adding 'https://paocorrales.github.io/paqueteprueba/' to URL
+✔ Setting 'https://paocorrales.github.io/paqueteprueba/' as homepage of GitHub repo 'paocorrales/paqueteprueba'
+```
+
+Veamos qué hace realmente `use_pkgdown_github_pages()`:
+
+* Inicializa una rama vacía en tu repositorio de GitHub, llamada gh-pages (por "GitHub Pages"). La rama gh-pages sólo vivirá en GitHub (no hay razón para crearla en tu repositorio local) y representa una versión paralela del paquete. Los únicos archivos rastreados en gh-pages son los que constituyen el sitio web de tu paquete (los archivos que ves localmente en la carpeta `docs/`).
+
+* Activa GitHub Pages en el repositorio y le dice que aloje un sitio web desde los archivos encontrados en la rama gh-pages.
+
+* Copia el archivo de configuración de la GitHub Action que hace construye y publica la web. El archivo aparece en tu paquete como `.github/workflows/pkgdown.yaml`.
+
+* Añade la URL de tu sitio como página de inicio de tu repositorio de GitHub.
+
+* Añade la URL de tu sitio a `DESCRIPTION` y `_pkgdown.yml`.
+
+Después de ejecutar con éxito `use_pkgdown_github_pages()`, deberías poder visitar el nuevo sitio en la url.
+
+::: tip
+
+Para seguir mejorando la web y darle un estilo propio te recoemndamos leer las viñetas del paquete pkgdown arrancando por [Customise your site](https://pkgdown.r-lib.org/articles/customise.html).
+
+:::
+
+::: ejercicio
+
+Si aún no lo hiciste, es hora de crear la web del paqueteprueba con el que venimos trabajando. 
+
+Es posible que al hacerlo encuentres cosas para mejorar en el README o en la documentación de alguna de las funciones. En ese caso modificá los archivos necesarios y seguí el flujo de trabajo que vimos antes de hacer commit y push al repositorio remoto. Esto es:
+
+* Si cambias la documentación: Usá `Ctrl+Shift+D` para construir la documentación de nuevo.
+* Si cambiás cosas en el README: knitea el archivo .Rmd para generar el .md.
+
+:::
+
+### Construyendo un paquete de R paso a paso {#ex-doc}
+
+::: ejercicio
+
+A esta altura seguramente ya te imaginás que sigue. Es hora de generar la documentación del paquete que lee y analiza datos meteorológicos (¿ya tiene nombre?). 
+
+De nuevo, esto es un trabajo en equipo por lo que esperamos ver aportes (commits) de ambos miembros del equipo. Pueden dividirse el trabajo: cada persona documenta algunas funciones, alguien se ocupa del README, alguien de la viñeta, etc. 
+
+**Recomendaciones:** 
+
+* Siempre arranquen a trabajar haciendo un pull para actualizar la versión del repo local con el remoto. 
+* No modifiquen archivos que la otra persona está usando. Si hacen esto, al hacer commits habrá problemas para mergear tu versión y la de tu compañere. 
+
+:::
