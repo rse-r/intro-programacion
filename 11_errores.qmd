@@ -4,9 +4,80 @@ title: "Dependencias y tests"
 
 ## Objetivos de aprendizaje
 
-* Añadir una prueba formal de una función del paquete usando testthat
-* Ejecutar todas las pruebas de un fichero en `R/`.
-* Describir una expectativa usando una función `expect_xxx()`.
-* Entrar en el depurador interactivo y utilizarlo para explorar por qué se produce un comportamiento inesperado.
-* Comprueba la cobertura de las pruebas y sugiere áreas que necesitan pruebas adicionales.
+* Identificar las dependencias del paquete y registrarlas en `DESCRIPTION`
+* Añadir pruebas (tests) auna función del paquete usando testthat
+* Ejecutar todos los tests del paquete
+* Describir que resultado se espera de una función y usar la familia  `expect_xxx()` en tests.
+* Utilizar `browse()` y` debug()` para explorar por qué se produce un comportamiento inesperado en una función.
+* Revisar la cobertura de los test y definir cuando es necesario agregar nuevos.
 
+## Dependencias 
+
+Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si tu función usa `mutate()`, entonces dplyr es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
+
+La buena noticia es que podemos incluir las dependencias en el archivo `DESCRIPTION` para que al momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También es posible agregar sugerencias, es decir, paquetes que sugerimos que se instalen para usar las funciones que creamos. Esto es útil si por ejemplo tenemos una única función que requiere un paquete y no queremos que se se instala "por las dudas". 
+
+Así se verán en el archivo DESCRIPTION:
+
+```r
+Imports:
+    dplyr,
+    tidyr
+Suggests:
+    ggplot2,
+    testthat
+```
+
+Y por supuesto, podemos usar `usethis` para agregar nuevas dependencias con `usethis::use_package("dplyr")`. La función nos devuelve: 
+
+```r
+#> ✔ Adding dplyr to 'Imports' field in DESCRIPTION.
+#> ☐ Refer to functions with `dplyr::fun()`.
+```
+
+Habrás notado que nos pide que llamemos a las funciones usando esta notación `dplyr::fun()`. Esto es muy importante, en el código de funciones **nunca** debemos incluir la carga de librerías con `library()`. Hay dos razones por las que no hacemos esto:
+
+1. En el contexto de un paquete queremos ser eficientes y trabajar de manera ordenada. Si llamaramos a una librería entera con `library()` etaríamos cargando *todas* las funciones importadas por ese paquete cuando tal vez solo necesitamos una. Esto no es eficiente y puede traer problemas si otros paquetes tienen funciones con el mismo nombre.
+2. La sintaxis `dplyr::fun()` ayuda a entender de donde viene la función y diferenciar, por ejemplo `stats::filter()` de `dplyr::filter()` que tienen argumentos y funcionalidades completamente distintas.
+
+Es fácil olvidarse de las dependencias, lo bueno es que esta es una de las cosas que se chequean cuando corremos los chequeos [R CMD](https://r-pkgs.org/R-CMD-check.html). 
+
+::: importante
+R Base proporciona varias herramientas para chequear un paqeute. `R CMD check` es el método oficial para comprobar que un paquete de R es válido. Es esencial pasarlos checks de R CMD check si planeas enviar tu paquete a un repositorio oficial. Pero aún si ese no es el plan es muy recomendable correr estos checks periodicamente. R CMD check detecta muchos problemas comunes que de otro modo descubrirías por las malas.
+:::
+
+## Tests
+
+Las pruebas o tests son una parte vital del desarrollo de paquetes: garantizan que tu código haga lo que vos necesites que haga.
+
+Hasta ahora, tu flujo de trabajo tiene más o menos esta pinta:
+
+* Escribis una función.
+* La cargas con `devtools::load_all()`, quizás mediante `Ctrl/Cmd + Shift + L`.
+* La corrés en la consola para ver si funciona.
+* Revisas y modificas lo necesario.
+
+Si bien estás chequeando el código al hacer todo esto, sólo lo estás haciendo de manera informal. El problema con este enfoque es que cuando vuelvas a este código dentro de 3 meses para añadir una nueva funcionalidad, es probable que hayas olvidado parte de lo que hace. Esto hace que sea muy fácil romper el código que solía funcionar.
+
+En esta sección vamos a ver como crear test para las funciones usando el paquete `testhat`. Además, incluiremos estos tests en el paquete para y crearemos un flujo de trabajo que nos permita chequear las funciones del paquete cada vez que hagamos un cambio.
+
+### Configuración inicial
+
+Para configurar tu paquete para usar testthat, ejecutá en la consola:
+
+```r
+usethis::use_testthat(3)
+```
+
+Esto hará:
+
+* Creará un directorio `tests/testthat/`.
+
+* Añadir `testthat` a la lista de Suggests en DESCRIPTION y especificará la versión de testthat 3e en `Config/testthat/edition`:
+
+```r
+Sugerencias: testthat (>= 3.0.0)
+Config/testthat/edición: 3
+```
+
+* Crea un archivo `tests/testthat.R` que ejecuta todas las pruebas cuando se ejecute `R CMD check`.
