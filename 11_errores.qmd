@@ -1,4 +1,12 @@
 ---
-title: "Manejo de paquetes"
+title: "Dependencias y tests"
 ---
+
+## Objetivos de aprendizaje
+
+* Añadir una prueba formal de una función del paquete usando testthat
+* Ejecutar todas las pruebas de un fichero en `R/`.
+* Describir una expectativa usando una función `expect_xxx()`.
+* Entrar en el depurador interactivo y utilizarlo para explorar por qué se produce un comportamiento inesperado.
+* Comprueba la cobertura de las pruebas y sugiere áreas que necesitan pruebas adicionales.
 
