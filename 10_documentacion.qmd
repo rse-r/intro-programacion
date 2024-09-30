@@ -94,7 +94,7 @@ En resumen hay cuatro pasos en el flujo de trabajo básico de roxygen2:
 4.  Revisá, modificá y repetí hasta que la documentación tenga el
     aspecto que necesites.
 
-### roxigen2 sintaxis
+### Sintaxis de roxigen2
 
 Ahora si podemos ver en detalle como suar roxigen2. Lo primero que
 habrás notado es que todas las líneas de la documentación comienzan con
