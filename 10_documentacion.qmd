@@ -75,7 +75,7 @@ que los archivos `.Rd` son la base de lo que vemos en la pestaña help de
 RStudio, los pdf de cada paquete, su página web, etc.
 
 ::: tip
-Se puede insetar un esqueleto de la documención nos paramos sobre la
+Se puede insetar un esqueleto de la documención, para eso nos paramos sobre la
 definición de la función y vamos a `Code > Insert roxygen skeleton` en
 RStudio. Este comando añade los componentes por defecto de la función
 para no empezar a escribir la documentación desde cero.
