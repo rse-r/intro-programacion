@@ -83,7 +83,7 @@ para no empezar a escribir la documentación desde cero.
 
 Así es como se ve la documentación de nuestra función `suma()`.
 
-![](images/clipboard-4078423590.png)
+![](images/doc_suma.png)
 
 En resumen hay cuatro pasos en el flujo de trabajo básico de roxygen2:
 
@@ -336,7 +336,7 @@ inglés).
 Ahora si, podremos knitear nuestra viñeta que por ahora esbastante
 corta:
 
-![](images/clipboard-46566759.png)
+![](images/viñeta.png)
 
 Una vez que tengas el borrador de la viñeta, el flujo de trabajo es sencillo:
 
@@ -369,7 +369,7 @@ y ejemplos de cómo utilizarlo.
 La función `usethis::use_readme_rmd()` crea un documento R Markdown
 con algunas secciones y texto estándar que podemos usar como base para crear un documento útil y descriptivo.
 
-```{r cs-readme, eval=TRUE}
+```{r cs-readme, eval=FALSE}
 use_readme_rmd()
 ```
 
