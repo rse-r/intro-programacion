@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.47">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
+<title>11&nbsp; Documentando paquetes y funciones – Introducción a la Programación II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./11_errores.html" rel="next">
+<link href="./09_paquetes-1.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+</head>
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10_documentacion.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Introducción a la Programación II</a> 
+        <div class="sidebar-tools-main">
+    <a href="https://github.com/rse-r/intro-programacion" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Prefacio</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./00_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Presentación</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_proyectos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Entorno de trabajo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_lectura.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Lectura de datos ordenados</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_manipulacion-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_git-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">git para trabajar individualmente</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_graficos.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Graficado datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_manipulacion-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_funciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Funciones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08_git-2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Git para trabajar en equipo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09_paquetes-1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Empaquetando funciones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10_documentacion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11_errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13_publicacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14_reproducibilidad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendices</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./B_config_pk.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">B</span>&nbsp; <span class="chapter-title">Configuración para desarrollar paquetes</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./C_soluciones.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">C</span>&nbsp; <span class="chapter-title">Soluciones de ejercicios</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">11.1</span> Objetivos de aprendizaje</a></li>
+  <li><a href="#por-qu%C3%A9-necesitamos-documentaci%C3%B3n" id="toc-por-qué-necesitamos-documentación" class="nav-link" data-scroll-target="#por-qu%C3%A9-necesitamos-documentaci%C3%B3n"><span class="header-section-number">11.2</span> ¿Por qué necesitamos documentación?</a></li>
+  <li>
+<a href="#documentaci%C3%B3n-de-funciones" id="toc-documentación-de-funciones" class="nav-link" data-scroll-target="#documentaci%C3%B3n-de-funciones"><span class="header-section-number">11.3</span> Documentación de funciones</a>
+  <ul class="collapse">
+<li><a href="#sintaxis-de-roxigen2" id="toc-sintaxis-de-roxigen2" class="nav-link" data-scroll-target="#sintaxis-de-roxigen2"><span class="header-section-number">11.3.1</span> Sintaxis de roxigen2</a></li>
+  <li><a href="#documentar-datos" id="toc-documentar-datos" class="nav-link" data-scroll-target="#documentar-datos"><span class="header-section-number">11.3.2</span> Documentar datos</a></li>
+  </ul>
+</li>
+  <li>
+<a href="#vi%C3%B1etas" id="toc-viñetas" class="nav-link" data-scroll-target="#vi%C3%B1etas"><span class="header-section-number">11.4</span> Viñetas</a>
+  <ul class="collapse">
+<li><a href="#crear-una-vi%C3%B1eta" id="toc-crear-una-viñeta" class="nav-link" data-scroll-target="#crear-una-vi%C3%B1eta"><span class="header-section-number">11.4.1</span> Crear una viñeta</a></li>
+  </ul>
+</li>
+  <li><a href="#readme" id="toc-readme" class="nav-link" data-scroll-target="#readme"><span class="header-section-number">11.5</span> README</a></li>
+  <li>
+<a href="#website" id="toc-website" class="nav-link" data-scroll-target="#website"><span class="header-section-number">11.6</span> Website</a>
+  <ul class="collapse">
+<li><a href="#ex-doc" id="toc-ex-doc" class="nav-link" data-scroll-target="#ex-doc"><span class="header-section-number">11.6.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
+<h1 class="title">
+<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span>
+</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="objetivos-de-aprendizaje" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje">
+<span class="header-section-number">11.1</span> Objetivos de aprendizaje</h2>
+<ul>
+<li>Describir el propósito de documentar código y paquetes</li>
+<li>Documentar funciones con <code>roxygen2</code>
+</li>
+<li>Crear un README y una viñeta para la documentación de paquetes</li>
+<li>Crear la web del paquete</li>
+</ul></section><section id="por-qué-necesitamos-documentación" class="level2" data-number="11.2"><h2 data-number="11.2" class="anchored" data-anchor-id="por-qué-necesitamos-documentación">
+<span class="header-section-number">11.2</span> ¿Por qué necesitamos documentación?</h2>
+<p>Igual que el control de versiones rastrea qué cambios haces y por qué, la documentación del código y de los paquetes informa a las personas en tu equipo y futuras y futuros usuarios <em>lo que</em> hace el código y <em>por qué</em>.</p>
+<p>Con el tiempo, los lenguajes de programación se han hecho más “legibles para el ser humano”: una persona con mucha experinecia podría leer el código y entender lo que hace. Pero aunque entienda <em>lo que hace</em> el código, puede que no sea obvio <em>por qué</em> lo hace. Los lenguajes de programación vienen con herramientas incorporadas para agregar comentarios y documentación que no son leídos por la computadora, sino que existen únicamente para ayudarte a vos y otras personas a describir y comprender el código. Una buena documentación es clave para la apertura, la reproducibilidad y la sostenibilidad del proyecto.</p>
+<p>La buena documentación se da en todas las escalas del código: a nivel de objetos individuales, funciones y test, así como de todo el paquete. En este capítulo, describimos el flujo de trabajo de la documentación de un paquete como parte de su desarrollo y esbozamos los componentes de un paquete bien documentado.</p>
+</section><section id="documentación-de-funciones" class="level2" data-number="11.3"><h2 data-number="11.3" class="anchored" data-anchor-id="documentación-de-funciones">
+<span class="header-section-number">11.3</span> Documentación de funciones</h2>
+<p>La documentación de funciones en R es posiblemente la más usada y accesible. Podemos revisarla con <code>?unafuncion</code> o <code>help("unafuncion")</code> y para quienes les gusta los atajos de teclado, con F1 si el cursor está en el nombre de la función. R Base proporciona una forma estándar de documentar un paquete donde cada función se documenta en un tema o <strong>topic</strong>, un archivo <code>.Rd</code> (“R documentation”) en el directorio <code>man/</code>. Si bien los archivos .Rd utilizan una sintaxis basada en LaTeX no es necesario aprenderla ya que el paquete <code>roxigen2</code> hace gran parte del trabajo.</p>
+<p>La mayor ventaja es que podemos escribir la documentación en el mismo archivo <code>.R</code> y dejarle la tarea de generar los archivos <code>.Rd</code>a roxigen2.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Suma dos números</span></span>
+<span><span class="co">#' </span></span>
+<span><span class="co">#' Suma dos números .</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @param x Un número.</span></span>
+<span><span class="co">#' @param y Un número.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @returns Un vector numérico.</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @examples</span></span>
+<span><span class="co">#' suma(1, 1)</span></span>
+<span><span class="co">#' suma(10, 1)</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#' @export</span></span>
+<span><span class="va">suma</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span> <span class="op">=</span> <span class="fl">2</span>, <span class="va">y</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La manera en que veamos esta documentación depende de donde estemos ya que los archivos <code>.Rd</code> son la base de lo que vemos en la pestaña help de RStudio, los pdf de cada paquete, su página web, etc.</p>
+<div class="tip">
+<p>Se puede insetar un esqueleto de la documención, para eso nos paramos sobre la definición de la función y vamos a <code>Code &gt; Insert roxygen skeleton</code> en RStudio. Este comando añade los componentes por defecto de la función para no empezar a escribir la documentación desde cero.</p>
+</div>
+<p>Así es como se ve la documentación de nuestra función <code>suma()</code>.</p>
+<p><img src="images/doc_suma.png" class="img-fluid"></p>
+<p>En resumen hay cuatro pasos en el flujo de trabajo básico de roxygen2:</p>
+<ol type="1">
+<li>Agregar comentarios de roxygen2 a losr archivos .R de funciones.</li>
+<li>Ejecutar <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> o <code>Ctrl/Cmd + Mayús + D</code> para convertir los comentarios de roxygen2 en archivos .Rd.</li>
+<li>Previsualizá la documentación con <code>?function</code>.</li>
+<li>Revisá, modificá y repetí hasta que la documentación tenga el aspecto que necesites.</li>
+</ol>
+<section id="sintaxis-de-roxigen2" class="level3" data-number="11.3.1"><h3 data-number="11.3.1" class="anchored" data-anchor-id="sintaxis-de-roxigen2">
+<span class="header-section-number">11.3.1</span> Sintaxis de roxigen2</h3>
+<p>Ahora si podemos ver en detalle como suar roxigen2. Lo primero que habrás notado es que todas las líneas de la documentación comienzan con <code>#'</code>. Además algunas líneas tienen este patrón: <code>@tagname tagvalue</code>. Es decir, una etiqueta y un valor asociado, por ejemplo <code>@param</code> es una etiqueta y <code>x</code> es el valor asociado. Otra etiqueta importante es <code>@export</code> que es la que indica que la función se exporta, es decir, queda disponible para que pueda usarse al cargar el paquete.</p>
+<section id="título-descripción-detalles" class="level4" data-number="11.3.1.1"><h4 data-number="11.3.1.1" class="anchored" data-anchor-id="título-descripción-detalles">
+<span class="header-section-number">11.3.1.1</span> Título, descripción, detalles</h4>
+<p>La introducción de la documentación incluye un título, una descripción y, opcionalmente, detalles de la función. Aunque es posible utilizar etiquetas explícitas en la introducción, solemos utilizar etiquetas implícitas cuando es posible:</p>
+<ul>
+<li><p>El <strong>título</strong> se genera con la primera frase. Debe escribirse en mayúsculas, sin punto final y seguido de una línea en blanco. El título se muestra en varios índices de funciones (por ejemplo, <code>help(paquete = «algúnpaquete»))</code> y es lo que una persona suele ver cuando navega por varias funciones.</p></li>
+<li><p>La <strong>descripción</strong> se genera con el párrafo siguiente. Se muestra en la parte superior de la documentación y debe describir brevemente las características más importantes de la función. Escribir la descripción puede resultar difícil en el caso de funciones sencillas, ya que puede parecer que se está repitiendo el título de la función. Intentá encontrar otra manera de describir la función si es posible.</p></li>
+<li><p>Los <strong>detalles</strong> adicionales son cualquier cosa después de la descripción. Los detalles son opcionales, pero pueden ser de cualquier longitud, por lo que resultan útiles para profundizar en algún aspecto importante de la función. Tené en cuenta que, aunque los detalles vienen justo después de la descripción en la introducción, aparecen mucho más adelante en la documentación renderizada.</p></li>
+</ul></section><section id="argumentos" class="level4" data-number="11.3.1.2"><h4 data-number="11.3.1.2" class="anchored" data-anchor-id="argumentos">
+<span class="header-section-number">11.3.1.2</span> Argumentos</h4>
+<p>Documentar los argumentos de la función es probablemente la mayor parte del trabajo. Para esto vamos a usar la etiqueta <code>@param</code> (que viene de parámetro, otra manera de decir argumento). Es necesario documentar todos los argumentos en el orden en el que aparecen en la función.</p>
+<p>La documentación de cada argumento incluye una descripción breve del imput permitido y que rol cumple en la función. Por ejemplo, estos son los argumentos de la función <code><a href="https://rdrr.io/r/stats/sd.html">sd()</a></code></p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @param x a numeric vector or an **R** object but not a [factor] coercible to numeric by `as.double(x)`.</span></span>
+<span><span class="co">#' @param na.rm logical. Should missing values be removed?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Mencionan que tipo de objeto requiere cada uno y una descripción. Es recomendable también mencionar cual es el valor por defecto si lo tiene y si el argumento es opcional.</p>
+<p>Cuando 2 o más argumentos están muy relacionados (por ejemplo en la función <code>suma()</code>) es recomendable documentarlos juntos de la siguiente manera:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @param x,y Un par de valores numéricos.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="resultado" class="level4" data-number="11.3.1.3"><h4 data-number="11.3.1.3" class="anchored" data-anchor-id="resultado">
+<span class="header-section-number">11.3.1.3</span> Resultado</h4>
+<p>Documentar el resultado de una función es tan importante como documentar sus argumentos. Para esto usamos la etiqueta <code>@return</code> y aparece en la documentación bajo el título <strong>Value</strong>. Aquí la prioridad es describir la <em>forma</em> general del resultado, es decir, qué tipo de objeto es y sus dimensiones (si eso tiene sentido). Por ejemplo, si la función devuelve un vector, describiremos de que tipo y su longitud, o si devuelve un data.frame, se puede describir los nombres y tipos de las columnas y el número previsto de filas.</p>
+<p>Por ejemplo esta es la sección correspondiente para la función <code>read_csv()</code> :</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' @return</span></span>
+<span><span class="co">#' A [tibble()]. If there are parsing problems, a warning will alert you. You can retrieve the full details by calling [problems()] on your dataset.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="ejemplos" class="level4" data-number="11.3.1.4"><h4 data-number="11.3.1.4" class="anchored" data-anchor-id="ejemplos">
+<span class="header-section-number">11.3.1.4</span> Ejemplos</h4>
+<p>Esta sección de la documentación es importantísima porque le permite a cualquier nuevo usuario entender en detalle como funciona la función. Usaremos la etiqueta <code>@examples</code> (en plural!).</p>
+<p>El principal dilema de los ejemplos es que deben satisfacer dos requisitos al mismo tiempo:</p>
+<ul>
+<li><p>El código de ejemplo debe ser legible y realista.</p></li>
+<li><p>El código de ejemplo debe ejecutarse sin errores.</p></li>
+</ul>
+<p>Usamose ejemplos para mostrar en primer lugar el funcionamiento básico de la función y, a continuación, para destacar las propiedades más importantes. Intentá centrarte en las aplicaciones más importantes sin entrar en todos los detalles. Si te encontrás escribiendo ejemplos muy largos es posible que sea hora de revisarlos.</p>
+</section></section><section id="documentar-datos" class="level3" data-number="11.3.2"><h3 data-number="11.3.2" class="anchored" data-anchor-id="documentar-datos">
+<span class="header-section-number">11.3.2</span> Documentar datos</h3>
+<p>Los datos que forman parte del paquete también deben documentarse. Documentar datos es como documentar una función con algunas pequeñas diferencias. En lugar de documentar los datos directamente, se documenta el nombre del conjunto de datos y se guarda en un archivo <code>.R</code> en la carpeta <code>R/</code>. Por ejemplo, el bloque roxygen2 utilizado para documentar los datos de pingüinos tiene este aspecto:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#' Medidas de tamaño de pingüinos adultos en busca de comida cerca de la estación Palmer en la Antártica.</span></span>
+<span><span class="co">#' </span></span>
+<span><span class="co">#' Incluye medidas para: especie de pingüino, isla dentro del Archipiélago de Palmer, tamaño (largo de aleta, masa corporal, dimensiones de pico) y sexo.</span></span>
+<span><span class="co">#' </span></span>
+<span><span class="co">#' @format Un tibble con 344 filas y 8 variables</span></span>
+<span><span class="co">#' </span></span>
+<span><span class="co">#'\describe{</span></span>
+<span><span class="co">#'  \item{especie}{un factor que indica la especie de pingüino (Adelia, Barbijo y Papúa)}</span></span>
+<span><span class="co">#'  \item{isla}{un factor que indica la isla en el archipiélago de Palmer (Biscoe, Dream o Torgersen)}</span></span>
+<span><span class="co">#'  \item{largo_pico_mm}{un número que indica el largo del pico (milímetros)}</span></span>
+<span><span class="co">#'  \item{alto_pico_mm}{un número que indica el alto del pico (milímetros)}</span></span>
+<span><span class="co">#'  \item{largo_aleta_mm}{un entero que indica el largo de la aleta (milímetros)}</span></span>
+<span><span class="co">#'  \item{masa_corporal_g}{un entero que indica la masa corporal (gramos)}</span></span>
+<span><span class="co">#'  \item{sexo}{un factor que indica el sexo del pingüino (hembra, macho)}</span></span>
+<span><span class="co">#'  \item{anio}{un entero que indica el año estudiado (2007, 2008 o 2009)}</span></span>
+<span><span class="co">#'}</span></span>
+<span><span class="co">#'</span></span>
+<span><span class="co">#'@source Pingüinos Adelia: Palmer Station Antarctica LTER and K. Gorman. 2020. Structural size measurements and isotopic signatures of foraging among adult male and female Adélie penguins (Pygoscelis adeliae) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 5. Environmental Data Initiative https://doi.org/10.6073/pasta/98b16d7d563f265cb52372c8ca99e60f. </span></span>
+<span><span class="co">#'</span></span>
+<span><span class="st">"pinguinos"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="ejercicio">
+<ol type="1">
+<li>Elegí al menos una de las funciones que creaste durante la <a href="./07_funciones.html">sección funciones</a>.</li>
+<li>Agregala al paquete de prueba en un nuevo archivo <code>.R</code> usando el flujo de trabajo que vimos.</li>
+<li>Documentá la función y practicá el flujo de documentación: <code>Ctrl+Shif+D</code> para documentar y luego <code>Ctrl+Shif+L</code> para cargar el paquete, revisar la documentación y mejorarla</li>
+</ol>
+</div>
+</section></section><section id="viñetas" class="level2" data-number="11.4"><h2 data-number="11.4" class="anchored" data-anchor-id="viñetas">
+<span class="header-section-number">11.4</span> Viñetas</h2>
+<p>Todo lo que hemos dicho hasta ahora sobre la documentación se aplica a todos los proyectos de programación en casi cualquier lenguaje. Las “viñetas”, en cambio son un tipo de documentación distintivo de R: describen en gran detalle algún aspecto de tu paquete con ejemplos de uso y explicaciones detalladas.</p>
+<p>La función <code><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes()</a></code> te permite explorar las viñetas existentes en los paquetes que tenés instalados. Si corrés la función sin argumentos se abrirá una ventana de en tu navegador con una lista de las viñetas disponibles, mientras que <code>browseVignettes("nombrepaquete")</code> mostrará las viñetas de un paquete concreto. También podés llamar directamente a una viñeta si conoces su nombre con <code>vignette("vignettename")</code> que se mostrará en la pestaña help.</p>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/browseVignettes.html">browseVignettes</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html">vignette</a></span><span class="op">(</span><span class="st">"nest"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Las viñetas también aparecerán como artículos en la página web del paquete (que aprenderemos a crear al final de esta sección), esta es una gran manera de consultarlas porque no requiere la instalación del paquete o correr su código. Por ejemplo en <a href="https://tidyr.tidyverse.org/articles/nest.html">este link</a> se encuentra la misma viñeta de tidyr que vimos recién.</p>
+<section id="crear-una-viñeta" class="level3" data-number="11.4.1"><h3 data-number="11.4.1" class="anchored" data-anchor-id="crear-una-viñeta">
+<span class="header-section-number">11.4.1</span> Crear una viñeta</h3>
+<p>Una vez más, <code>usethis</code> tiene una función útil para ayudarnos a crear viñetas. La función <code><a href="https://usethis.r-lib.org/reference/use_vignette.html">usethis::use_vignette()</a></code> toma el título de la viñeta y crea un breve documento R Markdown a modor de plantilla en la carpeta <code>vignettes/</code>.</p>
+<p>Además añade las dependencias necesarias a DESCRIPTION, es decir, añade knitr al campo VignetteBuilder y añade tanto knitr como rmarkdown a Suggests (veremos más sobre dependencias en la próxima sección). Y también añade patrones a .gitignore para garantizar que los archivos creados como efecto secundario de la previsualización de tus viñetas se mantengan fuera del repositorio.</p>
+<p>Sumemos una viñeta a nuestro paquete de prueba:</p>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_vignette.html">use_vignette</a></span><span class="op">(</span><span class="st">"viñeta_prueba"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Y de paso agreguemos algo de contenido, por ejemplo como usar la función <code>suma()</code>.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>title<span class="sc">:</span> <span class="st">"viñeta_prueba"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>output<span class="sc">:</span> rmarkdown<span class="sc">::</span>html_vignette</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>vignette<span class="sc">:</span> <span class="er">&gt;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  %\VignetteIndexEntry{viñeta_prueba}</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  %\VignetteEngine{knitr<span class="sc">::</span>rmarkdown}</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  %\VignetteEncoding{UTF<span class="dv">-8</span>}</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="sc">---</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="er">:::</span> {.cell}</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{.r .cell-code}</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="at">library(paqueteprueba)</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>Esta es una viñeta de prueba. Podemos mostrar como usar la función <span class="st">`</span><span class="at">suma()</span><span class="st">`</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span> {.cell}</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="st">```</span><span class="at">{.r .cell-code}</span></span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a><span class="at">suma(2, 2)</span></span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a><span class="at">#&gt; [1] 4</span></span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a><span class="st">```</span></span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Normalmente, <em>kniteariamos</em> este archivo bastante seguido para ver como va quedando la viñeta, sin embargo, si intentamos hacer eso ahora nos dará un error “No existe el paquete ‘paqueteprueba”’. Esto puede parecerte raro porque estamos creando el paquete, claro que existe! Pero, resulta que crear la documentación y cargarlo con <code>Ctrl+Shif+L</code> no es suficiente, necesitamos instalarlo.</p>
+<p>Como estamos en el contexto de desarrollar el paquete, la instalación no se hace con <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code>. Necesitamos instalar el paquete usando el mismo código fuente que estamos desarrollando y para eso podemos usar el atajo de teclado <code>Ctrl+Shif+B</code> (que viene de <em>build</em> o construir en inglés).</p>
+<p>Ahora si, podremos knitear nuestra viñeta que por ahora esbastante corta:</p>
+<p><img src="images/viñeta.png" class="img-fluid"></p>
+<p>Una vez que tengas el borrador de la viñeta, el flujo de trabajo es sencillo:</p>
+<ol type="1">
+<li><p>Empezá a añadir fragmentos de texto y código a la viñeta. Probá el código para asegurarte de que corra y genere los resultados que querés mostrar.</p></li>
+<li><p>Knitea toda la viñeta periódicamente.</p></li>
+<li><p>Repetí los pasos hasta que la completes.</p></li>
+</ol>
+<p>Al trabajar con el formato RMarkdown se puede hacer uso de markdown para dar formato al texto y contenido.</p>
+<p>Al escribir una viñeta, estás enseñando a alguien a utilizar tu paquete. Tenés que ponerte en el lugar de quien la leerá y asumilar que esa persona es novata. Esto puede resultar difícil, porque es fácil olvidar todos los conocimientos que ya se han interiorizado y todas las desiciones que tomaste sobre tu paquete. Te recomendamos que le pidas a alguien más leer la viñeta y te de feedback para mejorarla.</p>
+<div class="ejercicio">
+<p><strong>Completá la viñeta del paquete de prueba</strong></p>
+<p>Si hiciste el ejercicio anterior, nuestro paquete de prueba ahora no solo tiene la función <code>suma()</code>, tiene varias más.</p>
+<p>Completá la viñeta agregando ejemplos y explicaciones sobre como se usan las funciones y para que sirven.</p>
+<p>No te olvides de knitear para ver el resultado.</p>
+</div>
+</section></section><section id="readme" class="level2" data-number="11.5"><h2 data-number="11.5" class="anchored" data-anchor-id="readme">
+<span class="header-section-number">11.5</span> README</h2>
+<p>El README es es la puerta de entrada a tu paquete, incluye las instrucciones sobre cómo instalarlo y ejemplos de cómo utilizarlo.</p>
+<p>La función <code><a href="https://usethis.r-lib.org/reference/use_readme_rmd.html">usethis::use_readme_rmd()</a></code> crea un documento R Markdown con algunas secciones y texto estándar que podemos usar como base para crear un documento útil y descriptivo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_readme_rmd</span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="ejercicio:">
+<p>R Markdown vs.&nbsp;Mardown</p>
+<p>Lee la ayuda de <code>use_readme_rmd()</code> y <code>use_readme_md()</code>. ¿Qué diferencias hay entre archivos <code>.Rmd</code> y <code>.md</code>? ¿Por qué usarías uno u otro para el README?</p>
+</div>
+<p>GitHub trata al archivo <code>README.md</code> de forma especial, mostrándolo en la pestaña principal del repositorio. El README creado por <code>use_readme_rmd()</code> entonces, debe ser kniteado antes de subirlo al repositorio remoto.</p>
+<p>El encabeza YAML que incluye el README <code>output: github_document</code> indicará a <code>knitr</code> que cree una salida Markdown para GitHub en lugar del HTML por defecto. Para esto podés usar el botón <code>Knit</code> en el menú situado encima del editor, o ejecutá <code><a href="https://devtools.r-lib.org/reference/build_rmd.html">devtools::build_readme()</a></code> en la consola.</p>
+<div class="ejercicio">
+<p>Edita y knitea el README del paquete de prueba</p>
+<ol type="1">
+<li>Editá <code>README.Rmd</code> para incluir una descripción del paquete de prueba, su instalación y un ejemplo de su uso.</li>
+<li>kniteá el <code>README.Rmd</code> para que crea la salida <code>README.md</code>.</li>
+</ol>
+</div>
+</section><section id="website" class="level2" data-number="11.6"><h2 data-number="11.6" class="anchored" data-anchor-id="website">
+<span class="header-section-number">11.6</span> Website</h2>
+<p>En este punto nuestro paquete de prueba tiene sus funciones documentadas, incluye una viñeta que detalla el uso de las funciones y un README con la información más importante que necesita cualquier persona para comenzar a usarlo.</p>
+<p>El objetivo ahora es construir una página web para el paquete de manera programática usando todo lo anterior. Para esto usaremos el paquete <code>pkgdown</code>. Para darte una idea de lo que estamos hablando podés visitar la pagína web del paquete pkgdown: <a href="https://pkgdown.r-lib.org/">https://pkgdown.r-lib.org/</a>.</p>
+<p>Si al ver el ejemplo asumiste que esto lleva muchísimo tiempo, la realidad no podría ser más diferente. Con un par de funciones podemos tener una página web funcionando. La primera función es por supuesto de usethis:</p>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_pkgdown.html">use_pkgdown</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Al ejecutar esta función veremos algo así:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'C:/Users/tonin/Downloads/paqueteprueba'</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^_pkgdown</span><span class="sc">\\</span><span class="st">.yml$'</span>, <span class="st">'^docs$'</span>, <span class="st">'^pkgdown$'</span> to <span class="st">'.Rbuildignore'</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'docs'</span> to <span class="st">'.gitignore'</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">'_pkgdown.yml'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>La función hace todo lo siguiente:</p>
+<ul>
+<li><p>Crea <code>_pkgdown.yml</code>, el archivo de configuración principal de la web. Podrías revisar este archivo y cambiar cosas pero no hay necesidad inmediata de cambiar o añadir nada.</p></li>
+<li><p>Añade varios archivos a <code>.Rbuildignore</code>, para evitar que algunos archivos y directorios específicos de pkgdown se incluyan en tu paquete.</p></li>
+<li><p>Añade <code>docs</code>, el destino por defecto para un sitio renderizado, a <code>.gitignore</code>. Hacemos esto porque esperamos que la web definitiva se construya y publique usando GitHub Actions y Pages. Esto significa que el sitio web renderizado en docs/ sólo sirve como vista previa local.</p></li>
+<li><p><code><a href="https://pkgdown.r-lib.org/reference/build_site.html">pkgdown::build_site()</a></code> es una función a la que llamarás repetidamente, para volver a renderizar tu sitio localmente.</p></li>
+</ul>
+<p>Además de revisar la web de esta manera también es posile hacer click en el archivo <code>docs/index.html</code> en el explorador.</p>
+<div class="informacion">
+<p>Una GitHub Action o “acción” de GitHub es un script que corre directamente en GitHub y puede cumplir muchas funciones. Se pueden construir a mano o aprovechar las plantillas que ya existen.</p>
+<p>Estas acciones además pueden programarse para que se ejecuten de manera automática en un determinado horario, cada vez que se hace un commit al repositorio remoto o en otras circunstancias.</p>
+</div>
+<p>Para publicar la web necesitamos hacer commits y push al repositorio remoto. A continuación, una “acción” de GitHub construirá y publicará la web en una url con nombre <code>&lt;nombreusuario&gt;.github.io/&lt;nombrepaquete&gt;</code>. Los pasos para llegar a este punto son varios y si bien se pueden hacer a mano vamos a usar una función de usethis para automatizar todo.</p>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github.html">use_github</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>✔ Writing <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>• Modify <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>✔ Initializing empty, orphan <span class="st">'gh-pages'</span> branch <span class="cf">in</span> GitHub repo paocorrales<span class="sc">/</span>paqueteprueba<span class="st">'</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="st">✔ GitHub Pages is publishing from:</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="st">• URL: '</span>https<span class="sc">:</span><span class="er">//</span>paocorrales.github.io<span class="sc">/</span>paqueteprueba<span class="sc">/</span><span class="st">'</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="st">• Branch: '</span>gh<span class="sc">-</span>pages<span class="st">'</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="st">• Path: '</span><span class="sc">/</span><span class="st">'</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Creating '</span>.github<span class="sc">/</span><span class="st">'</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Adding '</span><span class="sc">^</span>\\.github<span class="sc">$</span><span class="st">' to '</span>.Rbuildignore<span class="st">'</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Adding '</span><span class="sc">*</span>.html<span class="st">' to '</span>.github<span class="sc">/</span>.gitignore<span class="st">'</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Creating '</span>.github<span class="sc">/</span>workflows<span class="sc">/</span><span class="st">'</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Saving '</span>r<span class="sc">-</span>lib<span class="sc">/</span>actions<span class="sc">/</span>examples<span class="sc">/</span>pkgdown.yaml<span class="sc">@</span>v2<span class="st">' to '</span>.github<span class="sc">/</span>workflows<span class="sc">/</span>pkgdown.yaml<span class="st">'</span></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="st">• Learn more at &lt;https://github.com/r-lib/actions/blob/v2/examples/README.md&gt;.</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="st">✔ Recording '</span>https<span class="sc">:</span><span class="er">//</span>paocorrales.github.io<span class="sc">/</span>paqueteprueba<span class="sc">/</span><span class="st">' as site'</span>s url <span class="cf">in</span> <span class="st">'_pkgdown.yml'</span></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'https://paocorrales.github.io/paqueteprueba/'</span> to URL</span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>✔ Setting <span class="st">'https://paocorrales.github.io/paqueteprueba/'</span> as homepage of GitHub repo <span class="st">'paocorrales/paqueteprueba'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Veamos qué hace realmente <code>use_pkgdown_github_pages()</code>:</p>
+<ul>
+<li><p>Inicializa una rama vacía en tu repositorio de GitHub, llamada gh-pages (por “GitHub Pages”). La rama gh-pages sólo vivirá en GitHub (no hay razón para crearla en tu repositorio local) y representa una versión paralela del paquete. Los únicos archivos rastreados en gh-pages son los que constituyen el sitio web de tu paquete (los archivos que ves localmente en la carpeta <code>docs/</code>).</p></li>
+<li><p>Activa GitHub Pages en el repositorio y le dice que aloje un sitio web desde los archivos encontrados en la rama gh-pages.</p></li>
+<li><p>Copia el archivo de configuración de la GitHub Action que hace construye y publica la web. El archivo aparece en tu paquete como <code>.github/workflows/pkgdown.yaml</code>.</p></li>
+<li><p>Añade la URL de tu sitio como página de inicio de tu repositorio de GitHub.</p></li>
+<li><p>Añade la URL de tu sitio a <code>DESCRIPTION</code> y <code>_pkgdown.yml</code>.</p></li>
+</ul>
+<p>Después de ejecutar con éxito <code>use_pkgdown_github_pages()</code>, deberías poder visitar el nuevo sitio en la url.</p>
+<div class="tip">
+<p>Para seguir mejorando la web y darle un estilo propio te recoemndamos leer las viñetas del paquete pkgdown arrancando por <a href="https://pkgdown.r-lib.org/articles/customise.html">Customise your site</a>.</p>
+</div>
+<div class="ejercicio">
+<p>Si aún no lo hiciste, es hora de crear la web del paqueteprueba con el que venimos trabajando.</p>
+<p>Es posible que al hacerlo encuentres cosas para mejorar en el README o en la documentación de alguna de las funciones. En ese caso modificá los archivos necesarios y seguí el flujo de trabajo que vimos antes de hacer commit y push al repositorio remoto. Esto es:</p>
+<ul>
+<li>Si cambias la documentación: Usá <code>Ctrl+Shift+D</code> para construir la documentación de nuevo.</li>
+<li>Si cambiás cosas en el README: knitea el archivo .Rmd para generar el .md.</li>
+</ul>
+</div>
+<section id="ex-doc" class="level3" data-number="11.6.1"><h3 data-number="11.6.1" class="anchored" data-anchor-id="ex-doc">
+<span class="header-section-number">11.6.1</span> Construyendo un paquete de R paso a paso</h3>
+<div class="ejercicio">
+<p>A esta altura seguramente ya te imaginás que sigue. Es hora de generar la documentación del paquete que lee y analiza datos meteorológicos (¿ya tiene nombre?).</p>
+<p>De nuevo, esto es un trabajo en equipo por lo que esperamos ver aportes (commits) de ambos miembros del equipo. Pueden dividirse el trabajo: cada persona documenta algunas funciones, alguien se ocupa del README, alguien de la viñeta, etc.</p>
+<p><strong>Recomendaciones:</strong></p>
+<ul>
+<li>Siempre arranquen a trabajar haciendo un pull para actualizar la versión del repo local con el remoto.</li>
+<li>No modifiquen archivos que la otra persona está usando. Si hacen esto, al hacer commits habrá problemas para mergear tu versión y la de tu compañere.</li>
+</ul>
+</div>
+
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="./09_paquetes-1.html" class="pagination-link" aria-label="Empaquetando funciones">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Empaquetando funciones</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./11_errores.html" class="pagination-link" aria-label="Resolviendo y evitando errores">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+</body></html>

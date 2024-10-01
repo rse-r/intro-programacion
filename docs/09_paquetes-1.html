@@ -61,7 +61,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10_errores.html" rel="next">
+<link href="./10_documentacion.html" rel="next">
 <link href="./08_git-2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -198,32 +198,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_errores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
+  <a href="./10_documentacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_paquetes-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Manejo de paquetes</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12_documentacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span></a>
+  <a href="./11_errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13_publicacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14_reproducibilidad.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -353,7 +347,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Si escribes esto en tu Consola, lo que verás probablemente será un un poco diferente a esto. Si <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> muestra más de una ruta, normalmente la primera contendrá todos los paquetes.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 324</code></pre>
+<pre><code>[1] 325</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:/Users/tonin/AppData/Local/R/win-library/4.4/abind
@@ -366,7 +360,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 </div>
 <p>Si queremos ver cómo almacena R los paquetes en su formato especial, podemos utilizar <code>dir_tree()</code> y el contenido de la instalación de <code>devtools/</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="fu">path</span><span class="op">(</span><span class="va">primary_library_path</span>, <span class="st">"devtools"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">primary_library_path</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/libPaths.html">.libPaths</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="fu">path</span><span class="op">(</span><span class="va">primary_library_path</span>, <span class="st">"devtools"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:/Users/tonin/AppData/Local/R/win-library/4.4/devtools
 ├── DESCRIPTION
@@ -456,7 +451,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 <span class="header-section-number">10.5</span> Estructura de un paquete</h2>
 <p>Ahora que tenemos un nombre, el siguiente paso es configurar la infraestructura básica para el paquete. Afortunadamente, el paquete <code>usethis</code> ayuda resolver gran parte del trabajo. Cuando usemosla función <code><a href="https://usethis.r-lib.org/reference/create_package.html">usethis::create_package()</a></code> configurará los archivos y carpetas básicos que necesitamos para crear un paquete y que R lo instale como tal. Utilizaremos esta función para crear el paquete <code>paqueteprueba</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"~/Documentos/paqueteprueba"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"~/Documentos/Courses/paqueteprueba"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En este caso estamos creando el paquete en la carpeta Documentos, pero también podríamos crearlo en cualquier otra carpeta. Esta linea de código además se corre en la consola, no tendría sentido que corra en un script ya que no es algo que haremos todos los días. El resultado es el siguiente</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>✔ Creating <span class="st">'C:/Users/tonin/Documentos/paqueteprueba/'</span></span>
@@ -483,9 +478,68 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'&lt;no active project&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada <code>paqueteprueba</code> con los archivos mínimos para instalar el paquete. Esta carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos usando usethis y RStudio y viene con todas las ventajas que vimos. Sin embargo, no es impresindible que un paquete sea un proyecto al mismo tiempo. usethis tiene aún otra ventaja más, inicia automáticamente un repositorio. Esto es importantísimo, desarrollar software viene de la mano del control de versiones. Además, si estuvieramos creando un paquete de verdad, contectar este repositorio local con uno remoto en GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan usar otras personas.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"C:/Users/tonin/Downloads/paqueteprueba/"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"C:/Users/tonin/Documents/Courses/paqueteprueba/"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>C:/Users/tonin/Downloads/paqueteprueba/
+<pre><code>C:/Users/tonin/Documents/Courses/paqueteprueba/
+├── .git
+│   ├── config
+│   ├── description
+│   ├── HEAD
+│   ├── hooks
+│   │   └── README.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── master
+│   │       └── remotes
+│   │           └── origin
+│   │               └── master
+│   ├── objects
+│   │   ├── 0e
+│   │   │   └── caf06d8c625646dc8cf48d46e92b69e7e8ece0
+│   │   ├── 12
+│   │   │   └── 0fa614d537069670638395863804ba384d9f13
+│   │   ├── 34
+│   │   │   └── 0ec989d9d7e9bf488f2e3dada00d02f2ec8a9e
+│   │   ├── 39
+│   │   │   └── 26dc5382a1bf8fa47cda2ed77d4d8794c01874
+│   │   ├── 40
+│   │   │   └── 1aa37448f81927b0dfea09fc0d25fb3707071c
+│   │   ├── 5a
+│   │   │   └── 266908f7d21b9c6aff48ba292e009909b650c0
+│   │   ├── 69
+│   │   │   └── fafd4b6dddad27500cfc67efb9fb16e86a96bd
+│   │   ├── 6a
+│   │   │   └── e926839dd1829f1016a96f766d970ff184ad97
+│   │   ├── 6d
+│   │   │   └── 7d732814d8d41f8df2d7ddf8495095a24fe546
+│   │   ├── 7c
+│   │   │   └── 794aae41aff30b6f9d22e702313dc48d01232a
+│   │   ├── 90
+│   │   │   └── afca635b8b3c4676ce46297d00be72285537a1
+│   │   ├── 9c
+│   │   │   └── 54e298b552b6ff6d0d182f2aed7dcba6f97c49
+│   │   ├── cb
+│   │   │   └── 480a65e75aeab8ac9cf17ae5f3ee3e66479b71
+│   │   ├── f0
+│   │   │   └── 2c9d8d4c4e59a076b63ada67685d2ff127ace0
+│   │   ├── fb
+│   │   │   └── 9fae11fe9b2092b22569c357e384c3dfea5b53
+│   │   ├── fe
+│   │   │   └── 19835c616a361ff6e7c182fff0ab2119e818dc
+│   │   ├── info
+│   │   └── pack
+│   └── refs
+│       ├── heads
+│       │   └── master
+│       ├── remotes
+│       │   └── origin
+│       │       └── master
+│       └── tags
 ├── .gitignore
 ├── .Rbuildignore
 ├── .Rhistory
@@ -496,10 +550,12 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── ctx
 │   │   ├── explorer-cache
 │   │   ├── pcs
+│   │   │   ├── debug-breakpoints.pper
 │   │   │   ├── files-pane.pper
 │   │   │   ├── source-pane.pper
 │   │   │   ├── windowlayoutstate.pper
 │   │   │   └── workbench-pane.pper
+│   │   ├── persistent-state
 │   │   ├── presentation
 │   │   ├── profiles-cache
 │   │   ├── rmd-outputs
@@ -507,25 +563,34 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── sources
 │   │   │   ├── per
 │   │   │   │   ├── t
-│   │   │   │   │   ├── 8C71E35A
-│   │   │   │   │   ├── 8C71E35A-contents
-│   │   │   │   │   ├── AFE0269A
-│   │   │   │   │   └── AFE0269A-contents
+│   │   │   │   │   ├── 1C0DBE9B
+│   │   │   │   │   ├── 1C0DBE9B-contents
+│   │   │   │   │   ├── 5450B82A
+│   │   │   │   │   ├── 5450B82A-contents
+│   │   │   │   │   ├── 622B348D
+│   │   │   │   │   └── 622B348D-contents
 │   │   │   │   └── u
 │   │   │   └── prop
-│   │   │       ├── A9A0748B
-│   │   │       ├── B9D8921D
+│   │   │       ├── 08A28989
+│   │   │       ├── 13693628
+│   │   │       ├── 29F9BEB5
 │   │   │       └── INDEX
 │   │   ├── tutorial
-│   │   └── viewer-cache
+│   │   ├── viewer-cache
+│   │   └── viewer_history
 │   └── shared
 │       └── notebooks
-│           └── patch-chunk-names
+│           ├── patch-chunk-names
+│           └── paths
+├── data
+│   └── datos.rda
+├── data_raw
+│   └── crea_datos.R
 ├── DESCRIPTION
 ├── NAMESPACE
 ├── paqueteprueba.Rproj
 └── R
-    └── funcion_prueba.R</code></pre>
+    └── suma.R</code></pre>
 </div>
 </div>
 <p>Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya presentamos, hay algunos archivos y carpetas ocultas. Conocés el .gitignore, pero .Rbuildignore y .Rproj.user son nuevos. El primero es parecido a .gitignore, incluye la lista de archivos y carpetas que R deberá ignorar al momento de construir el paquete, por ahora la lista es corta pero ira creciendo a medida que sumemos cosas al paquete. La carpeta .Rproj.user es algo que está en todo projecto de RStudio e incluye las configuraciones específicas del proyecto.</p>
@@ -1130,8 +1195,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./10_errores.html" class="pagination-link" aria-label="Resolviendo y evitando errores">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./10_documentacion.html" class="pagination-link" aria-label="Documentando paquetes y funciones">
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
