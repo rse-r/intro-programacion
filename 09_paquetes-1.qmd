@@ -155,6 +155,7 @@ podemos utilizar `dir_tree()` y el contenido de la instalación de
 `devtools/`.
 
 ```{r}
+primary_library_path <- .libPaths()[1]
 fs::dir_tree(path(primary_library_path, "devtools"))
 ```
 
@@ -225,7 +226,7 @@ que necesitamos para crear un paquete y que R lo instale como tal.
 Utilizaremos esta función para crear el paquete `paqueteprueba`.
 
 ```{r eval=FALSE}
-usethis::create_package(path = "~/Documentos/paqueteprueba")
+usethis::create_package(path = "~/Documentos/Courses/paqueteprueba")
 ```
 
 En este caso estamos creando el paquete en la carpeta Documentos, pero
@@ -272,7 +273,7 @@ GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan
 usar otras personas.
 
 ```{r}
-fs::dir_tree("C:/Users/tonin/Downloads/paqueteprueba/", all = TRUE)
+fs::dir_tree("C:/Users/tonin/Documents/Courses/paqueteprueba/", all = TRUE)
 ```
 
 Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya
