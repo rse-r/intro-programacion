@@ -1,4 +1,0 @@
----
-title: "Documentando paquetes y funciones"
----
-
