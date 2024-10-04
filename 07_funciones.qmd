@@ -82,7 +82,7 @@ fahrenheit_a_centigrados <- function(temperatura_fahrenheit) {
 
 Usar la función `return()` no es necesario, R devuelve el último elemento con o sin el `return()` presente. Sin embargo, puede ayudar a la lectura del código cuando la función es más compleja.
 
-::: informacion
+::: importante
 
 Cada vez que se ejecuta una función se crea un nuevo entorno, desde cero, propio de la función para contener su ejecución. Notá que si buscas la variable `temperatura_centigrados` en el _Environment_ no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en ese "entorno" independiente del entorno general.
 :::

@@ -292,7 +292,7 @@ usethis::use_vignette("viñeta_prueba")
 Y de paso agreguemos algo de contenido, por ejemplo como usar la función
 `suma()`.
 
-````r
+````{verbatim}
 ---
 title: "viñeta_prueba"
 output: rmarkdown::html_vignette
@@ -431,7 +431,7 @@ La función hace todo lo siguiente:
 
 Además de revisar la web de esta manera también es posile hacer click en el archivo `docs/index.html` en el explorador.
 
-::: informacion
+::: importante
 Una GitHub Action o "acción" de GitHub es un script que corre directamente en GitHub y puede cumplir muchas funciones. Se pueden construir a mano o aprovechar las plantillas que ya existen. 
 
 Estas acciones además pueden programarse para que se ejecuten de manera automática en un determinado horario, cada vez que se hace un commit al repositorio remoto o en otras circunstancias.

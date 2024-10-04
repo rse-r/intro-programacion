@@ -99,7 +99,7 @@ pinguinos |>
 
 La forma de "leer" esto es "Tomá los datos en el data.frame `pinguinos`, **después** aplicale `filter()` tal que la especie sea Adelia, **después** aplicale `select()` para quedarte con la especie y el largo_pico_mm. 
 
-::: informacion
+::: importante
 
 Es posible que te encuentres o te hayas encontrado con esta otra versión del operador pipe `%>%`.
 Esta es la pipe del paquete `magritter`, que usamos durante muchísimo tiempo (y seguimos usando) hasta que la nueva pipe `|>` se sumo a R 4.0.0.

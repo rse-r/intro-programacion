@@ -174,7 +174,7 @@ GitHub con `pak::pak()`. La única diferencia es que los paquetes en CRAN
 o GitHub pueden ser utilizados por cualquiera que tenga acceso a
 internet.
 
-::: informacion
+::: importante
 Te habrás dado cuenta de que hemos utilizado la sintaxis
 `nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
 que utilice la función de un paquete concreto. Así que `pak::pak()` es
