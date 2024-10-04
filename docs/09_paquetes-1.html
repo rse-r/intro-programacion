@@ -412,7 +412,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 </div>
 <p>Los archivos <code>R/devtools.rdb</code> y <code>R/devtools.rdx</code> son los archivos cons formatos especiales que contienen las funciones dentro de <a href="https://devtools.r-lib.org/">devtools</a> que R buscará cuando carga el paquete. Cuando se instala un paquete en R, se crea una carpeta en <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> con los archivos en el formato específico que necesita R. Así que cuando ejecutes <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code>, R sabrá que debe buscar las funciones que se encuentran en la carpeta <code>devtools/</code>.</p>
 <p>Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu computadora (es decir, no está publicado en CRAN o en GitHub) no es no difiere de instalar un paquete de CRAN con <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages()</a></code> o desde GitHub con <code><a href="https://pak.r-lib.org/reference/pak.html">pak::pak()</a></code>. La única diferencia es que los paquetes en CRAN o GitHub pueden ser utilizados por cualquiera que tenga acceso a internet.</p>
-<div class="informacion">
+<div class="importante">
 <p>Te habrás dado cuenta de que hemos utilizado la sintaxis <code>nombrepaquete::nombrefuncion()</code> unas cuantas veces. Esto le dice a R que utilice la función de un paquete concreto. Así que <code><a href="https://pak.r-lib.org/reference/pak.html">pak::pak()</a></code> es decirle a R que utilice la función <code>pak()</code> del paquete <code>pak</code>. En desarrollo de paquetes en particular, utilizaremos esto en lugar de cargar las librerias con <code><a href="https://pak.r-lib.org/">library(pak)</a></code> porque queremos ser explícitos sobre qué función queremos utilizar y porque no necesitamos cargar todas las funciones del paquete cuando sólo queremos utilizar una o dos.</p>
 </div>
 </section><section id="nombrar-un-paquete" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="nombrar-un-paquete">
@@ -563,18 +563,20 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── sources
 │   │   │   ├── per
 │   │   │   │   ├── t
-│   │   │   │   │   ├── 1C0DBE9B
-│   │   │   │   │   ├── 1C0DBE9B-contents
-│   │   │   │   │   ├── 5450B82A
-│   │   │   │   │   ├── 5450B82A-contents
-│   │   │   │   │   ├── 622B348D
-│   │   │   │   │   └── 622B348D-contents
 │   │   │   │   └── u
-│   │   │   └── prop
-│   │   │       ├── 08A28989
-│   │   │       ├── 13693628
-│   │   │       ├── 29F9BEB5
-│   │   │       └── INDEX
+│   │   │   ├── prop
+│   │   │   │   ├── 08A28989
+│   │   │   │   ├── 13693628
+│   │   │   │   ├── 29F9BEB5
+│   │   │   │   └── INDEX
+│   │   │   └── session-5ae6f5b
+│   │   │       ├── 1C0DBE9B
+│   │   │       ├── 1C0DBE9B-contents
+│   │   │       ├── 5450B82A
+│   │   │       ├── 5450B82A-contents
+│   │   │       ├── 622B348D
+│   │   │       ├── 622B348D-contents
+│   │   │       └── lock_file
 │   │   ├── tutorial
 │   │   ├── viewer-cache
 │   │   └── viewer_history
