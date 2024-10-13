@@ -4,16 +4,16 @@ title: "Dependencias y tests"
 
 ## Objetivos de aprendizaje
 
-* Identificar las dependencias del paquete y registrarlas en `DESCRIPTION`
-* Añadir pruebas (tests) de una función del paquete usando testthat
-* Ejecutar todos los tests del paquete
+* Identificar las dependencias del paquete y registrarlas en `DESCRIPTION`.
+* Añadir pruebas (tests) de una función del paquete usando `testthat`.
+* Ejecutar todos los tests del paquete.
 * Describir que resultado se espera de una función y usar la familia  `expect_xxx()` en tests.
 * Utilizar `browse()` y` debug()` para explorar por qué se produce un comportamiento inesperado en una función.
 * Revisar la cobertura de los test y definir cuando es necesario agregar nuevos.
 
 ## Dependencias 
 
-Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si una función de tu paquete usa `mutate()`, entonces dplyr es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
+Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si una función de tu paquete usa `mutate()`, entonces `dplyr` es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
 
 Estas dependencias deben incluirse en el archivo `DESCRIPTION`. En general, éstos van en una sección llamada "Imports", lo que asegura que momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También existe la sección "Suggests", en donde se pueden listar paquetes que no son esenciales para que tu paquete funcione. Por ejemplo, una función que utiliza un método estadístico disponible en R base o una versión más eficiente provista por otro paquete si éste está instalado. En esta sección también van paquetes que son necesarios únicamente durante el desarrollo. 
 
@@ -38,7 +38,7 @@ Y por supuesto, podemos usar `usethis` para agregar nuevas dependencias con `use
 
 Habrás notado que nos pide que llamemos a las funciones usando esta notación `dplyr::fun()`. Esto es muy importante, en el código de funciones **nunca** debemos incluir la carga de librerías con `library()`. Hay dos razones por las que no hacemos esto:
 
-1. En el contexto de un paquete queremos ser eficientes y trabajar de manera ordenada. Si llamaramos a una librería entera con `library()` etaríamos cargando *todas* las funciones importadas por ese paquete cuando tal vez solo necesitamos una. Esto no es eficiente y puede traer problemas si otros paquetes tienen funciones con el mismo nombre.
+1. En el contexto de un paquete queremos ser eficientes y trabajar de manera ordenada. Si llamaramos a una librería entera con `library()` estaríamos cargando *todas* las funciones importadas por ese paquete cuando tal vez solo necesitamos una. Esto no es eficiente y puede traer problemas si otros paquetes tienen funciones con el mismo nombre.
 2. La sintaxis `dplyr::fun()` ayuda a entender de donde viene la función y diferenciar, por ejemplo `stats::filter()` de `dplyr::filter()` que tienen argumentos y funcionalidades completamente distintas.
 
 Es fácil olvidarse de las dependencias, lo bueno es que esta es una de las cosas que se chequean cuando corremos los chequeos [R CMD](https://r-pkgs.org/R-CMD-check.html). 
@@ -214,7 +214,7 @@ usethis::use_mit_license()
 
 Esta función agrega los archivos necesarios con el texto de la licencia (en inglés). Y primer warning, ¡resuelto!
 
-El segundo error nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su [versión unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para que el paquete funcione correctamente (particularmente en Windows!). 
+El segundo warning nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su [versión unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para que el paquete funcione correctamente (particularmente en Windows!). 
 
 Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII y reemplazarlo por su código unicode. Podemos googlearlo o usar `stringi::stri_escape_unicode()`. En este caso el problema está en los mensajes de error: "Los argumentos deben ser numéricos." y en particular la "é". Googleando resulta que en unicode se escribe `\U00E9`, por lo tanto el texto queda:
 
@@ -224,7 +224,7 @@ Esto implica que tendremos que volver a cada uno de esos archivos, buscar los ca
 
 Si bien no es legible, cuando la función devuelva este mensaje se verá de manera correcta. Otro warming resuelto!
 
-Finalmente, el tercer error nos dice que estamos usando el paquete cli pero que no está en la lista de dependencias. Podemos agregarlo usando usethis como vimos al comienzo:
+Finalmente, la tercera advertencia nos dice que estamos usando el paquete cli pero que no está en la lista de dependencias. Podemos agregarlo usando usethis como vimos al comienzo:
 
 ```{r eval=FALSE}
 usethis::use_package("cli")
