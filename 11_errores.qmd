@@ -5,7 +5,7 @@ title: "Dependencias y tests"
 ## Objetivos de aprendizaje
 
 * Identificar las dependencias del paquete y registrarlas en `DESCRIPTION`
-* Añadir pruebas (tests) auna función del paquete usando testthat
+* Añadir pruebas (tests) de una función del paquete usando testthat
 * Ejecutar todos los tests del paquete
 * Describir que resultado se espera de una función y usar la familia  `expect_xxx()` en tests.
 * Utilizar `browse()` y` debug()` para explorar por qué se produce un comportamiento inesperado en una función.
@@ -13,9 +13,9 @@ title: "Dependencias y tests"
 
 ## Dependencias 
 
-Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si tu función usa `mutate()`, entonces dplyr es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
+Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si una función de tu paquete usa `mutate()`, entonces dplyr es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
 
-La buena noticia es que podemos incluir las dependencias en el archivo `DESCRIPTION` para que al momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También es posible agregar sugerencias, es decir, paquetes que sugerimos que se instalen para usar las funciones que creamos. Esto es útil si por ejemplo tenemos una única función que requiere un paquete y no queremos que se se instala "por las dudas". 
+Estas dependencias deben incluirse en el archivo `DESCRIPTION`. En general, éstos van en una sección llamada "Imports", lo que asegura que momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También existe la sección "Suggests", en donde se pueden listar paquetes que no son esenciales para que tu paquete funcione. Por ejemplo, una función que utiliza un método estadístico disponible en R base o una versión más eficiente provista por otro paquete si éste está instalado. En esta sección también van paquetes que son necesarios únicamente durante el desarrollo. 
 
 Así se verán en el archivo DESCRIPTION:
 
@@ -27,6 +27,7 @@ Suggests:
     ggplot2,
     testthat
 ```
+En este caso, el paquete utiliza funciones de dplyr y tidyr en su funcionalidad básica. El paquete ggplot2 puede estar en Suggests porque la funcionalidad de graficado usa ggplot2 sólo si éste está instalado y usa plot base si no. El paquete testthat es el que vamos a usar durante el desarrollo para realizar los tests, pero no es necesario para usar el paquete. 
 
 Y por supuesto, podemos usar `usethis` para agregar nuevas dependencias con `usethis::use_package("dplyr")`. La función nos devuelve: 
 
@@ -76,8 +77,8 @@ Esto hará:
 * Añadir `testthat` a la lista de Suggests en DESCRIPTION y especificará la versión de testthat 3e en `Config/testthat/edition`:
 
 ```r
-Sugerencias: testthat (>= 3.0.0)
-Config/testthat/edición: 3
+Suggests: testthat (>= 3.0.0)
+Config/testthat/edition: 3
 ```
 
 * Crea un archivo `tests/testthat.R` que ejecuta todas las pruebas cuando se ejecute `R CMD check`.
@@ -104,9 +105,9 @@ test_that("la suma funciona", {
 
 * `test_that()` es la función principal que encapsula las expectativas e incluye una descripción de lo que hace el test, en este caso "la suma funciona".
 
-* `expct_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la función que queremos testear y el resultado/mensaje/valor esperado. 
+* `expct_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la expresión que queremos testear y el resultado/mensaje/valor esperado. 
 
-En todos los casos si el resultado que devuelve la función y lo esperado no coinciden, `test_that()` devolverá un error. 
+En todos los casos si el resultado que devuelve la expresión y lo esperado no coinciden, `test_that()` devolverá un error. 
 
 En este punto ya podemos correr este test o las expectativas de manera individual. Para esto primero hay que correr `devtools::load_all()` o usar el atajo de teclado para *cargar* la versión actual del paquete y luego ejecutar cada expectativa o el test completo. Al correr el test entero, si se cumple la expectativa veremos esto en la consola:
 
@@ -215,7 +216,7 @@ Esta función agrega los archivos necesarios con el texto de la licencia (en ing
 
 El segundo error nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su [versión unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para que el paquete funcione correctamente (particularmente en Windows!). 
 
-Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII, googlear cual es el equivalente en unicode y reemplazarlo. En este caso el problema está en los mensajes de error: "Los argumentos deben ser numéricos." y en particular la "é". Googleando resulta que en unicode se escribe `\U00E9`, por lo tanto el texto queda:
+Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII y reemplazarlo por su código unicode. Podemos googlearlo o usar `stringi::stri_escape_unicode()`. En este caso el problema está en los mensajes de error: "Los argumentos deben ser numéricos." y en particular la "é". Googleando resulta que en unicode se escribe `\U00E9`, por lo tanto el texto queda:
 
 ```r
 "Los argumentos deben ser num\U00E9ricos."
