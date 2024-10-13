@@ -96,7 +96,7 @@ Además, si el archivo ya existe siemplemente lo abre para agregar o editar el t
 
 Ahora si, un test está formado por 1 o más *expectativas*, es decir *lo que esperamos* que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función `suma()` la expectativa es que si le pasamos los argumentos `2` y `2`, devuelva `4`. En este caso el test terndrá esta pinta:
 
-```{r}
+```{r eval=FALSE}
 test_that("la suma funciona", {
   expect_equal(object = suma(2, 2), expected = 4)
 })
@@ -241,4 +241,42 @@ R CMD check succeeded
 ```
 
 ## Integración continua
+
+La integración continua (CI, por las siglas en inglés) ejecuta tests sobre el software automáticamente. En la práctica significa que un conjunto de test se ejecutará automáticamente a través de GitHub Actions cada vez que hagas un commit o pull request a GitHub.
+
+La CI automatiza la ejecución de tests globales de los paquetes, como R CMD check. Hacerlo utilizando GitHub Actions permite además correr los tests en distintos sistemas operativos y así asegurarte que tu paquete funciona correctamente en Windows, Linux y OS. Podemos usar usethis para generar la receta o workflow que correrá GitHub cada vez que hagamos un push al paquete con:
+
+```{r eval=FALSE}
+usethis::use_github_action("check-standard")
+```
+
+Este flujo de trabajo ejecuta R CMD check a través del paquete `rcmdcheck` en los tres principales sistemas operativos (Linux, macOS y Windows) en la última versión de R y en R-devel.
+
+Si bien GitHub manda mails avisando cuando alguno de estos chequeos falla, cuando hacemos cambios imporantes tenemos que prestar particularmente atención y asegurarnos que todo está en orden. 
+
+Otra de las cosas que podemos hacer con CI es revisar la cobertura de los tests a través de un servicio de testing como [Codecov](https://codecov.io/) o [Coveralls](https://coveralls.io/). Recomendamos utilizar Codecov. Para activar Codecov para el paquete usaremos:
+
+```{r eval=FALSE}
+usethis::use_github_action("test-coverage")
+```
+
+La función crea un archivo `.github/workflows/test-coverage.yaml`. También será necesario darle acceso a Codecov al repositorio de GitHub donde está el paquete, para esto lo mejor es seguir la guía de inicio rápido de Codecov (en inglés) para saber cómo hacerlo.
+
+También podemos revisar la covertura de tests de manera local con `devtools::test_coverage()` que nos devuelve un resumen interesante de los tests:
+
+![](images/test_cov1.png)
+
+Esto nos dice que el 56.25% del código en el paquete está cubierto por tests y el porcentaje para cada archivo/función individual. Si bien llegar al 100% no es del todo práctico o realista, se espera que el paquete tenga un porcentaje alto de covertura de tests cercano al 90%. 
+
+Más interesante aún es lo que nos muestra para cada archivo. En este caso vemos que lineas dentro de `suma.R` son revisadas o cubiertas por los tests:
+
+![](images/test_cov2.png)
+
+Las lineas sombreadas con verde nos indican que los tests pasaron por ahí y ejecutaron ese código. Si las lineas están sombreadas con rojo, no las estamos cubriendo con ninguno de nuestros tests. Con esto descubrimos que no estamos testeando posibles problemas asociados a incluir números negativos y podríamos ahora sumar un nuevo test.
+
+
+::: importante
+
+Es posible que el porcentaje de covertura de Codecov y de `devtools::test_coverage()` sea algo distinto. Esto es porque hacen cosas ligeramente distintas. No es necesario preocuparse!
+:::
 
