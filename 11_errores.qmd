@@ -43,7 +43,7 @@ Habrás notado que nos pide que llamemos a las funciones usando esta notación `
 Es fácil olvidarse de las dependencias, lo bueno es que esta es una de las cosas que se chequean cuando corremos los chequeos [R CMD](https://r-pkgs.org/R-CMD-check.html). 
 
 ::: importante
-R Base proporciona varias herramientas para chequear un paqeute. `R CMD check` es el método oficial para comprobar que un paquete de R es válido. Es esencial pasarlos checks de R CMD check si planeas enviar tu paquete a un repositorio oficial. Pero aún si ese no es el plan es muy recomendable correr estos checks periodicamente. R CMD check detecta muchos problemas comunes que de otro modo descubrirías por las malas.
+R Base proporciona varias herramientas para chequear un paqeute. `R CMD check` es el método oficial para comprobar que un paquete de R es válido. Es esencial pasarlos checks de R CMD check si planeas enviar tu paquete a un repositorio oficial. Pero aún si ese no es el plan es muy recomendable correr estos checks periodicamente. R CMD check detecta muchos problemas comunes que de otro modo descubrirías por las malas.   
 :::
 
 ## Tests
@@ -81,3 +81,163 @@ Config/testthat/edición: 3
 ```
 
 * Crea un archivo `tests/testthat.R` que ejecuta todas las pruebas cuando se ejecute `R CMD check`.
+
+### Creando tests
+
+Es esperable que cada función tenga al menos 1 test, probablemente más de uno si la función es compleja. Normalmente por cada archivo `.R` que contiene 1 función o una familia de funciones tendremos un archivo `.R` con los tests correspondientes que se guardará en `tests/testthat/`. Por ejemplo para la función `suma()` que está en `R/suma.R` tendrá tests en `tests/testthat/test-suma.R`. 
+
+Por supuesto usethis tiene una función que crea estos archivo en el lugar que corresponde:
+
+```{r eval=FALSE}
+use_test("suma")  # Crea y abre tests/testthat/test-suma.R
+```
+
+Además, si el archivo ya existe siemplemente lo abre para agregar o editar el test.
+
+Ahora si, un test está formado por 1 o más *expectativas*, es decir *lo que esperamos* que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función `suma()` la expectativa es que si le pasamos los argumentos `2` y `2`, devuelva `4`. En este caso el test terndrá esta pinta:
+
+```{r}
+test_that("la suma funciona", {
+  expect_equal(object = suma(2, 2), expected = 4)
+})
+```
+
+* `test_that()` es la función principal que encapsula las expectativas e incluye una descripción de lo que hace el test, en este caso "la suma funciona".
+
+* `expct_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la función que queremos testear y el resultado/mensaje/valor esperado. 
+
+En todos los casos si el resultado que devuelve la función y lo esperado no coinciden, `test_that()` devolverá un error. 
+
+En este punto ya podemos correr este test o las expectativas de manera individual. Para esto primero hay que correr `devtools::load_all()` o usar el atajo de teclado para *cargar* la versión actual del paquete y luego ejecutar cada expectativa o el test completo. Al correr el test entero, si se cumple la expectativa veremos esto en la consola:
+
+```r
+Test passed
+```
+
+### Expectativas
+
+Hablemos de las expectativas. A simple vista esta linea de código `expect_equal(object = suma(2, 2), expected = 4)` parece casi ridícula, por supuesto que la función que acabamos de escribir va a devolver 4 cuando le pasemos como argumentos 2 y 2. Además, seguro corriste la función varias veces con distintos argumentos para asegurarte que de lo que esperamos. 
+
+Sin embargo es posible que en el futuro, cambiemos algo en la función ´suma()´ por alguna razón y que deje de dar el resultado correcto. Para esto estan los tests, para detectar errores en el futuro. 
+
+De la misma manera que usamos `expect_equal()` para evaluar que el resultado de la función sea **igual** a lo que esperamos, hay otras funciones que revisan diferentes elementos:
+
+* `expect_length()` revisa si la función devuelve un vector de un largo específico.
+
+* `expect_lt()`, `expect_lte()`, `expect_gt()`, `expect_gte()` chequean si el valor numérico que devuelve la función cumple la condición mayor/menor correspondiente.
+
+* `expect_true()`, `expect_false()` chequean si el resultado es `TRUE` o `FALSE`. 
+
+* `expect_error()`, `expect_warning()`, `expect_message()`, `expect_condition()` revisa si la función devuelve un error, warning, mensaje o condición. 
+
+Veamos en más detalle este último grupo. Normalmente, cuando se testea un error, nos preocupan dos cosas:
+
+* ¿El código falla? Específicamente, ¿falla por la razón correcta?
+* ¿El mensaje de error tiene sentido para la persona que tiene que resolver el error?
+
+Un posible ejemplo de uso para `expect_error()` sería:
+
+```{r eval=FALSE}
+test_that("no suma caracteres",
+  expect_error(suma("1", 1), "Los argumentos deben ser numéricos")
+)
+
+```
+
+Sabemos que si intentamos sumar `"1"` y `1` la función devolverá el mensaje "Los argumentos deben ser numéricos". Pero en un futuro podría pasar que sin querer modificamos esta parte del código y deja de dar ese mensaje. El test podrá identificar ese cambio y avisarnos.
+
+## Testeo general
+
+Hasta ahora ejecutamos cada test uno por uno a mano. Esto tiene sentido cuando estamos trabajando en cada uno. Sin embargo al final del día o luego de resolver un problema o agregar algo nuevo al paquete es importante correr todos los test juntos. Podemos hacer esto con `devtools::test()` o el atajo de teclado `Ctrl+Shif+T`. En el caso de nuestro paquete de prueba y si sale todo bien, nos devolverá algo como esto:
+
+```r
+ℹ Testing paqueteprueba
+✔ | F W  S  OK | Context
+✔ |          1 | fahrenheit_a_centigrados                                                             
+✔ |          2 | suma                                                                                 
+
+══ Results ═══════════════════════════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 3 ]
+```
+
+Pero también es muy común correr directamente `devtools::check()` o el atajo ` Ctrl/Cmd + Shift + E`. Este comando corre algo llamado "R CMD checks". Es un conjunto de más de 50 test que cualquier paquete debe pasar para cumplir con los estandares definidos. Entre otras cosas chequea:
+
+* Metadatos
+* La estructura del paquete y los archivos que contiene
+* DESCRIPTION: información, dependencias, etc.
+* NAMESPACE
+* Código de R: revisa errores de sintaxis, caracteres no ASCII y otros problemas asociados a las funciones
+* Datos del paquete (si hubiera)
+* Documentación: metadatos, links, ejemplos, etc.
+* Tests
+* Viñetas
+
+Por el estado en el que está nuestro paqueteprueba, seguramente al correr R CMD checks nos vamos a encontrar con problemas. Esto es normal, es el momento de resolverlos antes de continuar. 
+
+La salida de los checks es bastante larga porque revisa varias cosas, pero esta es la parte que nos interesa: 
+
+```r
+❯ checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+  Standardizable: FALSE
+
+❯ checking code files for non-ASCII characters ... WARNING
+  Found the following files with non-ASCII characters:
+    R/fahrenheit_a_centigrados.R
+    R/suma.R
+  Portable packages must use only ASCII characters in their R code and
+  NAMESPACE directives, except perhaps in comments.
+  Use \uxxxx escapes for other characters.
+  Function 'tools::showNonASCIIfile' can help in finding non-ASCII
+  characters in files.
+
+❯ checking dependencies in R code ... WARNING
+  '::' or ':::' import not declared from: 'cli'
+
+0 errors ✔ | 3 warnings ✖ | 0 notes ✔
+Error: R CMD check found WARNINGs
+Execution halted
+
+Exited with status 1.
+```
+
+En este caso no encontró errores pero si 3 warnings, hay que resolverlos. 
+
+El primero ocurre en el archivo DESCRIPTION, nos dice que no encontró una licencia estandar. Vamos a hablar un poco más de licencias en otra sección pero en escencia una licencia establece que permisos le damos a otras personas sobre el paquete. Vamos a establecer una de las que sugiere el mensaje usando usethis:
+
+```{r eval=FALSE}
+usethis::use_mit_license()
+```
+
+Esta función agrega los archivos necesarios con el texto de la licencia (en inglés). Y primer warning, ¡resuelto!
+
+El segundo error nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su [versión unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para que el paquete funcione correctamente (particularmente en Windows!). 
+
+Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII, googlear cual es el equivalente en unicode y reemplazarlo. En este caso el problema está en los mensajes de error: "Los argumentos deben ser numéricos." y en particular la "é". Googleando resulta que en unicode se escribe `\U00E9`, por lo tanto el texto queda:
+
+```r
+"Los argumentos deben ser num\U00E9ricos."
+```
+
+Si bien no es legible, cuando la función devuelva este mensaje se verá de manera correcta. Otro warming resuelto!
+
+Finalmente, el tercer error nos dice que estamos usando el paquete cli pero que no está en la lista de dependencias. Podemos agregarlo usando usethis como vimos al comienzo:
+
+```{r eval=FALSE}
+usethis::use_package("cli")
+```
+
+Y con eso resolvemos el último problema! Al correr de nuevo R CMD checks, veremos lo siguiente:
+
+```r
+── R CMD check results ───────────────────────────────────────────────── paqueteprueba 0.0.0.9000 ────
+Duration: 21.8s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+R CMD check succeeded
+```
+
+## Integración continua
