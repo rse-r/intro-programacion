@@ -23,7 +23,6 @@ book:
     - 09_paquetes-1.qmd
     - 10_documentacion.qmd
     - 11_errores.qmd
-    - 12_documentacion.qmd
     - 13_publicacion.qmd
     - 14_reproducibilidad.qmd
     - references.qmd

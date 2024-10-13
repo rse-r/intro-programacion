@@ -198,32 +198,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_errores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
+  <a href="./10_documentacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11_paquetes-2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Manejo de paquetes</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./12_documentacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Documentando paquetes y funciones</span></span></a>
+  <a href="./11_errores.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./13_publicacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./14_reproducibilidad.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -368,7 +362,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Usar la función <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> no es necesario, R devuelve el último elemento con o sin el <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> presente. Sin embargo, puede ayudar a la lectura del código cuando la función es más compleja.</p>
-<div class="informacion">
+<div class="importante">
 <p>Cada vez que se ejecuta una función se crea un nuevo entorno, desde cero, propio de la función para contener su ejecución. Notá que si buscas la variable <code>temperatura_centigrados</code> en el <em>Environment</em> no la vas a encontrar. Eso es así porque todo lo que ocurre adentro de la función, se queda adentro de la función. El código corre en ese “entorno” independiente del entorno general.</p>
 </div>
 <p>Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apropiadamente cualquier función o código que generemos. Para una función deberíamos incluir:</p>

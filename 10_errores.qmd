@@ -1,4 +1,0 @@
----
-title: "Resolviendo y evitando errores"
----
-

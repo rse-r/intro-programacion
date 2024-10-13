@@ -1,4 +1,635 @@
 ---
 title: "Empaquetando funciones"
+editor: 
+  markdown: 
+    wrap: 72
 ---
 
+## Objetivos de aprendizaje
+
+-   Identificar cuándo y por qué crear un paquete R.
+-   Conocer y utilizar los paquetes R `{devtools}` y `{usethis}` para
+    automatizar y agilizar muchas de las tareas de desarrollo de
+    paquetes.
+-   Aprende a crear un nuevo paquete R utilizando
+    `usethis::create_package()`.
+-   Describir y explicar la finalidad de las carpetas y archivos de un
+    paquete de R.
+-   Aprender cómo y por qué puedes añadir datos a un paquete de R.
+
+## ¿Por qué crear un paquete R?
+
+El objetivo principal del desarrollo de software es simplificar alguna
+tarea o un conjunto de tareas para vos y para los demás (como tu equipo,
+u otras personas que usen tu trabajo). Esto también se aplica al
+desarrollo de software en R. Crear un paquete R es una de las formas más
+potentes de simplificar tareas, independientemente de lo sencillas o
+complejas que sean.
+
+A lo largo de esta sección mostraremos que crear y desarrollar un
+programa R no es tan difícil como parece a primera vista. Pero antes de
+hacer un paquete, tenes que definir algunas cosas. Por ejemplo, ¿cómo
+determinar si tiene sentido hacer un paquete R? Respondé a las
+siguientes preguntas:
+
+-   ¿Creaste alguna vez una función, por sencilla que sea?
+-   ¿Utilizaste esa función más de una vez en más de un proyecto o
+    archivo, ya sea copiándola y pegándola o utilizando el archivo que
+    que la contiene?
+
+Si respondiste afirmativamente a estas dos preguntas, entonces deberías
+crear un paquete R para esa función. Pero puede que te preguntes, ¿por
+qué hacer un paquete con una sola función? Porque nunca se acaba con
+*sólo* una función, es muy probable sumes otras a tu trabajo. Aparte de
+empaquetar las funciones de R, si tienes conjuntos de datos pequeños o
+medianos que utilizas en varios proyectos o archivos, puedes incluso
+empaquetar los datos.
+
+Además, hacer un paquete de R ahora es mucho más fácil que en el pasado.
+Esto se debe en gran parte a otros paquetes de R como `{devtools}` y
+`{usethis}` que están diseñados para simplificar el desarrollo de
+paquetes. A esto se suman recursos gratuitos como libros y blogs y
+páginas en Internet para aprender a crear paquetes R y hacer desarrollo
+de software en R.
+
+Crear un paquete R y publicarlo en GitHub o en CRAN como parate de
+trabajo científico, un proyecto o análisis ayuda a su reproducibilidad.
+Esto se debe a que hacer un paquete de R suele requerir un mayor nivel
+de rigor, tests, documentación y inspección del código, lo que significa
+que tú y los demás podrán confiar más en en los resultados. Y si está en
+GitHub, es mucho más fácil compartir tu trabajo. con otras pesonas y lo
+lograr que tu trabajo tenga mayor impacto en general.
+
+## ¿Qué es un paquete R?
+
+Para entender qué es un paquete R, daremos un paso atrás y
+consideraremos lo que ocurre cuando interactuamos con R. El primer
+acercamiento a R es a través de la consola, donde escribís funciones en
+R para realizar tareas que que se imprimen en pantalla. Si no cambiaste
+la configuración inicial esa sesión de R correrar en tu carpeta raiz,
+normalmente algo parecido a `/home/username/` en Linux,
+`/Users/username/` para macOS, o `C:\Users\username` para Windows. Así
+que cualquier dato o gráfico que guardes o importes debe incluir la ruta
+del archivo a la ubicación correcta. Desde un punto de vista
+reproducible y modular esto va en contra de las buenas prácticas.
+Asimismo, el código de R qeu escribas en la consola no se guarda en
+ningún lado. Por tanto, no podés reutilizarlo o compartirlo fácilmente.
+
+El siguiente nivel es guardar el código en un scriptde R (un archivo
+almacenado en cualquier lugar en el ordenador que termina en `.R`) y
+hacer que R ejecute este código en secuencia. En el pasado, la gente
+podía escribir scripts de R en editores de texto como vim, emacs o
+Notepad, y ejecutar manualmente el script en la consola de R. En la
+actualidad, la mayoría de la gente utiliza un Entorno de Desarrollo
+Integrado (IDE) como RStudio o VS Code. Este es el método más utilizado
+para realizar cualquier tipo de trabajo en R. Teóricamente, el código
+escrito de esta forma es reproducible y se puede compartir. Sin embargo,
+en la práctica, las personas escriben código de manera secuencial,
+resolviendo un problema luego del otro y trabajan con R de forma más
+interactiva que programáticamente. El directorio de trabajo de un script
+R en este caso no está definido, por lo que seguimos encontrando
+problemas similares a los que tenemos al usar la consola. Si bien se
+puede almacenar código o funciones de R en un script y *cargarlas* con
+`source()` desde otros scripts, esto implica hacer un seguimiento de los
+archivos con estas funciones y actualizarlos cuando corresponda.
+
+Un paquete de R no es muy diferente de utilizar varios scripts. Existen
+ciertas expectativas y convenciones que deben seguirse para para que que
+el paquete se "instale" en tu computadora y quede disponible como
+paquete. Algunas de estas convenciones son:
+
+-   Debe haber un archivo llamado `DESCRIPTION` que contiene los
+    metadatos necesarios para que R sepa cómo instalar el paquete.
+    Veremos qué debe incluir más adelante.
+
+-   Debe haber una carpeta llamada `R/`. Normalmente sólo contendrá
+    archivos `.R` y sólo incluirán las funciones que hayas creado.
+    Veremos como incorporar las funciones que ya tenemos dentro de un
+    paquete.
+
+-   Debe haber un archivo `NAMESPACE` que contenga la lista de funciones
+    de tu paquete que esten disponibles para ser usadas. Este archivo se
+    gestiona automáticamente con funciones de `{devtools}` y
+    `{roxygen2}`.
+
+-   La carpeta que contiene todo, aunque no es obligatorio debería
+    llamarse como el paquete. Por ejemplo, el paquete `{usethis}` tiene
+    el nombre de carpeta `usethis/`. Esto no es un requisito explícito,
+    pero es muy recomendable. R determina el nombre del paquete a partir
+    del campo `Package:` en el archivo `DESCRIPTION`.
+
+Nada de esto es algo de lo que tengas que preocuparte realmente porque
+los paquetes `{usethis}` y `{devtools}` están diseñados para hacer
+muchas de estas tareas de configuración de paquetes por ti, o al menos
+simplificarlas.
+
+¿Cómo funciona la instalación de paquetes? Cuando le dices a R que
+instale un paquete, que es un conjunto de archivos y carpetas que siguen
+un convención específica, R toma la carpeta y la convierte en un formato
+especial. Luego R guarda este formato especial en una ubicación por
+defecto que es específica del sistema operativo, como macOS, Windows o
+Linux. Para ver dónde están instalados los paquetes, utiliza
+
+```{r}
+.libPaths()
+```
+
+Si escribes esto en tu Consola, lo que verás probablemente será un un
+poco diferente a esto. Si `.libPaths()` muestra más de una ruta,
+normalmente la primera contendrá todos los paquetes.
+
+```{r echo=FALSE, message=FALSE}
+library(fs)
+# R prioritizes the first path, so we'll select it
+primary_library_path <- .libPaths()[1]
+packages <- dir_ls(path(primary_library_path))
+
+# Number of installed packages
+length(packages)
+# See the first few package names
+head(packages)
+```
+
+Si queremos ver cómo almacena R los paquetes en su formato especial,
+podemos utilizar `dir_tree()` y el contenido de la instalación de
+`devtools/`.
+
+```{r}
+primary_library_path <- .libPaths()[1]
+fs::dir_tree(path(primary_library_path, "devtools"))
+```
+
+Los archivos `R/devtools.rdb` y `R/devtools.rdx` son los archivos cons
+formatos especiales que contienen las funciones dentro de `{devtools}`
+que R buscará cuando carga el paquete. Cuando se instala un paquete en
+R, se crea una carpeta en `.libPaths()` con los archivos en el formato
+específico que necesita R. Así que cuando ejecutes `library(devtools)`,
+R sabrá que debe buscar las funciones que se encuentran en la carpeta
+`devtools/`.
+
+Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu
+computadora (es decir, no está publicado en CRAN o en GitHub) no es no
+difiere de instalar un paquete de CRAN con `install.packages()` o desde
+GitHub con `pak::pak()`. La única diferencia es que los paquetes en CRAN
+o GitHub pueden ser utilizados por cualquiera que tenga acceso a
+internet.
+
+::: importante
+Te habrás dado cuenta de que hemos utilizado la sintaxis
+`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
+que utilice la función de un paquete concreto. Así que `pak::pak()` es
+decirle a R que utilice la función `pak()` del paquete `pak`. En
+desarrollo de paquetes en particular, utilizaremos esto en lugar de
+cargar las librerias con `library(pak)` porque queremos ser explícitos
+sobre qué función queremos utilizar y porque no necesitamos cargar todas
+las funciones del paquete cuando sólo queremos utilizar una o dos.
+:::
+
+## Nombrar un paquete
+
+Crear un paquete no es complicado. Lo complicado es es *nombrar* el
+paquete. Crear un nombre significativo, que la gente recuerde y que se
+pueda buscar en Google es *realmente difícil*. No hay una manera fácil
+de y a menudo requiere varios días de pensar opciones. Pero además hay
+que asegurarse de que el nombre que estamos pensando usar no lo esté
+usando alguien más. Esto se puede hacer con el paquete `pak`. Por ahora
+para revisar el paso a paso para crear un paquete usaremos
+`paqueteprueba` como nombre. Revisemos si está disponible
+
+```{r ce-available-pkg, eval=TRUE, echo=FALSE}
+pak::pkg_name_check("paqueteprueba")
+```
+
+En este caso `paqueteprueba` está disponible para que lo usemos.
+
+### Requisitos formales
+
+Existen tres requisitos formales:
+
+1.  El nombre sólo puede estar formado por letras, números y puntos, es
+    decir, .
+2.  Debe empezar por una letra.
+3.  No puede terminar con un punto.
+
+Lamentablemente, esto significa que no puede utilizar guiones ni guiones
+bajos, es decir, - o \_, en el nombre del paquete. Desaconsejamos el uso
+de puntos en los nombres de paquetes, para evitar que se confunda con
+extensiones de archivos y métodos S3.
+
+## Estructura de un paquete
+
+Ahora que tenemos un nombre, el siguiente paso es configurar la
+infraestructura básica para el paquete. Afortunadamente, el paquete
+`usethis` ayuda resolver gran parte del trabajo. Cuando usemosla función
+`usethis::create_package()` configurará los archivos y carpetas básicos
+que necesitamos para crear un paquete y que R lo instale como tal.
+Utilizaremos esta función para crear el paquete `paqueteprueba`.
+
+```{r eval=FALSE}
+usethis::create_package(path = "~/Documentos/Courses/paqueteprueba")
+```
+
+En este caso estamos creando el paquete en la carpeta Documentos, pero
+también podríamos crearlo en cualquier otra carpeta. Esta linea de
+código además se corre en la consola, no tendría sentido que corra en un
+script ya que no es algo que haremos todos los días. El resultado es el
+siguiente
+
+``` r
+✔ Creating 'C:/Users/tonin/Documentos/paqueteprueba/'
+✔ Setting active project to 'C:/Users/tonin/Documentos/paqueteprueba'
+✔ Creating 'R/'
+✔ Writing 'DESCRIPTION'
+Package: paqueteprueba
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R (parsed):
+    * First Last <first.last@example.com> [aut, cre] (YOUR-ORCID-ID)
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to
+    pick a license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+✔ Writing 'NAMESPACE'
+✔ Writing 'paqueteprueba.Rproj'
+✔ Adding '^paqueteprueba\\.Rproj$' to '.Rbuildignore'
+✔ Adding '.Rproj.user' to '.gitignore'
+✔ Adding '^\\.Rproj\\.user$' to '.Rbuildignore'
+✔ Opening 'C:/Users/tonin/Documentos/paqueteprueba/' in new RStudio session
+✔ Setting active project to '<no active project>
+```
+
+Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada
+`paqueteprueba` con los archivos mínimos para instalar el paquete. Esta
+carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos
+usando usethis y RStudio y viene con todas las ventajas que vimos. Sin
+embargo, no es impresindible que un paquete sea un proyecto al mismo
+tiempo. usethis tiene aún otra ventaja más, inicia automáticamente un
+repositorio. Esto es importantísimo, desarrollar software viene de la
+mano del control de versiones. Además, si estuvieramos creando un
+paquete de verdad, contectar este repositorio local con uno remoto en
+GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan
+usar otras personas.
+
+```{r}
+fs::dir_tree("C:/Users/tonin/Documents/Courses/paqueteprueba/", all = TRUE)
+```
+
+Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya
+presentamos, hay algunos archivos y carpetas ocultas. Conocés el
+.gitignore, pero .Rbuildignore y .Rproj.user son nuevos. El primero es
+parecido a .gitignore, incluye la lista de archivos y carpetas que R
+deberá ignorar al momento de construir el paquete, por ahora la lista es
+corta pero ira creciendo a medida que sumemos cosas al paquete. La
+carpeta .Rproj.user es algo que está en todo projecto de RStudio e
+incluye las configuraciones específicas del proyecto.
+
+### Completando el archivo DESCRIPTION
+
+El archivo `DESCRIPTION` contiene los metadatos del paquete paquete y
+algunos parámetros de configuración que R utiliza al construirlo e
+instalarlo. El formato de los metadatos utiliza el patrón `key: value`.
+Así, por ejemplo, la clave `Package` tiene el valor `paqueteprueba`, que
+le dice a R cuál es el nombre del paquete. Asimismo, `Title` y `Authors`
+proporcionan un poco más de información sobre lo que hace el paquete y
+quién lo creó. Un archivo DESCRIPTION completo tiene muchas otros
+campos, alguns de los cuales no son importantes ya que son creadas
+automáticamente y usados internamente por R para propósitos generales
+durante la construcción del paquete. Otros, son bastante importantes.
+Específicamente, las claves `Title`, `Authors`, y `Description` deberían
+tener más valores más apropiados.
+
+Los campos `Title` y `Description` describen lo que hace el paquete.
+Sólo se diferencian en la longitud:
+
+-   El **título** es una descripción del paquete en una línea, y a
+    menudo se muestra en listados de paquetes. Debe ser texto plano (sin
+    marcas), cada palabra en mayúsculas como un título, y NO terminar en
+    un punto. Se breve: los listados suelen truncar el título a 65
+    caracteres.
+-   La **descripción** es más detallada que el título. Puede utilizar
+    varias frases, pero está limitado a un párrafo. Si la descripción
+    abarca varias líneas (y así debe ser), cada una de ellas no debe
+    superar los 80 caracteres. Deje 4 espacios entre las líneas
+    siguientes.
+
+Por ejemplo el título y la descripción de ggplot2 tienen esta pinta:
+
+``` yaml
+Title: Create Elegant Data Visualisations Using the Grammar of Graphics
+Description: A system for 'declaratively' creating graphics,
+    based on "The Grammar of Graphics". You provide the data, tell 'ggplot2'
+    how to map variables to aesthetics, what graphical primitives to use,
+    and it takes care of the details.
+```
+
+El campo `Authors@R` se utiliza para identificar al autoro autora del
+paquete, y a quién contactar si algo no funciona. Este campo es inusual
+porque contiene código R en lugar de texto plano. Este es un ejemplo:
+
+``` yaml
+Autores@R: person("Paola", "Corrales", email = "mimail@pao.com",
+  role = c("aut", "cre"))
+```
+
+Estamos usando la función `person()` que viene con R base en el paquete
+`utils`.
+
+```{r}
+person("Paola", "Corrales", email = "mimail@pao.com",
+  role = c("aut", "cre"))
+```
+
+Esta función dice que Paola Corrales está a cargo de mantener el paquete
+(`cre`) y es autora (`aut`) y que su dirección de correo electrónico es
+`mimail@pao.com`. Es posible listar a más de una persona en este campo.
+La función `person()` tiene cuatro argumentos principales:
+
+-   El nombre, especificado por los dos primeros argumentos, `given` y
+    `family`. En la cultura occidental, `given` (nombre) va antes que
+    `family` (apellido). En muchas otras culturas, esta convención no es
+    válida. Para agregar una entidad, empresa u organización, como "R
+    Core Team" o "Posit Software, PBC", se usa el argumento `given` (y
+    se omite `family`).
+
+-   La dirección de `email`, es solo un requisito para quien mantiene el
+    paquete. Es importante que uses una dirección de correo electrónico
+    a la que tengas acceso permanente. La política de CRAN requiere que
+    sea para una persona, en lugar de, por ejemplo, una lista de correo.
+
+-   Uno o más códigos de tres letras especificando el `role`. Estos son
+    los roles más importantes que hay que conocer:
+
+    -   `cre`: quien mantiene le paquete y la persona a la que deberías
+        molestar si tenés problemas usandolo. A pesar de ser la
+        abreviatura de «creator», este es el rol correcto para el
+        mantenedor, incluso si no es la persona que inicialmente creó el
+        paquete.
+
+    -   `aut`: autores, aquellas personas que han hecho contribuciones
+        significativas al paquete.
+
+    -   `ctb`: contribuidores, aquellas personas que han hecho
+        contribuciones menores, como parches.
+
+    -   `cph`: titular de los derechos de autor. Se utiliza para listar
+        titulares de copyright adicionales que no son autores,
+        normalmente empresas, como un empleador de uno o más de los
+        autores.
+
+    -   fnd\`: financiador, las personas u organizaciones que han
+        proporcionado apoyo financiero para el desarrollo del paquete.
+
+-   El argumento opcional `comment` se usa para incluir el
+    [identificador de ORCID](https://orcid.org). Y es particularmente
+    útil en el ámbito académico.
+
+::: ejercicio
+Es momento de empezar a darle forma al paquete.
+
+1.  Si aún no seguiste las instrucciones para crear el `paqueteprueba`,
+    es el momento. No te preocupes por el nombre, este paquete es solo
+    para practicar.
+2.  Abrí el projecto/paquete.
+3.  Abrí el archivo DESCRIPTION y completá los campos `Title`,
+    `Authors`, y `Description`
+:::
+
+## Flujo de trabajo para el desarrollo de paquetes
+
+Aunque hay varias formas de desarrollar un paquete R, un flujo de
+trabajo bien establecido y documentado gira en torno a hacer uso de
+`usethis` y `devtools`.
+
+Los pasos típicos utilizados en este flujo de trabajo de desarrollo son:
+
+1.  Cuando tengas una idea de una función o conjunto de funciones
+    similares, por por ejemplo, sumar 2 números, es momento de iniciar
+    un nuevo script. Para eso escribí en la consola
+    `usethis::use_r("suma")`. Se creará un nuevo archivo R en la carpeta
+    `R/` y se abrirá en RStudio.
+
+2.  En este nuevo archivo podrás empezar a crear y desarrollar la
+    función, escribiendo los argumentos de entrada y la eventual salida.
+    Por ahora llegamos hasta acá pero pronto veremos como documentar la
+    función.
+
+3.  Una vez que sienta que la función está lista para ser probada, podés
+    probar la función ejecutándola en el mismo script, en la consola o
+    en un archivo R Markdown. La otra alternativa para que la función
+    esté disponible para R, es cargarla con `Ctrl-Shift-L` que ejecuta
+    el comando `load_all()` (de `devtools`). Esto solo funciona porque
+    estamos desarrollando un paquete.
+
+4.  A menos que la función que creaste sea muy simple es *muy*
+    improbable que funcione perfectamente la primera, lo más probable es
+    que la función exactamente como esperabas o de un error. En ese caso
+    tendrás que modificarla, cargarla nuevamente con `load_all()` y
+    probarla nuevamenta tantas veces como sea neceasario hasta conseguir
+    los resultados que necesitas. función.
+
+Vamos a probar un poco de este flujo de trabajo haciendo una función de
+práctica. En la consola, escribí esta función:
+
+```{r cs-prueba-flujo-de-trabajo, eval=FALSE}
+usethis::use_r("funcion_prueba")
+```
+
+A continuación se abrirá el recientemente creado archivo
+`R/funcion_prueba.R`. Escribí la función y guardá los cambios en el
+archivo.
+
+```{r cs-temp-función}
+suma <- function(x, y) {
+  x + y
+}
+```
+
+Antes de hacer nada, escribe `suma(2, 2)` en la Consola y apretá enter
+para ejecutarlo. ¿Qué ocurre? Nada. Eso es porque R no sabe que la
+función existe. Tenemos que hacer que R la conozca ya sea ejecutando la
+función directamente desde el script (`Ctrl-Enter` para enviar a la
+Consola), usando `source()` en el script, instalando el paquete, o
+imitando la instalación del paquete con la función `load_all()`. Como
+estamos desarrollando un paquete usaremos la función `load_all()`.
+
+Vamos a probar la función `load_all()` con el atajo `Ctrl-Shift-L`.
+Ahora si, volvé a escribir `suma(2, 2)` en la consola. Ahora deberías
+ver que funciona.
+
+::: ejercicio
+**Practiquemos el flujo de trabajo**
+
+Ya que usarás este flujo de trabajo cuando hagas paquetes en R, es hora
+de que lo practiques.
+
+Realiza los siguientes cambios en la función. Con cada cambio, vuelva a
+cargarla (`Ctrl-Shift-L` en RStudio o `load_all()` en la Consola) para
+que las funciones actualizadas estén disponibles. Después de cada cambio
+probá que la función haga lo que debe hacer.
+
+-   Agregá valores por defecto para los argumentos `x` e `y`. Probá
+    correr la función sin pasarle argumentos: `suma()`.
+
+-   Modificá la función para que chequee que los argumentos sean
+    numéricos. Probá la función con `suma("1", 1)`
+
+-   Modifica nuevamente la función para que si `x` o `y` son negativos,
+    la función devuelva "No puedo sumar negativos".
+:::
+
+### Datos en paquetes
+
+Muchos paquetes de R incluyen datos, en algunos casos porque son útiles
+para mostrar como usar las funciones que incluye, en otros casos porque
+es el objetivo principal de ese paquete. El paquete `datos` es el mejor
+ejemplo de esto último.
+
+En la mayoría de los casos los datos en el paquete estarán disponibles
+para que las personas los usen. Guardaremos estos datos en la carpeta
+`/data` y el flujo de trabajo usando `usethis` tendrá esta pinta:
+
+``` r
+# Leer datos desde algún archivo
+# o generar datos
+
+# Manipular los datos para que tengan la pinta que necesitamos
+
+datos <- sample(1000)
+usethis::use_data(datos)
+```
+
+La función nos devolverá lo siguiente:
+
+``` r
+✔ Adding 'R' to Depends field in DESCRIPTION
+✔ Creating 'data/'
+✔ Setting LazyData to 'true' in 'DESCRIPTION'
+✔ Saving 'datos' to 'data/datos.rda'
+• Document your data (see 'https://r-pkgs.org/data.html')
+```
+
+Es decir, automáticamente crea la carpeta y guarda los datos con formato
+`.rds` (un tipo de archivo específico de R). En principio el código de
+arriba solo se correrá una vez a menos que sea necesario actualizar los
+datos. Sin embargo es una buena idea guarda el código y los datos crudos
+si los hubiera en `data_raw`. Esta carpeta además no debe incluirse
+cuando se construye el paquete por lo que hay que agregarla a
+`Rbuildignore`.
+
+Ahora si apretamos `Ctrl-Shift-L` para cargar de nuevo el paquete de
+prueba y escribimos `datos` en la consola veremos los datos que creamos.
+
+### Construyendo un paquete de R paso a paso {#ex-paquete}
+
+::: ejercicio
+Es hora de empezar a unir lo que hicimos. El objetivo de este ejercicio
+es crear la estructura de un paquete que lean y analice datos de
+estaciones meteorológicas. Pero además este será un trabajo colaborativo
+entre 2 personas para practicar como desarrollar software en equipo
+usando GitHub.
+
+**Crear el paquete**
+
+1.  Piensen un nombre para el paquete, debe seguir las reglas pero no
+    importa si se repite en otro ámbito.
+
+2.  El paquete debera estar en la cuenta de GitHub de una de las
+    personas que integran el grupo. Decidan quien sera y realicen los
+    siguientes pasos en la computadora de esa persona.
+
+3.  Creen la estructura del paquete con `usethis`.
+
+4.  Modifiquen el archivo DESCRIPTION con todo lo necesario.
+
+**Conectarlo con Git localmente**
+
+1.  Para crear el repositorio local corran la siguiente funcion de
+    usethis en la consola de R con el proyecto del paquete abierto en
+    RStudio en la maquina de la persona que seleccionaron para que tenga
+    el repo en su cuenta:
+
+`usethis::use_git()`
+
+Esta funcion va a crear el repositorio y generara un commit inicial de
+todos los archivos que tiene el proyecto. Va a preguntarte si queres
+hacer esto. Contestale que si. Tambien va a reiniciar RStudio para que
+la pestaña de Git aparezca en nuestro proyecto. Va a preguntarte si
+queres hacer esto. Contestale que si.\
+\
+**Crear el repo remoto en GitHub**
+
+1.  Con el proyecto del paquete abierto en RStudio en la computadora de
+    la persona que tendra el repo en GitHub, corran la siguiente funcion
+    de usethis en la consola:
+
+`usethis::use_github()`
+
+Esta funcion hace lo siguiente:
+
+-   Crea un nuevo repositorio en GitHub con el nombre del proyecto.
+-   Configura ese nuevo repositorio como origen remoto para el
+    repositorio local.
+-   Configura tu branch local por defecto para realizar el mismo
+    seguimiento en el origen y realiza un push inicial.
+-   Abre el nuevo repositorio en tu navegador.
+
+Te presenta algo similar a esto en la consola:
+
+```r
+
+ℹ Defaulting to "https" Git protocol.
+✔ Creating GitHub repository "yabellini/inventarioRRNN". 
+✔ Setting remote "origin" to "https://github.com/yabellini/inventarioRRNN.git". 
+✔ Adding "https://github.com/yabellini/inventarioRRNN" to URL. 
+✔ Adding "https://github.com/yabellini/inventarioRRNN/issues" to BugReports. 
+ℹ There is 1 uncommitted file: • DESCRIPTION !
+
+Is it ok to commit it?
+
+1: Absolutely not 
+2: Not now 
+3: Yes
+
+Selection: 3 
+
+✔ Adding files. 
+✔ Making a commit with message "Add GitHub inks to DESCRIPTION". 
+✔ Pushing "master" branch to GitHub and setting "origin/master" as upstream branch. 
+✔ Opening URL <https://github.com/yabellini/inventarioRRNN>.
+```
+
+3.  Modificar la configuración del repositorio en GitHub para que la
+    otra persona del grupo tenga permisos para hacer commits y push.
+    Necesitarás sabes su nombre de usuario
+    1.  En GitHub.com, navega a la página principal del repositorio.
+
+    2.  Hacé clic en **Settings**.
+
+        ![Captura de pantalla de un encabezado de repositorio en el que
+        se muestran las pestañas. La pestaña "Configuración" está
+        resaltada con un contorno naranja
+        oscuro.](https://docs.github.com/assets/cb-28260/images/help/repository/repo-actions-settings.png)
+
+    3.  En la sección "Access" de la barra lateral, haz clic en
+        **Colaborators**.
+
+    4.  Hacé clik en el botón verde **Add people**.
+
+    5.  Comenzá a teclear el nombre de la persona que deseas invitar
+        dentro del campo de búsqueda hasta que aparezca.
+
+    6.  Hacé clikc en **Add NOMBRE to this repository**.
+
+    7.  La persona recibirá un correo electrónico invitándole al
+        repositorio. Una vez que acepte la invitación, tendrá acceso de
+        colaborador a tu repositorio.
+
+4\. La otra persona del grupo ahora puede clonar el repo en su
+computadora, siguiendo los pasos que vimos en como trabajar
+individualmente.
+
+5. Modificá el README.md para indicar que el paquete es de prueba, que
+    no está pensado para ser usado como tal.
+:::

@@ -67,7 +67,7 @@ library(readr)
 pinguinos <- read_csv("datos/pinguinos.csv")
 ```
 
-::: informacion
+::: importante
 Notá que en este caso el código para leer los datos consta de dos líneas.
 La primera carga el paquete readr y el segundo usa la función `read_csv()` (del paquete readr) para leer el archivo .csv.
 No es necesario cargar el paquete cada vez que vas a leer un archivo, pero asegurate de incluir la carga de paquetes al comienzo de tu codigo.

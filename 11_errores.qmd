@@ -241,3 +241,4 @@ R CMD check succeeded
 ```
 
 ## Integración continua
+
