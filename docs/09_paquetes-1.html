@@ -205,7 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./11_errores.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Resolviendo y evitando errores</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dependencias y tests</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -482,8 +482,10 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:/Users/tonin/Documents/Courses/paqueteprueba/
 ├── .git
+│   ├── COMMIT_EDITMSG
 │   ├── config
 │   ├── description
+│   ├── FETCH_HEAD
 │   ├── HEAD
 │   ├── hooks
 │   │   └── README.sample
@@ -499,40 +501,112 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │           └── origin
 │   │               └── master
 │   ├── objects
+│   │   ├── 03
+│   │   │   └── bb3fc049ce3d6f6d582d27a760ac393a7cf3c2
+│   │   ├── 09
+│   │   │   └── 7b241637da023174b0f2e3715bd0291d9ded37
+│   │   ├── 0c
+│   │   │   └── 1b65dfc587a5ba5ffbd5556da30ba3fd827753
 │   │   ├── 0e
 │   │   │   └── caf06d8c625646dc8cf48d46e92b69e7e8ece0
 │   │   ├── 12
-│   │   │   └── 0fa614d537069670638395863804ba384d9f13
+│   │   │   ├── 0fa614d537069670638395863804ba384d9f13
+│   │   │   └── 392edc2990d79f77b9f142a692e5ac5459d629
+│   │   ├── 13
+│   │   │   └── 204ea60fce6d3f67688a97707d5afb6631bb99
+│   │   ├── 14
+│   │   │   └── b591ffc2fe502b9073e28488ecc6c3dd09b643
+│   │   ├── 1a
+│   │   │   ├── aee56e290f0d5028ec350ed6f5327ebe6276b2
+│   │   │   └── dd63c77c46e246a33119eac95574a406ab5480
+│   │   ├── 2a
+│   │   │   └── 892af5b363195d8c25c5990e24a76a47572fb0
+│   │   ├── 2b
+│   │   │   └── db1fa0fac0382c7cf0f618efb0d2ec1c1e5d88
+│   │   ├── 2d
+│   │   │   └── 19fc766d98a08d9d1437896bfb008a7b15f340
 │   │   ├── 34
 │   │   │   └── 0ec989d9d7e9bf488f2e3dada00d02f2ec8a9e
 │   │   ├── 39
 │   │   │   └── 26dc5382a1bf8fa47cda2ed77d4d8794c01874
+│   │   ├── 3c
+│   │   │   └── 09f354b2f91522fb358c669fc047817626f0de
+│   │   ├── 3d
+│   │   │   └── 2cfe3d1a1115faf88f2cac754e53995cf4546b
+│   │   ├── 3e
+│   │   │   └── eaa94dd310ba54d1787898858fcac48c18bc17
 │   │   ├── 40
 │   │   │   └── 1aa37448f81927b0dfea09fc0d25fb3707071c
+│   │   ├── 44
+│   │   │   ├── 3b1ea8301d0b6593c7a66b2db38b964fb86988
+│   │   │   └── 55e17cb7a2467313e227cde61e9e29ca47ac55
+│   │   ├── 4b
+│   │   │   └── bce7508094d25e785c53b2098872d5ab3edbdf
+│   │   ├── 59
+│   │   │   └── 782d5f0c137bc7ef8f3405771335a11d99cd34
 │   │   ├── 5a
 │   │   │   └── 266908f7d21b9c6aff48ba292e009909b650c0
+│   │   ├── 62
+│   │   │   └── 12fd67e3361189cc6ed823f95d7d4022a79057
 │   │   ├── 69
 │   │   │   └── fafd4b6dddad27500cfc67efb9fb16e86a96bd
 │   │   ├── 6a
 │   │   │   └── e926839dd1829f1016a96f766d970ff184ad97
+│   │   ├── 6b
+│   │   │   └── 7d31a1fd5c88b6c8ed38878086593168d899a9
+│   │   ├── 6c
+│   │   │   └── 091b2921449f18808bbe1f84c62162738a2b4b
 │   │   ├── 6d
 │   │   │   └── 7d732814d8d41f8df2d7ddf8495095a24fe546
+│   │   ├── 6e
+│   │   │   └── 509c599e415c54a097d0eafa5a20366fe020ea
+│   │   ├── 72
+│   │   │   └── e042c9105cf35e13f82e78783a13bdf6989332
 │   │   ├── 7c
-│   │   │   └── 794aae41aff30b6f9d22e702313dc48d01232a
+│   │   │   ├── 794aae41aff30b6f9d22e702313dc48d01232a
+│   │   │   └── 8e6c4ee1418151694f21657bc647effa320fd4
 │   │   ├── 90
+│   │   │   ├── ab95739f46c7f5202451c7e3ca971fe54f7ee1
 │   │   │   └── afca635b8b3c4676ce46297d00be72285537a1
+│   │   ├── 95
+│   │   │   └── 7cfbc786ea6015aa91d95020475e00d54d135a
+│   │   ├── 98
+│   │   │   └── 7c7b33785d1ab481b3903239eae8ead805ec1b
+│   │   ├── 9a
+│   │   │   └── fa4bd857183037055de4d228c05c0c4c77c2b3
 │   │   ├── 9c
 │   │   │   └── 54e298b552b6ff6d0d182f2aed7dcba6f97c49
+│   │   ├── b3
+│   │   │   └── 723d9f2fb0291775bc932158065e134259fc51
+│   │   ├── b4
+│   │   │   └── 5d150db4b24e1a9660e86aa3efc5cfe5e553de
+│   │   ├── c2
+│   │   │   └── 0a3ed5c47572874db52de10f7ab2ae69a9c036
+│   │   ├── c8
+│   │   │   └── 992e4ae4fbbc62f73efe8c1fb2c79e00f3c169
+│   │   ├── ca
+│   │   │   └── e04eee2cd61c5a360755cb098e9f9b891cac2a
 │   │   ├── cb
 │   │   │   └── 480a65e75aeab8ac9cf17ae5f3ee3e66479b71
+│   │   ├── ce
+│   │   │   └── 768f160de5b76b421b5fc8ce31214113f25bee
+│   │   ├── cf
+│   │   │   └── fe7b1868e00b4ea736138bbe96f6a33f3ef7a6
+│   │   ├── de
+│   │   │   └── 71cd16a8a7f37774639874067a6937aaf72026
+│   │   ├── e5
+│   │   │   └── 22719058705a6094d2d0dbdf13e510f729201b
 │   │   ├── f0
 │   │   │   └── 2c9d8d4c4e59a076b63ada67685d2ff127ace0
+│   │   ├── f8
+│   │   │   └── c768b9e70870a672a01998a341c924cce247da
 │   │   ├── fb
 │   │   │   └── 9fae11fe9b2092b22569c357e384c3dfea5b53
 │   │   ├── fe
 │   │   │   └── 19835c616a361ff6e7c182fff0ab2119e818dc
 │   │   ├── info
 │   │   └── pack
+│   ├── ORIG_HEAD
 │   └── refs
 │       ├── heads
 │       │   └── master
@@ -540,6 +614,10 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │       │   └── origin
 │       │       └── master
 │       └── tags
+├── .github
+│   ├── .gitignore
+│   └── workflows
+│       └── pkgdown.yaml
 ├── .gitignore
 ├── .Rbuildignore
 ├── .Rhistory
@@ -568,20 +646,34 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   │   │   ├── 08A28989
 │   │   │   │   ├── 13693628
 │   │   │   │   ├── 29F9BEB5
+│   │   │   │   ├── 62AEF134
+│   │   │   │   ├── 7E0E449F
+│   │   │   │   ├── A74D1CF1
 │   │   │   │   └── INDEX
-│   │   │   └── session-5ae6f5b
-│   │   │       ├── 1C0DBE9B
+│   │   │   └── session-59f40a85
+│   │   │       ├── 17B441E0
+│   │   │       ├── 17B441E0-contents
 │   │   │       ├── 1C0DBE9B-contents
 │   │   │       ├── 5450B82A
 │   │   │       ├── 5450B82A-contents
 │   │   │       ├── 622B348D
 │   │   │       ├── 622B348D-contents
+│   │   │       ├── 7DFD6A94
+│   │   │       ├── 7DFD6A94-contents
+│   │   │       ├── 9D44C196-contents
+│   │   │       ├── A59B03CA-contents
 │   │   │       └── lock_file
 │   │   ├── tutorial
 │   │   ├── viewer-cache
 │   │   └── viewer_history
 │   └── shared
 │       └── notebooks
+│           ├── ABFEDDB4-vinieta_prueba
+│           │   └── 1
+│           │       ├── 35B631FD5ae6f5b
+│           │       │   └── chunks.json
+│           │       └── s
+│           │           └── chunks.json
 │           ├── patch-chunk-names
 │           └── paths
 ├── data
@@ -589,10 +681,47 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 ├── data_raw
 │   └── crea_datos.R
 ├── DESCRIPTION
+├── docs
+│   ├── 404.html
+│   ├── articles
+│   │   ├── index.html
+│   │   └── vinieta_prueba.html
+│   ├── authors.html
+│   ├── deps
+│   │   ├── bootstrap-5.3.1
+│   │   │   ├── bootstrap.bundle.min.js
+│   │   │   ├── bootstrap.bundle.min.js.map
+│   │   │   └── bootstrap.min.css
+│   │   ├── data-deps.txt
+│   │   └── jquery-3.6.0
+│   │       ├── jquery-3.6.0.js
+│   │       ├── jquery-3.6.0.min.js
+│   │       └── jquery-3.6.0.min.map
+│   ├── index.html
+│   ├── link.svg
+│   ├── pkgdown.js
+│   ├── pkgdown.yml
+│   ├── reference
+│   │   ├── datos.html
+│   │   ├── index.html
+│   │   ├── Rplot001.png
+│   │   └── suma.html
+│   ├── search.json
+│   └── sitemap.xml
+├── man
+│   ├── datos.Rd
+│   └── suma.Rd
 ├── NAMESPACE
 ├── paqueteprueba.Rproj
-└── R
-    └── suma.R</code></pre>
+├── R
+│   ├── data.R
+│   └── suma.R
+├── README.md
+├── README.Rmd
+├── vignettes
+│   ├── .gitignore
+│   └── vinieta_prueba.Rmd
+└── _pkgdown.yml</code></pre>
 </div>
 </div>
 <p>Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya presentamos, hay algunos archivos y carpetas ocultas. Conocés el .gitignore, pero .Rbuildignore y .Rproj.user son nuevos. El primero es parecido a .gitignore, incluye la lista de archivos y carpetas que R deberá ignorar al momento de construir el paquete, por ahora la lista es corta pero ira creciendo a medida que sumemos cosas al paquete. La carpeta .Rproj.user es algo que está en todo projecto de RStudio e incluye las configuraciones específicas del proyecto.</p>
