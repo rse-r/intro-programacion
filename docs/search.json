@@ -851,5 +851,71 @@
       "Appendices",
       "<span class='chapter-number'>C</span>  <span class='chapter-title'>Soluciones de ejercicios</span>"
     ]
+  },
+  {
+    "objectID": "D_checklist.html",
+    "href": "D_checklist.html",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "",
+    "text": "D.1 DESCRIPTION",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
+  },
+  {
+    "objectID": "D_checklist.html#description",
+    "href": "D_checklist.html#description",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "",
+    "text": "Título\nDescripción\nLas personas involucradas estan listadas en Auth@rs",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
+  },
+  {
+    "objectID": "D_checklist.html#funciones-y-datos",
+    "href": "D_checklist.html#funciones-y-datos",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "D.2 Funciones y datos",
+    "text": "D.2 Funciones y datos\n\n(al menos) 3 funciones\n(al menos) 1 set de datos",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
+  },
+  {
+    "objectID": "D_checklist.html#documentación",
+    "href": "D_checklist.html#documentación",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "D.3 Documentación",
+    "text": "D.3 Documentación\n\nTodas las funciones y datos están documentados\nREADME completo\nIncluye una viñeta que explica como usar las funciones\nEl paquete tiene una página web",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
+  },
+  {
+    "objectID": "D_checklist.html#tests",
+    "href": "D_checklist.html#tests",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "D.4 Tests",
+    "text": "D.4 Tests\n\nEl paquete tiene tests que cubren al menos el 75% del código de las funciones\nEl paquete tiene una GitHub action que revisa la covertura de los tests\nEl paquete pasa R CMD checks\nEl paquete tiene una GitHub action que chequea el paquete en distintos sistemas operativos",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
+  },
+  {
+    "objectID": "D_checklist.html#otros",
+    "href": "D_checklist.html#otros",
+    "title": "Appendix D — Checklist para revisar el paquete",
+    "section": "D.5 Otros",
+    "text": "D.5 Otros\n\nIncluye una licencia\nEl README incluye instrucciones sobre",
+    "crumbs": [
+      "Appendices",
+      "<span class='chapter-number'>D</span>  <span class='chapter-title'>Checklist para revisar el paquete</span>"
+    ]
   }
 ]
