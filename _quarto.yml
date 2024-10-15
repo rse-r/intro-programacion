@@ -30,6 +30,7 @@ book:
     - A_instalacion.qmd
     - B_config_pk.qmd
     - C_soluciones.qmd
+    - D_checklist.qmd
   sidebar:
     background: "#916699"
     search: true
