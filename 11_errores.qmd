@@ -95,7 +95,7 @@ use_test("suma")  # Crea y abre tests/testthat/test-suma.R
 
 Además, si el archivo ya existe siemplemente lo abre para agregar o editar el test.
 
-Ahora si, un test está formado por 1 o más *expectativas*, es decir *lo que esperamos* que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función `suma()` la expectativa es que si le pasamos los argumentos `2` y `2`, devuelva `4`. En este caso el test terndrá esta pinta:
+Ahora si, un test está formado por 1 o más *expectativas*, es decir *lo que esperamos* que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función `suma()` la expectativa es que si le pasamos los argumentos `2` y `2`, devuelva `4`. En este caso el test tendrá esta pinta:
 
 ```{r eval=FALSE}
 test_that("la suma funciona", {
@@ -105,7 +105,7 @@ test_that("la suma funciona", {
 
 * `test_that()` es la función principal que encapsula las expectativas e incluye una descripción de lo que hace el test, en este caso "la suma funciona".
 
-* `expct_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la expresión que queremos testear y el resultado/mensaje/valor esperado. 
+* `expect_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la expresión que queremos testear y el resultado/mensaje/valor esperado. 
 
 En todos los casos si el resultado que devuelve la expresión y lo esperado no coinciden, `test_that()` devolverá un error. 
 
@@ -146,6 +146,19 @@ test_that("no suma caracteres",
 ```
 
 Sabemos que si intentamos sumar `"1"` y `1` la función devolverá el mensaje "Los argumentos deben ser numéricos". Pero en un futuro podría pasar que sin querer modificamos esta parte del código y deja de dar ese mensaje. El test podrá identificar ese cambio y avisarnos.
+
+::: ejercicio
+
+Ahora vamos a trabajar con la primera función que vimos: `fahrenheit_a_centigrados()`.
+
+1. Si la función no es parte de paqueteprueba, agregala. Podés copiar el código que está en la sección [Funciones](07_funciones.qmd#revisá-que-los-argumentos-sean-válidos).
+2. Hace una lista de expectativas, es decir, posibles resultados o mensajes que podría devolver la función en distintas situaciones.
+3. Identifica que función de la familia `expect_xxX()` deberías usar en casa caso. 
+4. Escribí al menos 2 tests usando las expectativas que definistes. 
+5. Ejecutá cada expectativa de manera individual para asegurarte que funcionan.
+
+:::
+
 
 ## Testeo general
 
@@ -261,7 +274,7 @@ Otra de las cosas que podemos hacer con CI es revisar la cobertura de los tests 
 usethis::use_github_action("test-coverage")
 ```
 
-La función crea un archivo `.github/workflows/test-coverage.yaml`. También será necesario darle acceso a Codecov al repositorio de GitHub donde está el paquete, para esto lo mejor es seguir la guía de inicio rápido de Codecov (en inglés) para saber cómo hacerlo.
+La función crea un archivo `.github/workflows/test-coverage.yaml`. También será necesario darle acceso a Codecov al repositorio de GitHub donde está el paquete, para esto lo mejor es seguir la [guía de inicio rápido de Codecov (en inglés)](https://docs.codecov.com/docs/quick-start) para saber cómo hacerlo.
 
 También podemos revisar la covertura de tests de manera local con `devtools::test_coverage()` que nos devuelve un resumen interesante de los tests:
 
@@ -281,3 +294,41 @@ Las lineas sombreadas con verde nos indican que los tests pasaron por ahí y eje
 Es posible que el porcentaje de covertura de Codecov y de `devtools::test_coverage()` sea algo distinto. Esto es porque hacen cosas ligeramente distintas. No es necesario preocuparse!
 :::
 
+::: ejercicio
+
+Es momento de revisar el estado del paqueteprueba
+
+1. Corré R CMD checks. 
+  * Si encontrás errores o warnings intentá resolverlos.
+2. Agregá una GitHub Action para que GitHub corrá R CMD checks cada vez que hagas push. 
+  * Hace push al repositorio remoto y chequeá el resultado de los checks
+3. Agregá una GitHub Action para revisar la covertura de los tests
+  * Revisá que partes del código estás testeando y que te falta.
+:::
+
+### Construyendo un paquete de R paso a paso {#ex-tests}
+
+::: ejercicio
+
+El paquete de datos meteorológicos también va a necesitar tests. Es el momento de agregarlos. 
+
+**Tests para las funciones**
+
+1. Revisá las funciones que incluiste en tu paquete y:
+  * Falta definir alguna dependencia (seguramente dplyr!)
+  * Pensá al menos 2 expectativas que deberían cumplir cada una de las funciones
+  * Crea tests para las funciones
+  
+**R CMD Checks**
+
+1. Corré R CMD checks y resolvé los posibles errores y warnings.
+2. Activá una GitHub Action para correr R CMD checks con cada push
+
+**Covertura de checks**
+
+1. Activá una GitHub Action para chequear automáticamente la covertura de tests
+2. Revisá la covertura de tests localmente, ¿qué partes del código no son testeadas? 
+
+El paquete debe tener al menos un 75% de covertura de tests.
+
+:::
