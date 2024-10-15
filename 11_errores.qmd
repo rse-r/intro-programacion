@@ -1,4 +1,334 @@
 ---
-title: "Resolviendo y evitando errores"
+title: "Dependencias y tests"
 ---
 
+## Objetivos de aprendizaje
+
+* Identificar las dependencias del paquete y registrarlas en `DESCRIPTION`.
+* Añadir pruebas (tests) de una función del paquete usando `testthat`.
+* Ejecutar todos los tests del paquete.
+* Describir que resultado se espera de una función y usar la familia  `expect_xxx()` en tests.
+* Utilizar `browse()` y` debug()` para explorar por qué se produce un comportamiento inesperado en una función.
+* Revisar la cobertura de los test y definir cuando es necesario agregar nuevos.
+
+## Dependencias 
+
+Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si una función de tu paquete usa `mutate()`, entonces `dplyr` es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete. 
+
+Estas dependencias deben incluirse en el archivo `DESCRIPTION`. En general, éstos van en una sección llamada "Imports", lo que asegura que momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También existe la sección "Suggests", en donde se pueden listar paquetes que no son esenciales para que tu paquete funcione. Por ejemplo, una función que utiliza un método estadístico disponible en R base o una versión más eficiente provista por otro paquete si éste está instalado. En esta sección también van paquetes que son necesarios únicamente durante el desarrollo. 
+
+Así se verán en el archivo DESCRIPTION:
+
+```r
+Imports:
+    dplyr,
+    tidyr
+Suggests:
+    ggplot2,
+    testthat
+```
+En este caso, el paquete utiliza funciones de dplyr y tidyr en su funcionalidad básica. El paquete ggplot2 puede estar en Suggests porque la funcionalidad de graficado usa ggplot2 sólo si éste está instalado y usa plot base si no. El paquete testthat es el que vamos a usar durante el desarrollo para realizar los tests, pero no es necesario para usar el paquete. 
+
+Y por supuesto, podemos usar `usethis` para agregar nuevas dependencias con `usethis::use_package("dplyr")`. La función nos devuelve: 
+
+```r
+#> ✔ Adding dplyr to 'Imports' field in DESCRIPTION.
+#> ☐ Refer to functions with `dplyr::fun()`.
+```
+
+Habrás notado que nos pide que llamemos a las funciones usando esta notación `dplyr::fun()`. Esto es muy importante, en el código de funciones **nunca** debemos incluir la carga de librerías con `library()`. Hay dos razones por las que no hacemos esto:
+
+1. En el contexto de un paquete queremos ser eficientes y trabajar de manera ordenada. Si llamaramos a una librería entera con `library()` estaríamos cargando *todas* las funciones importadas por ese paquete cuando tal vez solo necesitamos una. Esto no es eficiente y puede traer problemas si otros paquetes tienen funciones con el mismo nombre.
+2. La sintaxis `dplyr::fun()` ayuda a entender de donde viene la función y diferenciar, por ejemplo `stats::filter()` de `dplyr::filter()` que tienen argumentos y funcionalidades completamente distintas.
+
+Es fácil olvidarse de las dependencias, lo bueno es que esta es una de las cosas que se chequean cuando corremos los chequeos [R CMD](https://r-pkgs.org/R-CMD-check.html). 
+
+::: importante
+R Base proporciona varias herramientas para chequear un paqeute. `R CMD check` es el método oficial para comprobar que un paquete de R es válido. Es esencial pasarlos checks de R CMD check si planeas enviar tu paquete a un repositorio oficial. Pero aún si ese no es el plan es muy recomendable correr estos checks periodicamente. R CMD check detecta muchos problemas comunes que de otro modo descubrirías por las malas.   
+:::
+
+## Tests
+
+Las pruebas o tests son una parte vital del desarrollo de paquetes: garantizan que tu código haga lo que vos necesites que haga.
+
+Hasta ahora, tu flujo de trabajo tiene más o menos esta pinta:
+
+* Escribis una función.
+* La cargas con `devtools::load_all()`, quizás mediante `Ctrl/Cmd + Shift + L`.
+* La corrés en la consola para ver si funciona.
+* Revisas y modificas lo necesario.
+
+Si bien estás chequeando el código al hacer todo esto, sólo lo estás haciendo de manera informal. El problema con este enfoque es que cuando vuelvas a este código dentro de 3 meses para añadir una nueva funcionalidad, es probable que hayas olvidado parte de lo que hace. Esto hace que sea muy fácil romper el código que solía funcionar.
+
+En esta sección vamos a ver como crear test para las funciones usando el paquete `testhat`. Además, incluiremos estos tests en el paquete para y crearemos un flujo de trabajo que nos permita chequear las funciones del paquete cada vez que hagamos un cambio.
+
+### Configuración inicial
+
+Para configurar tu paquete para usar testthat, ejecutá en la consola:
+
+```r
+usethis::use_testthat(3)
+```
+
+Esto hará:
+
+* Creará un directorio `tests/testthat/`.
+
+* Añadir `testthat` a la lista de Suggests en DESCRIPTION y especificará la versión de testthat 3e en `Config/testthat/edition`:
+
+```r
+Suggests: testthat (>= 3.0.0)
+Config/testthat/edition: 3
+```
+
+* Crea un archivo `tests/testthat.R` que ejecuta todas las pruebas cuando se ejecute `R CMD check`.
+
+### Creando tests
+
+Es esperable que cada función tenga al menos 1 test, probablemente más de uno si la función es compleja. Normalmente por cada archivo `.R` que contiene 1 función o una familia de funciones tendremos un archivo `.R` con los tests correspondientes que se guardará en `tests/testthat/`. Por ejemplo para la función `suma()` que está en `R/suma.R` tendrá tests en `tests/testthat/test-suma.R`. 
+
+Por supuesto usethis tiene una función que crea estos archivo en el lugar que corresponde:
+
+```{r eval=FALSE}
+use_test("suma")  # Crea y abre tests/testthat/test-suma.R
+```
+
+Además, si el archivo ya existe siemplemente lo abre para agregar o editar el test.
+
+Ahora si, un test está formado por 1 o más *expectativas*, es decir *lo que esperamos* que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función `suma()` la expectativa es que si le pasamos los argumentos `2` y `2`, devuelva `4`. En este caso el test tendrá esta pinta:
+
+```{r eval=FALSE}
+test_that("la suma funciona", {
+  expect_equal(object = suma(2, 2), expected = 4)
+})
+```
+
+* `test_that()` es la función principal que encapsula las expectativas e incluye una descripción de lo que hace el test, en este caso "la suma funciona".
+
+* `expect_equal()` es una de las posibles expectativas o funciones que revisan que la funciona devuelva lo que esperamos en cada caso. Como esta función hay otras que nos van a permitir revisar el resultado de distintas funciones. Todas reciben al menos 2 argumentos, la expresión que queremos testear y el resultado/mensaje/valor esperado. 
+
+En todos los casos si el resultado que devuelve la expresión y lo esperado no coinciden, `test_that()` devolverá un error. 
+
+En este punto ya podemos correr este test o las expectativas de manera individual. Para esto primero hay que correr `devtools::load_all()` o usar el atajo de teclado para *cargar* la versión actual del paquete y luego ejecutar cada expectativa o el test completo. Al correr el test entero, si se cumple la expectativa veremos esto en la consola:
+
+```r
+Test passed
+```
+
+### Expectativas
+
+Hablemos de las expectativas. A simple vista esta linea de código `expect_equal(object = suma(2, 2), expected = 4)` parece casi ridícula, por supuesto que la función que acabamos de escribir va a devolver 4 cuando le pasemos como argumentos 2 y 2. Además, seguro corriste la función varias veces con distintos argumentos para asegurarte que de lo que esperamos. 
+
+Sin embargo es posible que en el futuro, cambiemos algo en la función ´suma()´ por alguna razón y que deje de dar el resultado correcto. Para esto estan los tests, para detectar errores en el futuro. 
+
+De la misma manera que usamos `expect_equal()` para evaluar que el resultado de la función sea **igual** a lo que esperamos, hay otras funciones que revisan diferentes elementos:
+
+* `expect_length()` revisa si la función devuelve un vector de un largo específico.
+
+* `expect_lt()`, `expect_lte()`, `expect_gt()`, `expect_gte()` chequean si el valor numérico que devuelve la función cumple la condición mayor/menor correspondiente.
+
+* `expect_true()`, `expect_false()` chequean si el resultado es `TRUE` o `FALSE`. 
+
+* `expect_error()`, `expect_warning()`, `expect_message()`, `expect_condition()` revisa si la función devuelve un error, warning, mensaje o condición. 
+
+Veamos en más detalle este último grupo. Normalmente, cuando se testea un error, nos preocupan dos cosas:
+
+* ¿El código falla? Específicamente, ¿falla por la razón correcta?
+* ¿El mensaje de error tiene sentido para la persona que tiene que resolver el error?
+
+Un posible ejemplo de uso para `expect_error()` sería:
+
+```{r eval=FALSE}
+test_that("no suma caracteres",
+  expect_error(suma("1", 1), "Los argumentos deben ser numéricos")
+)
+
+```
+
+Sabemos que si intentamos sumar `"1"` y `1` la función devolverá el mensaje "Los argumentos deben ser numéricos". Pero en un futuro podría pasar que sin querer modificamos esta parte del código y deja de dar ese mensaje. El test podrá identificar ese cambio y avisarnos.
+
+::: ejercicio
+
+Ahora vamos a trabajar con la primera función que vimos: `fahrenheit_a_centigrados()`.
+
+1. Si la función no es parte de paqueteprueba, agregala. Podés copiar el código que está en la sección [Funciones](07_funciones.qmd#revisá-que-los-argumentos-sean-válidos).
+2. Hace una lista de expectativas, es decir, posibles resultados o mensajes que podría devolver la función en distintas situaciones.
+3. Identifica que función de la familia `expect_xxX()` deberías usar en casa caso. 
+4. Escribí al menos 2 tests usando las expectativas que definistes. 
+5. Ejecutá cada expectativa de manera individual para asegurarte que funcionan.
+
+:::
+
+
+## Testeo general
+
+Hasta ahora ejecutamos cada test uno por uno a mano. Esto tiene sentido cuando estamos trabajando en cada uno. Sin embargo al final del día o luego de resolver un problema o agregar algo nuevo al paquete es importante correr todos los test juntos. Podemos hacer esto con `devtools::test()` o el atajo de teclado `Ctrl+Shif+T`. En el caso de nuestro paquete de prueba y si sale todo bien, nos devolverá algo como esto:
+
+```r
+ℹ Testing paqueteprueba
+✔ | F W  S  OK | Context
+✔ |          1 | fahrenheit_a_centigrados                                                             
+✔ |          2 | suma                                                                                 
+
+══ Results ═══════════════════════════════════════════════════════════════════════════════════════════
+[ FAIL 0 | WARN 0 | SKIP 0 | PASS 3 ]
+```
+
+Pero también es muy común correr directamente `devtools::check()` o el atajo ` Ctrl/Cmd + Shift + E`. Este comando corre algo llamado "R CMD checks". Es un conjunto de más de 50 test que cualquier paquete debe pasar para cumplir con los estandares definidos. Entre otras cosas chequea:
+
+* Metadatos
+* La estructura del paquete y los archivos que contiene
+* DESCRIPTION: información, dependencias, etc.
+* NAMESPACE
+* Código de R: revisa errores de sintaxis, caracteres no ASCII y otros problemas asociados a las funciones
+* Datos del paquete (si hubiera)
+* Documentación: metadatos, links, ejemplos, etc.
+* Tests
+* Viñetas
+
+Por el estado en el que está nuestro paqueteprueba, seguramente al correr R CMD checks nos vamos a encontrar con problemas. Esto es normal, es el momento de resolverlos antes de continuar. 
+
+La salida de los checks es bastante larga porque revisa varias cosas, pero esta es la parte que nos interesa: 
+
+```r
+❯ checking DESCRIPTION meta-information ... WARNING
+  Non-standard license specification:
+    `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+  Standardizable: FALSE
+
+❯ checking code files for non-ASCII characters ... WARNING
+  Found the following files with non-ASCII characters:
+    R/fahrenheit_a_centigrados.R
+    R/suma.R
+  Portable packages must use only ASCII characters in their R code and
+  NAMESPACE directives, except perhaps in comments.
+  Use \uxxxx escapes for other characters.
+  Function 'tools::showNonASCIIfile' can help in finding non-ASCII
+  characters in files.
+
+❯ checking dependencies in R code ... WARNING
+  '::' or ':::' import not declared from: 'cli'
+
+0 errors ✔ | 3 warnings ✖ | 0 notes ✔
+Error: R CMD check found WARNINGs
+Execution halted
+
+Exited with status 1.
+```
+
+En este caso no encontró errores pero si 3 warnings, hay que resolverlos. 
+
+El primero ocurre en el archivo DESCRIPTION, nos dice que no encontró una licencia estandar. Vamos a hablar un poco más de licencias en otra sección pero en escencia una licencia establece que permisos le damos a otras personas sobre el paquete. Vamos a establecer una de las que sugiere el mensaje usando usethis:
+
+```{r eval=FALSE}
+usethis::use_mit_license()
+```
+
+Esta función agrega los archivos necesarios con el texto de la licencia (en inglés). Y primer warning, ¡resuelto!
+
+El segundo warning nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su [versión unicode](https://en.wikipedia.org/wiki/List_of_Unicode_characters) para que el paquete funcione correctamente (particularmente en Windows!). 
+
+Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII y reemplazarlo por su código unicode. Podemos googlearlo o usar `stringi::stri_escape_unicode()`. En este caso el problema está en los mensajes de error: "Los argumentos deben ser numéricos." y en particular la "é". Googleando resulta que en unicode se escribe `\U00E9`, por lo tanto el texto queda:
+
+```r
+"Los argumentos deben ser num\U00E9ricos."
+```
+
+Si bien no es legible, cuando la función devuelva este mensaje se verá de manera correcta. Otro warming resuelto!
+
+Finalmente, la tercera advertencia nos dice que estamos usando el paquete cli pero que no está en la lista de dependencias. Podemos agregarlo usando usethis como vimos al comienzo:
+
+```{r eval=FALSE}
+usethis::use_package("cli")
+```
+
+Y con eso resolvemos el último problema! Al correr de nuevo R CMD checks, veremos lo siguiente:
+
+```r
+── R CMD check results ───────────────────────────────────────────────── paqueteprueba 0.0.0.9000 ────
+Duration: 21.8s
+
+0 errors ✔ | 0 warnings ✔ | 0 notes ✔
+
+R CMD check succeeded
+```
+
+## Integración continua
+
+La integración continua (CI, por las siglas en inglés) ejecuta tests sobre el software automáticamente. En la práctica significa que un conjunto de test se ejecutará automáticamente a través de GitHub Actions cada vez que hagas un commit o pull request a GitHub.
+
+La CI automatiza la ejecución de tests globales de los paquetes, como R CMD check. Hacerlo utilizando GitHub Actions permite además correr los tests en distintos sistemas operativos y así asegurarte que tu paquete funciona correctamente en Windows, Linux y OS. Podemos usar usethis para generar la receta o workflow que correrá GitHub cada vez que hagamos un push al paquete con:
+
+```{r eval=FALSE}
+usethis::use_github_action("check-standard")
+```
+
+Este flujo de trabajo ejecuta R CMD check a través del paquete `rcmdcheck` en los tres principales sistemas operativos (Linux, macOS y Windows) en la última versión de R y en R-devel.
+
+Si bien GitHub manda mails avisando cuando alguno de estos chequeos falla, cuando hacemos cambios imporantes tenemos que prestar particularmente atención y asegurarnos que todo está en orden. 
+
+Otra de las cosas que podemos hacer con CI es revisar la cobertura de los tests a través de un servicio de testing como [Codecov](https://codecov.io/) o [Coveralls](https://coveralls.io/). Recomendamos utilizar Codecov. Para activar Codecov para el paquete usaremos:
+
+```{r eval=FALSE}
+usethis::use_github_action("test-coverage")
+```
+
+La función crea un archivo `.github/workflows/test-coverage.yaml`. También será necesario darle acceso a Codecov al repositorio de GitHub donde está el paquete, para esto lo mejor es seguir la [guía de inicio rápido de Codecov (en inglés)](https://docs.codecov.com/docs/quick-start) para saber cómo hacerlo.
+
+También podemos revisar la covertura de tests de manera local con `devtools::test_coverage()` que nos devuelve un resumen interesante de los tests:
+
+![](images/test_cov1.png)
+
+Esto nos dice que el 56.25% del código en el paquete está cubierto por tests y el porcentaje para cada archivo/función individual. Si bien llegar al 100% no es del todo práctico o realista, se espera que el paquete tenga un porcentaje alto de covertura de tests cercano al 90%. 
+
+Más interesante aún es lo que nos muestra para cada archivo. En este caso vemos que lineas dentro de `suma.R` son revisadas o cubiertas por los tests:
+
+![](images/test_cov2.png)
+
+Las lineas sombreadas con verde nos indican que los tests pasaron por ahí y ejecutaron ese código. Si las lineas están sombreadas con rojo, no las estamos cubriendo con ninguno de nuestros tests. Con esto descubrimos que no estamos testeando posibles problemas asociados a incluir números negativos y podríamos ahora sumar un nuevo test.
+
+
+::: importante
+
+Es posible que el porcentaje de covertura de Codecov y de `devtools::test_coverage()` sea algo distinto. Esto es porque hacen cosas ligeramente distintas. No es necesario preocuparse!
+:::
+
+::: ejercicio
+
+Es momento de revisar el estado del paqueteprueba
+
+1. Corré R CMD checks. 
+  * Si encontrás errores o warnings intentá resolverlos.
+2. Agregá una GitHub Action para que GitHub corrá R CMD checks cada vez que hagas push. 
+  * Hace push al repositorio remoto y chequeá el resultado de los checks
+3. Agregá una GitHub Action para revisar la covertura de los tests
+  * Revisá que partes del código estás testeando y que te falta.
+:::
+
+### Construyendo un paquete de R paso a paso {#ex-tests}
+
+::: ejercicio
+
+El paquete de datos meteorológicos también va a necesitar tests. Es el momento de agregarlos. 
+
+**Tests para las funciones**
+
+1. Revisá las funciones que incluiste en tu paquete y:
+  * Falta definir alguna dependencia (seguramente dplyr!)
+  * Pensá al menos 2 expectativas que deberían cumplir cada una de las funciones
+  * Crea tests para las funciones
+  
+**R CMD Checks**
+
+1. Corré R CMD checks y resolvé los posibles errores y warnings.
+2. Activá una GitHub Action para correr R CMD checks con cada push
+
+**Covertura de checks**
+
+1. Activá una GitHub Action para chequear automáticamente la covertura de tests
+2. Revisá la covertura de tests localmente, ¿qué partes del código no son testeadas? 
+
+El paquete debe tener al menos un 75% de covertura de tests.
+
+:::
