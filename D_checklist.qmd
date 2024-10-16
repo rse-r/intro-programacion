@@ -36,4 +36,7 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 ## Otros
 
 - [ ] Incluye una licencia
-- [ ] El README incluye instrucciones sobre 
+- [ ] El README incluye instrucciones sobre:
+  - [ ] como instalar el paquete.
+  - [ ] los autores. 
+  - [ ] como se puede contribuir al paquete.
