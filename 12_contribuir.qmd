@@ -1,0 +1,105 @@
+---
+title: "Contribuir y aceptar contribuciones"
+---
+
+## Objetivos de aprendizaje
+
+- Editar un archivo README y NEWS de un proyecto para que de la bienvenida a las personas que quieran usar el paquete o colaborar.
+- Comprender la importancia de tener un Código de Conducta explícito y cómo crear uno relevante para un proyecto.
+- Comprender el propósito de las licencias, cómo elegir una licencia y crear un archivo LICENSE.
+- Comprender la importancia de incluir una guia para contribuir con el proyecto.
+- Crear y gestionar GitHub Issues y sus etiquetas para hacer un seguimiento de los errores y
+y mejoras del proyecto.
+
+## Crear una comunidad amigable
+
+Ahora que el paqute está tomando forma e incluso tienes un sitio web para
+compartir información sobre él, hay cosas algunas cosas que podemos sumar para ayudar a otras personas a entender cómo colaborar o usar el paquete. Esta sección también te ayudará a identificar estos mismos elementos en otros proyectos en los que quieras contribuir.
+
+### Crear un README amigable
+
+El README es la puerta de entrada a tu paquete, es importante que sea amigable para cualquier persona que quiera usarlo o colaborar, independientemente de su nivel de experiencia.
+
+Hasta ahora el README debería tener:una descripción del paquete, instrucciones para instalar y usar el el paquete y algunos ejemplos. Revisemos el contenido desde la perspectiva de una persona que recién se encuentra con el paquete:
+
+* ¿Es amigable? 
+* ¿Es fácil de entender? 
+* ¿Contiene toda la información necesaria para utilizar o contribuir con el paquete?
+
+Es posible que no podamos responder que si a todo lo anterior, para mejorar nuestro README podemos agregar o mejorar los siguientes aspectos:
+
+- Una buena manera de empezar un README es dando la bienvenida. Podés además presentarte y a todo el equipo.
+
+- Escribe la descripción de tu proyecto de forma que sea comprensible para un amplio abanico de personas. Evita utilizar jerga y asegurate de definir todos los términos o conceptos que sean específicos del sector.
+
+- ¿De qué trata este proyecto?
+- ¿A quién va dirigido?
+- ¿Por qué existe este proyecto?
+- ¿Qué hace que tu proyecto sea único o distinto que otros?
+- Describí cómo se utiliza el paquete con ejemplos sencillos.
+- Describí qué tipo de ayuda o contribuciones estás buscando.
+
+Aun si no esperas que tu paquete sea usado por otras personas o que las personas esten interesadas en coraborar, escribir un READM claro también es extremadamente útil para tu yo del futuro. El mero hecho de pensar en la documentación de tu paquete es una forma perfecta re revisar y aclarar las ideas y con suerte prevenir errores y problemas.
+
+
+::: ejercicio
+
+**Etiquetas del README**
+
+Si alguna vez revisaste el README de cualquier paquete de habras notado que tiene etiquetas o *badges* al inicio. Sirven para mostrar distintas características del paquete, si pasa los checks, cual es la cobertura de test, etc. Agreguemos la primera con:
+
+```r
+use_lifecycle_badge("experimental")
+```
+
+* ¿Que cambios pueden observar en el README?
+* Kniteen el archivo.
+* Hagan commit y push al repositorio remoto y revisen como se ve el README en GitHub 
+
+¿Qué otras etiquetas existen?
+
+:::
+
+
+### Guía de contribución
+
+Es muy común encontrar el siguiente párrafo al final de cualquier README de un paquete de R:
+
+> **Cómo contribuir**
+> Para contribuir con este paquete podés leer la siguiente guía para contribuir. 
+
+Y normalmente incluye un link a un archivo con detalles más específicos sobre como contribuir: el archivo CONTRIBUTING.md. Estas guías de contribución ayudan a las personas a
+interactuar con tu proyecto y te ayudarán a planificar los tipos de
+contribuciones que estás buscando.
+
+La función `usethis::use_tidy_contributing()` crea automáticamente el archivo `CONTRIBUTING.md` en la carpeta `.github` con algunas
+guias de contribución en el estilo Tidyverse.
+
+Por supuesto, esta guia estará en inglés pero podemos traducirla al español si el resto de la documentación del paquete también está en español. A modo de ejemplo, [esta es una guía de contribución en español](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/.github/CONTRIBUTING.md).
+
+Es posible además, dependiendo de tu paquete, que necesites agregar secciones extras para explicar como informar sobre errores en el paquete o como ponerse en contacto con el equipo que desarrolla el paquete.
+
+
+::: ejercicio
+
+1. Agregá el archivo CONTRIBUTING usando usethis. Podés hacer una traducción automática del contenido usando [DeepL](https://www.deepl.com/en/translator).
+2. Agregá indicaciones en el README para encontrar el archivo CONTRIBUTING, debería ser un link. 
+
+:::
+
+### Código de conducta
+
+Para crear una comunidad inclusiva y segura, una herramienta muy importante es el
+Código de conducta. El Código de Conducta ayuda a establecer claramente qué comportamientos
+son aceptables y cuáles no lo son Esto ayuda ayuda a evitar
+problemas y define cómo se tratarán los problemas
+en caso de que se produzcan.
+
+La función `usethis::use_code_of_conduct()` crea un archivo llamado
+`CODE_OF_CONDUCT.md` que contiene el texto de [Contributor
+Covenant](https://www.contributor-covenant.org/). Nuevamente estará en inglés, pero [acá hay un ejemplo en español](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/CODE_OF_CONDUCT.md).
+
+Redactar un código de conducta desde cero es una tarea compleja, por eso recomendamos revisar los códigos de conducta de otros proyectos y organizaciones.
+
+Los archivos `CONTRIBUTING.md` y `CODE_OF_CONDUCT.md` son tratados por
+GitHub de forma especial, por ejemplo aparecen en el menú de la izquierda cuando visitamos el repositorio.
