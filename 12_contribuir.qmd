@@ -139,3 +139,12 @@ crea el archivo `LICENSE.md` con el texto de esa licencia.
 Por ejemplo, `use_ccby_license()` agrega la licencia Creative Commons con atribucion al proyecto.
 
 :::
+
+
+## Usando GitHub Issues para mantener tu proyecto
+
+Tu paquete ahora vive en un repositorio de GitHub, y has creado varios archivos útiles que orientarán a los usuarios y colaboradores de tu proyecto. Ahora bien, ¿cómo sabe alguien que quiere contribuir lo que debería estar haciendo?
+
+Tanto si trabajamos solos como con un grupo de personas, la mejor forma de gestionarlo es utilizar un sistema de seguimiento de issues para controlar las tareas que tenemos que completar o los problemas que tenemos que solucionar. Los issues a veces se denominan tickets, por lo que los sistemas para su seguimiento también reciben el nombre de sistemas de tickets. También se les suele llamar sistemas de gestion de errores, pero pueden utilizarse para gestionar diferentes tipos de trabajo.
+
+GitHub permitecrear issues para un proyecto, comentarlos y buscar en todos los issues disponibles.
