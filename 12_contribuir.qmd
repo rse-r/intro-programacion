@@ -103,3 +103,39 @@ Redactar un código de conducta desde cero es una tarea compleja, por eso recome
 
 Los archivos `CONTRIBUTING.md` y `CODE_OF_CONDUCT.md` son tratados por
 GitHub de forma especial, por ejemplo aparecen en el menú de la izquierda cuando visitamos el repositorio.
+
+## Licencia
+
+Mientras que un código de conducta describe cómo deben interactuar las personas que participan del proyecto entre sí, una licencia dicta cómo pueden utilizarse y redistribuirse los materiales del proyecto. Si la licencia o un acuerdo de publicación dificultan las contribuciones, es menos probable que el proyecto atraiga a nuevas personas, por lo que la elección de la licencia es crucial para la sostenibilidad del proyecto a largo plazo.
+
+La clase pasada agregamos la licencia MIT en nuestro paquete.  Para evitar líos legales, todo proyecto debe incluir una licencia explícita. Esta licencia debe elegirse con tiempo, ya que cambiar una licencia puede ser complicado.  En general tambien tendremos una licencia que aplica al software y otra que aplica a los datos y documentos.
+
+### Software
+
+Para elegir la licencia adecuada para nuestro software, debemos entender la diferencia entre dos tipos de licencia. La Licencia MIT (y su hermana cercana la Licencia BSD) dicen que la gente puede hacer lo que quiera con el software siempre que cite la fuente original,
+y que los autores no aceptan ninguna responsabilidad si las cosas no funcionan. La Licencia Pública GNU (GPL) otorga a los usuarios derechos similares, pero les obliga a compartir su propio trabajo en las mismas condiciones.
+
+### Datos y documentos
+
+Cuando se trata de datos y docimentos, la familia de licencias más utilizada es la de [Creative Commons](https://creativecommons.org/). Han sido redactadas y verificadas por juristas y son bien conocidas por la comunidad.
+
+La opción más liberal se denomina CC-0, donde el «0» significa «cero restricciones». Esto pone el trabajo en el dominio público, es decir, permite que cualquiera que quiera utilizarla lo haga, como quiera, sin restricciones. Suele ser la mejor opción para los datos, ya que simplifica el análisis agregado de conjuntos de datos de distintas fuentes. 
+
+Las otras licencias agregan restricciones: 
+
+-Atribucion - BY: permite hacer lo que se quiera con la obra siempre que se cite la fuente original. Esta es la mejor licencia para documentos: queremos que la gente los comparta ampliamente, pero también queremos que se reconozca nuestro trabajo.
+
+- Sin derivados - ND: impide que se creen versiones modificadas de nuestro trabajo. 
+
+- Compartir igual - SA: exige que las obras que incorporen las nuestro trabajo se compartan en los mismos términos que lo hicimos nosotros. 
+
+- Sin uso comercial - NC: *no* significa que la gente no pueda cobrar dinero por algo que incluya nuestro trabajo. Esta cláusula significa que la gente no puede cobrar por algo que utilice nuestro trabajo sin nuestro permiso explícito, que podemos dar en los términos que queramos.
+
+:::importante
+
+La familia de funciones `usethis::use_NOMBRE_license()`, reemplazando `NOMBRE` con una licencia de la lista, 
+crea el archivo `LICENSE.md` con el texto de esa licencia.
+
+Por ejemplo, `use_ccby_license()` agrega la licencia Creative Commons con atribucion al proyecto.
+
+:::
