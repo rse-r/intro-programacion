@@ -148,3 +148,57 @@ Tu paquete ahora vive en un repositorio de GitHub, y has creado varios archivos 
 Tanto si trabajamos solos como con un grupo de personas, la mejor forma de gestionarlo es utilizar un sistema de seguimiento de issues para controlar las tareas que tenemos que completar o los problemas que tenemos que solucionar. Los issues a veces se denominan tickets, por lo que los sistemas para su seguimiento también reciben el nombre de sistemas de tickets. También se les suele llamar sistemas de gestion de errores, pero pueden utilizarse para gestionar diferentes tipos de trabajo.
 
 GitHub permitecrear issues para un proyecto, comentarlos y buscar en todos los issues disponibles.
+
+:::importante
+Hemos creado issues en sus repositorios durante la cursada. Se puede generar una conversacion 
+en los issues hasta que se llega a un concenso y luego se pueden cerrar.
+
+A pesar que esten cerrados los issues igualmente quedan en el historial de GitHub.
+:::
+
+
+**TODO: completar**
+
+## La comunidad de R
+
+
+> Una comunidad de práctica es un grupo de personas que comparten una pasión por algo que saben hacer, y que interactúan regularmente para aprender a hacerlo mejor – Etienne Wenger
+
+Hasta el momento vimos diferentes maneras de hacer que tu paquete este listo para que otras personas colaboren. 
+
+Ahora vamos a ver una serie de grupos y organizaciones en las cuales podes involucrarte para aprender, mejorar tus capacidades relacionadas a la ciencia de datos, incrementar tu red de contactos y compartir tu trabajo.
+
+Lo que se conoce globalmente como la comunidad R o R Community esta formada por un conjunto de organizaciones sin fines de lucro, companias privadas, universidades y fundaciones, todas trabajando con el lenguage R para diferentes disciplinas y objetivos.
+
+La Fundacion R y el Consorcio R son dos de las organizaciones que planifican y financian iniciativas que hacen al lenguaje R avanzar. 
+
+## Grupos de Usuarios de R
+
+El Consorcio de R (RConsortium) tiene un programa que patrocina grupos de usuarios (RUG) pero que son y que hacen? 
+
+Los RUG son personas que usan R que se reúnen periódicamente en el lugar donde viven para compartir experiencias y conocimientos.
+
+Fomentan el aprendizaje colectivo, el trabajo en comunidad y el crecimiento grupal, en el contexto de la utilización de R en actividades profesionales y/o académicas (o recreativas!).
+
+En los encuentros se comparten talleres sobre distintos paquetes o herramientas relacionadas con R, novedades sobre eventos relacionados, discusiones sobre tópicos de ciencia de datos, o disciplinas especificas como R en el agro o R en educacion.
+
+Toda persona interesada en R es bienvenida, independientemente de su grado de familiaridad con el lenguaje.
+
+:::importante
+Existen varios RUGs en America Latina y en Argentina.  Ustedes tienen bien cerquita RenRosario. Muchos de los grupos tienen eventos en linea a los cuales pueden sumarse.
+:::
+
+Un grupo especial de RUGs es R-Ladies que se centra en reducir la brecha de genero en la comunidad R por medio de mentorias y eventos abiertos y gratuitos en sus capitulos alrededor del mundo.  R-Ladies tiene 10 capitulos en Argentina y mas de 240 alrededor del mundo. En total hay mas de 100000 personas que participan de estos grupos.
+
+## Conferencias
+
+Esta comunidad tiene una serie de conferencias donde nos encontramos todos los años.  Para America Latina la mas importante es LatinR. Luego useR! y Posit::Conf son las otras dos conferencias donde es muy interesante poder participar.
+
+## Ciencia abierta, reproducbilidad y software
+
+rOpenSci
+
+The Carpentries
+
+
+
