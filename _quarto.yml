@@ -24,7 +24,6 @@ book:
     - 10_documentacion.qmd
     - 11_errores.qmd
     - 12_contribuir.qmd
-    - 14_reproducibilidad.qmd
     - references.qmd
   appendices:
     - A_instalacion.qmd

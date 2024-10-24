@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.4.528">
+<meta name="generator" content="quarto-1.5.47">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
 <meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
-<title>Introducción a la Programación II - 6&nbsp; Graficado datos</title>
+
+<title>6&nbsp; Graficado datos – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +34,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -54,6 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
+
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
@@ -71,7 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -98,24 +103,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+
+
 </head>
+
 <body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
         <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_graficos.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Graficado datos</span></a></li></ol></nav>
-        <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
@@ -130,7 +144,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         </div>
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-<li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Prefacio</span></a>
@@ -210,14 +224,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./13_publicacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Publicar y compartir código</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./14_reproducibilidad.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Análisis de datos y reproducibilidad</span></span></a>
+  <a href="./12_contribuir.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Contribuir y aceptar contribuciones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -228,14 +236,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendices</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item">
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./A_instalacion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">A</span>&nbsp; <span class="chapter-title">Preparando el entorno de trabajo</span></span></a>
@@ -260,35 +268,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
       </ul>
-</li>
+  </li>
     </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-<li><a href="#primera-capa-el-%C3%A1rea-del-gr%C3%A1fico" id="toc-primera-capa-el-área-del-gráfico" class="nav-link active" data-scroll-target="#primera-capa-el-%C3%A1rea-del-gr%C3%A1fico"><span class="header-section-number">6.0.1</span> Primera capa: el área del gráfico</a></li>
-  <li><a href="#segunda-capa-geometr%C3%ADas" id="toc-segunda-capa-geometrías" class="nav-link" data-scroll-target="#segunda-capa-geometr%C3%ADas"><span class="header-section-number">6.0.2</span> Segunda capa: geometrías</a></li>
+  <li><a href="#primera-capa-el-área-del-gráfico" id="toc-primera-capa-el-área-del-gráfico" class="nav-link active" data-scroll-target="#primera-capa-el-área-del-gráfico"><span class="header-section-number">6.0.1</span> Primera capa: el área del gráfico</a></li>
+  <li><a href="#segunda-capa-geometrías" id="toc-segunda-capa-geometrías" class="nav-link" data-scroll-target="#segunda-capa-geometrías"><span class="header-section-number">6.0.2</span> Segunda capa: geometrías</a></li>
   <li><a href="#mapear-variables-a-elementos" id="toc-mapear-variables-a-elementos" class="nav-link" data-scroll-target="#mapear-variables-a-elementos"><span class="header-section-number">6.0.3</span> Mapear variables a elementos</a></li>
-  <li><a href="#otras-geometr%C3%ADas" id="toc-otras-geometrías" class="nav-link" data-scroll-target="#otras-geometr%C3%ADas"><span class="header-section-number">6.0.4</span> Otras geometrías</a></li>
-  <li><a href="#relaci%C3%B3n-entre-variables" id="toc-relación-entre-variables" class="nav-link" data-scroll-target="#relaci%C3%B3n-entre-variables"><span class="header-section-number">6.0.5</span> Relación entre variables</a></li>
-  <li><a href="#gr%C3%A1ficos-de-frecuencias" id="toc-gráficos-de-frecuencias" class="nav-link" data-scroll-target="#gr%C3%A1ficos-de-frecuencias"><span class="header-section-number">6.1</span> Gráficos de frecuencias</a></li>
-  <li><a href="#gr%C3%A1ficos-de-caja" id="toc-gráficos-de-caja" class="nav-link" data-scroll-target="#gr%C3%A1ficos-de-caja"><span class="header-section-number">6.2</span> Gráficos de caja</a></li>
-  <li>
-<a href="#graficando-en-m%C3%BAltiples-paneles" id="toc-graficando-en-múltiples-paneles" class="nav-link" data-scroll-target="#graficando-en-m%C3%BAltiples-paneles"><span class="header-section-number">6.3</span> Graficando en múltiples paneles</a>
+  <li><a href="#otras-geometrías" id="toc-otras-geometrías" class="nav-link" data-scroll-target="#otras-geometrías"><span class="header-section-number">6.0.4</span> Otras geometrías</a></li>
+  <li><a href="#relación-entre-variables" id="toc-relación-entre-variables" class="nav-link" data-scroll-target="#relación-entre-variables"><span class="header-section-number">6.0.5</span> Relación entre variables</a></li>
+  <li><a href="#gráficos-de-frecuencias" id="toc-gráficos-de-frecuencias" class="nav-link" data-scroll-target="#gráficos-de-frecuencias"><span class="header-section-number">6.1</span> Gráficos de frecuencias</a></li>
+  <li><a href="#gráficos-de-caja" id="toc-gráficos-de-caja" class="nav-link" data-scroll-target="#gráficos-de-caja"><span class="header-section-number">6.2</span> Gráficos de caja</a></li>
+  <li><a href="#graficando-en-múltiples-paneles" id="toc-graficando-en-múltiples-paneles" class="nav-link" data-scroll-target="#graficando-en-múltiples-paneles"><span class="header-section-number">6.3</span> Graficando en múltiples paneles</a>
   <ul class="collapse">
-<li><a href="#ex-graficos" id="toc-ex-graficos" class="nav-link" data-scroll-target="#ex-graficos"><span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  <li><a href="#ex-graficos" id="toc-ex-graficos" class="nav-link" data-scroll-target="#ex-graficos"><span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</a></li>
+  </ul></li>
   </ul>
-</li>
-  </ul></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">
-<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Graficado datos</span>
-</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Graficado datos</span></h1>
 </div>
 
 
@@ -302,15 +312,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Visualizar datos es útil para identificar a relación entre distintas variables pero también para comunicar el análisis de los datos y resultados. El paquete <code>ggplot2</code> permite generar gráficos de gran calidad en pocos pasos. Cualquier gráfico de ggplot tendrá como mínimo 3 componentes: los <strong>datos</strong>, un <strong>sistema de coordenadas</strong> y una <strong>geometría</strong> (la representación visual de los datos) y se irá construyendo por capas.</p>
-<section id="primera-capa-el-área-del-gráfico" class="level3" data-number="6.0.1"><h3 data-number="6.0.1" class="anchored" data-anchor-id="primera-capa-el-área-del-gráfico">
-<span class="header-section-number">6.0.1</span> Primera capa: el área del gráfico</h3>
+</header>
+
+
+<p>Visualizar datos es útil para identificar a relación entre distintas variables pero también para comunicar el análisis de los datos y resultados. El paquete <code>ggplot2</code> permite generar gráficos de gran calidad en pocos pasos. Cualquier gráfico de ggplot tendrá como mínimo 3 componentes: los <strong>datos</strong>, un <strong>sistema de coordenadas</strong> y una <strong>geometría</strong> (la representación visual de los datos) y se irá construyendo por capas.</p>
+<section id="primera-capa-el-área-del-gráfico" class="level3" data-number="6.0.1">
+<h3 data-number="6.0.1" class="anchored" data-anchor-id="primera-capa-el-área-del-gráfico"><span class="header-section-number">6.0.1</span> Primera capa: el área del gráfico</h3>
 <p>Cómo siempre será necesario cargar los paquetes que vamos a usar y ya que estamos los datos con los que venimos trabajando:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="va">paises</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/paises.html">paises</a></span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">paises</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>paises <span class="ot">&lt;-</span> datos<span class="sc">::</span>paises</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(paises)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
  $ pais             : Factor w/ 142 levels "Afganistán","Albania",..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -324,27 +337,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="importante">
 <p>Esta vez usaremos un set de datos disponible en el paquete <code>datos</code> e incluye información de la esperanza de vida, población y pib per capita para loss distintos paises a lo largo del tiempo. Podés revisar más detalles con <code>help(paises)</code></p>
 </div>
-<p>La función principal de ggplot2 es justamente <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> que nos permite <em>iniciar</em> el gráfico y además definir las características <em>globales</em>. El primer argumento de esta función serán los datos que queremos visualizar, siempre en un data.frame. En este caso usamos <code>paises</code>.</p>
-<p>El segundo argumento se llama <code>mapping</code> justamente porque <em>mapea</em> o <em>dibuja</em> los ejes del gráfico y <strong>siempre</strong> va acompañado de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>. La función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> recibe las propiedades estéticas del gráfico (o <em>aesthetic</em> en inglés) a partir de las variables (o columnas) del data.frame que estamos usando. En este caso le indicamos que en el eje <strong>x</strong> querremos graficar la variable <code>pib_per_capita</code> y en eje <strong>y</strong> la variable <code>esperanza_de_vida</code>.</p>
+<p>La función principal de ggplot2 es justamente <code>ggplot()</code> que nos permite <em>iniciar</em> el gráfico y además definir las características <em>globales</em>. El primer argumento de esta función serán los datos que queremos visualizar, siempre en un data.frame. En este caso usamos <code>paises</code>.</p>
+<p>El segundo argumento se llama <code>mapping</code> justamente porque <em>mapea</em> o <em>dibuja</em> los ejes del gráfico y <strong>siempre</strong> va acompañado de la función <code>aes()</code>. La función <code>aes()</code> recibe las propiedades estéticas del gráfico (o <em>aesthetic</em> en inglés) a partir de las variables (o columnas) del data.frame que estamos usando. En este caso le indicamos que en el eje <strong>x</strong> querremos graficar la variable <code>pib_per_capita</code> y en eje <strong>y</strong> la variable <code>esperanza_de_vida</code>.</p>
 <p>Pero esta sola función no es suficiente, solo genera la primera capa: el área del gráfico.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pib_per_capita</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> pib_per_capita, <span class="at">y =</span> esperanza_de_vida))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section><section id="segunda-capa-geometrías" class="level3" data-number="6.0.2"><h3 data-number="6.0.2" class="anchored" data-anchor-id="segunda-capa-geometrías">
-<span class="header-section-number">6.0.2</span> Segunda capa: geometrías</h3>
-<p>Necesitamos agregar una nueva capa a nuestro gráfico, los elementos geométricos o <em>geoms</em> que representaran los datos. Para esto <em>sumamos</em> una función geom, por ejemplo si queremos representar los datos con puntos usaremos <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code></p>
+</section>
+<section id="segunda-capa-geometrías" class="level3" data-number="6.0.2">
+<h3 data-number="6.0.2" class="anchored" data-anchor-id="segunda-capa-geometrías"><span class="header-section-number">6.0.2</span> Segunda capa: geometrías</h3>
+<p>Necesitamos agregar una nueva capa a nuestro gráfico, los elementos geométricos o <em>geoms</em> que representaran los datos. Para esto <em>sumamos</em> una función geom, por ejemplo si queremos representar los datos con puntos usaremos <code>geom_point()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pib_per_capita</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> pib_per_capita, <span class="at">y =</span> esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -356,55 +372,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Este gráfico tiene muchísima información porque tiene un punto por cada país para cada año para visualizar la esperanza de vida. Pero por ahora no podemos identificar esos países, necesitamos agregar información al gráfico.</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">anio</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section><section id="mapear-variables-a-elementos" class="level3" data-number="6.0.3"><h3 data-number="6.0.3" class="anchored" data-anchor-id="mapear-variables-a-elementos">
-<span class="header-section-number">6.0.3</span> Mapear variables a elementos</h3>
+</section>
+<section id="mapear-variables-a-elementos" class="level3" data-number="6.0.3">
+<h3 data-number="6.0.3" class="anchored" data-anchor-id="mapear-variables-a-elementos"><span class="header-section-number">6.0.3</span> Mapear variables a elementos</h3>
 <p>Una posible solución sería utilizar otras variables de nuestros datos, por ejemplo <code>continente</code> y <em>mapear</em> el color de los puntos de acuerdo al continente al que pertenecen.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">anio</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> continente))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Ahh, ahora está un poco mejor. Por ejemplo ya podemos ver que muchos países de Europa (los puntos celestes) tienen en promedio mayor esperanza de vida a lo largo de los años que muchos países de África (los puntos rojos). Aún no podemos identificar los países individualmente pero podemos sacar algo más de información de nuestros datos.</p>
-<p>Algo muy importante a tener en cuenta: <strong>los puntos toman un color de acuerdo a una variable de los datos</strong>, y para que ggplot2 identifique esa variable (en este caso <code>continente</code>) es necesario incluirla dentro de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>.</p>
-</section><section id="otras-geometrías" class="level3" data-number="6.0.4"><h3 data-number="6.0.4" class="anchored" data-anchor-id="otras-geometrías">
-<span class="header-section-number">6.0.4</span> Otras geometrías</h3>
-<p>Este gráfico posiblemente no sea muy adecuado si queremos visualizar la <em>evolución</em> de una variable a lo largo del tiempo, necesitamos cambiar la geometría a lineas usando <code><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line()</a></code></p>
+<p>Algo muy importante a tener en cuenta: <strong>los puntos toman un color de acuerdo a una variable de los datos</strong>, y para que ggplot2 identifique esa variable (en este caso <code>continente</code>) es necesario incluirla dentro de la función <code>aes()</code>.</p>
+</section>
+<section id="otras-geometrías" class="level3" data-number="6.0.4">
+<h3 data-number="6.0.4" class="anchored" data-anchor-id="otras-geometrías"><span class="header-section-number">6.0.4</span> Otras geometrías</h3>
+<p>Este gráfico posiblemente no sea muy adecuado si queremos visualizar la <em>evolución</em> de una variable a lo largo del tiempo, necesitamos cambiar la geometría a lineas usando <code>geom_line()</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">anio</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> continente))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Por suerte las funciones <code>geom_*()</code> tienen más o menos nombres amigables. Pero el gráfico sigue teniendo problemas, al parecer dibujó una línea por continente. Si estuviéramos dibujando este gráfico con lápiz y papel muy posiblemente hubiéramos identificado los puntos que corresponden a cada país y los hubiéramos “unido con líneas”, necesitamos que ggplot2 haga esto. ¿Cómo le indicamos que puntos corresponde a cada país? Necesitamos que los <em>agrupe</em> por la variable <code>pais</code> (¡qué bueno que tenemos toda esa información en nuestra base de datos!).</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">paises</span>, mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">anio</span>, y <span class="op">=</span> <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span>, group <span class="op">=</span> <span class="va">pais</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> paises, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> anio, <span class="at">y =</span> esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> continente, <span class="at">group =</span> pais))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Usamos el argumento <code>group =</code> y de nuevo, lo incluimos dentro de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> para indicarle a ggplot2 que busque la variable <code>pais</code> dentro del data.frame que estamos usando.</p>
+<p>Usamos el argumento <code>group =</code> y de nuevo, lo incluimos dentro de la función <code>aes()</code> para indicarle a ggplot2 que busque la variable <code>pais</code> dentro del data.frame que estamos usando.</p>
 <p>Y ahora si, conseguimos el gráfico que estamos buscando.</p>
 <div class="ejercicio">
 <p>Cuando mencionamos que ggplot2 construye gráficos por capas, lo decíamos en serio! Hasta ahora tenemos dos capas: el área del gráfico y una geometría (las líneas).</p>
@@ -416,71 +438,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Acá surge una característica importante de las capas: pueden tener apariencia independiente solo <em>mapeamos</em> el color en la capa de las líneas y no en la capa de los puntos. Al mismo tiempo, si quisiéramos que todas las capas tenga la misma apariencia podemos incluir el argumento <code>color =</code> en la función global <code>ggpplot()</code> o repetirlo en cada capa.</p>
 <div class="cell">
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">paises</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">anio</span>, <span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">continente</span>, group <span class="op">=</span> <span class="va">pais</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(paises, <span class="fu">aes</span>(anio, esperanza_de_vida)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">color =</span> continente, <span class="at">group =</span> pais)) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="importante">
-<p>Si te preguntabas a donde fueron a parar el <code>data =</code>, el <code>mapping =</code> y los nombres de los argumentos adentro de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>, <code>x =</code> e <code>y =</code>, resulta que estamos aprovechando que tanto ggplot2 como nosotros ahora sabemos en que orden recibe la información cada función. Siempre el primer elemento que le <em>pasemos</em> o indiquemos a la función <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> será el data.frame.</p>
+<p>Si te preguntabas a donde fueron a parar el <code>data =</code>, el <code>mapping =</code> y los nombres de los argumentos adentro de la función <code>aes()</code>, <code>x =</code> e <code>y =</code>, resulta que estamos aprovechando que tanto ggplot2 como nosotros ahora sabemos en que orden recibe la información cada función. Siempre el primer elemento que le <em>pasemos</em> o indiquemos a la función <code>ggplot()</code> será el data.frame.</p>
 </div>
 <p>Algunos argumentos para cambiar la apariencia de las geometrías son:</p>
 <ul>
-<li>
-<code>color</code> o <code>colour</code> modifica el color de líneas y puntos</li>
-<li>
-<code>fill</code>modifica el color del área de un elemento, por ejemplo el relleno de un punto</li>
-<li>
-<code>linetype</code> modifica el tipo de línea (punteada, continua, con guiones, etc.)</li>
-<li>
-<code>pch</code> modifica el tamaño del punto</li>
-<li>
-<code>size</code> modifica el tamaño de los elementos (por ejemplo el tamaño de puntos o el grosor de líneas)</li>
-<li>
-<code>alpha</code> modifica la transparencia de los elementos (1 = opaco, 0 = transparente)</li>
-<li>
-<code>shape</code> modifica el tipo de punto (círculos, cuadrados, triángulos, etc.)</li>
+<li><code>color</code> o <code>colour</code> modifica el color de líneas y puntos</li>
+<li><code>fill</code>modifica el color del área de un elemento, por ejemplo el relleno de un punto</li>
+<li><code>linetype</code> modifica el tipo de línea (punteada, continua, con guiones, etc.)</li>
+<li><code>pch</code> modifica el tamaño del punto</li>
+<li><code>size</code> modifica el tamaño de los elementos (por ejemplo el tamaño de puntos o el grosor de líneas)</li>
+<li><code>alpha</code> modifica la transparencia de los elementos (1 = opaco, 0 = transparente)</li>
+<li><code>shape</code> modifica el tipo de punto (círculos, cuadrados, triángulos, etc.)</li>
 </ul>
 <p>El <em>mapeo</em> entre una variable y un parámetro de geometría se hace a través de una <strong>escala</strong>. La escala de colores es lo que define, por ejemplo, que los puntos donde la variable <code>continente</code> toma el valor <code>"África"</code> van a tener el color rosa (<span style="color:#F77D75">●</span>), donde toma el valor <code>"Américas"</code>, mostaza (<span style="color:#B7B940">●</span>), etc…</p>
 <div class="importante">
 <p><strong>Modificar elementos utilizando un valor único</strong></p>
 <p>Es posible que en algún momento necesites cambiar la apariencia de los elementos o geometrías independientemente de las variables de tu data.frame. Por ejemplo podrías querer que todos los puntos sean de un único color: rojos. En este caso <code>geom_point(aes(color = "red"))</code> no va a funcionar -ojo que los colores van en inglés-. Lo que ese código dice es que mapee el parámetro geométrico “color” a una variable que contiene el valor <code>"red"</code> para todas las filas. El mapeo se hace a través de la escala, que va a asignarle un valor (rosa <span style="color:#F77D75">●</span>) a los puntos correspondientes al valor <code>"red"</code>.</p>
-<p>Ahora que no nos interesa <em>mapear</em> el color a una variable, podemos mover ese argumento <strong>afuera</strong> de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code>: <code>geom_point(color = "red")</code>.</p>
+<p>Ahora que no nos interesa <em>mapear</em> el color a una variable, podemos mover ese argumento <strong>afuera</strong> de la función <code>aes()</code>: <code>geom_point(color = "red")</code>.</p>
 </div>
-</section><section id="relación-entre-variables" class="level3" data-number="6.0.5"><h3 data-number="6.0.5" class="anchored" data-anchor-id="relación-entre-variables">
-<span class="header-section-number">6.0.5</span> Relación entre variables</h3>
+</section>
+<section id="relación-entre-variables" class="level3" data-number="6.0.5">
+<h3 data-number="6.0.5" class="anchored" data-anchor-id="relación-entre-variables"><span class="header-section-number">6.0.5</span> Relación entre variables</h3>
 <p>Muchas veces no es suficiente con mirar los datos crudos para identificar la relación entre las variables; es necesario usar alguna transformación estadística que resalte esas relaciones, ya sea ajustando una recta o calculando promedios.</p>
 <p>Para alguna transformaciones estadísticas comunes, ggplot2 tiene geoms ya programados, pero muchas veces es posible que necesitemos manipular los datos antes de poder hacer un gráfico. A veces esa manipulación será compleja y entonces para no repetir el cálculo muchas veces, guardaremos los datos modificados en una nueva variable. Pero también podemos <em>encadenar</em> la manipulación de los datos y el gráfico resultante.</p>
 <p>Por ejemplo, calculemos la esperanza de vida media por continente y para cada año usando dplyr y luego grafiquemos la <code>esperanza_de_vida_media</code> a los largo de los <code>anios</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">paises</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continente</span>, <span class="va">anio</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>esperanza_de_vida_media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">anio</span>, <span class="va">esperanza_de_vida_media</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Acá se acaban los |&gt; y comienzan los "+"</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>paises <span class="sc">|&gt;</span> </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continente, anio) <span class="sc">|&gt;</span> </span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">esperanza_de_vida_media =</span> <span class="fu">mean</span>(esperanza_de_vida)) <span class="sc">|&gt;</span> </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, esperanza_de_vida_media)) <span class="sc">+</span>  <span class="co"># Acá se acaban los |&gt; y comienzan los "+"</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Esto es posible gracias al operador <code>|&gt;</code> que le <em>pasa</em> el resultado de <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> a la función <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Y este resultado no es ni más ni menos que el data.frame que necesitamos para hacer nuestro gráfico. Es importante notar que una vez que comenzamos el gráfico ya <strong>no</strong> se puede usar el operador <code>|&gt;</code> y las capas del gráfico se <em>suman</em> como siempre con <code>+</code>.</p>
-<p>Este gráfico entonces parece mostrar que la esperanza de vida fue aumentado a lo largo de los años pero sería interesante ver esa relación más explícitamente agregando una nueva capa con <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>.</p>
+<p>Esto es posible gracias al operador <code>|&gt;</code> que le <em>pasa</em> el resultado de <code>summarise()</code> a la función <code>ggplot()</code>. Y este resultado no es ni más ni menos que el data.frame que necesitamos para hacer nuestro gráfico. Es importante notar que una vez que comenzamos el gráfico ya <strong>no</strong> se puede usar el operador <code>|&gt;</code> y las capas del gráfico se <em>suman</em> como siempre con <code>+</code>.</p>
+<p>Este gráfico entonces parece mostrar que la esperanza de vida fue aumentado a lo largo de los años pero sería interesante ver esa relación más explícitamente agregando una nueva capa con <code>geom_smooth()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continente</span>, <span class="va">anio</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>esperanza_de_vida_media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">anio</span>, <span class="va">esperanza_de_vida_media</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>paises <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continente, anio) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">esperanza_de_vida_media =</span> <span class="fu">mean</span>(esperanza_de_vida)) <span class="sc">|&gt;</span> </span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, esperanza_de_vida_media)) <span class="sc">+</span>  </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'continente'. You can override using the
 `.groups` argument.
@@ -488,19 +506,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Como dice en el mensaje, por defecto <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> suaviza los datos usando el método <em>loess</em> (regresión lineal local) cuando hay menos de 1000 datos. Seguramente va a ser muy común que quieras ajustar una regresión lineal global. En ese caso, hay que poner <code>method = "lm"</code>:</p>
+<p>Como dice en el mensaje, por defecto <code>geom_smooth()</code> suaviza los datos usando el método <em>loess</em> (regresión lineal local) cuando hay menos de 1000 datos. Seguramente va a ser muy común que quieras ajustar una regresión lineal global. En ese caso, hay que poner <code>method = "lm"</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continente</span>, <span class="va">anio</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>esperanza_de_vida_media <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">esperanza_de_vida</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">anio</span>, <span class="va">esperanza_de_vida_media</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>paises <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(continente, anio) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">esperanza_de_vida_media =</span> <span class="fu">mean</span>(esperanza_de_vida)) <span class="sc">|&gt;</span> </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(anio, esperanza_de_vida_media)) <span class="sc">+</span>  </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`summarise()` has grouped output by 'continente'. You can override using the
 `.groups` argument.
@@ -508,7 +527,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -533,7 +553,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -548,9 +569,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Vamos a seguir aprovechando el paquete datos, en este caso <code>diamantes</code> que contiene información sobre ~ 54000 diamantes, incluido el <code>precio</code>, el <code>quilate</code>, el <code>color</code>, la <code>claridad</code> y el <code>corte</code> de cada uno.</p>
 <div class="cell">
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamantes</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/diamantes.html">diamantes</a></span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html">str</a></span><span class="op">(</span><span class="va">diamantes</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>diamantes <span class="ot">&lt;-</span> datos<span class="sc">::</span>diamantes</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(diamantes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [53,940 × 10] (S3: tbl_df/tbl/data.frame)
  $ precio     : int [1:53940] 326 326 327 334 335 336 336 337 337 338 ...
@@ -565,62 +586,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  $ z          : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
 </div>
 </div>
-</section><section id="gráficos-de-frecuencias" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="gráficos-de-frecuencias">
-<span class="header-section-number">6.1</span> Gráficos de frecuencias</h2>
-<p>Este es un gráfico de barras construido usando la función <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>. En el eje x muestra el <code>corte</code> de los diamantes y en el eje y la cantidad (<em>count</em> en inglés) de diamantes en cada categoría. Pero <code>diamantes</code> no tiene una variable que se llame <code>count</code> y tampoco la generamos nosotros. ¡Es calculada internamente por ggplot2!</p>
+</section>
+<section id="gráficos-de-frecuencias" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="gráficos-de-frecuencias"><span class="header-section-number">6.1</span> Gráficos de frecuencias</h2>
+<p>Este es un gráfico de barras construido usando la función <code>geom_bar()</code>. En el eje x muestra el <code>corte</code> de los diamantes y en el eje y la cantidad (<em>count</em> en inglés) de diamantes en cada categoría. Pero <code>diamantes</code> no tiene una variable que se llame <code>count</code> y tampoco la generamos nosotros. ¡Es calculada internamente por ggplot2!</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">corte</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamantes, <span class="fu">aes</span>(<span class="at">x =</span> corte)) <span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Cómo el gráfico de barras, también podemos graficar histogramas con <code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram()</a></code> y polígonos de frecuencia con <code><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density()</a></code> para visualizar la cantidad de observaciones que caen en cada categoría (si la variable es discreta como el caso del corte de los diamantes) o rango de valores (para variables continuas).</p>
+<p>Cómo el gráfico de barras, también podemos graficar histogramas con <code>geom_histogram()</code> y polígonos de frecuencia con <code>geom_density()</code> para visualizar la cantidad de observaciones que caen en cada categoría (si la variable es discreta como el caso del corte de los diamantes) o rango de valores (para variables continuas).</p>
 <p>Un ejemplo de variable continua es el <code>precio</code> de los diamantes, veamos como se ve un histograma y de paso le cambiamos el color a las barras, pero ojo, solo al borde.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"darkorange"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamantes, <span class="fu">aes</span>(precio)) <span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">fill =</span> <span class="st">"darkorange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 </div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <div class="ejercicio">
 <p>¿Notaste el mensaje que devuelve el gráfico?</p>
-<p>`<code><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">stat_bin()</a></code> using <code>bins = 30</code>. Pick better value with <code>binwidth</code>.`</p>
+<p>`<code>stat_bin()</code> using <code>bins = 30</code>. Pick better value with <code>binwidth</code>.`</p>
 <p>Esta geometría tiene dos argumentos importantes <code>bins</code> y <code>binwidth</code>. Cambiá el valor de alguno de los dos argumentos y volvé a generar el gráfico, ¿que rol juegan los argumentos?</p>
 <p>También podés revisar la documentación.</p>
 </div>
-<p>Además de contar la cantidad de elementos, ggplot2 puede calcular muchas otras transformaciones sobre los datos. Por ejemplo si quisiéramos el porcentaje o la proporción que le corresponde a cada categoría de <code>corte</code> respecto del total podemos hacerlo <em>mapeando</em> esa transformación <code>prop</code> al eje y con la función <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat()</a></code>.</p>
+<p>Además de contar la cantidad de elementos, ggplot2 puede calcular muchas otras transformaciones sobre los datos. Por ejemplo si quisiéramos el porcentaje o la proporción que le corresponde a cada categoría de <code>corte</code> respecto del total podemos hacerlo <em>mapeando</em> esa transformación <code>prop</code> al eje y con la función <code>after_stat()</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">corte</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span>, group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamantes, <span class="fu">aes</span>(<span class="at">x =</span> corte)) <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="fu">after_stat</span>(prop), <span class="at">group =</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Fijate que la variable <code>prop</code> no es una columna de <code>diamantes</code> sino que es el nombre de una variable computada por <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code>, por eso hay que rodearla de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">stat()</a></code>. El nombre de las variables computadas por cada geoms está en su documentación (abajo de todo, antes de los ejemplos).</p>
-<p>Ahora podríamos decir que el 40% de los diamantes en la base de datos tienen un corte <em>ideal</em>. Además de la función <code><a href="https://ggplot2.tidyverse.org/reference/aes_eval.html">after_stat()</a></code> agregamos <code>group = 1</code> y esto no fue sin querer. Probá correr el gráfico sin ese argumento.</p>
+<p>Fijate que la variable <code>prop</code> no es una columna de <code>diamantes</code> sino que es el nombre de una variable computada por <code>geom_bar()</code>, por eso hay que rodearla de la función <code>stat()</code>. El nombre de las variables computadas por cada geoms está en su documentación (abajo de todo, antes de los ejemplos).</p>
+<p>Ahora podríamos decir que el 40% de los diamantes en la base de datos tienen un corte <em>ideal</em>. Además de la función <code>after_stat()</code> agregamos <code>group = 1</code> y esto no fue sin querer. Probá correr el gráfico sin ese argumento.</p>
 <p>Al incluir <code>group = 1</code>, ggplot2 junta todas las observaciones en un único grupo (con el valor <code>1</code>) y calcula la proporción o el porcentaje que representa cada corte respecto del total de diamantes. Si no incluimos eso, ggplot2 asumirá que cada categoría de corte es un grupo independiente y el cálculo del porcentaje también lo hará por separado.</p>
 <div class="ejercicio">
-<p>Las geometrías <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col()</a></code> y <code><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar()</a></code> tienen un argumento llamado <code>position</code> que afecta como se organizan las barras particularmente cuando mapeamos una tercer variable al relleno. Por ejemplo:</p>
+<p>Las geometrías <code>geom_col()</code> y <code>geom_bar()</code> tienen un argumento llamado <code>position</code> que afecta como se organizan las barras particularmente cuando mapeamos una tercer variable al relleno. Por ejemplo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">diamantes</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">corte</span>, fill <span class="op">=</span> <span class="va">claridad</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> diamantes) <span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> corte, <span class="at">fill =</span> claridad))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -630,30 +656,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Probá cada uno y comparalos para ver las diferencias.</li>
 </ol>
 </div>
-</section><section id="gráficos-de-caja" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="gráficos-de-caja">
-<span class="header-section-number">6.2</span> Gráficos de caja</h2>
+</section>
+<section id="gráficos-de-caja" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="gráficos-de-caja"><span class="header-section-number">6.2</span> Gráficos de caja</h2>
 <p>Los diagramas de caja, mejor conocidos como boxplots calculan un resumen robusto de la distribución y luego muestran una caja con formato especial.</p>
 <p>La línea central de la caja corresponde a la <strong>mediana</strong> (el valor que toma el dato central) y los extremos de la caja son los <strong>cuartiles 1 y 3</strong>, definiendo así el <strong>rango intercuartil</strong> (IQR). Los extremos están definidos como el valor observado que no esté más lejos de <strong>1.5*IQR</strong> de la mediana y los puntos son los las observaciones que se escapan de ese rango, que pueden ser considerados <strong>outliers</strong> o <strong>valores extremos</strong>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">claridad</span>, <span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamantes, <span class="fu">aes</span>(claridad, precio)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Los boxplot dan muchísima información sobre los datos pero al mismo tiempo <em>esconden</em> la cantidad de observaciones que se usaron para generarlos y en particular cual es la frecuencia a lo largo del eje y. Por esta razón también existen <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code> y <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>.</p>
+<p>Los boxplot dan muchísima información sobre los datos pero al mismo tiempo <em>esconden</em> la cantidad de observaciones que se usaron para generarlos y en particular cual es la frecuencia a lo largo del eje y. Por esta razón también existen <code>geom_violin()</code> y <code>geom_jitter()</code>.</p>
 <div class="ejercicio">
 <ol type="1">
-<li>Volvé a graficar la distribución del precio para cada tipo de claridad pero ahora usando <code><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin()</a></code> y <code><a href="https://ggplot2.tidyverse.org/reference/geom_jitter.html">geom_jitter()</a></code>.</li>
-<li>¿Qué ventajas y desventajas encuentran respecto de <code><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot()</a></code>?</li>
+<li>Volvé a graficar la distribución del precio para cada tipo de claridad pero ahora usando <code>geom_violin()</code> y <code>geom_jitter()</code>.</li>
+<li>¿Qué ventajas y desventajas encuentran respecto de <code>geom_boxplot()</code>?</li>
 </ol>
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -661,7 +690,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -671,53 +701,58 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Cuando nuestra base de datos es muy grande corremos el riesgo de que los elementos del gráfico estén tan juntos que se solapen y no se vean. Esto se conoce como <strong>overplotting</strong>. La base de datos <code>diamantes</code> tiene 53940 observaciones y al graficar un punto por cada una, aún si están separados por la claridad, quedan superpuestos.</p>
 <p>Para resolver este problema se suele modificar la estética de los elementos, cambiando el tamaño o <code>size</code> para que ocupen menos lugar y se vean mejor, cambiando la forma o <code>shape</code> por alguna que no tenga relleno y permita ver los elementos que hay atrás o modificando la transparencia o <code>alpha</code> por la misma razón. En bases de datos tan grandes como la de diamantes, muchas veces hay que utilizar varios de estos recursos.</p>
 </div>
-</section><section id="graficando-en-múltiples-paneles" class="level2" data-number="6.3"><h2 data-number="6.3" class="anchored" data-anchor-id="graficando-en-múltiples-paneles">
-<span class="header-section-number">6.3</span> Graficando en múltiples paneles</h2>
+</section>
+<section id="graficando-en-múltiples-paneles" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="graficando-en-múltiples-paneles"><span class="header-section-number">6.3</span> Graficando en múltiples paneles</h2>
 <p>Vimos que es posible graficar más de dos variables en un gráfico <em>mapeando</em> una variable al <code>color</code> o por ejemplo el tipo de línea o <code>linetype</code></p>
 <div class="cell">
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">quilate</span>, <span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamantes, <span class="fu">aes</span>(quilate, precio)) <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> color))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>En este caso no solo visualizamos la relación entre el precio y el quilate del diamante, también podemos ver que rol juega el color. También podríamos haber intentando resolver el problema generando un gráfico por cada color filtrando las observaciones correspondientes.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">diamantes</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"D"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">quilate</span>, <span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>diamantes <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(color <span class="sc">==</span> <span class="st">"D"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(quilate, precio)) <span class="sc">+</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> color))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>Pero sería muchísimo trabajo si tenemos que hacer esto para cada una de las 7 categorías de color. La buena noticia es que ggplot2 tiene un par de funciones justo para resolver este problema:</p>
 <div class="cell">
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">quilate</span>, <span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">color</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamantes, <span class="fu">aes</span>(quilate, precio)) <span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> color)) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>Esta nueva capa con <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> divide al gráfico inicial en 7 paneles o <em>facets</em>, uno por cada color. Esta función requiere saber que variable será la responsable de separar los paneles y para eso se usa la <strong>notación de funciones</strong> de R: <code>~color</code>. Esto se lee como generar paneles <em>“en función del color”</em>.</p>
-<p>¿Y si quisiéramos generar paneles a partir de 2 variables? Para eso existe <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code>. En este gráfico generamos paneles viendo la <em>“relación entre el corte y el color”</em> y por ejemplo en el primer panel arriba a la izquierda podremos observar los diamantes que son al mismo tiempo de color D y corte Regular. En este caso <em>mapear</em> la variable color al color de los diamantes no parece ser necesario ya que cada columna ya nos permite identificar eso, sin embargo en algunos casos ayuda a leer el gráfico más rápido.</p>
+<p>Esta nueva capa con <code>facet_wrap()</code> divide al gráfico inicial en 7 paneles o <em>facets</em>, uno por cada color. Esta función requiere saber que variable será la responsable de separar los paneles y para eso se usa la <strong>notación de funciones</strong> de R: <code>~color</code>. Esto se lee como generar paneles <em>“en función del color”</em>.</p>
+<p>¿Y si quisiéramos generar paneles a partir de 2 variables? Para eso existe <code>facet_grid()</code>. En este gráfico generamos paneles viendo la <em>“relación entre el corte y el color”</em> y por ejemplo en el primer panel arriba a la izquierda podremos observar los diamantes que son al mismo tiempo de color D y corte Regular. En este caso <em>mapear</em> la variable color al color de los diamantes no parece ser necesario ya que cada columna ya nos permite identificar eso, sin embargo en algunos casos ayuda a leer el gráfico más rápido.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">diamantes</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">quilate</span>, <span class="va">precio</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">color</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid</a></span><span class="op">(</span><span class="va">corte</span><span class="op">~</span><span class="va">color</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(diamantes, <span class="fu">aes</span>(quilate, precio)) <span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> color)) <span class="sc">+</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(corte<span class="sc">~</span>color)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -727,14 +762,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
-<section id="ex-graficos" class="level3" data-number="6.3.1"><h3 data-number="6.3.1" class="anchored" data-anchor-id="ex-graficos">
-<span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</h3>
+<section id="ex-graficos" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="ex-graficos"><span class="header-section-number">6.3.1</span> Construyendo un paquete de R paso a paso</h3>
 <div class="ejercicio">
 <p>Sigamos analizando los datos de estaciones meteorológicas.</p>
 <ol type="1">
@@ -746,7 +782,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="05_graficos_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
+<figure class="figure">
+<p><img src="05_graficos_files/figure-html/unnamed-chunk-29-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -757,7 +794,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -792,18 +833,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -835,7 +865,47 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
   function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
@@ -870,7 +940,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
     });
   }
   const xrefs = window.document.querySelectorAll('a.quarto-xref');
@@ -918,7 +992,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      return note.innerHTML;
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
     }
   }
   for (var i=0; i<xrefs.length; i++) {
@@ -1138,18 +1217,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="./04_git-1.html" class="pagination-link  aria-label=" para="" trabajar="" individualmente="">
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./04_git-1.html" class="pagination-link" aria-label="git para trabajar individualmente">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">git para trabajar individualmente</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06_manipulacion-2.html" class="pagination-link" aria-label="<span class='chapter-number'>7</span>&nbsp; <span class='chapter-title'>Manipulación de datos ordenados II</span>">
+      <a href="./06_manipulacion-2.html" class="pagination-link" aria-label="Manipulación de datos ordenados II">
         <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Manipulación de datos ordenados II</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
