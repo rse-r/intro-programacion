@@ -147,7 +147,7 @@ Tu paquete ahora vive en un repositorio de GitHub, y has creado varios archivos 
 
 Tanto si trabajamos solos como con un grupo de personas, la mejor forma de gestionarlo es utilizar un sistema de seguimiento de issues para controlar las tareas que tenemos que completar o los problemas que tenemos que solucionar. Los issues a veces se denominan tickets, por lo que los sistemas para su seguimiento también reciben el nombre de sistemas de tickets. También se les suele llamar sistemas de gestion de errores, pero pueden utilizarse para gestionar diferentes tipos de trabajo.
 
-GitHub permitecrear issues para un proyecto, comentarlos y buscar en todos los issues disponibles.
+GitHub permite crear issues para un proyecto, comentarlos y buscar en todos los issues disponibles.
 
 :::importante
 Hemos creado issues en sus repositorios durante la cursada. Se puede generar una conversacion 
@@ -156,8 +156,20 @@ en los issues hasta que se llega a un concenso y luego se pueden cerrar.
 A pesar que esten cerrados los issues igualmente quedan en el historial de GitHub.
 :::
 
+En términos generales, las personas crean tres tipos de issues:
 
-**TODO: completar**
+1. Para informar sobre errores y describir los problemas que han encontrado.
+
+2. Pedidos de características o funcionalidades nuevas, como «añadir
+esta función a este paquete» o “añadir un menú al sitio web”.
+
+3. Preguntas sobre el uso del paquete, el funcionamiento de partes del proyecto o su orientación futura.
+
+Cuanto más grande o antiguo es un proyecto, más difícil es encontrar cosas, a menos que trabajemos  para hacer que las cosas sean fáciles de encontrar. GitHub permite añadir
+etiquetas a los issues para facilitar su búsqueda y organización.
+
+En GitHub hay etiquetas definidas por defecto pero también se puede definir nuevas etiquetas según la necesidad. Algunas de las etiquetas más usadas son **bug** (o error), **feature** (o nueva funcionalidad), **question** (o pregunta), **good first issue** (o para principiantes), **urgent** (o urgente), **duplicate** (duplicado), entre otros.
+
 
 ## La comunidad de R
 
@@ -172,9 +184,9 @@ Lo que se conoce globalmente como la comunidad R o R Community esta formada por 
 
 La Fundacion R y el Consorcio R son dos de las organizaciones que planifican y financian iniciativas que hacen al lenguaje R avanzar. 
 
-## Grupos de Usuarios de R
+### Grupos de Usuarios de R
 
-El Consorcio de R (RConsortium) tiene un programa que patrocina grupos de usuarios (RUG) pero que son y que hacen? 
+El Consorcio de R ([RConsortium](https://r-consortium.org/)) tiene un programa que patrocina grupos de usuarios (RUG) pero que son y que hacen? 
 
 Los RUG son personas que usan R que se reúnen periódicamente en el lugar donde viven para compartir experiencias y conocimientos.
 
@@ -185,20 +197,22 @@ En los encuentros se comparten talleres sobre distintos paquetes o herramientas 
 Toda persona interesada en R es bienvenida, independientemente de su grado de familiaridad con el lenguaje.
 
 :::importante
-Existen varios RUGs en America Latina y en Argentina.  Ustedes tienen bien cerquita RenRosario. Muchos de los grupos tienen eventos en linea a los cuales pueden sumarse.
+Existen varios RUGs en America Latina y en Argentina. Por ejemplo existe [RenRosario](https://renrosario.rbind.io/) y [RenBuenosAires](https://renbaires.github.io/). Muchos de los grupos tienen eventos en linea a los cuales pueden sumarse.
 :::
 
-Un grupo especial de RUGs es R-Ladies que se centra en reducir la brecha de genero en la comunidad R por medio de mentorias y eventos abiertos y gratuitos en sus capitulos alrededor del mundo.  R-Ladies tiene 10 capitulos en Argentina y mas de 240 alrededor del mundo. En total hay mas de 100000 personas que participan de estos grupos.
+Un grupo especial de RUGs es [R-Ladies](https://rladies.org/) que se centra en reducir la brecha de genero en la comunidad R por medio de mentorias y eventos abiertos y gratuitos en sus capitulos alrededor del mundo.  R-Ladies tiene 10 capitulos en Argentina y mas de 240 alrededor del mundo. En total hay mas de 100000 personas que participan de estos grupos.
 
-## Conferencias
+### Conferencias
 
-Esta comunidad tiene una serie de conferencias donde nos encontramos todos los años.  Para America Latina la mas importante es LatinR. Luego useR! y Posit::Conf son las otras dos conferencias donde es muy interesante poder participar.
+Esta comunidad tiene una serie de conferencias donde nos encontramos todos los años.  Para America Latina la mas importante es [LatinR](https://latinr.org/). Luego [useR!](https://www.r-project.org/conferences/) y [Posit::Conf](https://posit.co/conference/) son las otras dos conferencias donde es muy interesante poder participar.
 
-## Ciencia abierta, reproducbilidad y software
+### Ciencia abierta, reproducbilidad y software
 
-rOpenSci
+Existen otras comunidades relacionadas a R con distintos objetivos. Por ejemplo [rOpenSci](https://ropensci.org/) que se enfoca en ayudar a crear paquetes de R para hacer ciencia creando una comunidad de personas que desarrollan, revisan y mantienen esos paquetes. 
 
-The Carpentries
+Otra comunidad es [The Carpentries](https://carpentries.org/) que busca enseñar herramientas y habilidades para hacer ciencia de manera abierta y reproducible. 
+
+Esta lista no está completa, existen muchas comunidades e iniciativas y aparecen nuevas muy seguido!
 
 
 
