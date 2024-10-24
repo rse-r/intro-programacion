@@ -1,0 +1,218 @@
+---
+title: "Contribuir y aceptar contribuciones"
+---
+
+## Objetivos de aprendizaje
+
+- Editar un archivo README y NEWS de un proyecto para que de la bienvenida a las personas que quieran usar el paquete o colaborar.
+- Comprender la importancia de tener un Código de Conducta explícito y cómo crear uno relevante para un proyecto.
+- Comprender el propósito de las licencias, cómo elegir una licencia y crear un archivo LICENSE.
+- Comprender la importancia de incluir una guia para contribuir con el proyecto.
+- Crear y gestionar GitHub Issues y sus etiquetas para hacer un seguimiento de los errores y
+y mejoras del proyecto.
+
+## Crear una comunidad amigable
+
+Ahora que el paqute está tomando forma e incluso tienes un sitio web para
+compartir información sobre él, hay cosas algunas cosas que podemos sumar para ayudar a otras personas a entender cómo colaborar o usar el paquete. Esta sección también te ayudará a identificar estos mismos elementos en otros proyectos en los que quieras contribuir.
+
+### Crear un README amigable
+
+El README es la puerta de entrada a tu paquete, es importante que sea amigable para cualquier persona que quiera usarlo o colaborar, independientemente de su nivel de experiencia.
+
+Hasta ahora el README debería tener:una descripción del paquete, instrucciones para instalar y usar el el paquete y algunos ejemplos. Revisemos el contenido desde la perspectiva de una persona que recién se encuentra con el paquete:
+
+* ¿Es amigable? 
+* ¿Es fácil de entender? 
+* ¿Contiene toda la información necesaria para utilizar o contribuir con el paquete?
+
+Es posible que no podamos responder que si a todo lo anterior, para mejorar nuestro README podemos agregar o mejorar los siguientes aspectos:
+
+- Una buena manera de empezar un README es dando la bienvenida. Podés además presentarte y a todo el equipo.
+
+- Escribe la descripción de tu proyecto de forma que sea comprensible para un amplio abanico de personas. Evita utilizar jerga y asegurate de definir todos los términos o conceptos que sean específicos del sector.
+
+- ¿De qué trata este proyecto?
+- ¿A quién va dirigido?
+- ¿Por qué existe este proyecto?
+- ¿Qué hace que tu proyecto sea único o distinto que otros?
+- Describí cómo se utiliza el paquete con ejemplos sencillos.
+- Describí qué tipo de ayuda o contribuciones estás buscando.
+
+Aun si no esperas que tu paquete sea usado por otras personas o que las personas esten interesadas en coraborar, escribir un READM claro también es extremadamente útil para tu yo del futuro. El mero hecho de pensar en la documentación de tu paquete es una forma perfecta re revisar y aclarar las ideas y con suerte prevenir errores y problemas.
+
+
+::: ejercicio
+
+**Etiquetas del README**
+
+Si alguna vez revisaste el README de cualquier paquete de habras notado que tiene etiquetas o *badges* al inicio. Sirven para mostrar distintas características del paquete, si pasa los checks, cual es la cobertura de test, etc. Agreguemos la primera con:
+
+```r
+use_lifecycle_badge("experimental")
+```
+
+* ¿Que cambios pueden observar en el README?
+* Kniteen el archivo.
+* Hagan commit y push al repositorio remoto y revisen como se ve el README en GitHub 
+
+¿Qué otras etiquetas existen?
+
+:::
+
+
+### Guía de contribución
+
+Es muy común encontrar el siguiente párrafo al final de cualquier README de un paquete de R:
+
+> **Cómo contribuir**
+> Para contribuir con este paquete podés leer la siguiente guía para contribuir. 
+
+Y normalmente incluye un link a un archivo con detalles más específicos sobre como contribuir: el archivo CONTRIBUTING.md. Estas guías de contribución ayudan a las personas a
+interactuar con tu proyecto y te ayudarán a planificar los tipos de
+contribuciones que estás buscando.
+
+La función `usethis::use_tidy_contributing()` crea automáticamente el archivo `CONTRIBUTING.md` en la carpeta `.github` con algunas
+guias de contribución en el estilo Tidyverse.
+
+Por supuesto, esta guia estará en inglés pero podemos traducirla al español si el resto de la documentación del paquete también está en español. A modo de ejemplo, [esta es una guía de contribución en español](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/.github/CONTRIBUTING.md).
+
+Es posible además, dependiendo de tu paquete, que necesites agregar secciones extras para explicar como informar sobre errores en el paquete o como ponerse en contacto con el equipo que desarrolla el paquete.
+
+
+::: ejercicio
+
+1. Agregá el archivo CONTRIBUTING usando usethis. Podés hacer una traducción automática del contenido usando [DeepL](https://www.deepl.com/en/translator).
+2. Agregá indicaciones en el README para encontrar el archivo CONTRIBUTING, debería ser un link. 
+
+:::
+
+### Código de conducta
+
+Para crear una comunidad inclusiva y segura, una herramienta muy importante es el
+Código de conducta. El Código de Conducta ayuda a establecer claramente qué comportamientos
+son aceptables y cuáles no lo son Esto ayuda ayuda a evitar
+problemas y define cómo se tratarán los problemas
+en caso de que se produzcan.
+
+La función `usethis::use_code_of_conduct()` crea un archivo llamado
+`CODE_OF_CONDUCT.md` que contiene el texto de [Contributor
+Covenant](https://www.contributor-covenant.org/). Nuevamente estará en inglés, pero [acá hay un ejemplo en español](https://github.com/AgRoMeteorologiaINTA/agroclimatico/blob/master/CODE_OF_CONDUCT.md).
+
+Redactar un código de conducta desde cero es una tarea compleja, por eso recomendamos revisar los códigos de conducta de otros proyectos y organizaciones.
+
+Los archivos `CONTRIBUTING.md` y `CODE_OF_CONDUCT.md` son tratados por
+GitHub de forma especial, por ejemplo aparecen en el menú de la izquierda cuando visitamos el repositorio.
+
+## Licencia
+
+Mientras que un código de conducta describe cómo deben interactuar las personas que participan del proyecto entre sí, una licencia dicta cómo pueden utilizarse y redistribuirse los materiales del proyecto. Si la licencia o un acuerdo de publicación dificultan las contribuciones, es menos probable que el proyecto atraiga a nuevas personas, por lo que la elección de la licencia es crucial para la sostenibilidad del proyecto a largo plazo.
+
+La clase pasada agregamos la licencia MIT en nuestro paquete.  Para evitar líos legales, todo proyecto debe incluir una licencia explícita. Esta licencia debe elegirse con tiempo, ya que cambiar una licencia puede ser complicado.  En general tambien tendremos una licencia que aplica al software y otra que aplica a los datos y documentos.
+
+### Software
+
+Para elegir la licencia adecuada para nuestro software, debemos entender la diferencia entre dos tipos de licencia. La Licencia MIT (y su hermana cercana la Licencia BSD) dicen que la gente puede hacer lo que quiera con el software siempre que cite la fuente original,
+y que los autores no aceptan ninguna responsabilidad si las cosas no funcionan. La Licencia Pública GNU (GPL) otorga a los usuarios derechos similares, pero les obliga a compartir su propio trabajo en las mismas condiciones.
+
+### Datos y documentos
+
+Cuando se trata de datos y docimentos, la familia de licencias más utilizada es la de [Creative Commons](https://creativecommons.org/). Han sido redactadas y verificadas por juristas y son bien conocidas por la comunidad.
+
+La opción más liberal se denomina CC-0, donde el «0» significa «cero restricciones». Esto pone el trabajo en el dominio público, es decir, permite que cualquiera que quiera utilizarla lo haga, como quiera, sin restricciones. Suele ser la mejor opción para los datos, ya que simplifica el análisis agregado de conjuntos de datos de distintas fuentes. 
+
+Las otras licencias agregan restricciones: 
+
+-Atribucion - BY: permite hacer lo que se quiera con la obra siempre que se cite la fuente original. Esta es la mejor licencia para documentos: queremos que la gente los comparta ampliamente, pero también queremos que se reconozca nuestro trabajo.
+
+- Sin derivados - ND: impide que se creen versiones modificadas de nuestro trabajo. 
+
+- Compartir igual - SA: exige que las obras que incorporen las nuestro trabajo se compartan en los mismos términos que lo hicimos nosotros. 
+
+- Sin uso comercial - NC: *no* significa que la gente no pueda cobrar dinero por algo que incluya nuestro trabajo. Esta cláusula significa que la gente no puede cobrar por algo que utilice nuestro trabajo sin nuestro permiso explícito, que podemos dar en los términos que queramos.
+
+:::importante
+
+La familia de funciones `usethis::use_NOMBRE_license()`, reemplazando `NOMBRE` con una licencia de la lista, 
+crea el archivo `LICENSE.md` con el texto de esa licencia.
+
+Por ejemplo, `use_ccby_license()` agrega la licencia Creative Commons con atribucion al proyecto.
+
+:::
+
+
+## Usando GitHub Issues para mantener tu proyecto
+
+Tu paquete ahora vive en un repositorio de GitHub, y has creado varios archivos útiles que orientarán a los usuarios y colaboradores de tu proyecto. Ahora bien, ¿cómo sabe alguien que quiere contribuir lo que debería estar haciendo?
+
+Tanto si trabajamos solos como con un grupo de personas, la mejor forma de gestionarlo es utilizar un sistema de seguimiento de issues para controlar las tareas que tenemos que completar o los problemas que tenemos que solucionar. Los issues a veces se denominan tickets, por lo que los sistemas para su seguimiento también reciben el nombre de sistemas de tickets. También se les suele llamar sistemas de gestion de errores, pero pueden utilizarse para gestionar diferentes tipos de trabajo.
+
+GitHub permite crear issues para un proyecto, comentarlos y buscar en todos los issues disponibles.
+
+:::importante
+Hemos creado issues en sus repositorios durante la cursada. Se puede generar una conversacion 
+en los issues hasta que se llega a un concenso y luego se pueden cerrar.
+
+A pesar que esten cerrados los issues igualmente quedan en el historial de GitHub.
+:::
+
+En términos generales, las personas crean tres tipos de issues:
+
+1. Para informar sobre errores y describir los problemas que han encontrado.
+
+2. Pedidos de características o funcionalidades nuevas, como «añadir
+esta función a este paquete» o “añadir un menú al sitio web”.
+
+3. Preguntas sobre el uso del paquete, el funcionamiento de partes del proyecto o su orientación futura.
+
+Cuanto más grande o antiguo es un proyecto, más difícil es encontrar cosas, a menos que trabajemos  para hacer que las cosas sean fáciles de encontrar. GitHub permite añadir
+etiquetas a los issues para facilitar su búsqueda y organización.
+
+En GitHub hay etiquetas definidas por defecto pero también se puede definir nuevas etiquetas según la necesidad. Algunas de las etiquetas más usadas son **bug** (o error), **feature** (o nueva funcionalidad), **question** (o pregunta), **good first issue** (o para principiantes), **urgent** (o urgente), **duplicate** (duplicado), entre otros.
+
+
+## La comunidad de R
+
+
+> Una comunidad de práctica es un grupo de personas que comparten una pasión por algo que saben hacer, y que interactúan regularmente para aprender a hacerlo mejor – Etienne Wenger
+
+Hasta el momento vimos diferentes maneras de hacer que tu paquete este listo para que otras personas colaboren. 
+
+Ahora vamos a ver una serie de grupos y organizaciones en las cuales podes involucrarte para aprender, mejorar tus capacidades relacionadas a la ciencia de datos, incrementar tu red de contactos y compartir tu trabajo.
+
+Lo que se conoce globalmente como la comunidad R o R Community esta formada por un conjunto de organizaciones sin fines de lucro, companias privadas, universidades y fundaciones, todas trabajando con el lenguage R para diferentes disciplinas y objetivos.
+
+La Fundacion R y el Consorcio R son dos de las organizaciones que planifican y financian iniciativas que hacen al lenguaje R avanzar. 
+
+### Grupos de Usuarios de R
+
+El Consorcio de R ([RConsortium](https://r-consortium.org/)) tiene un programa que patrocina grupos de usuarios (RUG) pero que son y que hacen? 
+
+Los RUG son personas que usan R que se reúnen periódicamente en el lugar donde viven para compartir experiencias y conocimientos.
+
+Fomentan el aprendizaje colectivo, el trabajo en comunidad y el crecimiento grupal, en el contexto de la utilización de R en actividades profesionales y/o académicas (o recreativas!).
+
+En los encuentros se comparten talleres sobre distintos paquetes o herramientas relacionadas con R, novedades sobre eventos relacionados, discusiones sobre tópicos de ciencia de datos, o disciplinas especificas como R en el agro o R en educacion.
+
+Toda persona interesada en R es bienvenida, independientemente de su grado de familiaridad con el lenguaje.
+
+:::importante
+Existen varios RUGs en America Latina y en Argentina. Por ejemplo existe [RenRosario](https://renrosario.rbind.io/) y [RenBuenosAires](https://renbaires.github.io/). Muchos de los grupos tienen eventos en linea a los cuales pueden sumarse.
+:::
+
+Un grupo especial de RUGs es [R-Ladies](https://rladies.org/) que se centra en reducir la brecha de genero en la comunidad R por medio de mentorias y eventos abiertos y gratuitos en sus capitulos alrededor del mundo.  R-Ladies tiene 10 capitulos en Argentina y mas de 240 alrededor del mundo. En total hay mas de 100000 personas que participan de estos grupos.
+
+### Conferencias
+
+Esta comunidad tiene una serie de conferencias donde nos encontramos todos los años.  Para America Latina la mas importante es [LatinR](https://latinr.org/). Luego [useR!](https://www.r-project.org/conferences/) y [Posit::Conf](https://posit.co/conference/) son las otras dos conferencias donde es muy interesante poder participar.
+
+### Ciencia abierta, reproducbilidad y software
+
+Existen otras comunidades relacionadas a R con distintos objetivos. Por ejemplo [rOpenSci](https://ropensci.org/) que se enfoca en ayudar a crear paquetes de R para hacer ciencia creando una comunidad de personas que desarrollan, revisan y mantienen esos paquetes. 
+
+Otra comunidad es [The Carpentries](https://carpentries.org/) que busca enseñar herramientas y habilidades para hacer ciencia de manera abierta y reproducible. 
+
+Esta lista no está completa, existen muchas comunidades e iniciativas y aparecen nuevas muy seguido!
+
+
+
