@@ -13,7 +13,7 @@ y mejoras del proyecto.
 
 ## Crear una comunidad amigable
 
-Ahora que el paqute está tomando forma e incluso tienes un sitio web para
+Ahora que el paquete está tomando forma e incluso tienes un sitio web para
 compartir información sobre él, hay cosas algunas cosas que podemos sumar para ayudar a otras personas a entender cómo colaborar o usar el paquete. Esta sección también te ayudará a identificar estos mismos elementos en otros proyectos en los que quieras contribuir.
 
 ### Crear un README amigable
@@ -39,14 +39,14 @@ Es posible que no podamos responder que si a todo lo anterior, para mejorar nues
 - Describí cómo se utiliza el paquete con ejemplos sencillos.
 - Describí qué tipo de ayuda o contribuciones estás buscando.
 
-Aun si no esperas que tu paquete sea usado por otras personas o que las personas esten interesadas en coraborar, escribir un READM claro también es extremadamente útil para tu yo del futuro. El mero hecho de pensar en la documentación de tu paquete es una forma perfecta re revisar y aclarar las ideas y con suerte prevenir errores y problemas.
+Aun si no esperas que tu paquete sea usado por otras personas o que las personas esten interesadas en colaborar, escribir un READM claro también es extremadamente útil para tu yo del futuro. El mero hecho de pensar en la documentación de tu paquete es una forma perfecta re revisar y aclarar las ideas y con suerte prevenir errores y problemas.
 
 
 ::: ejercicio
 
 **Etiquetas del README**
 
-Si alguna vez revisaste el README de cualquier paquete de habras notado que tiene etiquetas o *badges* al inicio. Sirven para mostrar distintas características del paquete, si pasa los checks, cual es la cobertura de test, etc. Agreguemos la primera con:
+Si alguna vez revisaste el README de cualquier paquete de habrás notado que tiene etiquetas o *badges* al inicio. Sirven para mostrar distintas características del paquete, si pasa los checks, cual es la cobertura de test, etc. Agreguemos la primera con:
 
 ```r
 use_lifecycle_badge("experimental")
@@ -117,7 +117,7 @@ y que los autores no aceptan ninguna responsabilidad si las cosas no funcionan. 
 
 ### Datos y documentos
 
-Cuando se trata de datos y docimentos, la familia de licencias más utilizada es la de [Creative Commons](https://creativecommons.org/). Han sido redactadas y verificadas por juristas y son bien conocidas por la comunidad.
+Cuando se trata de datos y documentos, la familia de licencias más utilizada es la de [Creative Commons](https://creativecommons.org/). Han sido redactadas y verificadas por juristas y son bien conocidas por la comunidad.
 
 La opción más liberal se denomina CC-0, donde el «0» significa «cero restricciones». Esto pone el trabajo en el dominio público, es decir, permite que cualquiera que quiera utilizarla lo haga, como quiera, sin restricciones. Suele ser la mejor opción para los datos, ya que simplifica el análisis agregado de conjuntos de datos de distintas fuentes. 
 
