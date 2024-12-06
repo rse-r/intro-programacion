@@ -6,7 +6,7 @@ project:
 book:
   title: "Introducción a la Programación II"
   author: "Paola Corrales y Yanina Bellini Saibene"
-  doi: https://doi.org10.5281/zenodo.14288649
+  doi: https://doi.org/10.5281/zenodo.14288861
   language: "ES"
   repo-url: "https://github.com/rse-r/intro-programacion"
   chapters:
@@ -33,7 +33,6 @@ book:
   sidebar:
     background: "#916699"
     search: true
-  downloads: [pdf]
     
 bibliography: references.bib
 
