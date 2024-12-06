@@ -33,6 +33,7 @@ book:
   sidebar:
     background: "#916699"
     search: true
+  downloads: [pdf]
     
 bibliography: references.bib
 
@@ -43,7 +44,7 @@ format:
     code-link: true
     mainfont: Noto Sans
     monofont: Source Code Pro
-    author-meta: "Yanina Bellini Saibene y Paola Corrales"
+    author-meta: "Paola Corrales y Yanina Bellini Saibene"
   pdf:
     documentclass: scrreprt
 
