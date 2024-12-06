@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.47">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="Yanina Bellini Saibene y Paola Corrales">
+<meta name="author" content="Paola Corrales y Yanina Bellini Saibene">
 <title>10&nbsp; Empaquetando funciones – Introducción a la Programación II</title>
 <style>
 code{white-space: pre-wrap;}
@@ -120,6 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./">Introducción a la Programación II</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/rse-r/intro-programacion" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+    <a href="./Introducción-a-la-Programación-II.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
 </div>
     </div>
       </div>
@@ -347,7 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Si escribes esto en tu Consola, lo que verás probablemente será un un poco diferente a esto. Si <code><a href="https://rdrr.io/r/base/libPaths.html">.libPaths()</a></code> muestra más de una ruta, normalmente la primera contendrá todos los paquetes.</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 325</code></pre>
+<pre><code>[1] 330</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>C:/Users/tonin/AppData/Local/R/win-library/4.4/abind
@@ -558,6 +559,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   │   └── 19fc766d98a08d9d1437896bfb008a7b15f340
 │   │   ├── 2e
 │   │   │   └── f6af19c05d8621f5a8489bcef540e8e66b5318
+│   │   ├── 2f
+│   │   │   └── a46cf36a5578ba373a5c7e381c71f5781cef68
 │   │   ├── 30
 │   │   │   └── f55b7435491ed4c2b11de8ab5e5c7e1e1ed669
 │   │   ├── 34
@@ -576,6 +579,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── 3d
 │   │   │   └── 2cfe3d1a1115faf88f2cac754e53995cf4546b
 │   │   ├── 3e
+│   │   │   ├── 6cc2705ccca30f30d4652a2db3fa6b0e3cc37a
 │   │   │   ├── 7abe15eec6831cec9b96a90cbc6c478f512d6c
 │   │   │   └── eaa94dd310ba54d1787898858fcac48c18bc17
 │   │   ├── 40
@@ -603,11 +607,14 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── 54
 │   │   │   └── 0d22fca2efaec6f08943117e68d591a2264466
 │   │   ├── 59
-│   │   │   └── 782d5f0c137bc7ef8f3405771335a11d99cd34
+│   │   │   ├── 782d5f0c137bc7ef8f3405771335a11d99cd34
+│   │   │   └── fceec2f6292e0a6b217b6eecf74faf576f8888
 │   │   ├── 5a
 │   │   │   ├── 266908f7d21b9c6aff48ba292e009909b650c0
 │   │   │   ├── 4c2d86c3f62bd870ab04d841794f4373a19637
 │   │   │   └── 66dc2ff56d5e3617f0116bf106f3d93c9d5c4e
+│   │   ├── 5b
+│   │   │   └── 2a05d6c65c2f35a5f3ab3cd7375e4845cce64d
 │   │   ├── 5d
 │   │   │   ├── 2d7c55fcec900cfe39c5b3ebd0f0fdfae1232b
 │   │   │   └── 96aa0d0143d9b8dd74fa3e193b2f455cfe86bc
@@ -640,9 +647,12 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   │   └── a495f23c05753f6e67a0861bcd74d836d3243b
 │   │   ├── 72
 │   │   │   └── e042c9105cf35e13f82e78783a13bdf6989332
+│   │   ├── 75
+│   │   │   └── 0b23635a06c521b5b62b169490b4b2e54c1008
 │   │   ├── 7b
 │   │   │   └── 33421211d440f5332d7c86f94bd6f6a02de887
 │   │   ├── 7c
+│   │   │   ├── 18b4dbe4125595323f123658d5c163fdac124b
 │   │   │   ├── 794aae41aff30b6f9d22e702313dc48d01232a
 │   │   │   └── 8e6c4ee1418151694f21657bc647effa320fd4
 │   │   ├── 7d
@@ -659,6 +669,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── 88
 │   │   │   ├── ad82769b87f10725c57dca6fcf41b4bffe462c
 │   │   │   └── b0367aae421f51483c07ad7ae3ebc5251e48e5
+│   │   ├── 89
+│   │   │   └── 346c7454ac0c51e5b30dd41e79074af4b26430
 │   │   ├── 8a
 │   │   │   ├── 480d9b1fef0ec5b862df5446201c25b3f420e1
 │   │   │   └── a49e2107c7038436da5bb7add96cd83c832d52
@@ -674,7 +686,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── 94
 │   │   │   ├── 3bf4d3c3b59ec04bf3ebbdbc1e2890eac9edd4
 │   │   │   ├── 67125ae2ecfd0ebaffbd53eb30698058077cff
-│   │   │   └── 68cb09e0b3de12cccaa1f39a0b3085d3273559
+│   │   │   ├── 68cb09e0b3de12cccaa1f39a0b3085d3273559
+│   │   │   └── 93474f375a453df90519cc68e27b6b619550fa
 │   │   ├── 95
 │   │   │   ├── 234dd7cb623464a636b3c6620830949730074c
 │   │   │   └── 7cfbc786ea6015aa91d95020475e00d54d135a
@@ -685,6 +698,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── 9a
 │   │   │   └── fa4bd857183037055de4d228c05c0c4c77c2b3
 │   │   ├── 9c
+│   │   │   ├── 2f1c97416e08396ccb18bd7d89792cdba27f68
 │   │   │   └── 54e298b552b6ff6d0d182f2aed7dcba6f97c49
 │   │   ├── 9e
 │   │   │   └── f14bba45271af9ffc0116c1692c0ae331564f1
@@ -697,6 +711,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── a8
 │   │   │   ├── 5953d1740fa1070bcaf89f7db7994b3c3600cc
 │   │   │   └── b7b34cb8b9a47f348b319c079d4f7874e366f4
+│   │   ├── a9
+│   │   │   └── e33c1d2ca904d3db9d21c311f213876fa30862
 │   │   ├── ad
 │   │   │   └── ab560857f2bbb371566d2c99f26a4d595a6f6b
 │   │   ├── b3
@@ -708,6 +724,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── ba
 │   │   │   └── 6cb258e0f33ffddffd24b18d7162a32cb9a6da
 │   │   ├── bd
+│   │   │   ├── 52469b569f74e8df2922fb7d63cc8576d4399f
 │   │   │   ├── 9764ec0ea99ad3694ec0baf14aefec38182dfa
 │   │   │   └── b6e3ae8a9ff416478c914cc76ac97ace83f44f
 │   │   ├── bf
@@ -772,7 +789,8 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── e9
 │   │   │   └── 592af0e0c8e49f1f7fb5ba598a05eff4a9c72c
 │   │   ├── ea
-│   │   │   └── 1376b06dd639efef62dd690734bea93cb9694e
+│   │   │   ├── 1376b06dd639efef62dd690734bea93cb9694e
+│   │   │   └── 9da27fb665ed12459433042b480733a998dd53
 │   │   ├── ee
 │   │   │   └── 0eabf13419468bd9ed79850ca2fd8967884f6d
 │   │   ├── ef
@@ -810,6 +828,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │       └── tags
 ├── .github
 │   ├── .gitignore
+│   ├── CONTRIBUTING.md
 │   └── workflows
 │       └── pkgdown.yaml
 ├── .gitignore
@@ -835,23 +854,32 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │   │   ├── sources
 │   │   │   ├── per
 │   │   │   │   ├── t
+│   │   │   │   │   ├── 06FE3C63
+│   │   │   │   │   ├── 06FE3C63-contents
 │   │   │   │   │   ├── 5FDF386F
 │   │   │   │   │   ├── 5FDF386F-contents
 │   │   │   │   │   ├── 622B348D
 │   │   │   │   │   ├── 622B348D-contents
+│   │   │   │   │   ├── 69B59400
+│   │   │   │   │   ├── 69B59400-contents
+│   │   │   │   │   ├── A73FB601
+│   │   │   │   │   ├── A73FB601-contents
 │   │   │   │   │   ├── DBBF10BC
 │   │   │   │   │   └── DBBF10BC-contents
 │   │   │   │   └── u
 │   │   │   └── prop
 │   │   │       ├── 08A28989
+│   │   │       ├── 0BB4E3E5
 │   │   │       ├── 13693628
 │   │   │       ├── 29F9BEB5
 │   │   │       ├── 62AEF134
 │   │   │       ├── 6F3DE3A8
 │   │   │       ├── 7E0E449F
+│   │   │       ├── 8F6558E1
 │   │   │       ├── A74D1CF1
 │   │   │       ├── CB71F6D7
 │   │   │       ├── D222BABD
+│   │   │       ├── F160F14B
 │   │   │       └── INDEX
 │   │   ├── tutorial
 │   │   ├── viewer-cache
@@ -866,6 +894,7 @@ C:/Users/tonin/AppData/Local/R/win-library/4.4/automap</code></pre>
 │           │           └── chunks.json
 │           ├── patch-chunk-names
 │           └── paths
+├── CODE_OF_CONDUCT.md
 ├── data
 │   └── datos.rda
 ├── data_raw
