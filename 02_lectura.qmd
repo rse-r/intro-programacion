@@ -121,7 +121,7 @@ Utilizaremos datos que diponibiliza el Institulo Nacional de Tecnología Agropec
 * Estación NH0098: https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0098.csv
 * Estación NH0437: https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/NH0437.csv
 
-1. Escribe el código necesario para descargar losr archivos y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en el listado. Piensa en nombres adecuados para tus archivos segun lo que vimos en el segundo capitulo. 
+1. Escribe el código necesario para descargar los archivos y guardalos en la carpeta `datos` de tu proyecto. Utiliza las url provistas en el listado. Piensa en nombres adecuados para tus archivos segun lo que vimos en el segundo capitulo. 
 
 2. Lee los datos descargados, para eso revisa la ayuda de la funcion `read_csv`()`. 
 
