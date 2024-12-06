@@ -1,7 +1,9 @@
 # Prefacio {.unnumbered}
 
-::: enconstruccion
-Estos materiales están en desarrollo. 
+::: importante
+¡Primera versión completa!
+
+Estrenamos este libro durante el segundo cuatrimestre de 2024 y por supuesto *ninguna clase sobrevive al primer contacto con estudiantes*. Tenemos un montón de ideas para seguir mejorando el material y todos los comentarios y sugerencias son bienvenidos. 
 :::
 
 Los conocimientos en programación son esenciales para la práctica de la ciencia de datos, que implica el manejo de grandes conjuntos de datos, junto con la creciente demanda de que los estudios sean reproducibles y abiertos. Con estas exigencias, quienes hacen ciencia de datos necesitan a menudo crear, utilizar y compartir software. Este software tiene características particulares, que están relacionadas en gran medida con la exploración de problemas y la respuesta a preguntas. 

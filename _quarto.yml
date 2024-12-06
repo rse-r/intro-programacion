@@ -5,8 +5,8 @@ project:
 
 book:
   title: "Introducción a la Programación II"
-  author: "Yanina Bellini Saibene y Paola Corrales"
-  doi: TBD
+  author: "Paola Corrales y Yanina Bellini Saibene"
+  doi: https://doi.org10.5281/zenodo.14288649
   language: "ES"
   repo-url: "https://github.com/rse-r/intro-programacion"
   chapters:
