@@ -2,23 +2,22 @@
 
 Este anexo detalla los pasos a seguir para instalar todo el software que vamos a necesitar para las clases:
 
-- R
-- RTools (solo para Windows)
+- R 
 - RStudio
 - Git
 
 ::: importante
-Si ya tenes instaldo este software te vamos a pedir que lo actualices a la ultima version que es la que usaremos durante las clases.
+Si ya tenes instaldo R y RStudio te vamos a pedir que los actualices a la ultima version que es la que usaremos durante las clases.
 :::
 
 
-Tambien vamos a ver como crear cuentas en las plataformas en la nube que vamos a utilizar:
+Tambien vamos a ver como crear cuentas en las plataformas que vamos a utilizar:
 
 - GitHub
 - Posit Cloud
 
 ::: importante
-Si ya tenes cuenta en alguna de las plataformas, no hace falta que crees una nueva, pero por favor chequea que podes ingresar antes de la clase asi nos seguramos que puedas usarla. 
+Si ya tenes cuenta en alguna de las plataformas, no hace falta que crees una nueva, pero por favor chequea que podes ingresar antes de la clase asi nos seguramos que puedas usarlas. 
 :::
 
 ## Instalando R {-}
@@ -35,6 +34,7 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD
 sudo add-apt-repository "deb https://cloud.r-project.org/bin/linux/ubuntu $(lsb_release -cs)-cran40/"
 sudo sudo apt install r-base r-base-dev
 ```
+Las instrucciones incluyen la isntalación de `r-base-dev` que necesitarás para desarrollar paquetes.
 
 Si todo salió bien, tenés que tener instalado R en tu máquina y podés ejecutarlo con el comando `R` en la consola.
 
@@ -50,9 +50,16 @@ Si todo salió bien, tenés que tener instalado R en tu máquina y podés ejecut
 
 4. Ejecuta el paquete.
 
+#### Entorno de desarrollo de paquetes para Mac {-}
 
-Download R for Linux (Debian, Fedora/Redhat, Ubuntu)
-Download R for macOS
+Para desarrollar paquetes de R con Mac tendrás que instalar la herramienta Xcode que además, requiere que te registres como [desarrollador/a de Apple](https://developer.apple.com/programs/enroll/). Esto es gratuito para personas que solo necesitan instalar aplicaciones. Una vez que te registraste deberás correr la siguiente línea de código en la terminal:
+
+```
+xcode-select --install
+```
+
+O installar xcode desde el [Mac App Store](https://itunes.apple.com/ca/app/xcode/id497799835?mt=12).
+
 
 ### Windows {-}
 
@@ -68,11 +75,11 @@ Download R for macOS
 
 Si ves una ventana así significa que ya tenés instalado R, pero seguí leyendo! **Todavía falta unos pasos** para poder sacarle todo el jugo: necesitamos instalar **RTools**.
 
-## Instalando RTools {-}
+#### Instalando RTools {-}
 
-Para instalar algunos paquetes de R en Windows, vas a necesitar instalar un programa adicional llamado rtools. 
+Para instalar algunos paquetes de R en Windows, y en particular para desarrollar un nuevo paquete, vas a necesitar instalar un programa adicional llamado rtools. 
 
-1. Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools44. Para eso hacer click en Rtools44 y en es nueva pagina hacer clik en [Rtools44 installer](https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html).  
+1. Entrá a https://cran.r-project.org/bin/windows/Rtools/ y descargate el instalador de version mas nueva, en este momento es Rtools45. Para eso hacer click en Rtools45 y en es nueva pagina hacer click en [Rtools45 installer](https://cran.r-project.org/bin/windows/Rtools/rtools45/rtools.html). Aquí estamos asumiendo que tu version de R también es 4.5.x
 
 2. Ejecuta el instalador y segui las instrucciones.
 
@@ -107,7 +114,7 @@ Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana
 
 ### Mac {-}
 
-La primera vez que abrimos RStudio nos ofrece instalar las herramientas de XCode para línea de comandos. Aceptamos haciendo clic en instalar.
+Si no lo hiciste previamente, la primera vez que abras RStudio te ofrecerá instalar las herramientas de XCode para línea de comando. Acetá haciendo click en instalar.
 
 ### Windows {-}
 
@@ -117,26 +124,9 @@ Como siempre, doble click en el archivo y seguir los pasos de instalación.
 
 Git es una herramienta para control de versiones, vamos a utilizarla para trabajar colaborativamente.  
 
-En la pagina de [Git](https://git-scm.com/) podemos descargar el instalador para nuestro sistema operativo.
+En la pagina de [Git](https://git-scm.com/downloads) podrás descargar el instalador para tu sistema operativo.
 
-En esa misma pagina [hay una guia de instalacion para cada sistema operativo en castellano](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git).  Sigue las instrucciones detallas en la misma.  
-
-Una vez que tengas git instalado y tu cuenta de GitHub hay que conectarlo con RStudio. En particular hay que setear el "token", una especie de contraseña para poder hacer cambios en GitHub.
-
-Primero tendrás que correr el siguente código (tenés que instalar usethis primero)
-
-```r
-usethis::create_github_token()
-```
-
-Se abrirá la ventana de git y ahí tendrás que seguir los pasos para crear el token y copiarlo (muy importante!).
-
-Ahora corré el siguiente código (necesitas el paquete credentials)
-
-```r
-credentials::set_github_pat()
-```
-Elegí crear/guardar el token.
+En esa misma pagina [hay una guia de instalacion para cada sistema operativo en castellano](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalación-de-Git).
 
 ## Crear cuentas {-}
 
@@ -158,3 +148,58 @@ GitHub es una de las interfaces y repositorios mundiales mas conocidos y utiliza
 
 - Hacer clik en "Sign Up" y seguir las indicaciones para crear la cuenta personal. 
 
+
+## Configuración de Git y GitHub
+
+Ahora que ya tenés git instalado y una cuenta en GitHub, es importante completar la configuración necesaria para que puedas trabajar. Hay varias maneras de hacerlo, en este caso lo haremos desde R usando el paquete *usethis*. 
+
+1. Abrí RStudio e instalá usethis corriendo el siguiente código en la **consola**:
+
+```r
+install.packages("usethis")
+```
+
+2. Configurá tu nombre y correo electrónico:
+
+``` r
+library(usethis) 
+use_git_config(user.name = "Juan Perez",
+               user.email = "juan@ejemplo.org")
+```
+
+Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de GitHub. git usará esta información para registrar quien hizo cambios en un archivo. Veremos esto en más detalle durante el curso.
+
+3. Configurá tu PAT
+
+El PAT o "personal access token", mejor conocido como token es una especie de contraseña que deberás setear en tu computadora para poder hacer cambios en GitHub. 
+
+Primero tendrás que crear el token:
+
+```r
+create_github_token()
+```
+
+Se abrirá la ventana de GitHub y ahí tendrás que seguir los pasos para crear el token y copiarlo (muy importante!). Por las dudas **no cierres esta ventana**.
+
+Ahora corré el siguiente código para setear el token en tu computadora:
+
+```r
+gitcreds::gitcreds_set()
+```
+Elegí crear/guardar el token. Si tenés Ubuntu esto no termina acá, tendrás que seguir los pasos en [esta guia](https://blog.djnavarro.net/posts/2021-08-08_git-credential-helpers/) para guardar el token de manera permanente.
+
+4. *Vacuná* tu instalación de git:
+
+```r
+git_vaccinate() 
+```
+
+Esta función agrega algunos archivos y configuraciones que se consideran buenas prácticas. Podés leer la documentación de la función para más detalles. 
+
+5. Chequeá que todo esté en orden:
+
+```r
+git_sitrep() 
+```
+
+Esta función devuelve el estado de situación de tu configuración de git y GitHub. Revisá que aparezca tu nombre y mail, que aparezca `Vaccinated: TRUE` y que `Personal access token for "https://github.com": <discovered>` esté tal cual. 
