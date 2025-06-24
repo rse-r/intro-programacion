@@ -114,7 +114,7 @@ Terminada la instalacion, al ejecutar RStudio les tiene que aparecer una ventana
 
 ### Mac {-}
 
-Si no lo hiciste previamente, la primera vez que abras RStudio te ofrecerá instalar las herramientas de XCode para línea de comando. Acetá haciendo click en instalar.
+Si no lo hiciste previamente, la primera vez que abras RStudio te ofrecerá instalar las herramientas de XCode para línea de comando. Aceptá haciendo click en instalar.
 
 ### Windows {-}
 
@@ -162,12 +162,11 @@ install.packages("usethis")
 2. Configurá tu nombre y correo electrónico:
 
 ``` r
-library(usethis) 
-use_git_config(user.name = "Juan Perez",
+usethis::use_git_config(user.name = "Juan Perez",
                user.email = "juan@ejemplo.org")
 ```
 
-Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de GitHub. git usará esta información para registrar quien hizo cambios en un archivo. Veremos esto en más detalle durante el curso.
+Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de GitHub. git usará esta información para registrar quien hizo cambios en un archivo. Veremos esto en más detalle durante la materia.
 
 3. Configurá tu PAT
 
@@ -176,7 +175,7 @@ El PAT o "personal access token", mejor conocido como token es una especie de co
 Primero tendrás que crear el token:
 
 ```r
-create_github_token()
+usethis::create_github_token()
 ```
 
 Se abrirá la ventana de GitHub y ahí tendrás que seguir los pasos para crear el token y copiarlo (muy importante!). Por las dudas **no cierres esta ventana**.
@@ -191,7 +190,7 @@ Elegí crear/guardar el token. Si tenés Ubuntu esto no termina acá, tendrás q
 4. *Vacuná* tu instalación de git:
 
 ```r
-git_vaccinate() 
+usethis::git_vaccinate() 
 ```
 
 Esta función agrega algunos archivos y configuraciones que se consideran buenas prácticas. Podés leer la documentación de la función para más detalles. 
@@ -199,7 +198,7 @@ Esta función agrega algunos archivos y configuraciones que se consideran buenas
 5. Chequeá que todo esté en orden:
 
 ```r
-git_sitrep() 
+usethis::git_sitrep() 
 ```
 
 Esta función devuelve el estado de situación de tu configuración de git y GitHub. Revisá que aparezca tu nombre y mail, que aparezca `Vaccinated: TRUE` y que `Personal access token for "https://github.com": <discovered>` esté tal cual. 
