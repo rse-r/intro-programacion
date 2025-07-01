@@ -125,7 +125,7 @@ pulgadas_a_centimetros(7.5)
 pulgadas_a_centimetros(c(0, 1, 12))
 ```
 
-Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valores en el segundo último ejemplo? ¿tiene sentido que haga esto?
+Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valores en este último ejemplo? ¿tiene sentido que haga esto?
 
 Finalmente, tenemos que probar la función con otras cosas.
 
