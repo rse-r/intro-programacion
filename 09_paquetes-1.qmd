@@ -123,12 +123,34 @@ los paquetes `{usethis}` y `{devtools}` están diseñados para hacer
 muchas de estas tareas de configuración de paquetes por ti, o al menos
 simplificarlas.
 
-¿Cómo funciona la instalación de paquetes? Cuando le dices a R que
-instale un paquete, que es un conjunto de archivos y carpetas que siguen
-un convención específica, R toma la carpeta y la convierte en un formato
-especial. Luego R guarda este formato especial en una ubicación por
-defecto que es específica del sistema operativo, como macOS, Windows o
-Linux. Para ver dónde están instalados los paquetes, utiliza
+Hasta ahora interactuaste con paquetes de R **instalados** en tu computadora con 
+`install.packages()` y que luego cargas **en memoria** con `library()` para poder usar sus funciones. 
+**Instalad** y **en memoria** son dos *estados* posibles de un paquete. 
+Pero ahora, en el contexto del desarrollo de paquetes, empezaras a trabajar
+con el **código fuente**. En este estado, el paquete tiene una pinta distinta y
+el flujo de trabajo también va a cambiar. 
+
+Entonces, los 5 estados en los que puede estar un paquete de R son:
+
+* **código fuente** o source en inglés: incluye la carpeta y todos los archivos que mencionamos antes.
+* **bundled:** es una versión comprimida del paquete, independiente del sistema operativo de las computadoras, 
+a partir del cual puede ser instalado. 
+* **binary** o binario: es una versión del paquete lista para instalar, sin embargo depende del sistema 
+operativo. Un binario creado para Windows no funcionará en Linux.
+* **instalado:** es la version del paquete ya instalado en una computadora. Está listo para usar.
+* **en memoria:** el paquete está *cargado* en el ambiente de R y podemos usar las funciones
+porque corrimos `library(nombre_paquete)`.
+
+
+¿Cómo funciona la instalación de paquetes? Depende. Si instalas el paquete desde
+CRAN, `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora
+y generará esa instalación en la librería de paquetes de R (una carpeta medio escondida
+en tu computadora). Si instalas tu paquete mientras lo estás desarrollando, R va
+a tomar el **código fuente** para generar la instalación del paquete como cualquier otro. 
+
+Esta "instalación del paquete" no es más que una carpeta con archivos y otras carpetas
+que contienen el código de las funciones en un formato específico que entiende R. 
+Para ver dónde están instalados los paquetes, utiliza:
 
 ```{r}
 .libPaths()
@@ -150,40 +172,7 @@ length(packages)
 head(packages)
 ```
 
-Si queremos ver cómo almacena R los paquetes en su formato especial,
-podemos utilizar `dir_tree()` y el contenido de la instalación de
-`devtools/`.
 
-```{r}
-primary_library_path <- .libPaths()[1]
-fs::dir_tree(path(primary_library_path, "devtools"))
-```
-
-Los archivos `R/devtools.rdb` y `R/devtools.rdx` son los archivos cons
-formatos especiales que contienen las funciones dentro de `{devtools}`
-que R buscará cuando carga el paquete. Cuando se instala un paquete en
-R, se crea una carpeta en `.libPaths()` con los archivos en el formato
-específico que necesita R. Así que cuando ejecutes `library(devtools)`,
-R sabrá que debe buscar las funciones que se encuentran en la carpeta
-`devtools/`.
-
-Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu
-computadora (es decir, no está publicado en CRAN o en GitHub) no es no
-difiere de instalar un paquete de CRAN con `install.packages()` o desde
-GitHub con `pak::pak()`. La única diferencia es que los paquetes en CRAN
-o GitHub pueden ser utilizados por cualquiera que tenga acceso a
-internet.
-
-::: importante
-Te habrás dado cuenta de que hemos utilizado la sintaxis
-`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
-que utilice la función de un paquete concreto. Así que `pak::pak()` es
-decirle a R que utilice la función `pak()` del paquete `pak`. En
-desarrollo de paquetes en particular, utilizaremos esto en lugar de
-cargar las librerias con `library(pak)` porque queremos ser explícitos
-sobre qué función queremos utilizar y porque no necesitamos cargar todas
-las funciones del paquete cuando sólo queremos utilizar una o dos.
-:::
 
 ## Nombrar un paquete
 
@@ -201,6 +190,17 @@ pak::pkg_name_check("paqueteprueba")
 ```
 
 En este caso `paqueteprueba` está disponible para que lo usemos.
+
+::: importante
+Te habrás dado cuenta de que hemos utilizado la sintaxis
+`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
+que utilice la función de un paquete concreto. Así que `pak::pak()` es
+decirle a R que utilice la función `pak()` del paquete `pak`. En
+desarrollo de paquetes en particular, utilizaremos esto en lugar de
+cargar las librerias con `library(pak)` porque queremos ser explícitos
+sobre qué función queremos utilizar y porque no necesitamos cargar todas
+las funciones del paquete cuando sólo queremos utilizar una o dos.
+:::
 
 ### Requisitos formales
 
@@ -272,8 +272,20 @@ paquete de verdad, contectar este repositorio local con uno remoto en
 GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan
 usar otras personas.
 
-```{r}
+```{r eval=FALSE}
 fs::dir_tree("C:/Users/tonin/Documents/Courses/paqueteprueba/", all = TRUE)
+```
+
+```r
+C:/Users/tonin/Documents/Courses/paqueteprueba/
+├── .gitignore
+├── .Rbuildignore
+├── .Rproj.user
+├── DESCRIPTION
+├── NAMESPACE
+├── paqueteprueba.Rproj
+└── R
+
 ```
 
 Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya
@@ -457,6 +469,10 @@ estamos desarrollando un paquete usaremos la función `load_all()`.
 Vamos a probar la función `load_all()` con el atajo `Ctrl-Shift-L`.
 Ahora si, volvé a escribir `suma(2, 2)` en la consola. Ahora deberías
 ver que funciona.
+
+El flujo de trabajo para el desarrollo de funciones en un paquete tiene entonces esta pinta:
+
+![Flujo de trabajo para el desarrollo de una función.](images/flujo_desarrollo.png)
 
 ::: ejercicio
 **Practiquemos el flujo de trabajo**
