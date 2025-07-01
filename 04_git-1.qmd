@@ -27,7 +27,7 @@ title: git para trabajar individualmente
 └── FINAL.Rmd
 ```
 
-Probablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos **repositorio**. Si alguna vez revisaste el el historial de un archivo de Google Docs, el control de versiones es similar pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.
+Probablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos **repositorio**. Si alguna vez revisaste el historial de un archivo de Google Docs, el control de versiones es similar pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.
 
 Si trabajas de manera individual, git es genial para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También podés utilizar un **repositorio remoto** (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.
 
@@ -51,11 +51,11 @@ Mencionamos las acciones `add` y `commit` que son los nombres de dos comandos de
 
 Antes revisamos el **flujo de trabajo local**, es decir el repositorio vive en tu computadora. Un repositorio es una carpeta con archivos y una sub-carpeta oculta llamada `.git`. Esta carpeta es la que guarda toda la información sobre el respoitorio y la historia o *versiones* de tus archivos. Con esto ya estas trabajando con control de versiones. Pero, también podrías conectar el **repositorio local** con un **repositorio remoto**. En este curso vamos a utilizar [GitHub](https://www.github.com) para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como [GitLab](https://about.gitlab.com/).
 
-Si usas un repositorio remoto, tendrás que agregar un paso más flujo de trabajo local (`modify --> add --> commit`) para asegurarte que la copia del repositorio en tu computadora es la misma que la copia en GitHub y vise versa. 
+Si usas un repositorio remoto, tendrás que agregar un paso más al flujo de trabajo local (`modify --> add --> commit`) para asegurarte que la copia del repositorio en tu computadora es la misma que la copia en GitHub y vise versa. 
 
 Imaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego un _commit_ para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello **empujamos** (**push** en inglés) el nuevo _commit_ al repositorio remoto y con eso, los dos repositorios ahora están "actualizados", tienen la misma versión de los archivos.
 
-Si luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" respecto del repositorio remote. Necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
+Si luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" respecto del repositorio remoto. Necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
 
 ![Modelo conceptual de un flujo de trabajo utilizando proyectos RStudio y git. Los archivos se añaden al área de preparación y luego se envían al repositorio local. Puedes enviar commits al repositorio remoto y bajar nuevos commits a tu computadora.](images/local_remote.png)
 
