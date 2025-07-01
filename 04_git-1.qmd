@@ -49,11 +49,11 @@ Mencionamos las acciones `add` y `commit` que son los nombres de dos comandos de
 
 ## ¿Ya mencionamos "repositorio remoto"?
 
-Antes revisamos el **flujo de trabajo local**, es decir el repositorio vive en tu computadora. Un repositorio es una carpeta con archivos y una sub-carpeta oculta llamada `.git`. Esta carpeta es la que guarda toda la información sobre el respoitorio y la historia o *versiones* de tus archivos. Con esto ya estas trabajando con control de versiones. Pero, también podrías conectar el **repositorio local** con un **repositorio remoto**. En este curso vamos a utilizar [GitHub](https://www.github.com) para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como [GitLab](https://about.gitlab.com/).
+Antes revisamos el **flujo de trabajo local**. El repositorio (una carpeta oculta llamada `.git`) vive en tu computadora y con eso ya estas usando control de versiones. Pero, también podrías conectar el **repositorio local** con un **repositorio remoto**. En este curso vamos a utilizar [GitHub](https://www.github.com) para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como [GitLab](https://about.gitlab.com/).
 
 Si usas un repositorio remoto, tendrás que agregar un paso más al flujo de trabajo local (`modify --> add --> commit`) para asegurarte que la copia del repositorio en tu computadora es la misma que la copia en GitHub y vise versa. 
 
-Imaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego un _commit_ para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello **empujamos** (**push** en inglés) el nuevo _commit_ al repositorio remoto y con eso, los dos repositorios ahora están "actualizados", tienen la misma versión de los archivos.
+Luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" y necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
 
 Si luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" respecto del repositorio remoto. Necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
 
@@ -87,79 +87,41 @@ Antes de crear tu primer repositorio es importante revisar que git esté configu
 
 ```
 
-Revisá que la información sea correcta y que `Personal access token for "https://github.com":` sea igual a `<discovered>`. Eso te garantizará que puedas trabajar con git y GitHub. 
+Revisá que la información sea correcta y que `Personal access token for "https://github.com":` sea igual a `<discovered>`. Eso te garantizará que puedas trabajar con git y GitHub. Si vez alguna diferencia, es útil revisar las instrucciones de instalación en el anexo [A Preparando el entorno de trabajo](A_instalacion.html).
 
 
 ## Creando un nuevo repositorio
 
-Hay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la terminal, desde GitHub ¡o desde RStudio!. Aca te mostraremos cómo crear un repositorio local desde RStudio, que estará asociado a un projecto de RStudio y luego como contectarlo con un repositorio remoto en GitHub usando el paquete `usethis`. Este flujo de trabajo sirve tanto para trabajar en un proyecto de análisis de datos como en el desarrollo de software. Pero tené en cuenta que hay muchas otras formas de trabajar con git.
+Hay muchas formas de iniciar un nuevo repositorio, localmente en tu computadora utilizando la terminal, desde GitHub (o sus amigos) ¡o desde RStudio!. Aca te mostraremos cómo crear un repositorio desde GitHub, asociarlo a un proyecto de RStudio y trabajar con él. Pero tené en cuenta que hay muchas otras formas de trabajar con git.
 
 ::: ejercicio
-**1. Creá un repositorio local**
+**1. Creá un repositorio online.**
 
--   Abrí el proyecto de RStudio en el que estás trabajando y queres crear el nuevo repositorio. El nombre del proyecto debería aparecer arriba a la derecha de la venta. 
--   En la consola corré la siguiente línea de código:
+-   Entrá en [github.com](https://github.com) e inicia sesión.
+-   En la esquina superior derecha, hacé click en el botón "+" y luego en "New repository".
 
-```r
-usethis::use_git()
-```
+A continuación completá la información del repositorio:
 
-Esta funcion va a crear el repositorio y generara un commit inicial de todos los archivos que estén presentes en el proyecto. Va a preguntarte si queres hacer esto. Contestale que si seleccionado la opción afirmativa. Luego va a preguntarte si queres reiniciar RStudio. Esto es necesario para que aparezca la pestaña de Git desde la cual podremos trabajar sobre el repositorio. Seleccioná la opción afirmativa, ojo que siempre cambia el orden!
+-   Repository template: No template.
+-   Repository name: como quieras llamar a tu nuevo proyecto.
+-   Description: Una descripción breve del proyecto. Escribila para los humanos.
+-   Visibilidad: Public.
+-   Initialize this repository with: nada (podemos configurarlo todo desde R).
 
-```r
-> usethis::use_git()
-✔ Setting active project to "/ubicacion/de/tu/proyecto".
-✔ Initialising Git repo.
-✔ Adding ".Rproj.user", ".Rhistory", ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to
-  .gitignore.
-ℹ There are 2 uncommitted files:
-• .gitignore
-• test.Rproj
-! Is it ok to commit them?
-
-1: Negative
-2: Yup
-3: Nope
-
-Selection: 2
-✔ Adding files.
-✔ Making a commit with message "Initial commit".
-A restart of RStudio is required to activate the Git pane.
-Restart now?
-
-1: Absolutely not
-2: No
-3: Yes
-
-Selection: 3
-```
+Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://github.com/paocorrales/myrepo.git`
 
 Ya tenés tu repositorio local! 
-
-Si estuvieras trabajando desde la terminal, `git init` crea un nuevo repositorio.
 
 :::
 
 ::: ejercicio
 
-**2. Ahora, crea el repositorio remoto en GitHub**
+**2. En RStudio, inicia un nuevo Proyecto:**
 
-Nuevamente, hay varias maneras de hacer esto, acá vamos a usar otra función de usethis: `usethis::use_github()`:
-
-
-```r
-> usethis::use_github()
-✔ Creating GitHub repository "paocorrales/proyecto".
-✔ Setting remote "origin" to "https://github.com/paocorrales/proyecto.git".
-✔ Pushing "main" branch to GitHub and setting "origin/main" as upstream branch.
-✔ Opening URL <https://github.com/paocorrales/proyecto>.
-```
-Esta funcion hace lo siguiente:
-
-* Crea un nuevo repositorio en GitHub con el nombre del proyecto.
-* Configura ese nuevo repositorio como origen remoto para el repositorio local.
-* Configura tu branch local por defecto para realizar el mismo seguimiento en el origen y realiza un push inicial.
-* Abre el nuevo repositorio en tu navegador.
+-   `File > New Project > Version Control > Git`. En la "URL del repositorio" pegá la URL de tu nuevo repositorio de GitHub, tiene que tener esta pinta: `https://github.com/paocorrales/myrepo.git`.
+-   Elejí la carpeta en tu disco donde querés crear el proyecto.
+-   Elejí "Open in new sesion".
+-   Y hacé clic en "Create project". 
 
 :::
 
