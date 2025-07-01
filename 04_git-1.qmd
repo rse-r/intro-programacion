@@ -27,15 +27,15 @@ title: git para trabajar individualmente
 └── FINAL.Rmd
 ```
 
-Probablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos **repositorio**. Si alguna vez has mirado el historial de un archivo de Google Docs, es así pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.
+Probablemente todos lo tenemos, o tuvimos algo así en algún momento, porque necesitamos guardar nuestro trabajo pero seguir teniendo acceso a versiones anteriores. Existe una solución para esto. Los sistemas de control de versiones gestionan la evolución y los cambios de un conjunto de archivos que llamaremos **repositorio**. Si alguna vez revisaste el historial de un archivo de Google Docs, el control de versiones es similar pero de una forma muy controlada. Git es un sistema de control de versiones muy popular, pero hay otros.
 
-Si trabajas de manera individual, git es estupendo para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También puedes utilizar un **repositorio remoto** (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.
+Si trabajas de manera individual, git es genial para hacer un seguimiento de los cambios y recuperar versiones anteriores de tus archivos. También podés utilizar un **repositorio remoto** (que veremos más adelante) para tener una copia de seguridad y compartir tu trabajo.
 
 Si trabajas en equipo, podés aprovechar todo lo anterior y utilizar también el control de versiones como herramienta para colaborar y organizar las distintas versiones de un mismo archivo presentes en las múltiples computadoras que vos y las otras personas usen.
 
 ## Pero, ¿qué entendemos por control de versiones?
 
-Imaginemos que tenemos un repositorio funcionando ([más adelante](04-git-1/#crear-un-nuevo-repositorio) veremos cómo crear uno). Cuando creas un nuevo archivo como parte del repositorio (o *repo*), ese archivo no es **trackeado** o **no está versionado**. Esto significa que git ignorará el archivo y cualquier cambio que hayas hecho hasta que lo *agregues* al repositorio (*add* en inglés) y empieces a registrar sus cambios. En ese momento el archivo está en el area **staging** (en el escenario de git) y está listo para entrar en el repositorio. Para eso hay que *confirmar* (*commit* en inglés) esa versión del archivo en el repositorio. Este flujo de trabajo `modify --> add --> commit` se repetirá cada vez que quieras guardar una versión del archivo. 
+Imaginemos que tenemos un repositorio funcionando ([más adelante](04-git-1/#crear-un-nuevo-repositorio) veremos cómo crear uno). Cuando creas un nuevo archivo como parte del repositorio (o *repo*), ese archivo inicialmente no es **trackeado** o **no está versionado**. Esto significa que git ignorará el archivo y cualquier cambio que hayas hecho hasta que lo *agregues* al repositorio (*add* en inglés) y empieces a registrar los cambios que hagas en el contenido. En ese momento el archivo está en el area **staging** (que podemos imagina como una sala de espera de git) y está listo para entrar en el repositorio. Para eso hay que *confirmar* o registrar (*commit* en inglés) esa versión del archivo en el repositorio. Este flujo de trabajo `modify --> add --> commit` se repetirá cada vez que quieras guardar una versión del archivo. 
 
 ::: tip
 
@@ -51,31 +51,44 @@ Mencionamos las acciones `add` y `commit` que son los nombres de dos comandos de
 
 Antes revisamos el **flujo de trabajo local**. El repositorio (una carpeta oculta llamada `.git`) vive en tu computadora y con eso ya estas usando control de versiones. Pero, también podrías conectar el **repositorio local** con un **repositorio remoto**. En este curso vamos a utilizar [GitHub](https://www.github.com) para alojar repositorios remotos, pero hay otras opciones que podrías explorar, como [GitLab](https://about.gitlab.com/).
 
-Imaginemos que tenemos un repositorio local, hicimos cambios en un archivo y luego _commits_ para guardar esa nueva versión. Ahora necesitamos enviar esos cambios al repositorio remoto (más adelante veremos cómo crear el repositorio remoto). Para ello **empujamos (push en inglés)** los _commits_ al repositorio remoto y entonces, los dos repositorios están "actualizados", tienen la misma versión de los archivos.
+Si usas un repositorio remoto, tendrás que agregar un paso más al flujo de trabajo local (`modify --> add --> commit`) para asegurarte que la copia del repositorio en tu computadora es la misma que la copia en GitHub y vise versa. 
 
 Luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" y necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
+
+Si luego, otra persona de tu equipo hace un cambio en un archivo en su repositorio local y lo sube al repositorio remoto. Ahora, tu repositorio local está "desactualizado" respecto del repositorio remoto. Necesitas descargar esos nuevos commits del repositorio remoto a tu computadora. Necesitas hacer **pull**.
 
 ![Modelo conceptual de un flujo de trabajo utilizando proyectos RStudio y git. Los archivos se añaden al área de preparación y luego se envían al repositorio local. Puedes enviar commits al repositorio remoto y bajar nuevos commits a tu computadora.](images/local_remote.png)
 
 Herramientas como GitHub también incluyen funciones que te ayudan a colaborar y gestionar repositorios. Por ejemplo, puedes modificar archivos y hacer _commits_ con esos cambios utilizando la interfaz web.
 
-## Preséntate con Git
+## Configuración inicial
 
-Antes de crear tu primer repositorio tenes que asegurarte de que git y RStudio se entienden y de que git te conoce. Si seguiste las instrucciones [instrucciones previas al curso](A_instalacion.html) seguro que RStudio, git y GitHub se hablan entre sí.
+Antes de crear tu primer repositorio es importante revisar que git esté configurado correctamente en tu computadora y que tengas permisos para modificar cosas en GitHub. Si seguiste las instrucciones [instrucciones previas al curso](A_instalacion.html) deberías tener todo listo, pero podemos revisar el estado de situación con `usethis::git_sitrep()` para comprobarlo. 
 
-::: importante
-Podés comprobar que RStudio "sabe" donde está git yendo a `Tools --> Global Options --> Git/SVN`. Allí deberías encontrar la ruta en tu computadora a la instalación de git.
-:::
+```r
+> usethis::git_sitrep()
 
-Para presentarte con git, es decir, para que reconozca tu nombre y correo electrónico, puedes utilizar el comando `use_git_config` del paquete *usethis*.
+── Git global (user) 
+• Name: "Pao Corrales"
+• Email: "micorreo@gmail.com"
+• Global (user-level) gitignore file: ~/.gitignore
+• Vaccinated: TRUE
+• Default Git protocol: "https"
+• Default initial branch name: "main"
 
-``` r
-library(usethis) 
-use_git_config(user.name = "Juan Perez",
-               user.email = "juan@ejemplo.org")
+── GitHub user 
+• Default GitHub host: "https://github.com"
+• Personal access token for "https://github.com": <discovered>
+• GitHub user: "paocorrales"
+• Token scopes: "gist", "repo", "user", and "workflow"
+• Email(s): "micorreo@gmail.com (primary)", "paocorrales@users.noreply.github.com", and
+  "otro correo@gmail.com"
+ℹ No active usethis project.
+
 ```
 
-Sustituyéndolo por tu nombre y el correo electrónico asociado a tu cuenta de GitHub.
+Revisá que la información sea correcta y que `Personal access token for "https://github.com":` sea igual a `<discovered>`. Eso te garantizará que puedas trabajar con git y GitHub. Si vez alguna diferencia, es útil revisar las instrucciones de instalación en el anexo [A Preparando el entorno de trabajo](A_instalacion.html).
+
 
 ## Creando un nuevo repositorio
 
@@ -96,6 +109,9 @@ A continuación completá la información del repositorio:
 -   Initialize this repository with: nada (podemos configurarlo todo desde R).
 
 Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://github.com/paocorrales/myrepo.git`
+
+Ya tenés tu repositorio local! 
+
 :::
 
 ::: ejercicio
@@ -105,7 +121,8 @@ Antes de volver a RStudio, copia la url del repositorio. Por ejemplo `https://gi
 -   `File > New Project > Version Control > Git`. En la "URL del repositorio" pegá la URL de tu nuevo repositorio de GitHub, tiene que tener esta pinta: `https://github.com/paocorrales/myrepo.git`.
 -   Elejí la carpeta en tu disco donde querés crear el proyecto.
 -   Elejí "Open in new sesion".
--   Y haz clic en "Create project". 
+-   Y hacé clic en "Create project". 
+
 :::
 
 La nueva carpeta en tu computadora será un repositorio git, vinculado a un repositorio remoto de GitHub y un proyecto de RStudio al mismo tiempo. Este flujo de trabajo también se asegura de que toda la configuración entre los repositorios local y remoto se realice correctamente.
