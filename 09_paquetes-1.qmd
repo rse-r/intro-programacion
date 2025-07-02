@@ -125,30 +125,33 @@ simplificarlas.
 
 Hasta ahora interactuaste con paquetes de R **instalados** en tu computadora con 
 `install.packages()` y que luego cargas **en memoria** con `library()` para poder usar sus funciones. 
-**Instalad** y **en memoria** son dos *estados* posibles de un paquete. 
-Pero ahora, en el contexto del desarrollo de paquetes, empezaras a trabajar
+**Instalado** y **en memoria** son dos *estados* posibles de un paquete. 
+Pero ahora, en el contexto del desarrollo de paquetes, empezarás a trabajar
 con el **código fuente**. En este estado, el paquete tiene una pinta distinta y
 el flujo de trabajo también va a cambiar. 
 
-Entonces, los 5 estados en los que puede estar un paquete de R son:
+Los 5 estados en los que puede estar un paquete de R son:
 
 * **código fuente** o source en inglés: incluye la carpeta y todos los archivos que mencionamos antes.
 * **bundled:** es una versión comprimida del paquete, independiente del sistema operativo de las computadoras, 
 a partir del cual puede ser instalado. 
 * **binary** o binario: es una versión del paquete lista para instalar, sin embargo depende del sistema 
 operativo. Un binario creado para Windows no funcionará en Linux.
-* **instalado:** es la version del paquete ya instalado en una computadora. Está listo para usar.
+* **instalado:** es la version del paquete ya instalado en una computadora. 
 * **en memoria:** el paquete está *cargado* en el ambiente de R y podemos usar las funciones
 porque corrimos `library(nombre_paquete)`.
 
 
 ¿Cómo funciona la instalación de paquetes? Depende. Si instalas el paquete desde
-CRAN, `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora
-y generará esa instalación en la librería de paquetes de R (una carpeta medio escondida
-en tu computadora). Si instalas tu paquete mientras lo estás desarrollando, R va
-a tomar el **código fuente** para generar la instalación del paquete como cualquier otro. 
+CRAN, `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora, 
+y lo va a descomprimir la "librería de paquetes de R" (una carpeta medio escondida
+en tu computadora) y generar los archivos necesario para que puedas usarlo. 
 
-Esta "instalación del paquete" no es más que una carpeta con archivos y otras carpetas
+Si instalas tu paquete mientras lo estás desarrollando, R va
+a tomar el **código fuente** para generar los archivos necesarios y guardar los en la 
+libreria de paquetes de R, de la misma manera que lo hace con cualquier otro paquete. 
+
+Esta "instalación del paquete" en la libreria no es más que una carpeta con archivos y otras carpetas
 que contienen el código de las funciones en un formato específico que entiende R. 
 Para ver dónde están instalados los paquetes, utiliza:
 
@@ -156,19 +159,19 @@ Para ver dónde están instalados los paquetes, utiliza:
 .libPaths()
 ```
 
-Si escribes esto en tu Consola, lo que verás probablemente será un un
-poco diferente a esto. Si `.libPaths()` muestra más de una ruta,
+Si corres esa función en la consola, es posible que el restado sea un
+poco diferente a esto, depende de cada computadora. Si `.libPaths()` muestra más de una ruta,
 normalmente la primera contendrá todos los paquetes.
 
-```{r echo=FALSE, message=FALSE}
+```{r message=FALSE}
 library(fs)
-# R prioritizes the first path, so we'll select it
-primary_library_path <- .libPaths()[1]
+
+primary_library_path <- .libPaths()[1] #Elegimos la primera ruta
 packages <- dir_ls(path(primary_library_path))
 
-# Number of installed packages
+# Número de paquetes instalados
 length(packages)
-# See the first few package names
+# Muestra los primeros 6
 head(packages)
 ```
 
