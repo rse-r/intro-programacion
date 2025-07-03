@@ -90,9 +90,11 @@ En resumen hay cuatro pasos en el flujo de trabajo básico de roxygen2:
 1.  Agregar comentarios de roxygen2 a losr archivos .R de funciones.
 2.  Ejecutar `devtools::document()` o `Ctrl/Cmd + Mayús + D` para
     convertir los comentarios de roxygen2 en archivos .Rd.
-3.  Previsualizá la documentación con `?function`.
-4.  Revisá, modificá y repetí hasta que la documentación tenga el
+3.  Revisá la documentación con `?function`.
+4.  Modificá y repetí hasta que la documentación tenga el
     aspecto que necesites.
+
+![](images/flujo_documentacion.png)
 
 ### Sintaxis de roxigen2
 
@@ -440,7 +442,7 @@ Estas acciones además pueden programarse para que se ejecuten de manera automá
 Para publicar la web necesitamos hacer commits y push al repositorio remoto. A continuación, una "acción" de GitHub construirá y publicará la web en una url con nombre `<nombreusuario>.github.io/<nombrepaquete>`. Los pasos para llegar a este punto son varios y si bien se pueden hacer a mano vamos a usar una función de usethis para automatizar todo.
 
 ```{r eval=FALSE}
-usethis::use_github()
+usethis::use_pkgdown_github_pages()
 ```
 
 ```r
