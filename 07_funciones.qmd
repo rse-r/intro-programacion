@@ -147,26 +147,7 @@ Por estas situaciones es importante chequear que lo que ingresa a la función es
 
 ### Revisá que los argumentos sean válidos
 
-El primer acercamiento a esto es la función `stopifnot()`
-
-```{r}
-pulgadas_a_centimetros <- function(medida_pulgadas) {
-  
-  stopifnot(is.numeric(medida_pulgadas))
-  
-  medida_pulgadas * 2.54
-}
-```
-
-Ahora si volvemos a correr algunos de los ejemplos previos, obtendremos:
-
-```{r}
-#| error: true
-
-pulgadas_a_centimetros("100")
-```
-
-Pero de nuevo, esta función no devuelve un mensaje muy informativo.
+Para revisar que los argumentos sean válidos, podemos usar `if` y `else`. En el caso de que el argumento no sea válido, podemos devolver un mensaje de error que le indique a quien usa la función que fue lo que falló y posiblemente como podria solucionar el error.
 
 ::: importante
 
@@ -185,32 +166,8 @@ En R la condición que evaluamos va entre `()` y usamos `{}` para separar cada *
 Además de `if` y `else`, podemos usar `else if` cuando queremos probar distintas condiciones.
 :::
 
-La siguiente solución implica encapsular la función `stop()` en una estructura `if` para poder incluir un mensaje de error apropiado:
+El paquete `cli` nos permite escribir mensajes de error y _warnings_ (advertencias en inglés) más claras e informativos. En el caso de que la función reciba un argumento que no es numérico, podemos usar `cli::cli_abort()` para generar un mensaje de error más claro:
 
-```{r}
-pulgadas_a_centimetros <- function(medida_pulgadas) {
-  
-  if (!is.numeric(medida_pulgadas)) {
-    stop("medida_pulgadas debe ser numérico,\n",
-         "La variable ingresada es un ", class(medida_pulgadas)[1])
-  }
-  
-  medida_pulgadas * 2.54
-}
-```
-
-```{r}
-#| error: true
-
-pulgadas_a_centimetros("100")
-```
-
-Este mensaje nos da mucha más información:
-
-* En qué función ocurre el error
-* La causa del error y cómo resolverlo.
-
-Pero hay otras soluciones aún más superadoras, podemos escribir mensajes de error y _warnings_ (advertencias en inglés) usando el paquete `cli`:
 
 ```{r}
 pulgadas_a_centimetros <- function(medida_pulgadas) {
