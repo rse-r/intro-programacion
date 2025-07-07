@@ -149,7 +149,7 @@ Sabemos que si intentamos sumar `"1"` y `1` la función devolverá el mensaje "L
 
 ::: ejercicio
 
-Ahora vamos a trabajar con la primera función que vimos: `fahrenheit_a_centigrados()`.
+Ahora vamos a trabajar con la primera función que vimos: `pulgadas_a_centimetros()`.
 
 1. Si la función no es parte de paqueteprueba, agregala. Podés copiar el código que está en la sección [Funciones](07_funciones.qmd#revisá-que-los-argumentos-sean-válidos).
 2. Hace una lista de expectativas, es decir, posibles resultados o mensajes que podría devolver la función en distintas situaciones.
@@ -167,12 +167,17 @@ Hasta ahora ejecutamos cada test uno por uno a mano. Esto tiene sentido cuando e
 ```r
 ℹ Testing paqueteprueba
 ✔ | F W  S  OK | Context
-✔ |          1 | fahrenheit_a_centigrados                                                             
+✔ |          1 | pulgadas_a_centimetros                                                             
 ✔ |          2 | suma                                                                                 
 
 ══ Results ═══════════════════════════════════════════════════════════════════════════════════════════
 [ FAIL 0 | WARN 0 | SKIP 0 | PASS 3 ]
 ```
+
+El flujo de trabajo ahora tiene la siguiente pinta:
+
+![](images/flujo-tests.png)
+
 
 Pero también es muy común correr directamente `devtools::check()` o el atajo ` Ctrl/Cmd + Shift + E`. Este comando corre algo llamado "R CMD checks". Es un conjunto de más de 50 test que cualquier paquete debe pasar para cumplir con los estandares definidos. Entre otras cosas chequea:
 
@@ -199,7 +204,7 @@ La salida de los checks es bastante larga porque revisa varias cosas, pero esta 
 
 ❯ checking code files for non-ASCII characters ... WARNING
   Found the following files with non-ASCII characters:
-    R/fahrenheit_a_centigrados.R
+    R/pulgadas_a_centimetros.R
     R/suma.R
   Portable packages must use only ASCII characters in their R code and
   NAMESPACE directives, except perhaps in comments.
