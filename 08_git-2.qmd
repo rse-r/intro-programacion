@@ -9,75 +9,161 @@ editor:
 
 -   Aplicar conceptos de flujos de trabajo usando Git básicos al trabajo
     colaborativo utilizando GitHub.
+-   Comprender como los conflictos de versiones se generan y como resolverlos.
 -   Identificar las diferencias entre branchs y forks e identificar
     situaciones en las que utilizar cada una.
 -   Comprender el uso y el rol de las branchs y los pull requests en la
     colaboración en un proyecto.
--   Utilizar funciones del paquete `usethis` en un proyecto.
 -   Gestiona pull requests como responsable o líder de un proyecto.
 
-### Forks, branchs y pull requests en GitHub {#sec-workflows-explained}
+## Flujo de trabajo individual
 
 En este capítulo vamos a ver que pinta tiene el flujo de trabajo
 colaborativo entre personas para hacer análisis de datos y desarrollo de
 software. Previamente estuviste trabajando con git de manera individual:
 
-```         
-Modificar un archivo --> Add --> Commit 
+```bash         
+Modificar un archivo --> Add --> Commit --> Push
 ```
 
-Todo esto lo hiciste en una branch (o rama) del repositorio que
-normalmente llamamos *main* por ser la principal. Una **Branchs** en git
-es una etiqueta que señala a un *commit* específico en el repositorio a
-partir del cual las versiones del repositorio se bifurcan. Trabajar en
-una branch te permite modificar archivos sin modificar los mismos
-archivos en otras branchs, porque esencialmente estás trabajando en un
-conjunto "paralelo" de archivos. Cuando quieras pasar los cambios que
-hiciste a la rama principal, tendrías que hacer un **merge** para
-combinar las branchs. En entornos de equipo, trabajar en branchs te
-permite hacer cambios en los archivos sin afectar el trabajo de otras
-personas en el equipo. Cuando hayas terminado de modificar los archivos,
-podés hacer un merge con tus cambios en la rama principal para que el
-resto del equipo tengan también esos cambios. Las branchs se utilizan
-mucho en proyectos de software y paquetes de R.
+Así que cada vez hagas un push, git comparará los archivos en el repositorio 
+remoto con la versión que actualizaste localmente y actualizará el repo remoto para
+que todo este sincronizado. Pero cuando se trabaja con otras personas hay casos que potencialmente pueden crear conflictos de merge o versiones. Aunque el nombre sugiera lo contrario, un conflicto 
+de merge no es necesariamente un error, ocurre cuando la versión de un archivo en el 
+repositorio local no es compatible con su versión en el repositorio remoto. 
+A veces, Git es capaz de combinar los dos conjuntos de cambios sin ningún problema. 
+Pero a veces esto no es posible, y requiere que un humano intervenga y decida cómo 
+deben combinarse los múltiples cambios, ¿mantiene la versión A, la versión B o una combinación de ambas?
 
-El flujo de trabajo colaborativo incluye dos nuevos términos y
-conceptos: *forks* y *pull requests*.
+## Identificando conflictos de versiones
 
--   **Forks** Un fork es una copia de un repositorio de otra persona o
-    equipo que se almacenará en tu cuenta de GitHub. Tanto el original
-    como el fork están en GitHub, la diferencia es que podés hacer
-    modificaciones en la versión que está en tu cuenta.
--   **Pull Requests** Un pull request o PR es una herramienta de GitHub
-    que permite hacer cambios en un fork o branch y luego solicitar que
-    que la persona a cargo del proyecto haga un merge con esos cambios
-    en el repositorio principal. Los pull requests pueden proceder de
-    forks o de branchs independientes dentro del repositorio. Permiten
-    que las personas que mantienen y quienes colaboran en el proyecto
-    revisen, discutan, soliciten más cambios y aprueben los cambios para
-    hacer el merge a la branch main.
+Imaginá que alguien en tu equipo cambia el contenido de archivo `R/pulgadas_a_centimetros.R` para cambiar el mensaje de `"medida_pulgadas debe ser numérico."` a `"medida_pulgadas debe ser **de tipo** numérico."`:
 
-Aprender a utilizar eficazmente estas herramientas y conceptos puede
-hacer que que colaborar con otras persona sea mucho más fácil y facilita
-la contribución a otros proyectos. Incluso podrías utilizar este flujo
-de trabajo aún de manera individual.
+```r
+pulgadas_a_centimetros <- function(medida_pulgadas) {
+  
+  if (!is.numeric(medida_pulgadas)) {
+    cli::cli_abort(c(
+      "medida_pulgadas debe ser de tipo numérico.",
+      "i" =  "La variable ingresada es un {class(medida_pulgadas)[1]}."
+    ))
+  }
+  
+  medida_pulgadas * 2.54
+}
+```
 
-Cuando estás colaborando en un proyecto te podés encontrar en una de
-estas situaciones:
+Al mismo tiempo, vos también cambiaste esta línea en el código pero decidiste que el mensaje de error
+debe ser `"medida_pulgadas debe ser **una variable numérica**."`. Cuando intentás hacer push de la nueva versión del archivo al repositorio remoto te encontrás con este mensaje:
 
--   Escenario 1: Tenés permisos de escritura en el repositorio remoto,
-    en ese caso no necesitas utilizar forks.
--   Escenario 2: No tenés permisos de escritura en el repositorio
-    remoto, por lo que tendrías que trabajar en un fork de repositorio
-    original.
+```bash
+>>> /usr/bin/git push origin HEAD:refs/heads/master
+To github.com:paocorrales/paqueteprueba.git
+ ! [rejected]        HEAD -> master (fetch first)
+error: failed to push some refs to 'github.com:paocorrales/paqueteprueba.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+```
 
-En ambas situaciones asumiremos que trabajarás con branchs para separar
-tu trabajo del de otras personas antes de pasarlas a la branch main.
+El mensaje nos aconseja hacer pull antes de intentar hacer push para actualizar
+el repositorio remoto. Al hacer pull nos encontramos con el siguiente 
+problema:
+
+```bash
+>>> /usr/bin/git pull
+From github.com:paocorrales/paqueteprueba
+   6e63458..d7d2a6c  master     -> origin/master
+Auto-merging R/pulgadas_a_centimetros.R
+CONFLICT (content): Merge conflict in R/pulgadas_a_centimetros.R
+Automatic merge failed; fix conflicts and then commit the result.
+```
+
+El mensaje dice que hay conflictos con el contenido de `R/pulgadas_a_centimetros.R` 
+y que el merge automático falló. La buena noticia es que ya sabemos cuál es el 
+archivo que da problemas. Aquí, hacer commits con pequeños cambios ayuda mucho.
+
+Ahora, si revisamos el archivo `R/pulgadas_a_centimetros.R`, el contenido cambió:
+
+```r
+pulgadas_a_centimetros <- function(medida_pulgadas) {
+
+  if (!is.numeric(medida_pulgadas)) {
+    cli::cli_abort(c(
+<<<<<<< HEAD
+      "medida_pulgadas debe ser una variable numérica.",
+=======
+      "medida_pulgadas debe ser de tipo numérico.",
+>>>>>>> d7d2a6cf0e03652e1ff52e7cf5eb2da96fe69312
+      "i" =  "La variable ingresada es un {class(medida_pulgadas)[1]}."
+    ))
+  }
+
+  medida_pulgadas * 2.54
+}
+```
+
+Estos simbolos `<<<<<<<`, `=======` y `>>>>>>>` fueron agregados por git para resaltar 
+el contenido que está generando conflictos. Todo lo que hay entre `<<<<<<< HEAD` y 
+`=======` corresponde a la versión local, y el contenido entre `=======` y `>>>>>>>`
+es la versión actualmente en GitHub. La cadena larga es el identificador del commit en Github y `HEAD` 
+refiere al último commit local.
+
+Para arreglar el conflicto será necesario:
+
+1. Eliminar las lineas que agrego git.
+2. Elegir una de las 2 versiones en conflicto o generar una nueva versión que incluya todos los cambios.
+3. Guardar el archivo y hacer un nuevo commit, que normalmente tiene como mensaje "arregla conflicto de merge".
+
+Algunas herramientas como GitHub Desktop y GitKraken tienen una interfaz gráfica
+que permite resolver estos conflictos de manera rápida, sin embargo el mecanismo
+en el fondo es el mismo.
+
+Los conflictos de merge pueden suceder si cambiaste algo en GitHub, olvidaste hacer `pull`
+localmente y cambiaste el mismo archivo localmente. Aunque los conflictos son parte de trabajar con
+control de versiones, vamos a tratar de evitarlos en la medida de lo posible.
+
+### 1. Primero, hace `pull`
+
+Es recomendable hacer `pull` antes de empezar a trabajar con los archivos de un repositorio, ya que así empezarás a trabajar con la versión más actualizada del repositorio. 
+
+### 2. Cada persona trabaja en archivos diferentes
+
+La forma más fácil de evitar conflictos de merge es pedir a cada persona que trabaje en archivos diferentes y que no editen los archivos de otras personas. Esto funciona pero tiene limitaciones.
+
+A largo plazo, es posible que tengas que trabajar en el código de otra persona y, en esos casos, la comunicación entre los miembros del equipo es fundamental.
+
+### 3. Las personas se turnan 
+
+Es posible que más de una persona esté trabajando en el mismo archivo, ya sea un script o documentación. Por lo general, ese será un trabajo para muchas personas. Una solución es turnarse: vos trabajás en el archivo por la mañana y tu compañero/a lo hace por la tarde. 
+
+### 4. Las personas trabajan en branchs 
+
+Aquí es donde aprovechamos al máximo lo que git tiene para ofrecer.
+
+Las branchs (ramas en inglés) parecen un concepto nuevo, pero en realidad, siempre estás trabajando en una rama sin darte cuenta. La branch "predeterminada" en general se llama *main* porque es la principal, y todo este tiempo estuviste "agregando commits a la branch main". 
+
+Una **branch** en git es una etiqueta que apunta a un *commit* específico en el repositorio a partir de la cual se crean otras versiones paralelas. 
+Trabajar en una branch te permite modificar archivos sin modificar los mismos archivos en otras branchs, porque esencialmente estás trabajando en un conjunto de archivos independientes.
+Cuando quieras pasar los cambios de tu branch a la branch main, tendrás que hacer un **merge** para combinar las ramas.
+
+!["Diagrama de un árbol git que muestra la branch principal con 4 commits y una branch secundaria llamada función que comienza desde el commit 2 en la branch main y tiene 2 nuevos commits, independientes de la principal."](images/branch.png)
+
+Hay diferentes formas de utilizar branchs Quizás cada persona del equipo tiene una branch y trabaja en ella hasta que llega el momento de hacer un merge a la branch *main*. O quizás, y esto es más común, cada branch represente un nuevo desarrollo que se agrega al paquete. Por ejemplo, si agregás una nueva función, creás una branch, desarrollas el código y luego hacer un merge para incorporar la función al paquete. 
+
+Trabajar con branchs no eliminará los conflictos del todo. Es posible que estos aparezcan cuando intentes hacer merge entre tu branch con la branch principal. Pero esto pasará una sola vez y solo cuando lo decidas.
+
+Antes de revisar cómo es el flujo de trabajo con branchs, hay un nuevo concepto que debemos mencionar: un **pull request** o PR es una herramienta de GitHub que te permite realizar cambios en una branch y luego solicitar a quien mantiene el repositorio que fusione esos cambios en la branch principal.
+Los pull request pueden surgir de *forks* (que presentaremos más adelante) o de branchs independientes dentro del repositorio. 
+Permiten a quienes mantienen y colaboran en un proyecto, revisar, discutir, solicitar y aprobar los cambios y sumarlos 
+al repositorio cuando estan listos.
+
 
 #### Escenario 1
 
-Este esquema muestra el flujo de trabajo cuando **no** necesitamos hacer
-un fork.
+Este diagrama muestra el flujo de trabajo cuando se desea contribuir al repositorio utilizando branchs y además, **asumimos que tenés permisos de escritura en el repositorio remoto**:
 
 ![](images/no_fork.png)
 
@@ -96,7 +182,9 @@ un fork.
 
 #### Escenario 2
 
-Para los flujos de trabajo basados en forks, el proceso es el siguiente:
+**Si no tenés permisos de escritura en el repositorio remoto,** tendrás que utilizar **forks**. Esto es muy habitual cuando querés colaborar en un proyecto del que no formas parte.
+
+Un **fork** es una copia del repositorio de otra persona o equipo que se almacenará en tu cuenta de GitHub. Tanto el repositorio original como el fork se encuentran en GitHub, la diferencia es que puedes modificar y actualizar la versión que se encuentra en tu cuenta.
 
 ![](images/si_fork.png)
 
@@ -111,6 +199,8 @@ Para los flujos de trabajo basados en forks, el proceso es el siguiente:
 7.  Finalmente podés sincronizar tu fork del repositorio con el
     repositorio principal.
 
+## Cómo trabajar
+
 Un reto que surge a menudo es saber cómo y cuándo usar branchs. ¿Hacés
 todos cambios cambios allí y luego abris un PR a la branch main? ¿creás
 una branch, haces PR y y la borras inmediatamente después? ¿Qué cambios
@@ -124,12 +214,12 @@ consejos:
     un error de tipeo) creá un nueva branch y abrí un PR. Cuanto más
     pequeños sean los cambios más fácil será revisarlos y aceptarlos.
 2.  Si hacés grandes cambios, lo mejor es que estén relacionados a un
-    problema u objetivo, de modo que al revisar el PR sea más fáci
-    seguirlo y entenderlo.
+    problema u objetivo, de modo que al revisar el PR sea más fácil
+    seguirlo y entenderlo. Dividí tus contribuciones por problema u objetivo.
 3.  Haz cambios relacionados con un issue específico y agregá
     comentarios en el issue para mantener a todo el mundo al tanto.
 
-## Cómo trabajar
+
 
 Vamos a mostrar algunos ejemplos de cómo utilizar los flujos de trabajo
 que vimos recién en distintas situaciones.
@@ -281,6 +371,8 @@ aparecerán en el repositorio.
 
 
 ::: ejercicio
+**Practicá contribuir a un proyecto en GitHub**
+
 Ahora que sabes como contribuir con un proyecto, podés ayudarnos! Estos
 materiales están plagados de errores de tipeo y cosas para mejorar, y a
 esta altura seguro encontraste un montón.
@@ -293,6 +385,8 @@ venimos usando y el repositorio se encuentra en
 :::
 
 ::: ejercicio
+
+**Generá tu perfil en Github**
 
 Vamos a crear el perfil en GitHub.  Esto va a permitir que las personas te identifiquen mejor en esa plataforma y que vayas teniendo tu portfolio como cientifico/a de datos y desarrollador de software:
 
