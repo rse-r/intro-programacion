@@ -149,7 +149,7 @@ GitHub es una de las interfaces y repositorios mundiales mas conocidos y utiliza
 - Hacer clik en "Sign Up" y seguir las indicaciones para crear la cuenta personal. 
 
 
-## Configuración de Git y GitHub
+## Configuración de Git y GitHub {-}
 
 Ahora que ya tenés git instalado y una cuenta en GitHub, es importante completar la configuración necesaria para que puedas trabajar. Hay varias maneras de hacerlo, en este caso lo haremos desde R usando el paquete *usethis*. 
 
