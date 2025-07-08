@@ -268,12 +268,7 @@ Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada
 carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos
 usando usethis y RStudio y viene con todas las ventajas que vimos. Sin
 embargo, no es impresindible que un paquete sea un proyecto al mismo
-tiempo. usethis tiene aún otra ventaja más, inicia automáticamente un
-repositorio. Esto es importantísimo, desarrollar software viene de la
-mano del control de versiones. Además, si estuvieramos creando un
-paquete de verdad, contectar este repositorio local con uno remoto en
-GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan
-usar otras personas.
+tiempo. 
 
 ```{r eval=FALSE}
 fs::dir_tree("C:/Users/tonin/Documents/Courses/paqueteprueba/", all = TRUE)
