@@ -67,7 +67,7 @@ O installar xcode desde el [Mac App Store](https://itunes.apple.com/ca/app/xcode
 
 -   Una vez que se bajó, hacé doble click en el archivo y seguí las instrucciones del instalador.
 
--   Una vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: {{< figure src="r-logo.jpeg" height="20px" >}}
+-   Una vez que se termine de instalar, te va a aparecer un ícono como este en el escritorio o en los programas instalados: <img src="images/r-logo.jpeg" height="20px">
 
 -   Al ejecutarlo, les tiene que aparecer algo como esto:
 
