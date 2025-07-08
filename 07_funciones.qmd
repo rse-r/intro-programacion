@@ -276,9 +276,9 @@ que esto:
 * `checkbox_input()`
 * `text_input()`
 
-### Construyendo un paquete de R paso a paso {#ex-funciones}
+## Construyendo un paquete de R paso a paso {#ex-funciones}
 
-::: ejercicio
+::: transversal
 
 1. Crea una función para descagar y leer los datos de estaciones. Importante:
 * Usá como base la función que creamos para leer los datos de pinguinos.

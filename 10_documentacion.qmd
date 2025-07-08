@@ -495,15 +495,15 @@ Es posible que al hacerlo encuentres cosas para mejorar en el README o en la doc
 
 :::
 
-### Construyendo un paquete de R paso a paso {#ex-doc}
+## Construyendo un paquete de R paso a paso {#ex-doc}
 
-::: ejercicio
+::: transversal
 
 A esta altura seguramente ya te imaginás que sigue. Es hora de generar la documentación del paquete que lee y analiza datos meteorológicos (¿ya tiene nombre?). 
 
 De nuevo, esto es un trabajo en equipo por lo que esperamos ver aportes (commits) de ambos miembros del equipo. Pueden dividirse el trabajo: cada persona documenta algunas funciones, alguien se ocupa del README, alguien de la viñeta, etc. 
 
-**Recomendaciones:** 
+**Recomendaciones:**
 
 * Siempre arranquen a trabajar haciendo un pull para actualizar la versión del repo local con el remoto. 
 * No modifiquen archivos que la otra persona está usando. Si hacen esto, al hacer commits habrá problemas para mergear tu versión y la de tu compañere. 

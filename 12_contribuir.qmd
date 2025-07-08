@@ -215,9 +215,9 @@ Otra comunidad es [The Carpentries](https://carpentries.org/) que busca enseñar
 Esta lista no está completa, existen muchas comunidades e iniciativas y aparecen nuevas muy seguido!
 
 
-### Construyendo un paquete de R paso a paso {#ex-contribuir}
+## Construyendo un paquete de R paso a paso {#ex-contribuir}
 
-::: ejercicio
+::: transversal
 
 Con esta sección terminamos de revisar los elementos principales de un paquete de R que pone el foco no solo en el desarrollo del código, también en generar un proyecto que sea sostenible y recibe contribuciones. 
 

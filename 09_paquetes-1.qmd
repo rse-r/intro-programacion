@@ -629,9 +629,9 @@ cuando se construye el paquete por lo que hay que agregarla a
 Ahora si apretamos `Ctrl-Shift-L` para cargar de nuevo el paquete de
 prueba y escribimos `datos` en la consola veremos los datos que creamos.
 
-### Construyendo un paquete de R paso a paso {#ex-paquete}
+## Construyendo un paquete de R paso a paso {#ex-paquete}
 
-::: ejercicio
+::: transversal
 Es hora de empezar a unir lo que hicimos. El objetivo de este ejercicio
 es crear la estructura de un paquete que lean y analice datos de
 estaciones meteorológicas. Pero además este será un trabajo colaborativo

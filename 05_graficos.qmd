@@ -362,9 +362,9 @@ ggplot(diamantes, aes(claridad, precio, fill = claridad)) +
 :::
 
 
-### Construyendo un paquete de R paso a paso {#ex-graficos}
+## Construyendo un paquete de R paso a paso {#ex-graficos}
 
-::: ejercicio
+::: transversal
 
 Sigamos analizando los datos de estaciones meteorológicas.
 

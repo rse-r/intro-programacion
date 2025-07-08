@@ -310,9 +310,9 @@ Es momento de revisar el estado del paqueteprueba
   * Revisá que partes del código estás testeando y que te falta.
 :::
 
-### Construyendo un paquete de R paso a paso {#ex-tests}
+## Construyendo un paquete de R paso a paso {#ex-tests}
 
-::: ejercicio
+::: transversal
 
 El paquete de datos meteorológicos también va a necesitar tests. Es el momento de agregarlos. 
 

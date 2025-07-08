@@ -106,9 +106,9 @@ En el portal de datos de Argentina encontramos muchos conjuntos de datos con inf
 Al final del ejercicio deberías tener un archivo .qmd o .R con el código que lo resuelve. Nombrá el archivo siguiendo los consejos que vimos en clase.
 :::
 
-### Construyendo un paquete de R paso a paso {#ex-lectura}
+## Construyendo un paquete de R paso a paso {#ex-lectura}
 
-::: ejercicio
+::: transversal
 
 A lo largo del curso vamos a construir y probar paquete de R que nos permita trabajar y analizar datos de estaciones meteorológicas. El objetivo de este ejercicio es que comiences a familiarizarte con estos datos.
 

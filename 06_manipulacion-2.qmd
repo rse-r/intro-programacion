@@ -246,9 +246,9 @@ Estuvimos trabajando con una parte de la base de datos de emisiones. Pero tambi√
 Pod√©s descargar los datos desde https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_completo.csv
 :::
 
-### Construyendo un paquete de R paso a paso {#ex-manipulacion}
+## Construyendo un paquete de R paso a paso {#ex-manipulacion}
 
-::: ejercicios
+::: transversal
 
 **Pivots!**
 
