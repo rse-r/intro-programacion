@@ -143,7 +143,7 @@ porque corrimos `library(nombre_paquete)`.
 
 
 ¿Cómo funciona la instalación de paquetes? Depende. Si instalas el paquete desde
-CRAN, `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora, 
+CRAN, Bioconductor o R-Universe `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora, 
 y lo va a descomprimir la "librería de paquetes de R" (una carpeta medio escondida
 en tu computadora) y generar los archivos necesario para que puedas usarlo. 
 
