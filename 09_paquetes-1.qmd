@@ -123,67 +123,59 @@ los paquetes `{usethis}` y `{devtools}` están diseñados para hacer
 muchas de estas tareas de configuración de paquetes por ti, o al menos
 simplificarlas.
 
-¿Cómo funciona la instalación de paquetes? Cuando le dices a R que
-instale un paquete, que es un conjunto de archivos y carpetas que siguen
-un convención específica, R toma la carpeta y la convierte en un formato
-especial. Luego R guarda este formato especial en una ubicación por
-defecto que es específica del sistema operativo, como macOS, Windows o
-Linux. Para ver dónde están instalados los paquetes, utiliza
+Hasta ahora interactuaste con paquetes de R **instalados** en tu computadora con 
+`install.packages()` y que luego cargas **en memoria** con `library()` para poder usar sus funciones. 
+**Instalado** y **en memoria** son dos *estados* posibles de un paquete. 
+Pero ahora, en el contexto del desarrollo de paquetes, empezarás a trabajar
+con el **código fuente**. En este estado, el paquete tiene una pinta distinta y
+el flujo de trabajo también va a cambiar. 
+
+Los 5 estados en los que puede estar un paquete de R son:
+
+* **código fuente** o source en inglés: incluye la carpeta y todos los archivos que mencionamos antes.
+* **bundled:** es una versión comprimida del paquete, independiente del sistema operativo de las computadoras, 
+a partir del cual puede ser instalado. 
+* **binary** o binario: es una versión del paquete lista para instalar, sin embargo depende del sistema 
+operativo. Un binario creado para Windows no funcionará en Linux.
+* **instalado:** es la version del paquete ya instalado en una computadora. 
+* **en memoria:** el paquete está *cargado* en el ambiente de R y podemos usar las funciones
+porque corrimos `library(nombre_paquete)`.
+
+
+¿Cómo funciona la instalación de paquetes? Depende. Si instalas el paquete desde
+CRAN, Bioconductor o R-Universe `install.packages()` va a descargar el **bundle** o el **binario** en tu computadora, 
+y lo va a descomprimir la "librería de paquetes de R" (una carpeta medio escondida
+en tu computadora) y generar los archivos necesario para que puedas usarlo. 
+
+Si instalas tu paquete mientras lo estás desarrollando, R va
+a tomar el **código fuente** para generar los archivos necesarios y guardar los en la 
+libreria de paquetes de R, de la misma manera que lo hace con cualquier otro paquete. 
+
+Esta "instalación del paquete" en la libreria no es más que una carpeta con archivos y otras carpetas
+que contienen el código de las funciones en un formato específico que entiende R. 
+Para ver dónde están instalados los paquetes, utiliza:
 
 ```{r}
 .libPaths()
 ```
 
-Si escribes esto en tu Consola, lo que verás probablemente será un un
-poco diferente a esto. Si `.libPaths()` muestra más de una ruta,
+Si corres esa función en la consola, es posible que el resultado sea un
+poco diferente a esto, depende de cada computadora. Si `.libPaths()` muestra más de una ruta,
 normalmente la primera contendrá todos los paquetes.
 
-```{r echo=FALSE, message=FALSE}
+```{r message=FALSE}
 library(fs)
-# R prioritizes the first path, so we'll select it
-primary_library_path <- .libPaths()[1]
+
+primary_library_path <- .libPaths()[1] #Elegimos la primera ruta
 packages <- dir_ls(path(primary_library_path))
 
-# Number of installed packages
+# Número de paquetes instalados
 length(packages)
-# See the first few package names
+# Muestra los primeros 6
 head(packages)
 ```
 
-Si queremos ver cómo almacena R los paquetes en su formato especial,
-podemos utilizar `dir_tree()` y el contenido de la instalación de
-`devtools/`.
 
-```{r}
-primary_library_path <- .libPaths()[1]
-fs::dir_tree(path(primary_library_path, "devtools"))
-```
-
-Los archivos `R/devtools.rdb` y `R/devtools.rdx` son los archivos cons
-formatos especiales que contienen las funciones dentro de `{devtools}`
-que R buscará cuando carga el paquete. Cuando se instala un paquete en
-R, se crea una carpeta en `.libPaths()` con los archivos en el formato
-específico que necesita R. Así que cuando ejecutes `library(devtools)`,
-R sabrá que debe buscar las funciones que se encuentran en la carpeta
-`devtools/`.
-
-Por lo tanto, instalar tu propio paquete que sólo se encuentra en tu
-computadora (es decir, no está publicado en CRAN o en GitHub) no es no
-difiere de instalar un paquete de CRAN con `install.packages()` o desde
-GitHub con `pak::pak()`. La única diferencia es que los paquetes en CRAN
-o GitHub pueden ser utilizados por cualquiera que tenga acceso a
-internet.
-
-::: importante
-Te habrás dado cuenta de que hemos utilizado la sintaxis
-`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
-que utilice la función de un paquete concreto. Así que `pak::pak()` es
-decirle a R que utilice la función `pak()` del paquete `pak`. En
-desarrollo de paquetes en particular, utilizaremos esto en lugar de
-cargar las librerias con `library(pak)` porque queremos ser explícitos
-sobre qué función queremos utilizar y porque no necesitamos cargar todas
-las funciones del paquete cuando sólo queremos utilizar una o dos.
-:::
 
 ## Nombrar un paquete
 
@@ -201,6 +193,17 @@ pak::pkg_name_check("paqueteprueba")
 ```
 
 En este caso `paqueteprueba` está disponible para que lo usemos.
+
+::: importante
+Te habrás dado cuenta de que hemos utilizado la sintaxis
+`nombrepaquete::nombrefuncion()` unas cuantas veces. Esto le dice a R
+que utilice la función de un paquete concreto. Así que `pak::pak()` es
+decirle a R que utilice la función `pak()` del paquete `pak`. En
+desarrollo de paquetes en particular, utilizaremos esto en lugar de
+cargar las librerias con `library(pak)` porque queremos ser explícitos
+sobre qué función queremos utilizar y porque no necesitamos cargar todas
+las funciones del paquete cuando sólo queremos utilizar una o dos.
+:::
 
 ### Requisitos formales
 
@@ -272,8 +275,20 @@ paquete de verdad, contectar este repositorio local con uno remoto en
 GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan
 usar otras personas.
 
-```{r}
+```{r eval=FALSE}
 fs::dir_tree("C:/Users/tonin/Documents/Courses/paqueteprueba/", all = TRUE)
+```
+
+```r
+C:/Users/tonin/Documents/Courses/paqueteprueba/
+├── .gitignore
+├── .Rbuildignore
+├── .Rproj.user
+├── DESCRIPTION
+├── NAMESPACE
+├── paqueteprueba.Rproj
+└── R
+
 ```
 
 Además del los archivos DESCRIPTION, NAMESPACE y la carpeta R que ya
@@ -284,6 +299,100 @@ deberá ignorar al momento de construir el paquete, por ahora la lista es
 corta pero ira creciendo a medida que sumemos cosas al paquete. La
 carpeta .Rproj.user es algo que está en todo projecto de RStudio e
 incluye las configuraciones específicas del proyecto.
+
+### Control de versiones en el desarrollo de paquetes
+
+Si bien es posible desarrollar un paquete de R sin utilizar git y GitHub, 
+vale la pena el esfuerzo extra. Entre otras razones que tienen que ver con
+las ventajas del control de versiones, GitHub es una de las principales maneras
+de compartir software y en particular, paquetes de R. 
+
+Previamente vimos como crear un repositorio desde GitHub y asociarlo a un 
+repositorio local. En esta sección usaremos funciones de usethis para 
+automatizar esas tareas. 
+
+#### Repositorio local
+
+Para crear el repositorio local usaremos `usethis::use_git()`. Es importante 
+correr la función en la consola y asegurarnos que el proyecto de R esté abierto 
+(aparece el nombre en la esquina superior derecha de RStudio) para asegurarnos
+que el repositorio local esté asociado a nuestro paquete. 
+
+```r
+usethis::use_git()
+```
+
+Esta funcion va a crear el repositorio y generara un commit inicial de todos los archivos que estén presentes en el proyecto. Va a preguntarte si queres hacer esto. Contestale que si seleccionado la opción afirmativa. Luego va a preguntarte si queres reiniciar RStudio. Esto es necesario para que aparezca la pestaña de Git desde la cual podremos trabajar sobre el repositorio. Seleccioná la opción afirmativa, ojo que siempre cambia el orden!
+
+
+```r
+> usethis::use_git()
+✔ Setting active project to "/ubicacion/de/tu/proyecto".
+✔ Initialising Git repo.
+✔ Adding ".Rproj.user", ".Rhistory", ".Rdata", ".httr-oauth", ".DS_Store", and ".quarto" to
+  .gitignore.
+ℹ There are 2 uncommitted files:
+• .gitignore
+• test.Rproj
+! Is it ok to commit them?
+
+1: Negative
+2: Yup
+3: Nope
+
+Selection: 2
+✔ Adding files.
+✔ Making a commit with message "Initial commit".
+A restart of RStudio is required to activate the Git pane.
+Restart now?
+
+1: Absolutely not
+2: No
+3: Yes
+
+Selection: 3
+```
+
+#### Repositorio remoto en GitHub
+
+Podemos crear el repositorio remoto desde RStudio corriendo `usethis::use_github()`
+desde la consola. 
+
+
+```r
+> usethis::use_github()
+```
+Esta funcion hace lo siguiente:
+
+* Crea un nuevo repositorio en GitHub con el nombre del proyecto.
+* Configura ese nuevo repositorio como origen remoto para el repositorio local.
+* Configura tu branch local por defecto para realizar el mismo seguimiento en el origen y realiza un push inicial.
+* Abre el nuevo repositorio en tu navegador.
+
+La función devolverá algo similar a esto en la consola:
+
+```r
+✔ Creating GitHub repository "paocorrales/paqueteprueba".
+✔ Setting remote "origin" to "https://github.com/paocorrales/paqueteprueba.git".
+✔ Adding "https://github.com/paocorrales/paqueteprueba" to URL. 
+✔ Adding "https://github.com/paocorrales/paqueteprueba/issues" to BugReports. 
+ℹ There is 1 uncommitted file: • DESCRIPTION !
+
+Is it ok to commit it?
+
+1: Absolutely not 
+2: Not now 
+3: Yes
+
+Selection: 3 
+
+✔ Adding files. 
+✔ Making a commit with message "Add GitHub inks to DESCRIPTION". 
+✔ Pushing "master" branch to GitHub and setting "origin/master" as upstream branch. 
+✔ Opening URL <https://github.com/paocorrales/paqueteprueba>.
+```
+
+Y con esto ya podes empezar a trabajar en el paquete. 
 
 ### Completando el archivo DESCRIPTION
 
@@ -458,6 +567,10 @@ Vamos a probar la función `load_all()` con el atajo `Ctrl-Shift-L`.
 Ahora si, volvé a escribir `suma(2, 2)` en la consola. Ahora deberías
 ver que funciona.
 
+El flujo de trabajo para el desarrollo de funciones en un paquete tiene entonces esta pinta:
+
+![Flujo de trabajo para el desarrollo de una función.](images/flujo_desarrollo.png)
+
 ::: ejercicio
 **Practiquemos el flujo de trabajo**
 
@@ -545,64 +658,18 @@ usando GitHub.
 
 **Conectarlo con Git localmente**
 
-1.  Para crear el repositorio local corran la siguiente funcion de
-    usethis en la consola de R con el proyecto del paquete abierto en
-    RStudio en la maquina de la persona que seleccionaron para que tenga
-    el repo en su cuenta:
+1.  Para crear el repositorio local usá la función de usethis correspondiente.
 
-`usethis::use_git()`
-
-Esta funcion va a crear el repositorio y generara un commit inicial de
-todos los archivos que tiene el proyecto. Va a preguntarte si queres
-hacer esto. Contestale que si. Tambien va a reiniciar RStudio para que
-la pestaña de Git aparezca en nuestro proyecto. Va a preguntarte si
-queres hacer esto. Contestale que si.\
-\
 **Crear el repo remoto en GitHub**
 
 1.  Con el proyecto del paquete abierto en RStudio en la computadora de
-    la persona que tendra el repo en GitHub, corran la siguiente funcion
-    de usethis en la consola:
+    la persona que tendra el repo en GitHub debe correr la función de usethis
+    que genera el repositorio remoto.
 
-`usethis::use_github()`
-
-Esta funcion hace lo siguiente:
-
--   Crea un nuevo repositorio en GitHub con el nombre del proyecto.
--   Configura ese nuevo repositorio como origen remoto para el
-    repositorio local.
--   Configura tu branch local por defecto para realizar el mismo
-    seguimiento en el origen y realiza un push inicial.
--   Abre el nuevo repositorio en tu navegador.
-
-Te presenta algo similar a esto en la consola:
-
-```r
-
-ℹ Defaulting to "https" Git protocol.
-✔ Creating GitHub repository "yabellini/inventarioRRNN". 
-✔ Setting remote "origin" to "https://github.com/yabellini/inventarioRRNN.git". 
-✔ Adding "https://github.com/yabellini/inventarioRRNN" to URL. 
-✔ Adding "https://github.com/yabellini/inventarioRRNN/issues" to BugReports. 
-ℹ There is 1 uncommitted file: • DESCRIPTION !
-
-Is it ok to commit it?
-
-1: Absolutely not 
-2: Not now 
-3: Yes
-
-Selection: 3 
-
-✔ Adding files. 
-✔ Making a commit with message "Add GitHub inks to DESCRIPTION". 
-✔ Pushing "master" branch to GitHub and setting "origin/master" as upstream branch. 
-✔ Opening URL <https://github.com/yabellini/inventarioRRNN>.
-```
-
-3.  Modificar la configuración del repositorio en GitHub para que la
-    otra persona del grupo tenga permisos para hacer commits y push.
-    Necesitarás sabes su nombre de usuario
+2.  Modificar la configuración del repositorio en GitHub para que la
+    otra persona del grupo tenga los permisos necesarios para hacer commits y push.
+    Necesitarás sabes su nombre de usuario.
+    
     1.  En GitHub.com, navega a la página principal del repositorio.
 
     2.  Hacé clic en **Settings**.
@@ -626,10 +693,10 @@ Selection: 3
         repositorio. Una vez que acepte la invitación, tendrá acceso de
         colaborador a tu repositorio.
 
-4\. La otra persona del grupo ahora puede clonar el repo en su
-computadora, siguiendo los pasos que vimos en como trabajar
-individualmente.
+3. La otra persona del grupo ahora puede clonar el repo en su
+computadora, siguiendo los pasos que vimos cuando trabajaron individualmente
+con git y Github.
 
-5. Modificá el README.md para indicar que el paquete es de prueba, que
+4. Modificá el README.md para indicar que el paquete es de prueba, que
     no está pensado para ser usado como tal.
 :::
