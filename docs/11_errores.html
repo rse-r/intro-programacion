@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-82a800e39cc206e033d29c4fd078e6b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -276,12 +276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul>
 </li>
   <li><a href="#testeo-general" id="toc-testeo-general" class="nav-link" data-scroll-target="#testeo-general"><span class="header-section-number">12.4</span> Testeo general</a></li>
-  <li>
-<a href="#integraci%C3%B3n-continua" id="toc-integración-continua" class="nav-link" data-scroll-target="#integraci%C3%B3n-continua"><span class="header-section-number">12.5</span> Integración continua</a>
-  <ul class="collapse">
-<li><a href="#ex-tests" id="toc-ex-tests" class="nav-link" data-scroll-target="#ex-tests"><span class="header-section-number">12.5.1</span> Construyendo un paquete de R paso a paso</a></li>
-  </ul>
-</li>
+  <li><a href="#integraci%C3%B3n-continua" id="toc-integración-continua" class="nav-link" data-scroll-target="#integraci%C3%B3n-continua"><span class="header-section-number">12.5</span> Integración continua</a></li>
+  <li><a href="#ex-tests" id="toc-ex-tests" class="nav-link" data-scroll-target="#ex-tests"><span class="header-section-number">12.6</span> Construyendo un paquete de R paso a paso</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -309,7 +305,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Añadir pruebas (tests) de una función del paquete usando <code>testthat</code>.</li>
 <li>Ejecutar todos los tests del paquete.</li>
 <li>Describir que resultado se espera de una función y usar la familia <code>expect_xxx()</code> en tests.</li>
-<li>Utilizar <code>browse()</code> y<code><a href="https://rdrr.io/r/base/debug.html">debug()</a></code> para explorar por qué se produce un comportamiento inesperado en una función.</li>
 <li>Revisar la cobertura de los test y definir cuando es necesario agregar nuevos.</li>
 </ul></section><section id="dependencias" class="level2" data-number="12.2"><h2 data-number="12.2" class="anchored" data-anchor-id="dependencias">
 <span class="header-section-number">12.2</span> Dependencias</h2>
@@ -529,9 +524,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Revisá que partes del código estás testeando y que te falta.</li>
 </ul>
 </div>
-<section id="ex-tests" class="level3" data-number="12.5.1"><h3 data-number="12.5.1" class="anchored" data-anchor-id="ex-tests">
-<span class="header-section-number">12.5.1</span> Construyendo un paquete de R paso a paso</h3>
-<div class="ejercicio">
+</section><section id="ex-tests" class="level2" data-number="12.6"><h2 data-number="12.6" class="anchored" data-anchor-id="ex-tests">
+<span class="header-section-number">12.6</span> Construyendo un paquete de R paso a paso</h2>
+<div class="transversal">
 <p>El paquete de datos meteorológicos también va a necesitar tests. Es el momento de agregarlos.</p>
 <p><strong>Tests para las funciones</strong></p>
 <ol type="1">
@@ -556,7 +551,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();

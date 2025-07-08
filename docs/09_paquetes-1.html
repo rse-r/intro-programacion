@@ -73,7 +73,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-82a800e39cc206e033d29c4fd078e6b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -285,9 +285,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <a href="#flujo-de-trabajo-para-el-desarrollo-de-paquetes" id="toc-flujo-de-trabajo-para-el-desarrollo-de-paquetes" class="nav-link" data-scroll-target="#flujo-de-trabajo-para-el-desarrollo-de-paquetes"><span class="header-section-number">10.6</span> Flujo de trabajo para el desarrollo de paquetes</a>
   <ul class="collapse">
 <li><a href="#datos-en-paquetes" id="toc-datos-en-paquetes" class="nav-link" data-scroll-target="#datos-en-paquetes"><span class="header-section-number">10.6.1</span> Datos en paquetes</a></li>
-  <li><a href="#ex-paquete" id="toc-ex-paquete" class="nav-link" data-scroll-target="#ex-paquete"><span class="header-section-number">10.6.2</span> Construyendo un paquete de R paso a paso</a></li>
   </ul>
 </li>
+  <li><a href="#ex-paquete" id="toc-ex-paquete" class="nav-link" data-scroll-target="#ex-paquete"><span class="header-section-number">10.7</span> Construyendo un paquete de R paso a paso</a></li>
   </ul></nav>
     </div>
 <!-- main -->
@@ -373,7 +373,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span><span class="co"># Número de paquetes instalados</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">packages</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 194</code></pre>
+<pre><code>[1] 205</code></pre>
 </div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Muestra los primeros 6</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">packages</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -382,8 +382,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 /home/paola/R/x86_64-pc-linux-gnu-library/4.5/DT
 /home/paola/R/x86_64-pc-linux-gnu-library/4.5/FNN
 /home/paola/R/x86_64-pc-linux-gnu-library/4.5/Formula
-/home/paola/R/x86_64-pc-linux-gnu-library/4.5/Lmoments
-/home/paola/R/x86_64-pc-linux-gnu-library/4.5/PCICt</code></pre>
+/home/paola/R/x86_64-pc-linux-gnu-library/4.5/Lahman
+/home/paola/R/x86_64-pc-linux-gnu-library/4.5/Lmoments</code></pre>
 </div>
 </div>
 </section><section id="nombrar-un-paquete" class="level2" data-number="10.4"><h2 data-number="10.4" class="anchored" data-anchor-id="nombrar-un-paquete">
@@ -450,7 +450,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>✔ Adding <span class="st">'^</span><span class="sc">\\</span><span class="st">.Rproj</span><span class="sc">\\</span><span class="st">.user$'</span> to <span class="st">'.Rbuildignore'</span></span>
 <span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>✔ Opening <span class="st">'C:/Users/tonin/Documentos/paqueteprueba/'</span> <span class="cf">in</span> new RStudio session</span>
 <span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>✔ Setting active project to <span class="st">'&lt;no active project&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada <code>paqueteprueba</code> con los archivos mínimos para instalar el paquete. Esta carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos usando usethis y RStudio y viene con todas las ventajas que vimos. Sin embargo, no es impresindible que un paquete sea un proyecto al mismo tiempo. usethis tiene aún otra ventaja más, inicia automáticamente un repositorio. Esto es importantísimo, desarrollar software viene de la mano del control de versiones. Además, si estuvieramos creando un paquete de verdad, contectar este repositorio local con uno remoto en GitHub o GitLab es necesario para distribuir tu paquete y que lo puedan usar otras personas.</p>
+<p>Donde sea que hayas creado el paquete ahora tendrás una carpeta llamada <code>paqueteprueba</code> con los archivos mínimos para instalar el paquete. Esta carpeta es al mismo tiempo un projecto de RStudio, es es porque estamos usando usethis y RStudio y viene con todas las ventajas que vimos. Sin embargo, no es impresindible que un paquete sea un proyecto al mismo tiempo.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">fs</span><span class="fu">::</span><span class="fu"><a href="https://fs.r-lib.org/reference/dir_tree.html">dir_tree</a></span><span class="op">(</span><span class="st">"C:/Users/tonin/Documents/Courses/paqueteprueba/"</span>, all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -542,7 +542,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="at">    based on "The Grammar of Graphics". You provide the data, tell 'ggplot2'</span></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">    how to map variables to aesthetics, what graphical primitives to use,</span></span>
 <span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="at">    and it takes care of the details.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>El campo <code>Authors@R</code> se utiliza para identificar al autoro autora del paquete, y a quién contactar si algo no funciona. Este campo es inusual porque contiene código R en lugar de texto plano. Este es un ejemplo:</p>
+<p>El campo <code>Authors@R</code> se utiliza para identificar al autor o autora del paquete, y a quién contactar si algo no funciona. Este campo es inusual porque contiene código R en lugar de texto plano. Este es un ejemplo:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Autores@R</span><span class="kw">:</span><span class="at"> person("Paola", "Corrales", email = "mimail@pao.com",</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="at">  role = c("aut", "cre"))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Estamos usando la función <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> que viene con R base en el paquete <code>utils</code>.</p>
@@ -634,9 +634,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>• Document your <span class="fu">data</span> (see <span class="st">'https://r-pkgs.org/data.html'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Es decir, automáticamente crea la carpeta y guarda los datos con formato <code>.rds</code> (un tipo de archivo específico de R). En principio el código de arriba solo se correrá una vez a menos que sea necesario actualizar los datos. Sin embargo es una buena idea guarda el código y los datos crudos si los hubiera en <code>data_raw</code>. Esta carpeta además no debe incluirse cuando se construye el paquete por lo que hay que agregarla a <code>Rbuildignore</code>.</p>
 <p>Ahora si apretamos <code>Ctrl-Shift-L</code> para cargar de nuevo el paquete de prueba y escribimos <code>datos</code> en la consola veremos los datos que creamos.</p>
-</section><section id="ex-paquete" class="level3" data-number="10.6.2"><h3 data-number="10.6.2" class="anchored" data-anchor-id="ex-paquete">
-<span class="header-section-number">10.6.2</span> Construyendo un paquete de R paso a paso</h3>
-<div class="ejercicio">
+</section></section><section id="ex-paquete" class="level2" data-number="10.7"><h2 data-number="10.7" class="anchored" data-anchor-id="ex-paquete">
+<span class="header-section-number">10.7</span> Construyendo un paquete de R paso a paso</h2>
+<div class="transversal">
 <p>Es hora de empezar a unir lo que hicimos. El objetivo de este ejercicio es crear la estructura de un paquete que lean y analice datos de estaciones meteorológicas. Pero además este será un trabajo colaborativo entre 2 personas para practicar como desarrollar software en equipo usando GitHub.</p>
 <p><strong>Crear el paquete</strong></p>
 <ol type="1">
@@ -676,7 +676,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
