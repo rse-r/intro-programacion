@@ -159,7 +159,7 @@ Para ver dónde están instalados los paquetes, utiliza:
 .libPaths()
 ```
 
-Si corres esa función en la consola, es posible que el restado sea un
+Si corres esa función en la consola, es posible que el resultado sea un
 poco diferente a esto, depende de cada computadora. Si `.libPaths()` muestra más de una ruta,
 normalmente la primera contendrá todos los paquetes.
 
