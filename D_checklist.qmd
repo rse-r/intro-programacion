@@ -18,11 +18,15 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 
 - [ ] (al menos) 3 funciones
 - [ ] (al menos) 1 set de datos
+- [ ] Las dependencias están bien definidas
 
 ## Documentación
 
-- [ ] Todas las funciones y datos están documentados
-- [ ] README completo
+- [ ] Todas las funciones y datos están documentados y tienen ejemplos de uso
+- [ ] Incluye un README con:
+  - [ ] como instalar el paquete.
+  - [ ] los autores. 
+  - [ ] como se puede contribuir al paquete.  
 - [ ] Incluye una viñeta que explica como usar las funciones
 - [ ] El paquete tiene una página web
 
@@ -36,7 +40,8 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 ## Otros
 
 - [ ] Incluye una licencia
-- [ ] El README incluye instrucciones sobre:
-  - [ ] como instalar el paquete.
-  - [ ] los autores. 
-  - [ ] como se puede contribuir al paquete.
+- [ ] Incluye un código de conducta
+- [ ] El README incluye:
+  - [ ] etiquetas (covertura de tests, lifecycle, etc).
+  - [ ] un logo para el paquete. 
+
