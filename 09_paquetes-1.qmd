@@ -428,7 +428,7 @@ Description: A system for 'declaratively' creating graphics,
     and it takes care of the details.
 ```
 
-El campo `Authors@R` se utiliza para identificar al autoro autora del
+El campo `Authors@R` se utiliza para identificar al autor o autora del
 paquete, y a quién contactar si algo no funciona. Este campo es inusual
 porque contiene código R en lugar de texto plano. Este es un ejemplo:
 
