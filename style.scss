@@ -92,6 +92,31 @@ h1, h2, h3, h4, h5 {
   color: #6B4E71;
 }
 
+/* ejercicio transversal */
+
+.transversal {
+  padding: 1em 1em 1em 4em;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  background: #E3DAE5 5px center/3em no-repeat;  
+  border-top: 1px solid #6B4E71;    /* openintro::COL[1,1] */ 
+  border-bottom: 1px solid #6B4E71; /* openintro::COL[1,1] */ 
+  background-image: url("./images/_icons/group-arrows-rotate-solid.svg");
+  background-position: 1.5em 1.5em;
+  background-size: 30px 30px;
+  color: #343a40;
+}
+
+.transversal:before {
+  content: "Ejercicio Transversal";
+  clear: right;
+  display: block;
+  font-weight: bold;
+  font-size: 1.5rem;
+  font-variant: small-caps;
+  color: #6B4E71;
+}
+
 /* workedexample */
 
 .ejemplo{
