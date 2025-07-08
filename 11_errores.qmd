@@ -8,7 +8,6 @@ title: "Dependencias y tests"
 * Añadir pruebas (tests) de una función del paquete usando `testthat`.
 * Ejecutar todos los tests del paquete.
 * Describir que resultado se espera de una función y usar la familia  `expect_xxx()` en tests.
-* Utilizar `browse()` y` debug()` para explorar por qué se produce un comportamiento inesperado en una función.
 * Revisar la cobertura de los test y definir cuando es necesario agregar nuevos.
 
 ## Dependencias 
