@@ -13,6 +13,7 @@ book:
     - index.qmd
     - 00_intro.qmd
     - 01_proyectos.qmd
+    - 01bis_reportes.qmd
     - 02_lectura.qmd
     - 03_manipulacion-1.qmd
     - 04_git-1.qmd
