@@ -501,11 +501,18 @@ Es posible que al hacerlo encuentres cosas para mejorar en el README o en la doc
 
 A esta altura seguramente ya te imaginás que sigue. Es hora de generar la documentación del paquete que lee y analiza datos meteorológicos (¿ya tiene nombre?). 
 
+1. Agreguen las funciones que crearon en el [ejercicio de funciones](07_funciones.qmd##ex-funciones) y generen su documentación
+2. Usando como base los datos meteorológicos que descargaron agreguen datos al paquete y documentenlo. Estos datos servirán para generar ejemplos en la documentación de las funciones.
+3. Agreguen una viñeta que muestre de manera extendida como se usan las funciones del paquete.
+4. Actualicen el README
+5. Creen el website para el paquete.
+
 De nuevo, esto es un trabajo en equipo por lo que esperamos ver aportes (commits) de ambos miembros del equipo. Pueden dividirse el trabajo: cada persona documenta algunas funciones, alguien se ocupa del README, alguien de la viñeta, etc. 
 
 **Recomendaciones:**
 
 * Siempre arranquen a trabajar haciendo un pull para actualizar la versión del repo local con el remoto. 
 * No modifiquen archivos que la otra persona está usando. Si hacen esto, al hacer commits habrá problemas para mergear tu versión y la de tu compañere. 
+* Hagan commits pequeños, un commit por actividad.
 
 :::
