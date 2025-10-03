@@ -139,7 +139,7 @@ A largo plazo, es posible que tengas que trabajar en el código de otra persona 
 
 Es posible que más de una persona esté trabajando en el mismo archivo, ya sea un script o documentación. Por lo general, ese será un trabajo para muchas personas. Una solución es turnarse: vos trabajás en el archivo por la mañana y tu compañero/a lo hace por la tarde. 
 
-### 4. Las personas trabajan en branchs 
+### 4. Las personas trabajan en branches 
 
 Aquí es donde aprovechamos al máximo lo que git tiene para ofrecer.
 
