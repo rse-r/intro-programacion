@@ -254,8 +254,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#description" id="toc-description" class="nav-link active" data-scroll-target="#description"><span class="header-section-number">D.1</span> DESCRIPTION</a></li>
   <li><a href="#funciones-y-datos" id="toc-funciones-y-datos" class="nav-link" data-scroll-target="#funciones-y-datos"><span class="header-section-number">D.2</span> Funciones y datos</a></li>
   <li><a href="#documentación" id="toc-documentación" class="nav-link" data-scroll-target="#documentación"><span class="header-section-number">D.3</span> Documentación</a></li>
-  <li><a href="#tests" id="toc-tests" class="nav-link" data-scroll-target="#tests"><span class="header-section-number">D.4</span> Tests</a></li>
+  <li><a href="#checks-y-tests" id="toc-checks-y-tests" class="nav-link" data-scroll-target="#checks-y-tests"><span class="header-section-number">D.4</span> Checks y tests</a></li>
   <li><a href="#otros" id="toc-otros" class="nav-link" data-scroll-target="#otros"><span class="header-section-number">D.5</span> Otros</a></li>
+  <li><a href="#uso-de-git-y-github" id="toc-uso-de-git-y-github" class="nav-link" data-scroll-target="#uso-de-git-y-github"><span class="header-section-number">D.6</span> Uso de Git y GitHub</a></li>
   </ul>
 </nav>
     </div>
@@ -284,9 +285,9 @@ ul.task-list li input[type="checkbox"] {
 <p>A lo largo de las secciones los ejercicios transversales que llamamos “Construyendo un paquete de R paso a paso” son una guía para, justamente, construir un paquete que lee y ayuda a analizar datos meteorológicos.</p>
 <p>A continuación encontrarás una lista de elementos que debe tener o con los que debe cumplir el paquete para estar completo.</p>
 <ul class="task-list">
-<li><label><input type="checkbox">Estructura del paquete</label></li>
-<li><label><input type="checkbox">Repositorio local</label></li>
-<li><label><input type="checkbox">Repositorio remoto</label></li>
+<li><label><input type="checkbox">Estructura del paquete correcta</label></li>
+<li><label><input type="checkbox">El paquete instala correctamente</label></li>
+<li><label><input type="checkbox">Contiene instrucciones para comenzar a usarlo rapidamente</label></li>
 </ul>
 <section id="description" class="level2" data-number="D.1">
 <h2 data-number="D.1" class="anchored" data-anchor-id="description"><span class="header-section-number">D.1</span> DESCRIPTION</h2>
@@ -312,15 +313,15 @@ ul.task-list li input[type="checkbox"] {
 <ul class="task-list">
 <li><label><input type="checkbox">como instalar el paquete.</label></li>
 <li><label><input type="checkbox">los autores.</label></li>
-<li><label><input type="checkbox">como se puede contribuir al paquete.<br>
-</label></li>
+<li><label><input type="checkbox">etiquetas (covertura de tests, lifecycle, etc).</label></li>
+<li><label><input type="checkbox">un logo para el paquete.</label></li>
 </ul></li>
 <li><label><input type="checkbox">Incluye una viñeta que explica como usar las funciones</label></li>
 <li><label><input type="checkbox">El paquete tiene una página web</label></li>
 </ul>
 </section>
-<section id="tests" class="level2" data-number="D.4">
-<h2 data-number="D.4" class="anchored" data-anchor-id="tests"><span class="header-section-number">D.4</span> Tests</h2>
+<section id="checks-y-tests" class="level2" data-number="D.4">
+<h2 data-number="D.4" class="anchored" data-anchor-id="checks-y-tests"><span class="header-section-number">D.4</span> Checks y tests</h2>
 <ul class="task-list">
 <li><label><input type="checkbox">El paquete tiene tests que cubren al menos el 75% del código de las funciones</label></li>
 <li><label><input type="checkbox">El paquete tiene una GitHub action que revisa la covertura de los tests</label></li>
@@ -333,11 +334,15 @@ ul.task-list li input[type="checkbox"] {
 <ul class="task-list">
 <li><label><input type="checkbox">Incluye una licencia</label></li>
 <li><label><input type="checkbox">Incluye un código de conducta</label></li>
-<li><label><input type="checkbox">El README incluye:</label>
+<li><label><input type="checkbox">Guía de contribución</label></li>
+</ul>
+</section>
+<section id="uso-de-git-y-github" class="level2" data-number="D.6">
+<h2 data-number="D.6" class="anchored" data-anchor-id="uso-de-git-y-github"><span class="header-section-number">D.6</span> Uso de Git y GitHub</h2>
 <ul class="task-list">
-<li><label><input type="checkbox">etiquetas (covertura de tests, lifecycle, etc).</label></li>
-<li><label><input type="checkbox">un logo para el paquete.</label></li>
-</ul></li>
+<li><label><input type="checkbox">las dos personas en el equipo aportaron al paquete (hicieron commmits)</label></li>
+<li><label><input type="checkbox">hay suficientes commmits y cubren cambios pequeños en uno o pocos archivos</label></li>
+<li><label><input type="checkbox">los mensajes de commits son significativos</label></li>
 </ul>
 
 

@@ -4,9 +4,9 @@ A lo largo de las secciones los ejercicios transversales que llamamos "Construye
 
 A continuación encontrarás una lista de elementos que debe tener o con los que debe cumplir el paquete para estar completo. 
 
-- [ ] Estructura del paquete
-- [ ] Repositorio local
-- [ ] Repositorio remoto
+- [ ] Estructura del paquete correcta
+- [ ] El paquete instala correctamente
+- [ ] Contiene instrucciones para comenzar a usarlo rapidamente
 
 ## DESCRIPTION
 
@@ -26,11 +26,12 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 - [ ] Incluye un README con:
   - [ ] como instalar el paquete.
   - [ ] los autores. 
-  - [ ] como se puede contribuir al paquete.  
+  - [ ] etiquetas (covertura de tests, lifecycle, etc).
+  - [ ] un logo para el paquete. 
 - [ ] Incluye una viñeta que explica como usar las funciones
 - [ ] El paquete tiene una página web
 
-## Tests
+## Checks y tests
 
 - [ ] El paquete tiene tests que cubren al menos el 75% del código de las funciones
 - [ ] El paquete tiene una GitHub action que revisa la covertura de los tests
@@ -41,7 +42,12 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 
 - [ ] Incluye una licencia
 - [ ] Incluye un código de conducta
-- [ ] El README incluye:
-  - [ ] etiquetas (covertura de tests, lifecycle, etc).
-  - [ ] un logo para el paquete. 
+- [ ] Guía de contribución  
+
+## Uso de Git y GitHub
+
+- [ ] las dos personas en el equipo aportaron al paquete (hicieron commmits)
+- [ ] hay suficientes commmits y cubren cambios pequeños en uno o pocos archivos
+- [ ] los mensajes de commits son significativos
+
 
