@@ -258,6 +258,32 @@ Duration: 21.8s
 R CMD check succeeded
 ```
 
+::: importante
+
+Hay otras dos notas que pueden aparecer mientras estas desarrollando tu paquete:
+
+```r
+❯ checking R code for possible problems ... NOTE
+  mi_funcion: no visible binding for global variable ‘cantidad’
+```
+Este mensaje se produce cuando usas una variable dentro de una función pero no la definis dentro de la función ni la pasas como argumento. Normalmente ocurre cuando la variable, en este caso `cantidad`, es una columna de un conjunto de datos que se referencia dentro de un `summarise()` u otro verbo de tidyverse sin usar `nombre_data_set$cantidad`. Esto es correcto, pero para los checks de R parece _"unbound"_ (sin definir).
+
+Hay dos maneras de resolver esta nota:
+
+* Declarar la variable como variable global en algún lugar de tu paquete con `utils::globalVariables("nombre_variable")`, en nuestro ejemplo `utils::globalVariables("cantidad")`. 
+
+* Importar el pronombre `.data` de `rlang` y cambiar el codigo dentro de la funcion a algo como `summarise(total = sum(.data$cantidad))`.
+
+La segunda nota aparece cuando R CMD check no puede verificar la hora actual del sistema durante la validación del paquete
+
+```r
+❯ checking for future file timestamps ... NOTE
+  unable to verify current time
+```
+La causa comun de esta nota son problemas de conectividad: R intenta conectarse a servidores de tiempo para verificar la hora actual y no puede hacerlo. Esto no es un gran problema, pero si querés resolverlo podés revisar tu conexión a internet.
+
+:::
+
 ## Integración continua
 
 La integración continua (CI, por las siglas en inglés) ejecuta tests sobre el software automáticamente. En la práctica significa que un conjunto de test se ejecutará automáticamente a través de GitHub Actions cada vez que hagas un commit o pull request a GitHub.
