@@ -4,10 +4,89 @@ title: Entorno de trabajo
 
 ## Objetivos de aprendizaje
 
+- Entender el sistema de archivos y directorios.
+- Comprender la diferencia entre rutas absolutas, relativas, locales y remotas.
+- Crear una jerarquía de directorios que coincida con un diagrama dado.
+- Crear, mover y eliminar archivos y/o directorios específicos.
 - Interactuar con la interfaz de RStudio para navegar archivos y directorios
 - Interpretar las rutas como ubicaciones dentro de las carpetas
 - Crear proyectos RStudio e identificar el directorio de trabajo
 - Reconocer los paneles de la interfaz de RStudio y sus ubicaciones por defecto
+
+## Conociendo el sistema de archivos
+
+Ya sea para analizar datos, entrenar un modelo, generar un informe o guardar los resultados de un experimento, las computadoras son responsables de almacenar todos los datos involucrados en esas tareas. Que estos datos se guarden de forma segura y eficiente es fundamental para el funcionamiento de cualquier sistema y **el sistema de archivos** es el componente del sistema operativo que se encarga de esta tarea.
+
+Segun el sistema operativo hay diferentes sistemas de archivos, pero todos son la estructura de datos que se utiliza para almacenar y recuperar información. Los unidad mínima de información en este sistema son los **archivos** y cada uno tiene un formato que depende del tipo de contenido que almacena. Este formato suele indicarse mediante la *extensión del archivo*, que aparece al final de su nombre.
+
+Algunas extensiones comunes y sus tipos de archivo, habituales en ciencia de datos con R, son:
+
+- `.R` para scripts de R
+- `.Rmd` o `.qmd` para documentos reproducibles (R Markdown o Quarto)
+- `.csv` para datos tabulares en texto plano
+ 
+Estos archivos, a su vez, se organizan en **directorios (directory)** o **carpetas (folder)**. Un directorio es una estructura de datos que contiene referencias a archivos y a otros directorios. Generalmente, los directorios se organizan en una estructura jerárquica en forma de árbol, conocida como *árbol de directorios*. Este tipo de organización es muy común en proyectos de análisis de datos, por ejemplo separando código, datos crudos, datos procesados y resultados.
+
+::: importante
+
+El sistema de archivos cumple un rol similar tanto cuando trabajamos con archivos almacenados en nuestra propia computadora (por ejemplo, en el disco rígido) como cuando usamos servicios en la nube, como Google Drive o Dropbox.
+
+Sin embargo, no son lo mismo: en **la nube** los archivos no están físicamente en nuestra máquina, sino que se almacenan en **servidores remotos** y se accede a ellos a través de internet. Muchos servicios en la nube imitan la estructura de un sistema de archivos local para que la experiencia de uso sea familiar, pero detrás de escena _el acceso, la sincronización y los permisos funcionan de manera diferente_.
+
+Tenemos que ser conscientes de estas diferencias para evitar problemas de acceso a los archivos cuando trabajemos. **Nuestro consejo es trabajar en carpetas locales de los archivos que necesitamos para nuestro análisis (no colocar los proyectos en DropBox o similar).** De ese modo, nos aseguramos de que nuestro código pueda acceder a los archivos sin problemas de conexión o permisos.
+
+:::
+
+
+![Ejemplo de árbol de directorios](images/arbol-de-directorios.png)
+
+
+En la figura se ve un arbol de directorios: en la raíz del árbol se encuentra la unidad `C:` (que suele corresponder al disco rigido de la maquina) y a partir de ahí se ramifican los distintos directorios y archivos. `Documentos` y `Downloads` son dos carpetas que dependen del directorio *raiz*. Las carpetas `analisis`, `Fotos` y `Libros` dependen de `Documentos`. Dentro de la carpeta `analisis` se encuentran tres archivos: `proceso.R` y `grafico.png` y un subdirectorio (o subcarpeta) llamada `datos`, que contiene el archivo `datos.csv`. Ademas, dentro de la carpeta `Fotos` se encuentra el archivo `vacaciones.jpg`.
+
+### Rutas (y caminos) absolutas y relativas
+
+Las carpetas ordenan los archivos, para poder acceder a su contenido necesitamos "entrar" en ellas. Para eso, utilizamos las **rutas (path)**, que son secuencias de nombres de directorios y archivos que indican la ubicación de un archivo o directorio dentro del sistema de archivos. Es como una dirección postal que indica exactamente dónde encontrar un archivo o carpeta. Tenemos dos tipos de rutas:
+
+* **Ruta absoluta:** especifica la ubicación completa desde la raíz del sistema. En Windows comienza con una letra de unidad (C:, D:), mientras que en Mac/Linux comienza con /.
+
+Por ejemplo, la ruta `C:/Documentos/analisis/proceso.R` indica que el archivo `proceso.R` se encuentra dentro de la carpeta `analisis`, que a su vez está dentro de la carpeta `Documentos`, que está en la raíz del disco `C:`.
+
+* **Ruta relativa:** especifica la ubicación en **relación con el directorio de trabajo actual**. Por ejemplo, si tu directorio de trabajo actual es `C:/Documentos/analisis`:
+
+- la ruta relativa `proceso.R` se refiere al mismo archivo que la ruta absoluta `C:/Documentos/analisis/proceso.R`.
+
+- la ruta relativa `../Fotos/vacaciones.jpg` se refiere al archivo `vacaciones.jpg` que se encuentra en la carpeta `Fotos`, que es un nivel más arriba en la jerarquía de directorios (y por eso se usa `../`).
+
+- la ruta relativa `datos/datos.csv` se refiere al archivo `datos.csv` que se encuentra dentro de la carpeta `datos`, que a su vez está dentro del directorio de trabajo actual.
+
+El **directorio de trabajo** (working directory) es la carpeta desde la cual R está trabajando en este momento. Es el punto de referencia para todas las rutas relativas.
+
+::: importante
+
+Es fundamental saber donde estamos trabajando y donde se encuentran los archivos que necesitamos para trabajar porque de esta manera evitamos errores debido a rutas incorrectas. 
+
+Por ejemplo, si intentamos leer un archivo con una ruta relativa que no existe en el directorio de trabajo actual, obtendremos un error indicando que el archivo no se encuentra a pesar que el archivo existe.  Esto es debido a que no existe en el lugar que le indicamos.
+
+:::
+
+## Nombrar archivos y carpetas de forma inteligente
+
+Para evitar errores de "file not found" (archivo no encontrado) y otros problemas relacionados con el sistema de archivos, es importante seguir algunas buenas prácticas al nombrar archivos y carpetas.
+
+::: tip
+
+* **Barras en rutas**: En R, usa siempre `/` (forward slash) o `\\` (doble backslash) en rutas de Windows. La barra simple \ no funciona.
+
+* **Mayúsculas y minúsculas**: En Windows no importa, pero en Mac/Linux sí. Usa siempre el caso correcto.
+
+* **Espacios en nombres**: Evita espacios en nombres de archivos y carpetas. Usa guiones bajos (_) o guiones (-).
+
+* **Acentos y caracteres especiales**: Pueden causar problemas en diferentes sistemas operativos. Mejor evítalos.
+
+:::
+
+En la siguiente leccion veremos como podemos ordenar nuestro trabajo para evitar este tipo de errores y facilitar la reproducibilidad de nuestro trabajo.
+
 
 ## El problema
 
