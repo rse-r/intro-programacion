@@ -280,7 +280,7 @@ La segunda nota aparece cuando R CMD check no puede verificar la hora actual del
 ❯ checking for future file timestamps ... NOTE
   unable to verify current time
 ```
-La causa comun de esta nota son problemas de conectividad: R intenta conectarse a servidores de tiempo para verificar la hora actual y no puede hacerlo. Esto no es un gran problema, pero si querés resolverlo podés revisar tu conexión a internet.
+La causa común de esta nota son problemas de conectividad: R intenta conectarse a servidores de tiempo para verificar la hora actual y no puede hacerlo. Este es un problema temporal, pero si querés resolverlo podés revisar tu conexión a internet o intentar correr los check nuevamente en unos minutos.
 
 :::
 
