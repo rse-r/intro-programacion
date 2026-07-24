@@ -33,7 +33,7 @@ El sistema de archivos cumple un rol similar tanto cuando trabajamos con archivo
 
 Sin embargo, no son lo mismo: en **la nube** los archivos no están físicamente en nuestra máquina, sino que se almacenan en **servidores remotos** y se accede a ellos a través de internet. Muchos servicios en la nube imitan la estructura de un sistema de archivos local para que la experiencia de uso sea familiar, pero detrás de escena _el acceso, la sincronización y los permisos funcionan de manera diferente_.
 
-Tenemos que ser conscientes de estas diferencias para evitar problemas de acceso a los archivos cuando trabajemos. **Nuestro consejo es trabajar en carpetas locales de los archivos que necesitamos para nuestro análisis (no colocar los proyectos en DropBox o similar).** De ese modo, nos aseguramos de que nuestro código pueda acceder a los archivos sin problemas de conexión o permisos.
+Tenemos que ser conscientes de estas diferencias para evitar problemas de acceso a los archivos cuando trabajemos. **Nuestro consejo es trabajar en carpetas locales de los archivos que necesitamos para nuestro análisis (no colocar los proyectos en Dropbox, OneDrive o similares).** De ese modo, nos aseguramos de que nuestro código pueda acceder a los archivos sin problemas de conexión o permisos.
 
 :::
 
@@ -47,7 +47,7 @@ En la figura se ve un arbol de directorios: en la raíz del árbol se encuentra 
 
 Las carpetas ordenan los archivos, para poder acceder a su contenido necesitamos "entrar" en ellas. Para eso, utilizamos las **rutas (path)**, que son secuencias de nombres de directorios y archivos que indican la ubicación de un archivo o directorio dentro del sistema de archivos. Es como una dirección postal que indica exactamente dónde encontrar un archivo o carpeta. Tenemos dos tipos de rutas:
 
-* **Ruta absoluta:** especifica la ubicación completa desde la raíz del sistema. En Windows comienza con una letra de unidad (C:, D:), mientras que en Mac/Linux comienza con /.
+* **Ruta absoluta:** especifica la ubicación completa desde la raíz del sistema. En Windows comienza con una letra de unidad (`C:`, `D:`), mientras que en Mac/Linux comienza con `/`.
 
 Por ejemplo, la ruta `C:/Documentos/analisis/proceso.R` indica que el archivo `proceso.R` se encuentra dentro de la carpeta `analisis`, que a su vez está dentro de la carpeta `Documentos`, que está en la raíz del disco `C:`.
 
@@ -55,7 +55,7 @@ Por ejemplo, la ruta `C:/Documentos/analisis/proceso.R` indica que el archivo `p
 
 - la ruta relativa `proceso.R` se refiere al mismo archivo que la ruta absoluta `C:/Documentos/analisis/proceso.R`.
 
-- la ruta relativa `../Fotos/vacaciones.jpg` se refiere al archivo `vacaciones.jpg` que se encuentra en la carpeta `Fotos`, que es un nivel más arriba en la jerarquía de directorios (y por eso se usa `../`).
+- la ruta relativa `../Fotos/vacaciones.jpg` se refiere al archivo `vacaciones.jpg` que se encuentra en la carpeta `Fotos`, que es un nivel más arriba en la jerarquía de directorios (los 2 puntos `../` refieren a la carpeta que está un nivel más arriba).
 
 - la ruta relativa `datos/datos.csv` se refiere al archivo `datos.csv` que se encuentra dentro de la carpeta `datos`, que a su vez está dentro del directorio de trabajo actual.
 
@@ -75,9 +75,9 @@ Para evitar errores de "file not found" (archivo no encontrado) y otros problema
 
 ::: tip
 
-* **Barras en rutas**: En R, usa siempre `/` (forward slash) o `\\` (doble backslash) en rutas de Windows. La barra simple \ no funciona.
+* **Barras en rutas**: En R, usa siempre `/` (forward slash) o `\\` (doble backslash) en rutas de Windows. La barra simple `\` no funciona.
 
-* **Mayúsculas y minúsculas**: En Windows no importa, pero en Mac/Linux sí. Usa siempre el caso correcto.
+* **Mayúsculas y minúsculas**: En Windows no importa, pero en Mac/Linux sí. Es recomendable respetar siempre las mayúsculas y minúsculas al escribir nombres de archivos y carpetas.
 
 * **Espacios en nombres**: Evita espacios en nombres de archivos y carpetas. Usa guiones bajos (_) o guiones (-).
 
