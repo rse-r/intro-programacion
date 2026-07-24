@@ -41,7 +41,7 @@ Tenemos que ser conscientes de estas diferencias para evitar problemas de acceso
 ![Ejemplo de árbol de directorios](images/arbol-de-directorios.png)
 
 
-En la figura se ve un árbol de directorios: en la raíz del árbol se encuentra la unidad `C:` (que suele corresponder al disco rígido de la máquina) y a partir de ahí se ramifican los distintos directorios y archivos. `Documentos` y `Downloads` son dos carpetas que están en el directorio *raíz*. Las carpetas `analisis`, `Fotos` y `Libros` están dentro de la carpeta `Documentos`. Dentro de la carpeta `analisis` se encuentran tres archivos: `proceso.R` y `grafico.png` y un subdirectorio (o subcarpeta) llamado `datos`, que contiene el archivo `datos.csv`. Además, dentro de la carpeta `Fotos` se encuentra el archivo `vacaciones.jpg`.
+En la figura se ve un árbol de directorios: en la raíz del árbol se encuentra la unidad `C:` (que suele corresponder al disco rígido de la máquina) y a partir de ahí se ramifican los distintos directorios y archivos. `Documentos` y `Downloads` son dos carpetas que están en el directorio *raíz*. Las carpetas `proyecto`, `Fotos` y `Libros` están dentro de la carpeta `Documentos`. Dentro de la carpeta `proyecto` se encuentran tres archivos: `proceso.R` y `grafico.png` y un subdirectorio (o subcarpeta) llamado `datos`, que contiene el archivo `datos.csv`. Además, dentro de la carpeta `Fotos` se encuentra el archivo `vacaciones.jpg`.
 
 ### Rutas (y caminos) absolutas y relativas
 
