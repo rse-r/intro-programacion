@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Paola Corrales y Yanina Bellini Saibene">
 <title>2&nbsp; Entorno de trabajo – Introducción a la Programación II</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./00_intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c115713b74ff8bcd8ed35270603a4893.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-5ca7838afe3a3730ff305b6fe5cfaf3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -272,21 +273,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
 <li><a href="#objetivos-de-aprendizaje" id="toc-objetivos-de-aprendizaje" class="nav-link active" data-scroll-target="#objetivos-de-aprendizaje"><span class="header-section-number">2.1</span> Objetivos de aprendizaje</a></li>
-  <li><a href="#el-problema" id="toc-el-problema" class="nav-link" data-scroll-target="#el-problema"><span class="header-section-number">2.2</span> El problema</a></li>
   <li>
-<a href="#crear-un-proyecto-organizado" id="toc-crear-un-proyecto-organizado" class="nav-link" data-scroll-target="#crear-un-proyecto-organizado"><span class="header-section-number">2.3</span> Crear un proyecto organizado</a>
+<a href="#conociendo-el-sistema-de-archivos" id="toc-conociendo-el-sistema-de-archivos" class="nav-link" data-scroll-target="#conociendo-el-sistema-de-archivos"><span class="header-section-number">2.2</span> Conociendo el sistema de archivos</a>
   <ul class="collapse">
-<li><a href="#archivos-que-se-autodocumentan" id="toc-archivos-que-se-autodocumentan" class="nav-link" data-scroll-target="#archivos-que-se-autodocumentan"><span class="header-section-number">2.3.1</span> Archivos que se autodocumentan</a></li>
-  <li><a href="#archivos-con-los-que-puedes-programar" id="toc-archivos-con-los-que-puedes-programar" class="nav-link" data-scroll-target="#archivos-con-los-que-puedes-programar"><span class="header-section-number">2.3.2</span> Archivos con los que puedes programar</a></li>
-  <li><a href="#que-tu-proyecto-sea-autocontenido" id="toc-que-tu-proyecto-sea-autocontenido" class="nav-link" data-scroll-target="#que-tu-proyecto-sea-autocontenido"><span class="header-section-number">2.3.3</span> Que tu proyecto sea autocontenido</a></li>
+<li><a href="#rutas-y-caminos-absolutas-y-relativas" id="toc-rutas-y-caminos-absolutas-y-relativas" class="nav-link" data-scroll-target="#rutas-y-caminos-absolutas-y-relativas"><span class="header-section-number">2.2.1</span> Rutas (y caminos) absolutas y relativas</a></li>
   </ul>
 </li>
-  <li><a href="#proyectos-de-rstudio" id="toc-proyectos-de-rstudio" class="nav-link" data-scroll-target="#proyectos-de-rstudio"><span class="header-section-number">2.4</span> Proyectos de RStudio</a></li>
-  <li><a href="#abrir-un-proyecto" id="toc-abrir-un-proyecto" class="nav-link" data-scroll-target="#abrir-un-proyecto"><span class="header-section-number">2.5</span> Abrir un proyecto</a></li>
+  <li><a href="#nombrar-archivos-y-carpetas-de-forma-inteligente" id="toc-nombrar-archivos-y-carpetas-de-forma-inteligente" class="nav-link" data-scroll-target="#nombrar-archivos-y-carpetas-de-forma-inteligente"><span class="header-section-number">2.3</span> Nombrar archivos y carpetas de forma inteligente</a></li>
+  <li><a href="#el-problema" id="toc-el-problema" class="nav-link" data-scroll-target="#el-problema"><span class="header-section-number">2.4</span> El problema</a></li>
   <li>
-<a href="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas" id="toc-borrón-y-cuenta-nueva-todos-los-días" class="nav-link" data-scroll-target="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas"><span class="header-section-number">2.6</span> Borrón y cuenta nueva… todos los días</a>
+<a href="#crear-un-proyecto-organizado" id="toc-crear-un-proyecto-organizado" class="nav-link" data-scroll-target="#crear-un-proyecto-organizado"><span class="header-section-number">2.5</span> Crear un proyecto organizado</a>
   <ul class="collapse">
-<li><a href="#recursos" id="toc-recursos" class="nav-link" data-scroll-target="#recursos"><span class="header-section-number">2.6.1</span> Recursos</a></li>
+<li><a href="#archivos-que-se-autodocumentan" id="toc-archivos-que-se-autodocumentan" class="nav-link" data-scroll-target="#archivos-que-se-autodocumentan"><span class="header-section-number">2.5.1</span> Archivos que se autodocumentan</a></li>
+  <li><a href="#archivos-con-los-que-puedes-programar" id="toc-archivos-con-los-que-puedes-programar" class="nav-link" data-scroll-target="#archivos-con-los-que-puedes-programar"><span class="header-section-number">2.5.2</span> Archivos con los que puedes programar</a></li>
+  <li><a href="#que-tu-proyecto-sea-autocontenido" id="toc-que-tu-proyecto-sea-autocontenido" class="nav-link" data-scroll-target="#que-tu-proyecto-sea-autocontenido"><span class="header-section-number">2.5.3</span> Que tu proyecto sea autocontenido</a></li>
+  </ul>
+</li>
+  <li><a href="#proyectos-de-rstudio" id="toc-proyectos-de-rstudio" class="nav-link" data-scroll-target="#proyectos-de-rstudio"><span class="header-section-number">2.6</span> Proyectos de RStudio</a></li>
+  <li><a href="#abrir-un-proyecto" id="toc-abrir-un-proyecto" class="nav-link" data-scroll-target="#abrir-un-proyecto"><span class="header-section-number">2.7</span> Abrir un proyecto</a></li>
+  <li>
+<a href="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas" id="toc-borrón-y-cuenta-nueva-todos-los-días" class="nav-link" data-scroll-target="#borr%C3%B3n-y-cuenta-nueva-todos-los-d%C3%ADas"><span class="header-section-number">2.8</span> Borrón y cuenta nueva… todos los días</a>
+  <ul class="collapse">
+<li><a href="#recursos" id="toc-recursos" class="nav-link" data-scroll-target="#recursos"><span class="header-section-number">2.8.1</span> Recursos</a></li>
   </ul>
 </li>
   </ul></nav>
@@ -312,12 +320,71 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><section id="objetivos-de-aprendizaje" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="objetivos-de-aprendizaje">
 <span class="header-section-number">2.1</span> Objetivos de aprendizaje</h2>
 <ul>
+<li>Entender el sistema de archivos y directorios.</li>
+<li>Comprender la diferencia entre rutas absolutas, relativas, locales y remotas.</li>
+<li>Crear una jerarquía de directorios que coincida con un diagrama dado.</li>
+<li>Crear, mover y eliminar archivos y/o directorios específicos.</li>
 <li>Interactuar con la interfaz de RStudio para navegar archivos y directorios</li>
 <li>Interpretar las rutas como ubicaciones dentro de las carpetas</li>
 <li>Crear proyectos RStudio e identificar el directorio de trabajo</li>
 <li>Reconocer los paneles de la interfaz de RStudio y sus ubicaciones por defecto</li>
-</ul></section><section id="el-problema" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="el-problema">
-<span class="header-section-number">2.2</span> El problema</h2>
+</ul></section><section id="conociendo-el-sistema-de-archivos" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="conociendo-el-sistema-de-archivos">
+<span class="header-section-number">2.2</span> Conociendo el sistema de archivos</h2>
+<p>Ya sea para analizar datos, entrenar un modelo, generar un informe o guardar los resultados de un experimento, las computadoras son responsables de almacenar todos los datos involucrados en esas tareas. Que estos datos se guarden de forma segura y eficiente es fundamental para el funcionamiento de cualquier sistema y <strong>el sistema de archivos</strong> es el componente del sistema operativo que se encarga de esta tarea.</p>
+<p>Segun el sistema operativo hay diferentes sistemas de archivos, pero todos son la estructura de datos que se utiliza para almacenar y recuperar información. Los unidad mínima de información en este sistema son los <strong>archivos</strong> y cada uno tiene un formato que depende del tipo de contenido que almacena. Este formato suele indicarse mediante la <em>extensión del archivo</em>, que aparece al final de su nombre.</p>
+<p>Algunas extensiones comunes y sus tipos de archivo, habituales en ciencia de datos con R, son:</p>
+<ul>
+<li>
+<code>.R</code> para scripts de R</li>
+<li>
+<code>.Rmd</code> o <code>.qmd</code> para documentos reproducibles (R Markdown o Quarto)</li>
+<li>
+<code>.csv</code> para datos tabulares en texto plano</li>
+</ul>
+<p>Estos archivos, a su vez, se organizan en <strong>directorios (directory)</strong> o <strong>carpetas (folder)</strong>. Un directorio es una estructura de datos que contiene referencias a archivos y a otros directorios. Generalmente, los directorios se organizan en una estructura jerárquica en forma de árbol, conocida como <em>árbol de directorios</em>. Este tipo de organización es muy común en proyectos de análisis de datos, por ejemplo separando código, datos crudos, datos procesados y resultados.</p>
+<div class="importante">
+<p>El sistema de archivos cumple un rol similar tanto cuando trabajamos con archivos almacenados en nuestra propia computadora (por ejemplo, en el disco rígido) como cuando usamos servicios en la nube, como Google Drive o Dropbox.</p>
+<p>Sin embargo, no son lo mismo: en <strong>la nube</strong> los archivos no están físicamente en nuestra máquina, sino que se almacenan en <strong>servidores remotos</strong> y se accede a ellos a través de internet. Muchos servicios en la nube imitan la estructura de un sistema de archivos local para que la experiencia de uso sea familiar, pero detrás de escena <em>el acceso, la sincronización y los permisos funcionan de manera diferente</em>.</p>
+<p>Tenemos que ser conscientes de estas diferencias para evitar problemas de acceso a los archivos cuando trabajemos. <strong>Nuestro consejo es trabajar en carpetas locales de los archivos que necesitamos para nuestro análisis (no colocar los proyectos en Dropbox, OneDrive o similares).</strong> De ese modo, nos aseguramos de que nuestro código pueda acceder a los archivos sin problemas de conexión o permisos.</p>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="images/arbol-de-directorios.png" class="img-fluid figure-img"></p>
+<figcaption>Ejemplo de árbol de directorios</figcaption></figure>
+</div>
+<p>En la figura se ve un árbol de directorios: en la raíz del árbol se encuentra la unidad <code>C:</code> (que suele corresponder al disco rígido de la máquina) y a partir de ahí se ramifican los distintos directorios y archivos. <code>Documentos</code> y <code>Downloads</code> son dos carpetas que están en el directorio <em>raíz</em>. Las carpetas <code>analisis</code>, <code>Fotos</code> y <code>Libros</code> están dentro de la carpeta <code>Documentos</code>. Dentro de la carpeta <code>analisis</code> se encuentran tres archivos: <code>proceso.R</code> y <code>grafico.png</code> y un subdirectorio (o subcarpeta) llamado <code>datos</code>, que contiene el archivo <code>datos.csv</code>. Además, dentro de la carpeta <code>Fotos</code> se encuentra el archivo <code>vacaciones.jpg</code>.</p>
+<section id="rutas-y-caminos-absolutas-y-relativas" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="rutas-y-caminos-absolutas-y-relativas">
+<span class="header-section-number">2.2.1</span> Rutas (y caminos) absolutas y relativas</h3>
+<p>Las carpetas ordenan los archivos, para poder acceder a su contenido necesitamos “entrar” en ellas. Para eso, utilizamos las <strong>rutas (path)</strong>, que son secuencias de nombres de directorios y archivos que indican la ubicación de un archivo o directorio dentro del sistema de archivos. Es como una dirección postal que indica exactamente dónde encontrar un archivo o carpeta. Tenemos dos tipos de rutas:</p>
+<ul>
+<li>
+<strong>Ruta absoluta:</strong> especifica la ubicación completa desde la raíz del sistema. En Windows comienza con una letra de unidad (<code>C:</code>, <code>D:</code>), mientras que en Mac/Linux comienza con <code>/</code>.</li>
+</ul>
+<p>Por ejemplo, la ruta <code>C:/Documentos/analisis/proceso.R</code> indica que el archivo <code>proceso.R</code> se encuentra dentro de la carpeta <code>analisis</code>, que a su vez está dentro de la carpeta <code>Documentos</code>, que está en la raíz del disco <code>C:</code>.</p>
+<ul>
+<li><p><strong>Ruta relativa:</strong> especifica la ubicación en <strong>relación con el directorio de trabajo actual</strong>. Por ejemplo, si tu directorio de trabajo actual es <code>C:/Documentos/analisis</code>:</p></li>
+<li><p>la ruta relativa <code>proceso.R</code> se refiere al mismo archivo que la ruta absoluta <code>C:/Documentos/analisis/proceso.R</code>.</p></li>
+<li><p>la ruta relativa <code>../Fotos/vacaciones.jpg</code> se refiere al archivo <code>vacaciones.jpg</code> que se encuentra en la carpeta <code>Fotos</code>, que es un nivel más arriba en la jerarquía de directorios (los 2 puntos <code>../</code> refieren a la carpeta que está un nivel más arriba).</p></li>
+<li><p>la ruta relativa <code>datos/datos.csv</code> se refiere al archivo <code>datos.csv</code> que se encuentra dentro de la carpeta <code>datos</code>, que a su vez está dentro del directorio de trabajo actual.</p></li>
+</ul>
+<p>El <strong>directorio de trabajo</strong> (working directory) es la carpeta desde la cual R está trabajando en este momento. Es el punto de referencia para todas las rutas relativas.</p>
+<div class="importante">
+<p>Es fundamental saber donde estamos trabajando y donde se encuentran los archivos que necesitamos para trabajar porque de esta manera evitamos errores debido a rutas incorrectas.</p>
+<p>Por ejemplo, si intentamos leer un archivo con una ruta relativa que no existe en el directorio de trabajo actual, obtendremos un error indicando que el archivo no se encuentra a pesar que el archivo existe. Esto es debido a que no existe en el lugar que le indicamos.</p>
+</div>
+</section></section><section id="nombrar-archivos-y-carpetas-de-forma-inteligente" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="nombrar-archivos-y-carpetas-de-forma-inteligente">
+<span class="header-section-number">2.3</span> Nombrar archivos y carpetas de forma inteligente</h2>
+<p>Para evitar errores de “file not found” (archivo no encontrado) y otros problemas relacionados con el sistema de archivos, es importante seguir algunas buenas prácticas al nombrar archivos y carpetas.</p>
+<div class="tip">
+<ul>
+<li><p><strong>Barras en rutas</strong>: En R, usa siempre <code>/</code> (forward slash) o <code>\\</code> (doble backslash) en rutas de Windows. La barra simple <code>\</code> no funciona.</p></li>
+<li><p><strong>Mayúsculas y minúsculas</strong>: En Windows no importa, pero en Mac/Linux sí. Es recomendable respetar siempre las mayúsculas y minúsculas al escribir nombres de archivos y carpetas.</p></li>
+<li><p><strong>Espacios en nombres</strong>: Evita espacios en nombres de archivos y carpetas. Usa guiones bajos (_) o guiones (-).</p></li>
+<li><p><strong>Acentos y caracteres especiales</strong>: Pueden causar problemas en diferentes sistemas operativos. Mejor evítalos.</p></li>
+</ul>
+</div>
+<p>En la siguiente leccion veremos como podemos ordenar nuestro trabajo para evitar este tipo de errores y facilitar la reproducibilidad de nuestro trabajo.</p>
+</section><section id="el-problema" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="el-problema">
+<span class="header-section-number">2.4</span> El problema</h2>
 <p>Imagina que arrancas el cuatrimestre y tenes que continuar con un proyecto de análisis de datos. O mejor te tomaste unas largas vacaciones. Por supuesto, todo el código y los datos están en una única carpeta y además lo publicaste en un repositorio público. Es hora de volver a trabajar, pero ¿qué fue lo último que hiciste? ¿qué falta?.</p>
 <p>Empezas a revisar la carpeta del proyecto y encuentras algo así.</p>
 <pre><code>/home/dorothy/Documentos/proyecto
@@ -335,16 +402,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 └── script_final.R</code></pre>
 <p>Y no tienes ni idea por donde arrancar. Hay tres archivos <code>.R</code> que podrían ser el script con el código que escribiste, varios posibles archivos que contienen algunos “datos” no especificados y un montón de archivos de imagenes con nombres que dan poca información sobre su contenido. Sin un archivo README (documento descriptivo) ni ninguna otra documentación que te ayude a resolver este lío, es muy posible que cueste mucho tiempo volver al punto en el que estabas y continuar con tu trabajo.</p>
 <p>Para evitar esta situación necesitamos tener en cuenta la reproducibilidad y el desarrollo de software desde el inicio. La reproducibilidad tiene que ver tanto con las personas que interactúan con el código como con las máquinas que deben ejecutarlo. Hacer que tu código y análisis sea reproducible es permitir que otras personas (y vos en el futuro) puedan revisar, usar y ampliar tu trabajo. Esto requerira aplicar distintos principios de programación y desarrollo de software que veremos a lo largo del curso. Empecemos organizando el trabajo.</p>
-</section><section id="crear-un-proyecto-organizado" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="crear-un-proyecto-organizado">
-<span class="header-section-number">2.3</span> Crear un proyecto organizado</h2>
+</section><section id="crear-un-proyecto-organizado" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="crear-un-proyecto-organizado">
+<span class="header-section-number">2.5</span> Crear un proyecto organizado</h2>
 <p>Lo que cuenta como “organizado” es muy personal, pero lo principal es que la estructura de carpetas y los nombres de los archivos deben:</p>
 <ol type="1">
 <li>ser autodocumentados</li>
 <li>ser útiles a la hora de escribir código</li>
 <li>estar en el mismo lugar, es decir, todos los archivos necesarios están dentro de la carpeta raíz</li>
 </ol>
-<section id="archivos-que-se-autodocumentan" class="level3" data-number="2.3.1"><h3 data-number="2.3.1" class="anchored" data-anchor-id="archivos-que-se-autodocumentan">
-<span class="header-section-number">2.3.1</span> Archivos que se autodocumentan</h3>
+<section id="archivos-que-se-autodocumentan" class="level3" data-number="2.5.1"><h3 data-number="2.5.1" class="anchored" data-anchor-id="archivos-que-se-autodocumentan">
+<span class="header-section-number">2.5.1</span> Archivos que se autodocumentan</h3>
 <p>Aprovechá carpetas con nombres informativos para autodocumentar las distintas partes de tu análisis.</p>
 <p>Coloca tus datos en <code>datos</code>, los scripts de preprocesamiento en <code>scripts</code> o <code>preprocesamiento</code> y tu análisis en <code>analisis</code>. Utiliza también subcarpetas, como <code>datos/crudos</code> para guardar los datos originales y <code>datos/derivados</code> para los datos preprocesados y depurados.</p>
 <p>Nombrá tus archivos de modo que puedas saber que incluyen aún si pasaron 10 años desde que los creaste.</p>
@@ -371,8 +438,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Utiliza una estructura de carpetas conocida</p>
 <p>No existe una única estructura de carpetas objetivamente mejor. En caso de duda, intenta seguir las convenciones de tu comunidad de investigación. Esto minimizará cualquier fricción entre tú y tu público potencial.</p>
 </div>
-</section><section id="archivos-con-los-que-puedes-programar" class="level3" data-number="2.3.2"><h3 data-number="2.3.2" class="anchored" data-anchor-id="archivos-con-los-que-puedes-programar">
-<span class="header-section-number">2.3.2</span> Archivos con los que puedes programar</h3>
+</section><section id="archivos-con-los-que-puedes-programar" class="level3" data-number="2.5.2"><h3 data-number="2.5.2" class="anchored" data-anchor-id="archivos-con-los-que-puedes-programar">
+<span class="header-section-number">2.5.2</span> Archivos con los que puedes programar</h3>
 <p>Recuerda siempre que las computadoras son bastante tontas, así que sé amable y utiliza nombres de archivo que puedan entender fácilmente.</p>
 <p>En algunos casos, los nombres de archivo con espacios confunden a las computadoras, por lo que en general es mucho más fácil trabajar si los nombres de archivo utilizan guiones para dividir las palabras. Del mismo modo, algunas máquinas no pueden manejar “caracteres especiales” como la “ñ” o las tildes. También es mejor evitar algunos símbolos (“.”, “*”, y otros) porque tienen un significado especial en las expresiones regulares.</p>
 <p>Algunos sistemas de archivos no distinguen entre mayúsculas y minúsculas, por lo que <code>Temperatura-Madrid.csv</code> y <code>temperatura-madrid.csv</code> pueden ser el mismo archivo.</p>
@@ -381,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tip">
 <p>Si utilizás los separadores de forma coherente e inteligente, podrás analizar los nombres de los archivos como parte de tu código. Por ejemplo, si tienes</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">archivos</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">archivos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "madrid_temperatura-minima"       "buenos-aires_temperatura-minima"
 [3] "madrid_temperatura-maxima"       "buenos-aires_temperatura-maxima"</code></pre>
@@ -389,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>También podrías extraer ciudades y nombres de variables desde los nombres de los archivos</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">archivos</span>, <span class="st">"_"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">archivos</span>, <span class="st">"_"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "madrid"             "temperatura-minima"
@@ -406,8 +473,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Por último, intentá que tus archivos sean fácilmente ordenables. Comezá el nombre del archivo con números (que incluya suficientes ceros a la izquierda) y, si aplica, utilizá fechas en formato AAAA-MM-DD para que el orden de los archivos por nombre coincida con el orden por fecha.</p>
-</section><section id="que-tu-proyecto-sea-autocontenido" class="level3" data-number="2.3.3"><h3 data-number="2.3.3" class="anchored" data-anchor-id="que-tu-proyecto-sea-autocontenido">
-<span class="header-section-number">2.3.3</span> Que tu proyecto sea autocontenido</h3>
+</section><section id="que-tu-proyecto-sea-autocontenido" class="level3" data-number="2.5.3"><h3 data-number="2.5.3" class="anchored" data-anchor-id="que-tu-proyecto-sea-autocontenido">
+<span class="header-section-number">2.5.3</span> Que tu proyecto sea autocontenido</h3>
 <p>Un aspecto importante a la hora de pensar en tu proyecto es que todos los scripts, datos, figuras y cualquier otra cosa que se necesite para (re)crear el análisis esté dentro de la misma carpeta raíz. De ese modo te aseguras de que lo único que tienes que dar a otra persona para que ejecute correctamente tu código es esa única carpeta. También te facilita la vida si trabajas en el mismo proyecto en distintas computadoras, ya que te permite sincronizar una única carpeta.</p>
 <div class="importante">
 <p>Más adelante veremos como <em>empaquetar</em> código para compartirlo con otras personas.</p>
@@ -415,16 +482,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Un paso extra a tener en cuenta es que no puedes hacer que tu trabajo sea portable si tu código no lo es también. Quizás el principal culpable de que el código no sea portable sea utilizar rutas absolutas para manipular archivos en tu código.</p>
 <p>La siguiente línea de código lee el archivo <code>datos.csv</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documentos/proyectos/mitrabajo/datos/datos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documentos/proyectos/mitrabajo/datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aunque hayas descargado correctamente la carpeta <code>mitrabajo</code> desde algún repositorio, este código va a dar error porque es poco probable que hayas guardado esa carpeta dentro de <code>Documentos/proyectos</code> y que tu nombre de usuario en la computadora sea “dorothy”.</p>
 <p>En cambio, podes utilizar una ruta relativa:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"datos/datos.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto se ejecutará independientemente de dónde se encuentre la carpeta raíz de tu proyecto ya que hace referencia solo a lo que está adentro. Como veremos a continuación los proyectos de RStudio ayudan a definir cual es la carpeta raíz de manera automática.</p>
-</section></section><section id="proyectos-de-rstudio" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="proyectos-de-rstudio">
-<span class="header-section-number">2.4</span> Proyectos de RStudio</h2>
+</section></section><section id="proyectos-de-rstudio" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="proyectos-de-rstudio">
+<span class="header-section-number">2.6</span> Proyectos de RStudio</h2>
 <p>RStudio proporciona una forma ordenada y estructurada de separar tus proyectos en diferentes contextos. No ayudan estrictamente a la reproducibilidad del producto final, pero te ayudarán a agilizar tu flujo de trabajo encapsulando cosas como la lista de archivos abiertos, el historial de comandos de R y la configuración de RStudio para cada proyecto.</p>
 <p>Abrir un proyecto de RStudio también garantiza que inicies una nueva sesión de R cada vez y establece tu directorio de trabajo en la carpeta raíz del proyecto.</p>
 <div class="ejercicio">
@@ -443,8 +510,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Si todo salió bien, deberías tener una nueva carpeta con el nombre que elejiste para tu proyecto. Es una carpeta común y corriente; lo que la distingue como proyecto de RStudio es el archivo .Rproj, que contiene las opciones de RStudio específicas del proyecto, y la carpeta oculta .Rproj.user, donde se encuentran los archivos temporales específicos del proyecto.</p>
 <p>Cada proyecto de RStudio tiene su propio conjunto de opciones que podés cambiar sin alterar las opciones globales ni las de otros proyectos.</p>
-</section><section id="abrir-un-proyecto" class="level2" data-number="2.5"><h2 data-number="2.5" class="anchored" data-anchor-id="abrir-un-proyecto">
-<span class="header-section-number">2.5</span> Abrir un proyecto</h2>
+</section><section id="abrir-un-proyecto" class="level2" data-number="2.7"><h2 data-number="2.7" class="anchored" data-anchor-id="abrir-un-proyecto">
+<span class="header-section-number">2.7</span> Abrir un proyecto</h2>
 <p>La forma más sencilla de abrir un proyecto es abrir la carpeta que lo contiene y hacer doble clic en el archivo .Rproj. También puedes abrir rápidamente un proyecto utilizado recientemente haciendo clic en el icono de proyecto situado a la derecha de la barra de herramientas de RStudio.</p>
 <p>Esto abrirá una nueva ventana de RStudio con su propia sesión de R y la carpeta del proyecto será el directorio o carpeta raiz. Por defecto, también abrirá los archivos abiertos anteriormente. Incluso conservará los cambios no guardados. Esto ayuda a mantener tu trabajo ordenado y facilita retomar o compartir lo que has hecho más tarde.</p>
 <p>RStudio te permite tener abiertos varios proyectos, y esto es posible porque cada proyecto tiene su propia carpeta. Puedes trabajar con varios proyectos en paralelo sin que el código o los resultados de un análisis interfieran con los de otro.</p>
@@ -456,8 +523,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Ahora abrí una nueva ventana de RStudio y el proyecto de RStudio que acabas de cerrar (dependiendo de tus opciones globales, puede que se abra por defecto).</li>
 </ol>
 </div>
-</section><section id="borrón-y-cuenta-nueva-todos-los-días" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="borrón-y-cuenta-nueva-todos-los-días">
-<span class="header-section-number">2.6</span> Borrón y cuenta nueva… todos los días</h2>
+</section><section id="borrón-y-cuenta-nueva-todos-los-días" class="level2" data-number="2.8"><h2 data-number="2.8" class="anchored" data-anchor-id="borrón-y-cuenta-nueva-todos-los-días">
+<span class="header-section-number">2.8</span> Borrón y cuenta nueva… todos los días</h2>
 <p>¿Cómo garantizamos que el análisis sea realmente reproducible? Es una pregunta bastante amplia y existen muchas herramientas para resolver este problema. Por ahora vamos a concentrarnos en que, al menos en tu computadora, puedas repetir los cálculos o el análisis desde cero. Y además de organizar los proyectos y no modificar los datos originales, ¿cómo podés asegurarte de guardar todo el código que estuviste usando y genera el análisis? La forma más directa es reiniciar la sesión de R y volver a ejecutar el código, si da un error o no devuelve lo que esperabas significa que te has saltado un paso.</p>
 <div class="tip">
 <p>Puedes reiniciar la sesión de R con el atajo de teclado Ctrl+Shif+F10.</p>
@@ -478,8 +545,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="importante">
 <p>Puedes cambiar estas preferencias a nivel global con “Tools” -&gt; “Global Options” en la sección “General”</p>
 </div>
-<section id="recursos" class="level3" data-number="2.6.1"><h3 data-number="2.6.1" class="anchored" data-anchor-id="recursos">
-<span class="header-section-number">2.6.1</span> Recursos</h3>
+<section id="recursos" class="level3" data-number="2.8.1"><h3 data-number="2.8.1" class="anchored" data-anchor-id="recursos">
+<span class="header-section-number">2.8.1</span> Recursos</h3>
 <p><a href="https://slides.djnavarro.net/project-structure/">Estructura del proyecto - Diapositivas de Danielle Navarro</a></p>
 <p><a href="https://peerj.com/preprints/3192v1">Empaquetar el trabajo analítico de datos de forma reproducible utilizando R (y amigos)</a></p>
 <p><a href="https://mbjoseph.github.io/intro-research-compendia/">Cómo (y por qué) hacer un compendio de investigación</a></p>
@@ -536,13 +603,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

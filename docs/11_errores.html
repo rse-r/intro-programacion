@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.8.26">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Paola Corrales y Yanina Bellini Saibene">
 <title>13&nbsp; Dependencias y tests – Introducción a la Programación II</title>
@@ -66,14 +66,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./10_documentacion.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c115713b74ff8bcd8ed35270603a4893.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-5ca7838afe3a3730ff305b6fe5cfaf3e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -317,16 +318,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Existe una dependencia cuando tu paquete utiliza funcionalidad de otro paquete (u otra herramienta externa). Por ejemplo, si una función de tu paquete usa <code>mutate()</code>, entonces <code>dplyr</code> es una dependencia de tu paquete. Esto implica, entre otras cosas, que una persona necesita instalar dplyr antes de poder usar las funciones de tu paquete.</p>
 <p>Estas dependencias deben incluirse en el archivo <code>DESCRIPTION</code>. En general, éstos van en una sección llamada “Imports”, lo que asegura que momento de instalar el paquete también se instalen las dependencias (si es que no están ya instaladas). También existe la sección “Suggests”, en donde se pueden listar paquetes que no son esenciales para que tu paquete funcione. Por ejemplo, una función que utiliza un método estadístico disponible en R base o una versión más eficiente provista por otro paquete si éste está instalado. En esta sección también van paquetes que son necesarios únicamente durante el desarrollo.</p>
 <p>Así se verán en el archivo DESCRIPTION:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Imports<span class="sc">:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    dplyr,</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    tidyr</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    ggplot2,</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    testthat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    testthat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En este caso, el paquete utiliza funciones de dplyr y tidyr en su funcionalidad básica. El paquete ggplot2 puede estar en Suggests porque la funcionalidad de graficado usa ggplot2 sólo si éste está instalado y usa plot base si no. El paquete testthat es el que vamos a usar durante el desarrollo para realizar los tests, pero no es necesario para usar el paquete.</p>
 <p>Y por supuesto, podemos usar <code>usethis</code> para agregar nuevas dependencias con <code>usethis::use_package("dplyr")</code>. La función nos devuelve:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; ✔ Adding dplyr to 'Imports' field in DESCRIPTION.</span></span>
-<span><span class="co">#&gt; ☐ Refer to functions with `dplyr::fun()`.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co">#&gt; ✔ Adding dplyr to 'Imports' field in DESCRIPTION.</span></span>
+<span><span class="co">#&gt; ☐ Refer to functions with `dplyr::fun()`.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Habrás notado que nos pide que llamemos a las funciones usando esta notación <code>dplyr::fun()</code>. Esto es muy importante, en el código de funciones <strong>nunca</strong> debemos incluir la carga de librerías con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code>. Hay dos razones por las que no hacemos esto:</p>
 <ol type="1">
 <li>En el contexto de un paquete queremos ser eficientes y trabajar de manera ordenada. Si llamaramos a una librería entera con <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> estaríamos cargando <em>todas</em> las funciones importadas por ese paquete cuando tal vez solo necesitamos una. Esto no es eficiente y puede traer problemas si otros paquetes tienen funciones con el mismo nombre.</li>
@@ -351,14 +352,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="configuración-inicial" class="level3" data-number="13.3.1"><h3 data-number="13.3.1" class="anchored" data-anchor-id="configuración-inicial">
 <span class="header-section-number">13.3.1</span> Configuración inicial</h3>
 <p>Para configurar tu paquete para usar testthat, ejecutá en la consola:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_testthat.html">use_testthat</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_testthat.html">use_testthat</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Esto hará:</p>
 <ul>
 <li><p>Creará un directorio <code>tests/testthat/</code>.</p></li>
 <li><p>Añadir <code>testthat</code> a la lista de Suggests en DESCRIPTION y especificará la versión de testthat 3e en <code>Config/testthat/edition</code>:</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> <span class="fu">testthat</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">0.0</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Config<span class="sc">/</span>testthat<span class="sc">/</span>edition<span class="sc">:</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>Suggests<span class="sc">:</span> <span class="fu">testthat</span> (<span class="sc">&gt;=</span> <span class="dv">3</span>.<span class="fl">0.0</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>Config<span class="sc">/</span>testthat<span class="sc">/</span>edition<span class="sc">:</span> <span class="dv">3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>Crea un archivo <code>tests/testthat.R</code> que ejecuta todas las pruebas cuando se ejecute <code>R CMD check</code>.</li>
 </ul></section><section id="creando-tests" class="level3" data-number="13.3.2"><h3 data-number="13.3.2" class="anchored" data-anchor-id="creando-tests">
@@ -366,14 +367,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es esperable que cada función tenga al menos 1 test, probablemente más de uno si la función es compleja. Normalmente por cada archivo <code>.R</code> que contiene 1 función o una familia de funciones tendremos un archivo <code>.R</code> con los tests correspondientes que se guardará en <code>tests/testthat/</code>. Por ejemplo para la función <code>suma()</code> que está en <code>R/suma.R</code> tendrá tests en <code>tests/testthat/test-suma.R</code>.</p>
 <p>Por supuesto usethis tiene una función que crea estos archivo en el lugar que corresponde:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_test</span><span class="op">(</span><span class="st">"suma"</span><span class="op">)</span>  <span class="co"># Crea y abre tests/testthat/test-suma.R</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">use_test</span><span class="op">(</span><span class="st">"suma"</span><span class="op">)</span>  <span class="co"># Crea y abre tests/testthat/test-suma.R</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Además, si el archivo ya existe siemplemente lo abre para agregar o editar el test.</p>
 <p>Ahora si, un test está formado por 1 o más <em>expectativas</em>, es decir <em>lo que esperamos</em> que devuelva la función ya sea el resultado o un error si recibe el argumento equivocado. Por ejemplo, para la función <code>suma()</code> la expectativa es que si le pasamos los argumentos <code>2</code> y <code>2</code>, devuelva <code>4</code>. En este caso el test tendrá esta pinta:</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"la suma funciona"</span>, <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"la suma funciona"</span>, <span class="op">{</span></span>
 <span>  <span class="fu">expect_equal</span><span class="op">(</span>object <span class="op">=</span> <span class="fu">suma</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span>, expected <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
-<span><span class="op">}</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <ul>
 <li><p><code>test_that()</code> es la función principal que encapsula las expectativas e incluye una descripción de lo que hace el test, en este caso “la suma funciona”.</p></li>
@@ -381,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>En todos los casos si el resultado que devuelve la expresión y lo esperado no coinciden, <code>test_that()</code> devolverá un error.</p>
 <p>En este punto ya podemos correr este test o las expectativas de manera individual. Para esto primero hay que correr <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code> o usar el atajo de teclado para <em>cargar</em> la versión actual del paquete y luego ejecutar cada expectativa o el test completo. Al correr el test entero, si se cumple la expectativa veremos esto en la consola:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Test passed</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Test passed</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section><section id="expectativas" class="level3" data-number="13.3.3"><h3 data-number="13.3.3" class="anchored" data-anchor-id="expectativas">
 <span class="header-section-number">13.3.3</span> Expectativas</h3>
 <p>Hablemos de las expectativas. A simple vista esta linea de código <code>expect_equal(object = suma(2, 2), expected = 4)</code> parece casi ridícula, por supuesto que la función que acabamos de escribir va a devolver 4 cuando le pasemos como argumentos 2 y 2. Además, seguro corriste la función varias veces con distintos argumentos para asegurarte que de lo que esperamos.</p>
@@ -400,9 +401,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Un posible ejemplo de uso para <code>expect_error()</code> sería:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"no suma caracteres"</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">test_that</span><span class="op">(</span><span class="st">"no suma caracteres"</span>,</span>
 <span>  <span class="fu">expect_error</span><span class="op">(</span><span class="fu">suma</span><span class="op">(</span><span class="st">"1"</span>, <span class="fl">1</span><span class="op">)</span>, <span class="st">"Los argumentos deben ser numéricos"</span><span class="op">)</span></span>
-<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sabemos que si intentamos sumar <code>"1"</code> y <code>1</code> la función devolverá el mensaje “Los argumentos deben ser numéricos”. Pero en un futuro podría pasar que sin querer modificamos esta parte del código y deja de dar ese mensaje. El test podrá identificar ese cambio y avisarnos.</p>
 <div class="ejercicio">
@@ -418,13 +419,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="testeo-general" class="level2" data-number="13.4"><h2 data-number="13.4" class="anchored" data-anchor-id="testeo-general">
 <span class="header-section-number">13.4</span> Testeo general</h2>
 <p>Hasta ahora ejecutamos cada test uno por uno a mano. Esto tiene sentido cuando estamos trabajando en cada uno. Sin embargo al final del día o luego de resolver un problema o agregar algo nuevo al paquete es importante correr todos los test juntos. Podemos hacer esto con <code><a href="https://devtools.r-lib.org/reference/test.html">devtools::test()</a></code> o el atajo de teclado <code>Ctrl+Shif+T</code>. En el caso de nuestro paquete de prueba y si sale todo bien, nos devolverá algo como esto:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ℹ Testing paqueteprueba</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ℹ Testing paqueteprueba</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span> F W  S  OK <span class="sc">|</span> Context</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>          <span class="dv">1</span> <span class="sc">|</span> pulgadas_a_centimetros                                                             </span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>✔ <span class="sc">|</span>          <span class="dv">2</span> <span class="sc">|</span> suma                                                                                 </span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>══ Results ═══════════════════════════════════════════════════════════════════════════════════════════</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>[ FAIL <span class="dv">0</span> <span class="sc">|</span> WARN <span class="dv">0</span> <span class="sc">|</span> SKIP <span class="dv">0</span> <span class="sc">|</span> PASS <span class="dv">3</span> ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El flujo de trabajo ahora tiene la siguiente pinta:</p>
 <p><img src="images/flujo-tests.png" class="img-fluid"></p>
 <p>Pero también es muy común correr directamente <code><a href="https://devtools.r-lib.org/reference/check.html">devtools::check()</a></code> o el atajo <code>Ctrl/Cmd + Shift + E</code>. Este comando corre algo llamado “R CMD checks”. Es un conjunto de más de 50 test que cualquier paquete debe pasar para cumplir con los estandares definidos. Entre otras cosas chequea:</p>
@@ -441,7 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Por el estado en el que está nuestro paqueteprueba, seguramente al correr R CMD checks nos vamos a encontrar con problemas. Esto es normal, es el momento de resolverlos antes de continuar.</p>
 <p>La salida de los checks es bastante larga porque revisa varias cosas, pero esta es la parte que nos interesa:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>❯ checking DESCRIPTION meta<span class="sc">-</span>information ... WARNING</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>❯ checking DESCRIPTION meta<span class="sc">-</span>information ... WARNING</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  Non<span class="sc">-</span>standard license specification<span class="sc">:</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">use_mit_license()</span><span class="st">`</span>, <span class="st">`</span><span class="at">use_gpl3_license()</span><span class="st">`</span> or friends to pick a</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    license</span>
@@ -464,40 +465,55 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>Error<span class="sc">:</span> R CMD check found WARNINGs</span>
 <span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>Execution halted</span>
 <span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Exited with status <span class="fl">1.</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Exited with status <span class="fl">1.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>En este caso no encontró errores pero si 3 warnings, hay que resolverlos.</p>
 <p>El primero ocurre en el archivo DESCRIPTION, nos dice que no encontró una licencia estandar. Vamos a hablar un poco más de licencias en otra sección pero en escencia una licencia establece que permisos le damos a otras personas sobre el paquete. Vamos a establecer una de las que sugiere el mensaje usando usethis:</p>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/licenses.html">use_mit_license</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/licenses.html">use_mit_license</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta función agrega los archivos necesarios con el texto de la licencia (en inglés). Y primer warning, ¡resuelto!</p>
 <p>El segundo warning nos dice que encontró caracteres no ASCII en los archivos que lista. Estos caracteres son seguramente son las tildes o alguna ñ que usamos en el código de las funciones (normalmente en los mensajes de error). No podemos evitar usarlos porque hablamos en español, pero tendremos que reemplazarlos por su <a href="https://en.wikipedia.org/wiki/List_of_Unicode_characters">versión unicode</a> para que el paquete funcione correctamente (particularmente en Windows!).</p>
 <p>Esto implica que tendremos que volver a cada uno de esos archivos, buscar los caracteres no ASCII y reemplazarlo por su código unicode. Podemos googlearlo o usar <code><a href="https://rdrr.io/pkg/stringi/man/stri_escape_unicode.html">stringi::stri_escape_unicode()</a></code>. En este caso el problema está en los mensajes de error: “Los argumentos deben ser numéricos.” y en particular la “é”. Googleando resulta que en unicode se escribe <code>\U00E9</code>, por lo tanto el texto queda:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"Los argumentos deben ser num\U00E9ricos."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="st">"Los argumentos deben ser num\U00E9ricos."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Si bien no es legible, cuando la función devuelva este mensaje se verá de manera correcta. Otro warming resuelto!</p>
 <p>Finalmente, la tercera advertencia nos dice que estamos usando el paquete cli pero que no está en la lista de dependencias. Podemos agregarlo usando usethis como vimos al comienzo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"cli"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"cli"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Y con eso resolvemos el último problema! Al correr de nuevo R CMD checks, veremos lo siguiente:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>── R CMD check results ───────────────────────────────────────────────── paqueteprueba <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span> ────</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>── R CMD check results ───────────────────────────────────────────────── paqueteprueba <span class="dv">0</span>.<span class="dv">0</span>.<span class="fl">0.9000</span> ────</span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>Duration<span class="sc">:</span> <span class="fl">21.8</span>s</span>
 <span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dv">0</span> errors ✔ <span class="sc">|</span> <span class="dv">0</span> warnings ✔ <span class="sc">|</span> <span class="dv">0</span> notes ✔</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>R CMD check succeeded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>R CMD check succeeded</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="importante">
+<p>Hay otras dos notas que pueden aparecer mientras estas desarrollando tu paquete:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>❯ checking R code <span class="cf">for</span> possible problems ... NOTE</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  mi_funcion<span class="sc">:</span> no visible binding <span class="cf">for</span> global variable ‘cantidad’</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Este mensaje se produce cuando usas una variable dentro de una función pero no la definis dentro de la función ni la pasas como argumento. Normalmente ocurre cuando la variable, en este caso <code>cantidad</code>, es una columna de un conjunto de datos que se referencia dentro de un <code>summarise()</code> u otro verbo de tidyverse sin usar <code>nombre_data_set$cantidad</code>. Esto es correcto, pero para los checks de R parece <em>“unbound”</em> (sin definir).</p>
+<p>Hay dos maneras de resolver esta nota:</p>
+<ul>
+<li><p>Declarar la variable como variable global en algún lugar de tu paquete con <code>utils::globalVariables("nombre_variable")</code>, en nuestro ejemplo <code>utils::globalVariables("cantidad")</code>.</p></li>
+<li><p>Importar el pronombre <code>.data</code> de <code>rlang</code> y cambiar el codigo dentro de la funcion a algo como <code>summarise(total = sum(.data$cantidad))</code>.</p></li>
+</ul>
+<p>La segunda nota aparece cuando R CMD check no puede verificar la hora actual del sistema durante la validación del paquete</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>❯ checking <span class="cf">for</span> future file timestamps ... NOTE</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  unable to verify current time</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La causa común de esta nota son problemas de conectividad: R intenta conectarse a servidores de tiempo para verificar la hora actual y no puede hacerlo. Este es un problema temporal, pero si querés resolverlo podés revisar tu conexión a internet o intentar correr los check nuevamente en unos minutos.</p>
+</div>
 </section><section id="integración-continua" class="level2" data-number="13.5"><h2 data-number="13.5" class="anchored" data-anchor-id="integración-continua">
 <span class="header-section-number">13.5</span> Integración continua</h2>
 <p>La integración continua (CI, por las siglas en inglés) ejecuta tests sobre el software automáticamente. En la práctica significa que un conjunto de test se ejecutará automáticamente a través de GitHub Actions cada vez que hagas un commit o pull request a GitHub.</p>
 <p>La CI automatiza la ejecución de tests globales de los paquetes, como R CMD check. Hacerlo utilizando GitHub Actions permite además correr los tests en distintos sistemas operativos y así asegurarte que tu paquete funciona correctamente en Windows, Linux y OS. Podemos usar usethis para generar la receta o workflow que correrá GitHub cada vez que hagamos un push al paquete con:</p>
 <div class="cell">
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github_action.html">use_github_action</a></span><span class="op">(</span><span class="st">"check-standard"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github_action.html">use_github_action</a></span><span class="op">(</span><span class="st">"check-standard"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este flujo de trabajo ejecuta R CMD check a través del paquete <code>rcmdcheck</code> en los tres principales sistemas operativos (Linux, macOS y Windows) en la última versión de R y en R-devel.</p>
 <p>Si bien GitHub manda mails avisando cuando alguno de estos chequeos falla, cuando hacemos cambios imporantes tenemos que prestar particularmente atención y asegurarnos que todo está en orden.</p>
 <p>Otra de las cosas que podemos hacer con CI es revisar la cobertura de los tests a través de un servicio de testing como <a href="https://codecov.io/">Codecov</a> o <a href="https://coveralls.io/">Coveralls</a>. Recomendamos utilizar Codecov. Para activar Codecov para el paquete usaremos:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github_action.html">use_github_action</a></span><span class="op">(</span><span class="st">"test-coverage"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github_action.html">use_github_action</a></span><span class="op">(</span><span class="st">"test-coverage"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>La función crea un archivo <code>.github/workflows/test-coverage.yaml</code>. También será necesario darle acceso a Codecov al repositorio de GitHub donde está el paquete, para esto lo mejor es seguir la <a href="https://docs.codecov.com/docs/quick-start">guía de inicio rápido de Codecov (en inglés)</a> para saber cómo hacerlo.</p>
 <p>También podemos revisar la covertura de tests de manera local con <code><a href="https://devtools.r-lib.org/reference/test.html">devtools::test_coverage()</a></code> que nos devuelve un resumen interesante de los tests:</p>
@@ -608,13 +624,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
