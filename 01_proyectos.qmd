@@ -69,6 +69,18 @@ Por ejemplo, si intentamos leer un archivo con una ruta relativa que no existe e
 
 :::
 
+::: ejercicio
+Rutas absolutas y relativas
+
+Teniendo en cuenta el árbol de directorios de ejemplo, escribe: 
+
+1. La ruta *absoluta* de `datos.csv` y de `vacaciones.jpg`.
+2. La ruta *relativa* a `vacaciones.jpg` si el directorio de trabajo es `analisis`.
+3. La ruta relativa a `datos.csv` si el directorio de trabajo es Documentos.
+4. Qué significa `../` y en qué caso lo usarías.
+
+:::
+
 ## Nombrar archivos y carpetas de forma inteligente
 
 Para evitar errores de "file not found" (archivo no encontrado) y otros problemas relacionados con el sistema de archivos, es importante seguir algunas buenas prácticas al nombrar archivos y carpetas.
@@ -87,6 +99,23 @@ Para evitar errores de "file not found" (archivo no encontrado) y otros problema
 
 En la siguiente leccion veremos como podemos ordenar nuestro trabajo para evitar este tipo de errores y facilitar la reproducibilidad de nuestro trabajo.
 
+::: ejercicio
+Construir una jerarquía de carpetas
+
+Teniendo en cuenta esta estructura de proyecto:
+
+mi-proyecto/
+├── datos/
+│   ├── crudos/
+│   └── derivados/
+├── scripts/
+└── resultados/
+
+1. Creala en el disco rigido de tu computadora y respetando las buenas practicas en nombres de archivos (minúsculas, sin espacios ni tildes, guiones como separadores). 
+
+2. Hace una captura de pantalla y subila al campus. 
+
+:::
 
 ## El problema
 
