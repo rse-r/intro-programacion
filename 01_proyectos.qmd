@@ -76,7 +76,7 @@ Teniendo en cuenta el árbol de directorios de ejemplo, escribe:
 
 1. La ruta *absoluta* de `datos.csv` y de `vacaciones.jpg`.
 2. La ruta *relativa* a `vacaciones.jpg` si el directorio de trabajo es `analisis`.
-3. La ruta relativa a datos.csv si el directorio de trabajo es Documentos.
+3. La ruta relativa a `datos.csv` si el directorio de trabajo es Documentos.
 4. Qué significa ../ y en qué caso lo usarías.
 
 :::
