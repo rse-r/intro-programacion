@@ -104,12 +104,14 @@ Construir una jerarquía de carpetas
 
 Teniendo en cuenta esta estructura de proyecto:
 
+```
 mi-proyecto/
 ├── datos/
 │   ├── crudos/
 │   └── derivados/
 ├── scripts/
 └── resultados/
+```
 
 1. Creala en el disco rigido de tu computadora y respetando las buenas practicas en nombres de archivos (minúsculas, sin espacios ni tildes, guiones como separadores). 
 

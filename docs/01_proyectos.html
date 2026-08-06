@@ -351,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <figure class="figure"><p><img src="images/arbol-de-directorios.png" class="img-fluid figure-img"></p>
 <figcaption>Ejemplo de árbol de directorios</figcaption></figure>
 </div>
-<p>En la figura se ve un árbol de directorios: en la raíz del árbol se encuentra la unidad <code>C:</code> (que suele corresponder al disco rígido de la máquina) y a partir de ahí se ramifican los distintos directorios y archivos. <code>Documentos</code> y <code>Downloads</code> son dos carpetas que están en el directorio <em>raíz</em>. Las carpetas <code>analisis</code>, <code>Fotos</code> y <code>Libros</code> están dentro de la carpeta <code>Documentos</code>. Dentro de la carpeta <code>analisis</code> se encuentran tres archivos: <code>proceso.R</code> y <code>grafico.png</code> y un subdirectorio (o subcarpeta) llamado <code>datos</code>, que contiene el archivo <code>datos.csv</code>. Además, dentro de la carpeta <code>Fotos</code> se encuentra el archivo <code>vacaciones.jpg</code>.</p>
+<p>En la figura se ve un árbol de directorios: en la raíz del árbol se encuentra la unidad <code>C:</code> (que suele corresponder al disco rígido de la máquina) y a partir de ahí se ramifican los distintos directorios y archivos. <code>Documentos</code> y <code>Downloads</code> son dos carpetas que están en el directorio <em>raíz</em>. Las carpetas <code>proyecto</code>, <code>Fotos</code> y <code>Libros</code> están dentro de la carpeta <code>Documentos</code>. Dentro de la carpeta <code>proyecto</code> se encuentran tres archivos: <code>proceso.R</code> y <code>grafico.png</code> y un subdirectorio (o subcarpeta) llamado <code>datos</code>, que contiene el archivo <code>datos.csv</code>. Además, dentro de la carpeta <code>Fotos</code> se encuentra el archivo <code>vacaciones.jpg</code>.</p>
 <section id="rutas-y-caminos-absolutas-y-relativas" class="level3" data-number="2.2.1"><h3 data-number="2.2.1" class="anchored" data-anchor-id="rutas-y-caminos-absolutas-y-relativas">
 <span class="header-section-number">2.2.1</span> Rutas (y caminos) absolutas y relativas</h3>
 <p>Las carpetas ordenan los archivos, para poder acceder a su contenido necesitamos “entrar” en ellas. Para eso, utilizamos las <strong>rutas (path)</strong>, que son secuencias de nombres de directorios y archivos que indican la ubicación de un archivo o directorio dentro del sistema de archivos. Es como una dirección postal que indica exactamente dónde encontrar un archivo o carpeta. Tenemos dos tipos de rutas:</p>
@@ -371,6 +371,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Es fundamental saber donde estamos trabajando y donde se encuentran los archivos que necesitamos para trabajar porque de esta manera evitamos errores debido a rutas incorrectas.</p>
 <p>Por ejemplo, si intentamos leer un archivo con una ruta relativa que no existe en el directorio de trabajo actual, obtendremos un error indicando que el archivo no se encuentra a pesar que el archivo existe. Esto es debido a que no existe en el lugar que le indicamos.</p>
 </div>
+<div class="ejercicio">
+<p>Rutas absolutas y relativas</p>
+<p>Teniendo en cuenta el árbol de directorios de ejemplo, escribe:</p>
+<ol type="1">
+<li>La ruta <em>absoluta</em> de <code>datos.csv</code> y de <code>vacaciones.jpg</code>.</li>
+<li>La ruta <em>relativa</em> a <code>vacaciones.jpg</code> si el directorio de trabajo es <code>analisis</code>.</li>
+<li>La ruta relativa a <code>datos.csv</code> si el directorio de trabajo es Documentos.</li>
+<li>Qué significa <code>../</code> y en qué caso lo usarías.</li>
+</ol>
+</div>
 </section></section><section id="nombrar-archivos-y-carpetas-de-forma-inteligente" class="level2" data-number="2.3"><h2 data-number="2.3" class="anchored" data-anchor-id="nombrar-archivos-y-carpetas-de-forma-inteligente">
 <span class="header-section-number">2.3</span> Nombrar archivos y carpetas de forma inteligente</h2>
 <p>Para evitar errores de “file not found” (archivo no encontrado) y otros problemas relacionados con el sistema de archivos, es importante seguir algunas buenas prácticas al nombrar archivos y carpetas.</p>
@@ -383,6 +393,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 </div>
 <p>En la siguiente leccion veremos como podemos ordenar nuestro trabajo para evitar este tipo de errores y facilitar la reproducibilidad de nuestro trabajo.</p>
+<div class="ejercicio">
+<p>Construir una jerarquía de carpetas</p>
+<p>Teniendo en cuenta esta estructura de proyecto:</p>
+<pre><code>mi-proyecto/
+├── datos/
+│   ├── crudos/
+│   └── derivados/
+├── scripts/
+└── resultados/</code></pre>
+<ol type="1">
+<li><p>Creala en el disco rigido de tu computadora y respetando las buenas practicas en nombres de archivos (minúsculas, sin espacios ni tildes, guiones como separadores).</p></li>
+<li><p>Hace una captura de pantalla y subila al campus.</p></li>
+</ol>
+</div>
 </section><section id="el-problema" class="level2" data-number="2.4"><h2 data-number="2.4" class="anchored" data-anchor-id="el-problema">
 <span class="header-section-number">2.4</span> El problema</h2>
 <p>Imagina que arrancas el cuatrimestre y tenes que continuar con un proyecto de análisis de datos. O mejor te tomaste unas largas vacaciones. Por supuesto, todo el código y los datos están en una única carpeta y además lo publicaste en un repositorio público. Es hora de volver a trabajar, pero ¿qué fue lo último que hiciste? ¿qué falta?.</p>
@@ -448,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="tip">
 <p>Si utilizás los separadores de forma coherente e inteligente, podrás analizar los nombres de los archivos como parte de tu código. Por ejemplo, si tienes</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">archivos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">archivos</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "madrid_temperatura-minima"       "buenos-aires_temperatura-minima"
 [3] "madrid_temperatura-maxima"       "buenos-aires_temperatura-maxima"</code></pre>
@@ -456,7 +480,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>También podrías extraer ciudades y nombres de variables desde los nombres de los archivos</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">archivos</span>, <span class="st">"_"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/strsplit.html">strsplit</a></span><span class="op">(</span><span class="va">archivos</span>, <span class="st">"_"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[[1]]
 [1] "madrid"             "temperatura-minima"
@@ -482,12 +506,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Un paso extra a tener en cuenta es que no puedes hacer que tu trabajo sea portable si tu código no lo es también. Quizás el principal culpable de que el código no sea portable sea utilizar rutas absolutas para manipular archivos en tu código.</p>
 <p>La siguiente línea de código lee el archivo <code>datos.csv</code>:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documentos/proyectos/mitrabajo/datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"/home/dorothy/Documentos/proyectos/mitrabajo/datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Aunque hayas descargado correctamente la carpeta <code>mitrabajo</code> desde algún repositorio, este código va a dar error porque es poco probable que hayas guardado esa carpeta dentro de <code>Documentos/proyectos</code> y que tu nombre de usuario en la computadora sea “dorothy”.</p>
 <p>En cambio, podes utilizar una ruta relativa:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"datos/datos.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto se ejecutará independientemente de dónde se encuentre la carpeta raíz de tu proyecto ya que hace referencia solo a lo que está adentro. Como veremos a continuación los proyectos de RStudio ayudan a definir cual es la carpeta raíz de manera automática.</p>
 </section></section><section id="proyectos-de-rstudio" class="level2" data-number="2.6"><h2 data-number="2.6" class="anchored" data-anchor-id="proyectos-de-rstudio">
