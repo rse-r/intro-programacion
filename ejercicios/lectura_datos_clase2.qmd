@@ -1,0 +1,81 @@
+---
+title: "Ejercicio 4 - Empresas que más invierten en I+D a nivel mundial"
+author: "Yani"
+date: today
+format: html
+---
+
+## Descarga y lectura de datos
+
+### Paso 1: Cargar librerías necesarias
+
+Usar `install.packages("readxl")` si no tenes ese paquete instalado.
+
+```{r}
+
+library(readxl)
+```
+
+### Paso 2: Descargar el archivo de Excel de forma programática
+
+Este es el nuevo link valido del archivo que queriamos que descagaran en clase.
+
+```{r}
+url <- "https://datos.produccion.gob.ar/dataset/369e2ef5-f8bc-4b37-a3e7-f7ad8d5fceb7/resource/d8a3b5c6-7037-4372-b0e0-c73b3052dcb4/download/empresas-mas-innovadoras-del-sector-tecnologico.xlsx"
+
+destino <- "datos/empresas_innovacion_top50.xlsx"
+
+download.file(url, destfile = destino)
+```
+
+### Paso 3: Leer el archivo en R
+
+Esta es la funcion del paquete readxl que permite leer un archivo de Excel (y usamos la sugerencia hecha en clase de usar la variable en vez de escribir todo el *path* de nuevo)
+
+```{r}
+empresas <- read_excel(destino)
+```
+
+------------------------------------------------------------------------
+
+## Exploración de la estructura
+
+Con esta funcion podemos empezar a contestar las preguntas del ejercicio.
+
+```{r}
+str(empresas)
+```
+
+------------------------------------------------------------------------
+
+## Respuestas
+
+### 4.1 ¿Cuántas columnas y filas tiene el data.frame?
+
+El data.frame tiene **10 filas** (una por empresa) y **9 columnas**.
+
+### 4.2 ¿Qué tipo de dato hay en cada columna?
+
+```{r}
+str(empresas)
+```
+
+Las columnas son :
+
+- empresa <chr>
+- pais_origen <chr>
+- distribucion_porcentual_2013 <dbl>
+- distribucion_porcentual_2014 <dbl>
+- distribucion_porcentual_2015 <dbl>
+- distribucion_porcentual_2016 <dbl>
+- distribucion_porcentual_2017 <dbl>
+- distribucion_porcentual_2018 <dbl>
+- distribucion_porcentual_2019 <dbl>
+
+Y los formatos dados a las columnas son adecuados.
+
+### 4.3 ¿Qué función usaste para leer el archivo de Excel?
+
+Se usó la función **`read_excel()`** del paquete **`readxl`**.
+
+Esta función permite leer archivos `.xlsx` y `.xls` directamente en R sin necesidad de convertirlos a CSV.
