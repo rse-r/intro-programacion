@@ -1,5 +1,5 @@
 ---
-title: "Ejercicio 4 - Empresas que más invierten en I+D a nivel mundial"
+title: "Ejercicio 1 - Clase 2 - Empresas que más invierten en I+D a nivel mundial"
 author: "Yani"
 date: today
 format: html
