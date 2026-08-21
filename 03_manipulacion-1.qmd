@@ -235,13 +235,25 @@ pinguinos |>
 ```
 
 Pero se vuelve tedioso si queremos otros cuantiles, por ejemplo el 0.75 (porque decidimos los pingüinos con masa mayor a ese valor sn "grandes"). 
-Si intentamos extender el código anterior además del resultado vamos a terminar con un warning enorme. 
+Si intentamos extender el código anterior además del resultado vamos a terminar con un error. 
 
 ```{r}
+#| eval: false
 pinguinos |> 
   group_by(especie) |> 
   summarise(cuantil_masa = quantile(masa_corporal_g, c(0.25, 0.75), na.rm = TRUE))
 ```
+
+```r
+Error in `summarise()`:
+ℹ In argument: `cuantil_masa = quantile(masa_corporal_g, c(0.25, 0.75),
+  na.rm = TRUE)`.
+ℹ In group 1: `especie = "Adelia"`.
+Caused by error:
+! `cuantil_masa` must be size 1, not 2.
+ℹ To return more or less than 1 row per group, use `reframe()`.
+```
+
 
 El problema es que estamos opteniendo 2 valores para cada grupo, es decir el cuantil 0.25 y el 0.75 para cada especie. 
 En estos casos tenemos que usar `reframe()` que funciona de manera similar a `summarise()` pero está pensada para estos casos donde calculamos más de un valor por grupo.
