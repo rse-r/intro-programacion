@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>10&nbsp; Git para trabajar en equipo – Introducción a la Programación II</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d2f6fdc7fd0d86dc2e6c63543c73682c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2f155afa2e31c3cca4cad258e79d7114.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -294,7 +297,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#primero-hace-pull" id="toc-primero-hace-pull" class="nav-link" data-scroll-target="#primero-hace-pull"><span class="header-section-number">10.3.1</span> 1. Primero, hace <code>pull</code></a></li>
   <li><a href="#cada-persona-trabaja-en-archivos-diferentes" id="toc-cada-persona-trabaja-en-archivos-diferentes" class="nav-link" data-scroll-target="#cada-persona-trabaja-en-archivos-diferentes"><span class="header-section-number">10.3.2</span> 2. Cada persona trabaja en archivos diferentes</a></li>
   <li><a href="#las-personas-se-turnan" id="toc-las-personas-se-turnan" class="nav-link" data-scroll-target="#las-personas-se-turnan"><span class="header-section-number">10.3.3</span> 3. Las personas se turnan</a></li>
-  <li><a href="#las-personas-trabajan-en-branchs" id="toc-las-personas-trabajan-en-branchs" class="nav-link" data-scroll-target="#las-personas-trabajan-en-branchs"><span class="header-section-number">10.3.4</span> 4. Las personas trabajan en branchs</a></li>
+  <li><a href="#las-personas-trabajan-en-branches" id="toc-las-personas-trabajan-en-branches" class="nav-link" data-scroll-target="#las-personas-trabajan-en-branches"><span class="header-section-number">10.3.4</span> 4. Las personas trabajan en branches</a></li>
   </ul></li>
   <li><a href="#cómo-trabajar" id="toc-cómo-trabajar" class="nav-link" data-scroll-target="#cómo-trabajar"><span class="header-section-number">10.4</span> Cómo trabajar</a>
   <ul class="collapse">
@@ -338,13 +341,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="flujo-de-trabajo-individual" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="flujo-de-trabajo-individual"><span class="header-section-number">10.2</span> Flujo de trabajo individual</h2>
 <p>En este capítulo vamos a ver que pinta tiene el flujo de trabajo colaborativo entre personas para hacer análisis de datos y desarrollo de software. Previamente estuviste trabajando con git de manera individual:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Modificar</span> un archivo <span class="at">--</span><span class="op">&gt;</span> Add <span class="at">--</span><span class="op">&gt;</span> Commit <span class="at">--</span><span class="op">&gt;</span> Push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">Modificar</span> un archivo <span class="at">--</span><span class="op">&gt;</span> Add <span class="at">--</span><span class="op">&gt;</span> Commit <span class="at">--</span><span class="op">&gt;</span> Push</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Así que cada vez hagas un push, git comparará los archivos en el repositorio remoto con la versión que actualizaste localmente y actualizará el repo remoto para que todo este sincronizado. Pero cuando se trabaja con otras personas hay casos que potencialmente pueden crear conflictos de merge o versiones. Aunque el nombre sugiera lo contrario, un conflicto de merge no es necesariamente un error, ocurre cuando la versión de un archivo en el repositorio local no es compatible con su versión en el repositorio remoto. A veces, Git es capaz de combinar los dos conjuntos de cambios sin ningún problema. Pero a veces esto no es posible, y requiere que un humano intervenga y decida cómo deben combinarse los múltiples cambios, ¿mantiene la versión A, la versión B o una combinación de ambas?</p>
 </section>
 <section id="identificando-conflictos-de-versiones" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="identificando-conflictos-de-versiones"><span class="header-section-number">10.3</span> Identificando conflictos de versiones</h2>
 <p>Imaginá que alguien en tu equipo cambia el contenido de archivo <code>R/pulgadas_a_centimetros.R</code> para cambiar el mensaje de <code>"medida_pulgadas debe ser numérico."</code> a <code>"medida_pulgadas debe ser **de tipo** numérico."</code>:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pulgadas_a_centimetros <span class="ot">&lt;-</span> <span class="cf">function</span>(medida_pulgadas) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>pulgadas_a_centimetros <span class="ot">&lt;-</span> <span class="cf">function</span>(medida_pulgadas) {</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(medida_pulgadas)) {</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="fu">c</span>(</span>
@@ -354,9 +357,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  medida_pulgadas <span class="sc">*</span> <span class="fl">2.54</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Al mismo tiempo, vos también cambiaste esta línea en el código pero decidiste que el mensaje de error debe ser <code>"medida_pulgadas debe ser **una variable numérica**."</code>. Cuando intentás hacer push de la nueva versión del archivo al repositorio remoto te encontrás con este mensaje:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> /usr/bin/git <span class="ex">push</span> origin HEAD:refs/heads/master</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> /usr/bin/git <span class="ex">push</span> origin HEAD:refs/heads/master</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">To</span> github.com:paocorrales/paqueteprueba.git</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> <span class="ot">! </span><span class="ex">[rejected]</span>        HEAD <span class="at">-</span><span class="op">&gt;</span> master <span class="er">(</span><span class="ex">fetch</span> first<span class="kw">)</span></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="ex">error:</span> failed to push some refs to <span class="st">'github.com:paocorrales/paqueteprueba.git'</span></span>
@@ -364,17 +367,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> have locally. This is usually caused by another repository pushing to</span>
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> the same ref. If you want to integrate the remote changes, use</span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> <span class="st">'git pull'</span> before pushing again.</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> See the <span class="st">'Note about fast-forwards'</span> in <span class="st">'git push --help'</span> for details.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="ex">hint:</span> See the <span class="st">'Note about fast-forwards'</span> in <span class="st">'git push --help'</span> for details.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El mensaje nos aconseja hacer pull antes de intentar hacer push para actualizar el repositorio remoto. Al hacer pull nos encontramos con el siguiente problema:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> /usr/bin/git <span class="ex">pull</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;&gt;&gt;</span> /usr/bin/git <span class="ex">pull</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="ex">From</span> github.com:paocorrales/paqueteprueba</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>   <span class="ex">6e63458..d7d2a6c</span>  master     <span class="at">-</span><span class="op">&gt;</span> origin/master</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">Auto-merging</span> R/pulgadas_a_centimetros.R</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">CONFLICT</span> <span class="er">(</span><span class="ex">content</span><span class="kw">)</span><span class="bu">:</span> Merge conflict in R/pulgadas_a_centimetros.R</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Automatic</span> merge failed<span class="kw">;</span> <span class="ex">fix</span> conflicts and then commit the result.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="ex">Automatic</span> merge failed<span class="kw">;</span> <span class="ex">fix</span> conflicts and then commit the result.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>El mensaje dice que hay conflictos con el contenido de <code>R/pulgadas_a_centimetros.R</code> y que el merge automático falló. La buena noticia es que ya sabemos cuál es el archivo que da problemas. Aquí, hacer commits con pequeños cambios ayuda mucho.</p>
 <p>Ahora, si revisamos el archivo <code>R/pulgadas_a_centimetros.R</code>, el contenido cambió:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pulgadas_a_centimetros <span class="ot">&lt;-</span> <span class="cf">function</span>(medida_pulgadas) {</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>pulgadas_a_centimetros <span class="ot">&lt;-</span> <span class="cf">function</span>(medida_pulgadas) {</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(medida_pulgadas)) {</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    cli<span class="sc">::</span><span class="fu">cli_abort</span>(<span class="fu">c</span>(</span>
@@ -388,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  medida_pulgadas <span class="sc">*</span> <span class="fl">2.54</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Estos simbolos <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>, <code>=======</code> y <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> fueron agregados por git para resaltar el contenido que está generando conflictos. Todo lo que hay entre <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</code> y <code>=======</code> corresponde a la versión local, y el contenido entre <code>=======</code> y <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> es la versión actualmente en GitHub. La cadena larga es el identificador del commit en Github y <code>HEAD</code> refiere al último commit local.</p>
 <p>Para arreglar el conflicto será necesario:</p>
 <ol type="1">
@@ -411,8 +414,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="10.3.3" class="anchored" data-anchor-id="las-personas-se-turnan"><span class="header-section-number">10.3.3</span> 3. Las personas se turnan</h3>
 <p>Es posible que más de una persona esté trabajando en el mismo archivo, ya sea un script o documentación. Por lo general, ese será un trabajo para muchas personas. Una solución es turnarse: vos trabajás en el archivo por la mañana y tu compañero/a lo hace por la tarde.</p>
 </section>
-<section id="las-personas-trabajan-en-branchs" class="level3" data-number="10.3.4">
-<h3 data-number="10.3.4" class="anchored" data-anchor-id="las-personas-trabajan-en-branchs"><span class="header-section-number">10.3.4</span> 4. Las personas trabajan en branchs</h3>
+<section id="las-personas-trabajan-en-branches" class="level3" data-number="10.3.4">
+<h3 data-number="10.3.4" class="anchored" data-anchor-id="las-personas-trabajan-en-branches"><span class="header-section-number">10.3.4</span> 4. Las personas trabajan en branches</h3>
 <p>Aquí es donde aprovechamos al máximo lo que git tiene para ofrecer.</p>
 <p>Las branchs (ramas en inglés) parecen un concepto nuevo, pero en realidad, siempre estás trabajando en una rama sin darte cuenta. La branch “predeterminada” en general se llama <em>main</em> porque es la principal, y todo este tiempo estuviste “agregando commits a la branch main”.</p>
 <p>Una <strong>branch</strong> en git es una etiqueta que apunta a un <em>commit</em> específico en el repositorio a partir de la cual se crean otras versiones paralelas. Trabajar en una branch te permite modificar archivos sin modificar los mismos archivos en otras branchs, porque esencialmente estás trabajando en un conjunto de archivos independientes. Cuando quieras pasar los cambios de tu branch a la branch main, tendrás que hacer un <strong>merge</strong> para combinar las ramas.</p>
@@ -633,13 +636,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

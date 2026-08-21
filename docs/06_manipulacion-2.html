@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Paola Corrales y Yanina Bellini Saibene">
 <title>8&nbsp; Manipulación de datos ordenados II – Introducción a la Programación II</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -70,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d2f6fdc7fd0d86dc2e6c63543c73682c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-2f155afa2e31c3cca4cad258e79d7114.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -315,13 +318,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>En esta sección vamos a usar el paquete <code>tidyr</code> para manipular datos. Si no lo tenés instalado, instalalo con el comando:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyr"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>(como siempre, recordá que esto hay que hacerlo una única vez en la consola)</p>
 <p>Y luego cargá tidyr y dplyr con:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -342,7 +345,7 @@ Attaching package: 'dplyr'</code></pre>
 </h2>
 <p>Antes, usamos el set de datos de paises que viene en el paquete datos. Vamos a usar los datos originales que tienen un formato ancho.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/paises_ancho.csv"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/paises_ancho.csv"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 142 Columns: 38
 ── Column specification ────────────────────────────────────────────────────────
@@ -353,7 +356,7 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 ℹ Use `spec()` to retrieve the full column specification for this data.
 ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_ancho</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 38
    pais       continente `esperanza_de_vida-1952` `esperanza_de_vida-1957`
@@ -383,14 +386,14 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Esta tabla, increíblemente ancha, es muy difícil de manejar. Por ejemplo, es imposible hacer una serie de tiempo de una variable, o calcular el promedio por variable y país; ni hablar de calcular una regresión lineal.</p>
 <p>Para convertirlo en una tabla más larga, se usa <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> (“longer” es “más largo” en inglés):</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">paises_ancho</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span><span class="va">paises_ancho</span>,</span>
 <span>                             cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'pob'</span><span class="op">)</span>, </span>
 <span>                                      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'esperanza'</span><span class="op">)</span>, </span>
 <span>                                      <span class="fu"><a href="https://tidyselect.r-lib.org/reference/starts_with.html">starts_with</a></span><span class="op">(</span><span class="st">'pib_per'</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                             names_to <span class="op">=</span> <span class="st">"variable_anio"</span>, </span>
 <span>                             values_to <span class="op">=</span> <span class="st">"valor"</span></span>
 <span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">paises_largo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 4
    pais       continente variable_anio     valor
@@ -420,11 +423,11 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </div>
 <p>La columna <code>variable_anio</code> todavía no es muy útil porque contiene 2 datos, la variable (población, expectativa de vida o PBI per cápita) y el año. Sería mejor separar esta información en dos columnas llamadas “variable” y “anio”. Para eso está la función <code><a href="https://tidyr.tidyverse.org/reference/separate.html">separate()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
 <span>         col <span class="op">=</span> <span class="va">variable_anio</span>, </span>
 <span>         delim <span class="op">=</span> <span class="st">"-"</span>,</span>
 <span>         names <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"variable"</span>, <span class="st">"anio"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">paises_largo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 5
    pais       continente variable  anio     valor
@@ -445,9 +448,9 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>El primer argumento, como siempre, es la tabla a procesar. El segundo, <code>col</code>, es la columna a separar en dos (o más) columnas nuevas. El segundo argumento indica cómo se separan los elementos, en este caso con guíon “-”. El tercero, <code>names</code> es el nombre de las nuevas columnas que <code><a href="https://tidyr.tidyverse.org/reference/separate_wider_delim.html">separate_wider_delim()</a></code> va a crear.</p>
 <p>Y ya casi. Pero fijate que debajo de la columna <code>anio</code> dice <code>&lt;chr&gt;</code>; eso significa que el tipo de la columna es caracter, pero los años son números. Usando <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> podemos convertir la columna <code>anio</code> a entero usando <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_largo</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
 <span>                       anio <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/integer.html">as.integer</a></span><span class="op">(</span><span class="va">anio</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">paises_largo</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">paises_largo</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5,112 × 5
    pais       continente variable   anio    valor
@@ -474,8 +477,8 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Ahora la variable <code>paises_largo</code> está en el formato más largo posible. Tiene 5 columnas, de las cuales sólo una es la columnas con valores. Pero con los datos así no podrías hacer un gráfico de puntos que muestre la relación entre el PBI per cápita y la expectativa de vida como en la <a href="06_graficos.html">sección de gráficos</a>. Fijate que los valores de la columna <code>valor</code> no tienen todos las mismas unidades, por lo que operar con ese vector podría dar resultados sin sentido. Muchas veces es conveniente y natural tener los datos en un formato intermedio en donde hay múltiples columnas con los valores de distintas variables observadas.</p>
 <p>Pasa “ensanchar” una tabla está la función <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> (“wider” es “más ancha” en inglés) y el código para conseguir este formato intermedio es:</p>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_medio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, names_from <span class="op">=</span> <span class="va">variable</span>, values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span>
-<span><span class="va">paises_medio</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_medio</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, names_from <span class="op">=</span> <span class="va">variable</span>, values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span>
+<span><span class="va">paises_medio</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    pais       continente  anio poblacion esperanza_de_vida pib_per_capita
@@ -496,10 +499,10 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Nuevamente el primer argumento es la tabla original. El segundo, <code>names_from</code> es la columna cuyos valores únicos van a convertirse en nuevas columnas. La columna <code>variable</code> tiene los valores <code>"población"</code>, <code>"esperanza_de_vida"</code> y <code>"pib_per_capita"</code> y entonces la tabla nueva tendrá tres columnas con esos nombres. El tercer argumento, <code>values_from</code>, es la columna de la cual sacar los valores.</p>
 <p>Para volver al formato más ancho, basta con agregar más columnas en el argumento <code>names_from</code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span><span class="va">paises_largo</span>, </span>
 <span>            names_from <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">variable</span>, <span class="va">anio</span><span class="op">)</span>, </span>
 <span>            names_sep <span class="op">=</span> <span class="st">"-"</span>,</span>
-<span>            values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span>            values_from <span class="op">=</span> <span class="va">valor</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 38
    pais       continente `poblacion-1952` `poblacion-1957` `poblacion-1962`
@@ -545,11 +548,11 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p><img src="images/join_family.png" class="img-fluid"></p>
 <p>Ahora vamos a seguir trabajando con las base de datos de <code>paises</code> pero nos vamos a quedar solo con las observaciones del 2007 y de paso unirlo a una nueva base de datos <code>co2</code> que contiene información de la emisión de dióxido de carbono de cada país para ese mismo año.</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_2007</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/paises.html">paises</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_2007</span> <span class="op">&lt;-</span> <span class="fu">datos</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/datos/man/paises.html">paises</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">anio</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> </span>
 <span></span>
 <span><span class="va">co2_2007</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rse-r/intro-programacion/main/datos/co2_2007.csv"</span><span class="op">)</span></span>
-<span><span class="va">co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">co2_2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 218 × 3
    codigo_iso emision_co2 pais                  
@@ -575,8 +578,8 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 </ul>
 <p>Unamos <code>paises_2007</code> y <code>co2_2007</code> primero con <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join()</a></code>:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">full_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
+<span><span class="va">paises_co2_2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 241 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -603,8 +606,8 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Esta es la opción más segura si no sabemos si todas las observaciones de una tabla están presente en a otra.</p>
 <p>Si solo nos interesa conservar las filas de la tabla <em>de la izquierda</em>, en este caso <code>paises_2007</code> entonces:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
+<span><span class="va">paises_co2_2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 142 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -626,8 +629,8 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>Ahora esperamos que la tabla resultante tenga la misma cantidad de filas que <code>paises_2007</code> y efectivamente eso ocurre. Pero al mismo tiempo varios países en esa tabla no encontraron coincidencia en <code>co2_2007</code> y por esa razón, la columna nueva columna <code>emisiones_co2</code> tiene <code>NA</code>.</p>
 <p>Si quisiéramos quedarnos <em>solo</em> con las observaciones que están presentes en ambas tablas usamos <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
-<span><span class="va">paises_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">paises_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span>, by <span class="op">=</span> <span class="st">"pais"</span><span class="op">)</span></span>
+<span><span class="va">paises_co2_2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 119 × 8
    pais   continente  anio esperanza_de_vida poblacion pib_per_capita codigo_iso
@@ -649,11 +652,11 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
 <p>En este caso, perdemos las filas de <code>co2_2007</code> que no encontraron coincidencia en <code>paises_2007</code> y viceversa y la tabla resultante tiene aún menos filas (119).</p>
 <p>Finalmente, si quisieramos quedarnos con los paises para los cuales no tenemos datos de co2, o sea las observaciones en <code>paises_2007</code> que no tienen coincidencia en <code>co2_2007</code> usamos <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sin_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sin_co2_2007</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">paises_2007</span>, <span class="va">co2_2007</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(pais)`</code></pre>
 </div>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sin_co2_2007</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sin_co2_2007</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 23 × 6
    pais              continente  anio esperanza_de_vida poblacion pib_per_capita
@@ -754,13 +757,14 @@ dbl (36): esperanza_de_vida-1952, esperanza_de_vida-1957, esperanza_de_vida-...
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,6 +10,9 @@
 
 <title>6&nbsp; git para trabajar individualmente – Introducción a la Programación II</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -74,10 +77,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d2f6fdc7fd0d86dc2e6c63543c73682c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-2f155afa2e31c3cca4cad258e79d7114.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -378,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="configuración-inicial" class="level2" data-number="6.5">
 <h2 data-number="6.5" class="anchored" data-anchor-id="configuración-inicial"><span class="header-section-number">6.5</span> Configuración inicial</h2>
 <p>Antes de crear tu primer repositorio es importante revisar que git esté configurado correctamente en tu computadora y que tengas permisos para modificar cosas en GitHub. Si seguiste las instrucciones <a href="A_instalacion.html">instrucciones previas al curso</a> deberías tener todo listo, pero podemos revisar el estado de situación con <code>usethis::git_sitrep()</code> para comprobarlo.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">git_sitrep</span>()</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>── Git <span class="fu">global</span> (user) </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>• Name<span class="sc">:</span> <span class="st">"Pao Corrales"</span></span>
@@ -395,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>• Token scopes<span class="sc">:</span> <span class="st">"gist"</span>, <span class="st">"repo"</span>, <span class="st">"user"</span>, and <span class="st">"workflow"</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>• <span class="fu">Email</span>(s)<span class="sc">:</span> <span class="st">"micorreo@gmail.com (primary)"</span>, <span class="st">"paocorrales@users.noreply.github.com"</span>, and</span>
 <span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="st">"otro correo@gmail.com"</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ℹ No active usethis project.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>ℹ No active usethis project.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Revisá que la información sea correcta y que <code>Personal access token for "https://github.com":</code> sea igual a <code>&lt;discovered&gt;</code>. Eso te garantizará que puedas trabajar con git y GitHub. Si vez alguna diferencia, es útil revisar las instrucciones de instalación en el anexo <a href="A_instalacion.html">A Preparando el entorno de trabajo</a>.</p>
 </section>
 <section id="creando-un-nuevo-repositorio" class="level2" data-number="6.6">
@@ -507,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><em>Issues.</em> Te permiten gestionar el proyecto, discutir problemas y mejoras con otras personas.</p></li>
 </ul>
 <div class="ejercicio">
-<p>Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar <em>GitHub Classroom</em>.</p>
+<p>Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar repositorios en <em>GitHub</em>.</p>
 <p>¿Cómo funciona?</p>
 <p>Preparamos repositorios con distintos ejercicios para que resuelvan. Cada persona tendrá su repositorio para trabajar de manera individual, aunque siempre pueden resolver los ejercicios en grupos (pequeños!, 2 o 3 personas)</p>
 <p>En el campus encontrarás las instrucciones para acceder a tu repositorio.</p>
@@ -568,13 +571,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

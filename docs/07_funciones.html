@@ -2,11 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.30">
+<meta name="generator" content="quarto-1.9.36">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Paola Corrales y Yanina Bellini Saibene">
 <title>9&nbsp; Funciones – Introducción a la Programación II</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -70,10 +73,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2ee26349945d0c4eadaece612797c059.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-d2f6fdc7fd0d86dc2e6c63543c73682c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-34c34da975102dc9751bf71ccd58d91b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+<link href="site_libs/bootstrap/bootstrap-2f155afa2e31c3cca4cad258e79d7114.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
@@ -323,9 +326,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="esqueleto-de-una-función" class="level2" data-number="9.3"><h2 data-number="9.3" class="anchored" data-anchor-id="esqueleto-de-una-función">
 <span class="header-section-number">9.3</span> Esqueleto de una función</h2>
 <p>Cualquier función en R tendrá la siguiente pinta (se le llama firma de una función):</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nombre_de_funcion</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">nombre_de_funcion</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">arg1</span>, <span class="va">arg2</span>, <span class="va">...</span><span class="op">)</span> <span class="op">{</span></span>
 <span><span class="co"># código que hace algo </span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Como habrás notado necesitamos la función <code>function()</code> para crear una función. Hay tres pasos clave para crear una nueva función:</p>
 <ul>
 <li>Tenés que elegir <em>un nombre</em> para la función.</li>
@@ -334,36 +337,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul>
 <p>Imaginemos que trabajamos en una carpinteria y vendemos piezas de maderas precortadas para armar muebles. Algunos de los planos de los muebles vienen en pulgadas, pero en Argentina se trabaja en centimetros. Tenemos este código que nos permite transformar las medidas:</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">largo_tabla_en_pulgadas</span> <span class="op">&lt;-</span> <span class="fl">12</span> <span class="co"># En pulgadas!!</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">largo_tabla_en_pulgadas</span> <span class="op">&lt;-</span> <span class="fl">12</span> <span class="co"># En pulgadas!!</span></span>
 <span></span>
-<span><span class="va">largo_tabla_cm</span> <span class="op">&lt;-</span> <span class="va">largo_tabla_en_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span> <span class="co"># convierto a centímetros</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="va">largo_tabla_cm</span> <span class="op">&lt;-</span> <span class="va">largo_tabla_en_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span> <span class="co"># convierto a centímetros</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Este código no va a ser útil si querés usarlo en otros lugares, por ejemplo si queremos calcular el ancho o queremos convertir la medida de otra pieza que no sea una tabla. Entonces necesitamos generalizarlo en una función.</p>
 <p>El primer paso es pensar un nombre, por ejemplo <code>pulgadas_a_centimetros</code>. Luego tenemos que analizar el código e identificar cuáles son los argumentos, la información que necesita la función, en este caso el largo en pulgadas, ese es un argumento.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">largo_en_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">largo_en_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">largo_en_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esta función está lista para usar, por ejemplo podemos convertir 20 pulgadas a centímetros:</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">20</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50.8</code></pre>
 </div>
 </div>
 <p>Si bien podemos nombrar a los argumentos de las funciones de cualquier manera, <code>largo_en_pulgadas</code> no es ideal para una función general. Un mejor nombre podría ser <code>medida_pulgadas</code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">medida_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Es posible que te encuentres con algo del estilo:</p>
 <div class="cell">
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">medida_centimetros</span> <span class="op">&lt;-</span> <span class="va">medida_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="va">medida_centimetros</span><span class="op">)</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Usar la función <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> no es necesario, R devuelve el último elemento con o sin el <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> presente. Sin embargo, puede ayudar a la lectura del código cuando la función es más compleja.</p>
 <div class="importante">
@@ -395,20 +398,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="header-section-number">9.4</span> Testeá tu función</h2>
 <p>Es importante que pruebes tu función de distintas maneras. Primero, con algún valor para el que sabés el resultado, por ejemplo 1 pulgada son 2.54 centímetros.</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">1</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.54</code></pre>
 </div>
 </div>
 <p>También es importante testear la función con datos diferentes, por ejemplo en vez de 1 número entero, podemos usar un número real o un vector de números.</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">7.5</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fl">7.5</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 19.05</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span>, <span class="fl">12</span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  0.00  2.54 30.48</code></pre>
 </div>
@@ -416,13 +419,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Hay que chequear si estos resultados son correctos. ¿Esperabas obtener 3 valores en este último ejemplo? ¿tiene sentido que haga esto?</p>
 <p>Finalmente, tenemos que probar la función con otras cosas.</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in medida_pulgadas * 2.54: non-numeric argument to binary operator</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.54</code></pre>
 </div>
@@ -444,7 +447,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>El paquete <code>cli</code> nos permite escribir mensajes de error y <em>warnings</em> (advertencias en inglés) más claras e informativos. En el caso de que la función reciba un argumento que no es numérico, podemos usar <code><a href="https://cli.r-lib.org/reference/cli_abort.html">cli::cli_abort()</a></code> para generar un mensaje de error más claro:</p>
 <div class="cell">
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">pulgadas_a_centimetros</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  </span>
 <span>  <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">is.numeric</a></span><span class="op">(</span><span class="va">medida_pulgadas</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span>
 <span>    <span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_abort.html">cli_abort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
@@ -454,10 +457,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="op">}</span></span>
 <span>  </span>
 <span>  <span class="va">medida_pulgadas</span> <span class="op">*</span> <span class="fl">2.54</span></span>
-<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">pulgadas_a_centimetros</span><span class="op">(</span><span class="st">"100"</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <pre><code>Error in `pulgadas_a_centimetros()`:
 ! medida_pulgadas debe ser numérico.
@@ -467,7 +470,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos <code>cli_abort()</code> pero hay toda una familia de funciones según la circunstancia, por ejemplo si queremos mostrar un <em>warning</em>, si la función corrió con éxito, etc.</p>
 <p>Además podemos mostrar distintos tipos de mensajes:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_bullets.html">cli_bullets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">cli</span><span class="fu">::</span><span class="fu"><a href="https://cli.r-lib.org/reference/cli_bullets.html">cli_bullets</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span></span>
 <span>  <span class="st">"noindent"</span>,</span>
 <span>  <span class="st">" "</span> <span class="op">=</span> <span class="st">"indent"</span>,</span>
 <span>  <span class="st">"*"</span> <span class="op">=</span> <span class="st">"bullet"</span>,</span>
@@ -476,7 +479,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span>  <span class="st">"x"</span> <span class="op">=</span> <span class="st">"danger"</span>,</span>
 <span>  <span class="st">"!"</span> <span class="op">=</span> <span class="st">"warning"</span>,</span>
 <span>  <span class="st">"i"</span> <span class="op">=</span> <span class="st">"info"</span></span>
-<span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span><span class="op">)</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>noindent</code></pre>
 </div>
@@ -621,13 +624,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
