@@ -184,12 +184,12 @@ paquete. Crear un nombre significativo, que la gente recuerde y que se
 pueda buscar en Google es *realmente difícil*. No hay una manera fácil
 de y a menudo requiere varios días de pensar opciones. Pero además hay
 que asegurarse de que el nombre que estamos pensando usar no lo esté
-usando alguien más. Esto se puede hacer con el paquete `pak`. Por ahora
+usando alguien más. Esto se puede hacer con el paquete `available`. Por ahora
 para revisar el paso a paso para crear un paquete usaremos
 `paqueteprueba` como nombre. Revisemos si está disponible
 
-```{r ce-available-pkg, eval=TRUE, echo=FALSE}
-pak::pkg_name_check("paqueteprueba")
+```{r ce-available-pkg, eval=TRUE}
+available::available("paqueteprueba")
 ```
 
 En este caso `paqueteprueba` está disponible para que lo usemos.
