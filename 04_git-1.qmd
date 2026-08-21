@@ -206,7 +206,7 @@ Para evitar este problema (lo más posible), tenes que hacer un pull antes de em
 
 ::: ejercicio
 
-Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar _GitHub Classroom_. 
+Para practicar git y de paso lo que estuvimos viendo sobre manipulación de datos vamos a usar repositorios en _GitHub_. 
 
 ¿Cómo funciona? 
 
