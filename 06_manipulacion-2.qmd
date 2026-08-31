@@ -256,7 +256,7 @@ Recordás el ejercicio 3 de dplyr?
 
 >¿Cuál es el promedio de la temperatura de abrigo a 150 cm en cada estación? ¿Y el desvío estandar? Pista: la mayoría de las funciones tienen un argumento para *sacar* los `NA` del cálculo, revisá la documentación de `mean()` y de `sd()`.
 
-1. Usando las funciones `pivot_` alargá el resultado anterior de tal manera que queden los valores de temperatura máxima y mínima en la misma columna. 
+1. Usando las funciones `pivot_` alargá el resultado anterior de tal manera que queden los valores de la media y el desvio estandar en la misma columna. 
 2. A continuación **usando el resultado anterior** volvé a ensanchar la tabla de tal manera que tengas columnas con los nombres de las estaciones y en las filas los valores de la media y el desvio estandar.
 
 ```{r, echo=FALSE, eval=FALSE}
