@@ -6,7 +6,7 @@ A continuación encontrarás una lista de elementos que debe tener o con los que
 
 Podés usar el paquete [jtp](https://github.com/paocorrales/jtp) para chequear que tu paquete cumple con lo mínimo y necesario. 
 
-## Características generales
+## Características generales del paquete
 
 - [ ] Estructura del paquete correcta
 - [ ] El paquete instala correctamente
