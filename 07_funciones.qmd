@@ -103,7 +103,7 @@ Aquí podemos hacer un paréntesis para mencionar la necesidad de documentar apr
 3.  Al comienzo del archivo, en comentarios, antes de cada función, incluí qué hace la función, qué argumentos requiere y qué genera.
 :::
 
-Ahora, si quisiéramos usar esa función en el análisis, podemos "cargarla" con `source("nombre_archivo.R")`.
+Ahora, si quisiéramos usar esas funciones en otro análisis, podemos ejecutar el script completo usando `source("nombre_archivo.R")`, lo que nos permite cargar todas las funciones directamente en nuestro entorno de trabajo.
 
 La escritura de una función debería arrancar con un código que ya funciona. Es decir, en lugar de empezar desde cero `pulgadas_a_centimetros()` usamos el código que ya tenemos y que funciona para un ejemplo particular. Luego, cambiando el nombre del argumento, podemos generalizar el código.
 
@@ -191,7 +191,7 @@ pulgadas_a_centimetros("100")
 
 El mensaje de error se ve mejor y nos permite organizar la información. En este caso usamos `cli_abort()` pero hay toda una familia de funciones según la circunstancia, por ejemplo si queremos mostrar un _warning_, si la función corrió con éxito, etc.
 
-Además podemos mostrar distintos tipos de mensajes:
+Para estructurar listas o mensajes informativos con viñetas estilizadas usando `cli`, podemos implementar la función `cli_bullets()` de la siguiente manera:
 
 ```{r}
 cli::cli_bullets(c(
