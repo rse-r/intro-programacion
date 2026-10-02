@@ -37,7 +37,7 @@ Podés usar el paquete [jtp](https://github.com/paocorrales/jtp) para chequear q
 
 ## Checks y tests
 
-- [ ] El paquete tiene tests que cubren al menos el 75% del código de las funciones
+- [ ] El paquete tiene tests que cubren al menos el **75%** del código de las funciones
 - [ ] El paquete tiene una GitHub action que revisa la covertura de los tests
 - [ ] El paquete pasa R CMD checks
 - [ ] El paquete tiene una GitHub action que chequea el paquete en distintos sistemas operativos
