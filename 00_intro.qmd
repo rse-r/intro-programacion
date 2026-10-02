@@ -124,7 +124,7 @@ x <- 2 + 2
 ```
 
 La "flechita" `<-` es el operador de asignación, que le dice a R que tome el resultado de la derecha y lo guarde en una variable con el nombre que está a la izquierda.
-Vas a ver que no te devele el resultado.
+Vas a ver que no te devuelve el resultado.
 Para verlo, ejecutamos
 
 ```{r}
