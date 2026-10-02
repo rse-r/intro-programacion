@@ -33,7 +33,7 @@ Podés usar el paquete [jtp](https://github.com/paocorrales/jtp) para chequear q
   - [ ] etiquetas (covertura de tests, lifecycle, etc).
   - [ ] un logo para el paquete. 
 - [ ] Incluye una viñeta que explica como usar las funciones
-- [ ] El paquete tiene una página web
+- [ ] El paquete tiene una página web bonita
 
 ## Checks y tests
 
