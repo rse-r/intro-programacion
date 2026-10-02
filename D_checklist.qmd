@@ -4,6 +4,10 @@ A lo largo de las secciones los ejercicios transversales que llamamos "Construye
 
 A continuación encontrarás una lista de elementos que debe tener o con los que debe cumplir el paquete para estar completo. 
 
+Podés usar el paquete [jtp](https://github.com/paocorrales/jtp) para chequear que tu paquete cumple con lo mínimo y necesario. 
+
+## Características generales
+
 - [ ] Estructura del paquete correcta
 - [ ] El paquete instala correctamente
 - [ ] Contiene instrucciones para comenzar a usarlo rapidamente
